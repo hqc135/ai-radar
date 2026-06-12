@@ -1,0 +1,11 @@
+sources:
+  - name: OpenAI Blog
+    url: https://openai.com/blog/rss.xml
+  - name: Anthropic News
+    url: https://www.anthropic.com/news/rss.xml
+  - name: Google AI Blog
+    url: https://blog.google/technology/ai/rss/
+  - name: Hugging Face Blog
+    url: https://huggingface.co/blog/feed.xml
+  - name: LangChain Blog
+    url: https://blog.langchain.com/rss/
