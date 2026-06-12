@@ -25,6 +25,9 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate weekly digest
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_RADAR_WEEKLY_MODEL: ${{ vars.AI_RADAR_WEEKLY_MODEL || 'gpt-4.1' }}
         run: python src/ai_radar/main.py --weekly
 
       - name: Commit changes

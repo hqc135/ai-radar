@@ -1,7 +1,9 @@
-model: gpt-4.1-mini
+daily_summary_model: gpt-4.1-mini
+weekly_summary_model: gpt-4.1
 max_llm_items_per_day: 20
 max_daily_items: 50
 high_priority_limit: 10
+deep_research_candidates_per_week: 3
 low_priority_llm_min_score: 3
 cache_keep_days: 14
 keywords:

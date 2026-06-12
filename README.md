@@ -35,7 +35,8 @@ copy .env.example .env
 
 ```text
 OPENAI_API_KEY=你的 OpenAI API Key
-AI_RADAR_MODEL=gpt-4.1-mini
+AI_RADAR_DAILY_MODEL=gpt-4.1-mini
+AI_RADAR_WEEKLY_MODEL=gpt-4.1
 ```
 
 生成日报：
@@ -88,7 +89,8 @@ Secrets：
 
 Variables：
 
-- `AI_RADAR_MODEL`：可选，默认 `gpt-4.1-mini`
+- `AI_RADAR_DAILY_MODEL`：可选，日报普通 RSS 摘要模型，默认 `gpt-4.1-mini`
+- `AI_RADAR_WEEKLY_MODEL`：可选，周报总结模型，默认 `gpt-4.1`
 
 Actions 会自动 commit：
 
@@ -100,10 +102,12 @@ Actions 会自动 commit：
 编辑 `config.yaml`：
 
 ```yaml
-model: gpt-4.1-mini
+daily_summary_model: gpt-4.1-mini
+weekly_summary_model: gpt-4.1
 max_llm_items_per_day: 20
 max_daily_items: 50
 high_priority_limit: 10
+deep_research_candidates_per_week: 3
 low_priority_llm_min_score: 3
 cache_keep_days: 14
 ```
@@ -113,8 +117,16 @@ cache_keep_days: 14
 - `max_llm_items_per_day`：每天最多调用 LLM 摘要的条数
 - `max_daily_items`：日报最多输出多少条
 - `high_priority_limit`：日报高优先级最多保留多少条
+- `deep_research_candidates_per_week`：周报里 Deep Research 候选数量，只允许 1-3 条
 - `low_priority_llm_min_score`：低于该启发式分数的候选不调用 LLM，使用降级摘要
 - `cache_keep_days`：URL 去重缓存保留天数
+
+模型策略：
+
+- 普通 RSS 摘要：使用 `daily_summary_model` / `AI_RADAR_DAILY_MODEL`，建议快模型。
+- 高优先级候选：日报只筛出来，不自动做 Deep Research，适合人工丢给 ChatGPT 或 Deep Research。
+- 周报总结：使用 `weekly_summary_model` / `AI_RADAR_WEEKLY_MODEL`，建议比日报稍好的模型。
+- Deep Research：周报只输出 1-3 个候选，不自动调用 Deep Research。
 
 ## 添加信息源
 

@@ -24,9 +24,12 @@ URL_RE = re.compile(r"https?://[^\s)>\]]+")
 
 class RadarConfig(BaseModel):
     model: str = "gpt-4.1-mini"
+    daily_summary_model: str = "gpt-4.1-mini"
+    weekly_summary_model: str = "gpt-4.1"
     max_llm_items_per_day: int = 20
     max_daily_items: int = 50
     high_priority_limit: int = 10
+    deep_research_candidates_per_week: int = Field(default=3, ge=1, le=3)
     low_priority_llm_min_score: int = 3
     cache_keep_days: int = 14
     keywords: list[str] = Field(
@@ -84,6 +87,10 @@ class ItemAnalysis(BaseModel):
 
 class AnalyzedItem(CandidateItem):
     analysis: ItemAnalysis
+
+
+class WeeklySummary(BaseModel):
+    overview_cn: str
 
 
 def log(level: str, message: str) -> None:
@@ -455,7 +462,62 @@ def build_weekly_sections(items: list[AnalyzedItem]) -> dict[str, list[AnalyzedI
     return {name: values[:10] for name, values in buckets.items()}
 
 
-def write_weekly_digest(output_dir: Path, archive_dir: Path, now: datetime, dry_run: bool) -> Path:
+def select_deep_research_candidates(items: list[AnalyzedItem], limit: int) -> list[AnalyzedItem]:
+    candidates = [
+        item
+        for item in items
+        if item.analysis.importance >= 4
+        and item.analysis.confidence >= 4
+        and item.source_kind.lower() in {"official", "docs", "github", "arxiv"}
+    ]
+    return sorted(candidates, key=lambda item: (item.analysis.importance, item.analysis.confidence), reverse=True)[
+        :limit
+    ]
+
+
+def summarize_weekly(client: OpenAI, model: str, items: list[AnalyzedItem]) -> WeeklySummary:
+    payload = [
+        {
+            "title": item.title,
+            "source": item.source,
+            "url": item.url,
+            "summary_cn": item.analysis.summary_cn,
+            "tags": item.analysis.tags,
+            "importance": item.analysis.importance,
+            "confidence": item.analysis.confidence,
+        }
+        for item in items[:40]
+    ]
+    response = client.chat.completions.create(
+        model=model,
+        response_format={"type": "json_object"},
+        messages=[
+            {
+                "role": "system",
+                "content": "你是 AI 行业周报编辑。只输出 JSON，字段为 overview_cn。overview_cn 控制在 200-300 字。",
+            },
+            {
+                "role": "user",
+                "content": "请基于过去 7 天高优先级条目，写一段中文周报概览，突出产品、论文、repo 和可动手尝试方向。\n\n"
+                f"{json.dumps(payload, ensure_ascii=False)}",
+            },
+        ],
+    )
+    return WeeklySummary.model_validate_json(response.choices[0].message.content or "{}")
+
+
+def fallback_weekly_summary(items: list[AnalyzedItem]) -> WeeklySummary:
+    return WeeklySummary(overview_cn=f"本周共汇总 {len(items)} 条高优先级内容。请优先查看产品更新、论文、repo 和 Deep Research 候选部分。")
+
+
+def write_weekly_digest(
+    output_dir: Path,
+    archive_dir: Path,
+    now: datetime,
+    dry_run: bool,
+    radar_config: RadarConfig,
+) -> Path:
+    load_dotenv()
     week_id = now.astimezone(BEIJING_TZ).strftime("%G-W%V")
     start_date = now.astimezone(BEIJING_TZ).date() - timedelta(days=6)
     items: list[AnalyzedItem] = []
@@ -464,6 +526,18 @@ def write_weekly_digest(output_dir: Path, archive_dir: Path, now: datetime, dry_
         items.extend(load_archive_items(archive_dir / f"{day.isoformat()}.json"))
     items = [item for item in items if item.analysis.importance >= 4]
     sections = build_weekly_sections(items)
+    sections["本周 Deep Research 候选"] = select_deep_research_candidates(
+        items, radar_config.deep_research_candidates_per_week
+    )
+    summary = fallback_weekly_summary(items)
+    api_key = os.getenv("OPENAI_API_KEY")
+    if api_key and items and not dry_run:
+        model = os.getenv("AI_RADAR_WEEKLY_MODEL", radar_config.weekly_summary_model)
+        try:
+            log("info", f"summarizing weekly model={model}")
+            summary = summarize_weekly(OpenAI(api_key=api_key), model, items)
+        except Exception as exc:
+            log("warn", f"weekly summary failed error={exc}")
     path = output_dir / f"{week_id}.md"
     lines = [
         f"# AI Radar 周报 - {week_id}",
@@ -471,6 +545,11 @@ def write_weekly_digest(output_dir: Path, archive_dir: Path, now: datetime, dry_
         f"生成时间：{datetime.now(BEIJING_TZ).strftime('%Y-%m-%d %H:%M:%S')} 北京时间",
         f"汇总范围：{start_date.isoformat()} 至 {now.astimezone(BEIJING_TZ).date().isoformat()}",
         f"高优先级条目数：{len(items)}",
+        f"Deep Research 候选上限：{radar_config.deep_research_candidates_per_week}",
+        "",
+        "## 本周概览",
+        "",
+        summary.overview_cn,
         "",
     ]
     for section, section_items in sections.items():
@@ -544,7 +623,7 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
             client = OpenAI(api_key=api_key)
 
     analyzed: list[AnalyzedItem] = []
-    model = os.getenv("AI_RADAR_MODEL", radar_config.model)
+    model = os.getenv("AI_RADAR_DAILY_MODEL", os.getenv("AI_RADAR_MODEL", radar_config.daily_summary_model))
     for item in new_items:
         use_llm = item.url in llm_items and client is not None
         if use_llm:
@@ -605,7 +684,13 @@ def main() -> None:
     args = build_parser().parse_args()
     radar_config = load_config(args.config)
     if args.weekly:
-        path = write_weekly_digest(args.weekly_output_dir, args.archive_dir, datetime.now(timezone.utc), args.dry_run)
+        path = write_weekly_digest(
+            args.weekly_output_dir,
+            args.archive_dir,
+            datetime.now(timezone.utc),
+            args.dry_run,
+            radar_config,
+        )
         log("info", f"weekly done output={path}")
     else:
         run_daily(args, radar_config)
