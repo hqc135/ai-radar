@@ -1,15 +1,15 @@
-name: Daily AI Radar
+name: Weekly AI Radar
 
 on:
   schedule:
-    - cron: "0 1 * * *"
+    - cron: "10 1 * * 1"
   workflow_dispatch:
 
 permissions:
   contents: write
 
 jobs:
-  daily:
+  weekly:
     runs-on: ubuntu-latest
 
     steps:
@@ -24,20 +24,17 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Generate daily note
-        env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          AI_RADAR_MODEL: ${{ vars.AI_RADAR_MODEL || 'gpt-4.1-mini' }}
-        run: python src/ai_radar/main.py
+      - name: Generate weekly digest
+        run: python src/ai_radar/main.py --weekly
 
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add notes/daily data/items data/cache.json
+          git add notes/weekly
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else
-            git commit -m "chore: update daily ai radar"
+            git commit -m "chore: update weekly ai radar"
             git push
           fi

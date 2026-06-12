@@ -1,0 +1,27 @@
+model: gpt-4.1-mini
+max_llm_items_per_day: 20
+max_daily_items: 50
+high_priority_limit: 10
+low_priority_llm_min_score: 3
+cache_keep_days: 14
+keywords:
+  - ai
+  - llm
+  - agent
+  - agents
+  - rag
+  - coding
+  - code
+  - openai
+  - anthropic
+  - gemini
+  - claude
+  - model
+  - inference
+  - retrieval
+  - github
+  - arxiv
+  - cursor
+  - windsurf
+  - langchain
+  - llamaindex
