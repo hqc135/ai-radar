@@ -39,6 +39,19 @@ class RadarConfig(BaseModel):
     cache_keep_days: int = 14
     estimated_daily_tokens_per_llm_item: int = 1000
     estimated_weekly_summary_tokens: int = 3000
+    theme_cluster_limit: int = 3
+    personal_topic_weights: dict[str, int] = Field(
+        default_factory=lambda: {
+            "agent": 3,
+            "agents": 3,
+            "coding": 3,
+            "code": 2,
+            "rag": 3,
+            "retrieval": 2,
+            "eval": 2,
+            "reasoning": 2,
+        }
+    )
     high_signal_terms: list[str] = Field(
         default_factory=lambda: [
             "release",
@@ -87,6 +100,7 @@ class Source(BaseModel):
     kind: str = "blog"
     category: str | None = None
     priority: int = Field(default=3, ge=1, le=5)
+    tier: int | None = Field(default=None, ge=1, le=3)
     daily_limit: int | None = None
     enabled: bool = True
 
@@ -109,6 +123,17 @@ class CandidateItem(BaseModel):
     manual_source: str | None = None
     force_high: bool = False
     heuristic_score: int = 1
+    preference_score: int = 0
+    source_tier: int = 3
+
+
+class RelatedItem(BaseModel):
+    title: str
+    source: str
+    url: str
+    source_tier: int = 3
+    importance: int = 1
+    confidence: int = 1
 
 
 class ItemAnalysis(BaseModel):
@@ -122,6 +147,7 @@ class ItemAnalysis(BaseModel):
 
 class AnalyzedItem(CandidateItem):
     analysis: ItemAnalysis
+    related_items: list[RelatedItem] = Field(default_factory=list)
 
 
 class WeeklySummary(BaseModel):
@@ -239,6 +265,49 @@ def source_base_confidence(item: CandidateItem) -> int:
     return 3
 
 
+def source_tier_for_kind(source_kind: str) -> int:
+    kind = source_kind.lower()
+    if kind in {"official", "docs", "github", "arxiv"}:
+        return 1
+    if kind == "blog":
+        return 2
+    return 3
+
+
+def source_tier_for_source(source: Source) -> int:
+    if source.tier is not None:
+        return source.tier
+    kind = source.kind.lower()
+    name = source.name.lower()
+    if kind in {"github", "arxiv", "docs"}:
+        return 1
+    if kind == "official":
+        if source.category == "paper" or any(term in name for term in ("news", "changelog", "release", "releases")):
+            return 1
+        if "blog" in name:
+            return 2
+        return 1
+    return source_tier_for_kind(kind)
+
+
+def source_tier_label(tier: int) -> str:
+    labels = {
+        1: "Tier 1：官方公告 / GitHub release / 论文",
+        2: "Tier 2：高质量博客 / 工程实践",
+        3: "Tier 3：新闻 / 二手信息 / 趋势榜",
+    }
+    return labels.get(tier, labels[3])
+
+
+def topic_preference_score(title: str, summary: str, topic_weights: dict[str, int]) -> int:
+    text = f"{title}\n{summary}".lower()
+    score = 0
+    for topic, weight in topic_weights.items():
+        if topic.lower() in text:
+            score += max(weight, 0)
+    return min(score, 6)
+
+
 def heuristic_score(
     title: str,
     summary: str,
@@ -283,10 +352,16 @@ def infer_category(source: Source, title: str, summary: str) -> str:
     return "product"
 
 
-def candidate_rank_key(item: CandidateItem) -> tuple[int, int, int, datetime]:
+def candidate_rank_key(item: CandidateItem) -> tuple[int, int, int, int, datetime]:
     kind_bonus = 1 if item.source_kind.lower() in {"official", "github", "arxiv", "docs"} else 0
     manual_bonus = 2 if item.manual_input else 0
-    return (item.heuristic_score, item.source_priority, kind_bonus + manual_bonus, item.published_at)
+    return (
+        item.heuristic_score,
+        item.preference_score,
+        item.source_priority,
+        kind_bonus + manual_bonus,
+        item.published_at,
+    )
 
 
 def apply_source_limits(items: list[CandidateItem], sources: SourcesConfig) -> list[CandidateItem]:
@@ -377,6 +452,7 @@ def fetch_recent_items(
                 source_kind=source.kind,
                 category=infer_category(source, title, raw_summary),
                 source_priority=source.priority,
+                source_tier=source_tier_for_source(source),
             )
             item.heuristic_score = heuristic_score(
                 title,
@@ -386,6 +462,7 @@ def fetch_recent_items(
                 False,
                 radar_config.high_signal_terms,
             )
+            item.preference_score = topic_preference_score(title, raw_summary, radar_config.personal_topic_weights)
             if is_relevant(item, radar_config.keywords):
                 items.append(item)
 
@@ -426,6 +503,7 @@ def read_manual_inbox(path: Path, now: datetime, radar_config: RadarConfig) -> t
                 manual_tags=manual_tags,
                 manual_source=manual_source,
                 force_high=force_high,
+                source_tier=source_tier_for_kind(kind),
             )
             item.heuristic_score = heuristic_score(
                 title,
@@ -434,6 +512,9 @@ def read_manual_inbox(path: Path, now: datetime, radar_config: RadarConfig) -> t
                 5,
                 True,
                 radar_config.high_signal_terms,
+            )
+            item.preference_score = topic_preference_score(
+                title, item.raw_summary + " " + " ".join(manual_tags), radar_config.personal_topic_weights
             )
             if force_high:
                 item.heuristic_score = 5
@@ -492,6 +573,8 @@ def analyze_item(client: OpenAI, model: str, item: CandidateItem) -> ItemAnalysi
         "source_kind": item.source_kind,
         "category": item.category,
         "source_priority": item.source_priority,
+        "source_tier": item.source_tier,
+        "preference_score": item.preference_score,
         "heuristic_score": item.heuristic_score,
         "manual_input": item.manual_input,
         "confidence_cap": source_confidence_cap(item),
@@ -513,6 +596,7 @@ def analyze_item(client: OpenAI, model: str, item: CandidateItem) -> ItemAnalysi
                     "summary_cn 控制在 100-150 个中文字符。importance 和 confidence 是 1-5。"
                     "可信度规则：官方博客/官方文档/GitHub/arXiv 可以高；新闻报道/博客中等；"
                     "X 或二手来源最高 3；没有原始链接不能进高优先级。"
+                    "用户偏好 Agent、Coding、RAG、Eval、Reasoning，相关内容可适度提高重要性。"
                 ),
             },
             {
@@ -535,19 +619,139 @@ def analyze_item(client: OpenAI, model: str, item: CandidateItem) -> ItemAnalysi
 
 def select_llm_items(items: list[CandidateItem], radar_config: RadarConfig) -> list[CandidateItem]:
     eligible = [item for item in items if item.heuristic_score >= radar_config.low_priority_llm_min_score]
-    return sorted(eligible, key=lambda item: (item.heuristic_score, item.published_at), reverse=True)[
-        : radar_config.max_llm_items_per_day
+    return sorted(
+        eligible,
+        key=lambda item: (item.heuristic_score, item.preference_score, item.published_at),
+        reverse=True,
+    )[: radar_config.max_llm_items_per_day]
+
+
+def analyzed_rank_key(item: AnalyzedItem) -> tuple[int, int, int, int, datetime]:
+    return (
+        item.analysis.importance,
+        item.analysis.confidence,
+        item.preference_score,
+        -item.source_tier,
+        item.published_at,
+    )
+
+
+def event_signature(item: CandidateItem) -> str:
+    host = urlparse(item.url).netloc.lower()
+    path_parts = [part for part in urlparse(item.url).path.lower().split("/") if part]
+    if "github.com" in host and len(path_parts) >= 2:
+        repo = "/".join(path_parts[:2])
+        title = normalize_event_text(item.title)
+        if not title or title in {"v", "release"} or re.fullmatch(r"v?\d+", title):
+            return f"github:{repo}:release-stream"
+        return f"github:{repo}:{title}"
+    return normalize_event_text(item.title)
+
+
+def normalize_event_text(text: str) -> str:
+    text = text.lower()
+    text = re.sub(r"@?[\w.-]+@v?\d[\w.\-=+%/-]*", " ", text)
+    text = re.sub(r"==\s*v?\d[\w.\-=+%/-]*", " ", text)
+    text = re.sub(r"\bv?\d+(?:\.\d+)+(?:[-+][a-z0-9.-]+)?\b", " ", text)
+    text = re.sub(r"\b(canary|beta|alpha|rc|patch|changes|release|released|version)\b", " ", text)
+    text = re.sub(r"[^a-z0-9\u4e00-\u9fff]+", " ", text)
+    return " ".join(part for part in text.split() if len(part) > 1)
+
+
+def event_tokens(item: CandidateItem) -> set[str]:
+    text = normalize_event_text(f"{item.title} {' '.join(item.manual_tags)}")
+    return {token for token in text.split() if token not in {"the", "and", "for", "with", "from", "now"}}
+
+
+def is_same_event(left: AnalyzedItem, right: AnalyzedItem) -> bool:
+    if event_signature(left) and event_signature(left) == event_signature(right):
+        return True
+    left_tokens = event_tokens(left)
+    right_tokens = event_tokens(right)
+    if len(left_tokens) < 3 or len(right_tokens) < 3:
+        return False
+    overlap = len(left_tokens & right_tokens) / max(len(left_tokens | right_tokens), 1)
+    return overlap >= 0.72
+
+
+def merge_duplicate_events(items: list[AnalyzedItem]) -> list[AnalyzedItem]:
+    groups: list[list[AnalyzedItem]] = []
+    for item in sorted(items, key=analyzed_rank_key, reverse=True):
+        for group in groups:
+            if any(is_same_event(item, existing) for existing in group):
+                group.append(item)
+                break
+        else:
+            groups.append([item])
+
+    merged: list[AnalyzedItem] = []
+    for group in groups:
+        representative = sorted(group, key=analyzed_rank_key, reverse=True)[0]
+        related = [item for item in group if item.url != representative.url]
+        representative.related_items.extend(
+            RelatedItem(
+                title=item.title,
+                source=item.source,
+                url=item.url,
+                source_tier=item.source_tier,
+                importance=item.analysis.importance,
+                confidence=item.analysis.confidence,
+            )
+            for item in related
+        )
+        if related:
+            sources = "、".join(sorted({item.source for item in related}))
+            representative.analysis.reason = f"{representative.analysis.reason}；已合并同事件来源：{sources}。"
+            representative.analysis.confidence = min(
+                5,
+                max(representative.analysis.confidence, max(item.analysis.confidence for item in related)),
+            )
+        merged.append(representative)
+    return sorted(merged, key=analyzed_rank_key, reverse=True)
+
+
+def topic_label_for_item(item: AnalyzedItem) -> str:
+    text = f"{item.title} {' '.join(item.analysis.tags)} {item.analysis.summary_cn}".lower()
+    buckets = [
+        ("Agent / Coding", ("agent", "agents", "coding", "code", "claude code", "cursor", "windsurf")),
+        ("RAG / Knowledge", ("rag", "retrieval", "knowledge", "context", "wiki", "okf")),
+        ("Model / Eval", ("model", "benchmark", "eval", "reasoning", "inference")),
+        ("Research / Paper", ("paper", "arxiv", "research", "论文", "研究")),
+        ("Infra / SDK", ("sdk", "workflow", "release", "repo", "github", "infrastructure")),
     ]
+    for label, terms in buckets:
+        if any(term in text for term in terms):
+            return label
+    return "Product / Ecosystem"
+
+
+def build_theme_clusters(items: list[AnalyzedItem], limit: int) -> list[dict[str, Any]]:
+    buckets: dict[str, list[AnalyzedItem]] = {}
+    for item in items:
+        buckets.setdefault(topic_label_for_item(item), []).append(item)
+
+    clusters: list[dict[str, Any]] = []
+    for label, values in buckets.items():
+        ranked = sorted(values, key=analyzed_rank_key, reverse=True)
+        score = sum(item.analysis.importance + item.preference_score for item in ranked)
+        top = ranked[:3]
+        reason = "；".join(item.title for item in top[:2])
+        clusters.append({"label": label, "score": score, "items": top, "reason": reason})
+    return sorted(clusters, key=lambda cluster: cluster["score"], reverse=True)[:limit]
 
 
 def write_daily_note(path: Path, date: datetime, items: list[AnalyzedItem], dry_run: bool, radar_config: RadarConfig) -> None:
     date_str = date.astimezone(BEIJING_TZ).strftime("%Y-%m-%d")
     sections = build_daily_sections(items, radar_config)
+    clusters = build_theme_clusters(items, radar_config.theme_cluster_limit)
+    tier_counts = {tier: sum(1 for item in items if item.source_tier == tier) for tier in (1, 2, 3)}
+    merged_count = sum(len(item.related_items) for item in items)
     lines = [
         f"# AI Radar 日报 - {date_str}",
         "",
         f"生成时间：{datetime.now(BEIJING_TZ).strftime('%Y-%m-%d %H:%M:%S')} 北京时间",
         f"条目数：{len(items)}",
+        f"已合并重复来源：{merged_count}",
         f"今日必看：{len(sections['今日必看'])}",
         f"值得跟进：{len(sections['值得跟进'])}",
         f"dry_run：{dry_run}",
@@ -557,6 +761,29 @@ def write_daily_note(path: Path, date: datetime, items: list[AnalyzedItem], dry_
     if not items:
         lines.append("过去 24 小时没有抓取到新的相关内容。")
     else:
+        lines.extend(
+            [
+                "## 今天主要发生的 3 件事",
+                "",
+            ]
+        )
+        if clusters:
+            for index, cluster in enumerate(clusters, start=1):
+                item_links = "；".join(f"[{item.title}]({item.url})" for item in cluster["items"])
+                lines.append(f"{index}. **{cluster['label']}**：{cluster['reason']}。代表条目：{item_links}")
+        else:
+            lines.append("暂无足够内容形成主题聚类。")
+        lines.extend(
+            [
+                "",
+                "## 来源分层",
+                "",
+                f"- {source_tier_label(1)}：{tier_counts[1]} 条",
+                f"- {source_tier_label(2)}：{tier_counts[2]} 条",
+                f"- {source_tier_label(3)}：{tier_counts[3]} 条",
+                "",
+            ]
+        )
         for section_name in ("今日必看", "值得跟进", "重要论文", "重要 Repo", "产品更新"):
             section_items = sections[section_name]
             lines.append(f"## {section_name}")
@@ -598,6 +825,8 @@ def build_daily_sections(items: list[AnalyzedItem], radar_config: RadarConfig) -
         key=lambda item: (
             item.analysis.importance,
             item.analysis.confidence,
+            item.preference_score,
+            -item.source_tier,
             item.heuristic_score,
             item.source_priority,
             item.published_at,
@@ -628,11 +857,12 @@ def format_daily_item(index: int, item: AnalyzedItem) -> list[str]:
     published = item.published_at.astimezone(BEIJING_TZ).strftime("%Y-%m-%d %H:%M")
     tags = "、".join(item.analysis.tags)
     manual_source = item.manual_source or ""
-    return [
+    lines = [
         f"### {index}. {item.title}",
         "",
         f"- title：{item.title}",
         f"- source：{item.source}",
+        f"- source_tier：{source_tier_label(item.source_tier)}",
         f"- url：{item.url}",
         f"- published_at：{published} 北京时间",
         f"- manual_input：{item.manual_input}",
@@ -641,18 +871,39 @@ def format_daily_item(index: int, item: AnalyzedItem) -> list[str]:
         f"- tags：{tags}",
         f"- importance：{item.analysis.importance}/5",
         f"- confidence：{item.analysis.confidence}/5",
+        f"- preference_score：{item.preference_score}",
         f"- action：{item.analysis.action}",
         f"- reason：{item.analysis.reason}",
-        "",
     ]
+    if item.related_items:
+        related = "；".join(f"[{related.title}]({related.url})（{related.source}，Tier {related.source_tier}）" for related in item.related_items)
+        lines.append(f"- related_sources：{related}")
+    lines.append("")
+    return lines
 
 
 def format_compact_item(index: int, item: AnalyzedItem) -> str:
     tags = "、".join(item.analysis.tags[:3])
+    reason = low_priority_reason(item)
     return (
         f"{index}. [{item.title}]({item.url}) - {item.source} | "
-        f"importance {item.analysis.importance}/5 | confidence {item.analysis.confidence}/5 | {tags}"
+        f"importance {item.analysis.importance}/5 | confidence {item.analysis.confidence}/5 | {tags} | 未进主列表：{reason}"
     )
+
+
+def low_priority_reason(item: AnalyzedItem) -> str:
+    reasons: list[str] = []
+    if item.analysis.importance <= 2:
+        reasons.append("重要性低")
+    if item.analysis.confidence <= 3:
+        reasons.append("来源可信度或信息完整度不足")
+    if item.source_tier >= 3:
+        reasons.append("Tier 3 二手或趋势信息")
+    if item.preference_score == 0:
+        reasons.append("与个人偏好主题弱相关")
+    if "依赖" in item.analysis.summary_cn or "补丁" in item.analysis.summary_cn or "canary" in item.title.lower():
+        reasons.append("偏常规版本/依赖更新")
+    return "、".join(reasons[:3]) or "排序分低于主列表内容"
 
 
 def archive_processed_inbox(inbox_path: Path, processed_path: Path, processed_lines: list[str], dry_run: bool) -> None:
@@ -990,9 +1241,10 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
 
     analyzed = sorted(
         analyzed,
-        key=lambda item: (item.analysis.importance, item.analysis.confidence, item.published_at),
+        key=analyzed_rank_key,
         reverse=True,
     )
+    analyzed = merge_duplicate_events(analyzed)
     high_count = 0
     for item in analyzed:
         if item.analysis.importance >= 4:
@@ -1000,6 +1252,7 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
             if high_count > radar_config.high_priority_limit:
                 item.analysis.importance = 3
                 item.analysis.reason = f"{item.analysis.reason}；因每日高优先级上限降级。"
+    analyzed = sorted(analyzed, key=analyzed_rank_key, reverse=True)
     analyzed = analyzed[: radar_config.max_daily_items]
 
     output_path = args.output_dir / f"{note_date.strftime('%Y-%m-%d')}.md"

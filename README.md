@@ -159,6 +159,11 @@ low_priority_llm_min_score: 3
 cache_keep_days: 14
 estimated_daily_tokens_per_llm_item: 1000
 estimated_weekly_summary_tokens: 3000
+theme_cluster_limit: 3
+personal_topic_weights:
+  agent: 3
+  coding: 3
+  rag: 3
 ```
 
 含义：
@@ -176,6 +181,8 @@ estimated_weekly_summary_tokens: 3000
 - `cache_keep_days`：URL 去重缓存保留天数
 - `estimated_daily_tokens_per_llm_item`：运行摘要里估算日报 LLM token 用量
 - `estimated_weekly_summary_tokens`：运行摘要里估算周报总结 token 用量
+- `theme_cluster_limit`：日报顶部“今天主要发生的几件事”最多输出多少个主题
+- `personal_topic_weights`：个人偏好主题权重，默认更关注 Agent、Coding、RAG、Eval、Reasoning，影响预筛选、LLM 调用顺序和主列表排序
 
 模型策略：
 
@@ -195,6 +202,7 @@ sources:
     kind: official
     category: product
     priority: 4
+    tier: 1
     daily_limit: 5
     enabled: true
 ```
@@ -215,6 +223,7 @@ sources:
 - `manual`：手动 inbox
 
 `priority` 是 1-5，影响候选排序；`daily_limit` 用来限制单个源每天最多进入候选池的条数。
+`tier` 可选，用于覆盖自动源分层：`1` 代表官方公告 / GitHub release / 论文，`2` 代表高质量博客 / 工程实践，`3` 代表新闻 / 二手信息 / 趋势榜。
 
 单个源失败不会中断整体运行，日志会显示 `[WARN] source failed ...`。
 
@@ -241,24 +250,37 @@ sources:
 
 日报按以下分组输出：
 
+- `今天主要发生的 3 件事`：按主题聚类给出当天核心变化，不只是逐条 RSS 摘要
+- `来源分层`：统计 Tier 1 / Tier 2 / Tier 3 的内容占比
 - `今日必看`：高重要性、高可信度，最多 5 条
 - `值得跟进`：中高重要性候选，最多 10 条
 - `重要论文`
 - `重要 Repo`
 - `产品更新`
-- `低优先级链接`：只保留紧凑标题和链接，不展开长摘要
+- `低优先级链接`：只保留紧凑标题、链接和“不值得进主列表”的原因
+
+源分层规则：
+
+- Tier 1：官方公告、官方文档、GitHub release、arXiv / 论文
+- Tier 2：高质量博客、工程实践
+- Tier 3：新闻、二手信息、社交媒体、趋势榜
+
+同一事件如果来自多个源，日报会合并为一条代表内容，并在 `related_sources` 中保留其他来源链接。
 
 每条内容都会包含：
 
 - `title`
 - `source`
+- `source_tier`
 - `url`
 - `summary_cn`
 - `tags`
 - `importance`
 - `confidence`
+- `preference_score`
 - `action`
 - `reason`
+- `related_sources`
 
 OpenAI API 失败时会降级输出原始摘要或标题摘要，避免整次运行失败。
 

@@ -13,6 +13,16 @@ low_priority_llm_min_score: 3
 cache_keep_days: 14
 estimated_daily_tokens_per_llm_item: 1000
 estimated_weekly_summary_tokens: 3000
+theme_cluster_limit: 3
+personal_topic_weights:
+  agent: 3
+  agents: 3
+  coding: 3
+  code: 2
+  rag: 3
+  retrieval: 2
+  eval: 2
+  reasoning: 2
 high_signal_terms:
   - release
   - launch
