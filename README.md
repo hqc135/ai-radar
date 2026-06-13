@@ -11,10 +11,12 @@
 ├── config.yaml                 # 成本控制、模型和筛选配置
 ├── sources.yaml                # RSS / Atom 信息源
 ├── inbox/links.md              # 手动粘贴链接入口
+├── inbox/processed.md          # 已处理手动链接归档
 ├── src/ai_radar/main.py        # 主程序
 ├── scripts/check.py            # 验收脚本
 ├── data/cache.json             # URL 去重缓存
 ├── data/items/                 # 每日结构化 JSON 归档
+├── data/run-summary/           # 每次运行摘要
 ├── notes/daily/                # 每日 Markdown 日报
 ├── notes/weekly/               # 每周 Markdown 周报
 └── .github/workflows/          # daily / weekly Actions
@@ -95,6 +97,8 @@ Variables：
 Actions 会自动 commit：
 
 - 日报：`notes/daily`、`data/items`、`data/cache.json`
+- 运行摘要：`data/run-summary`
+- 手动 inbox 处理：`inbox/links.md`、`inbox/processed.md`
 - 周报：`notes/weekly`
 
 ## 配置成本控制
@@ -115,6 +119,8 @@ category_section_limit: 8
 deep_research_candidates_per_week: 3
 low_priority_llm_min_score: 3
 cache_keep_days: 14
+estimated_daily_tokens_per_llm_item: 1000
+estimated_weekly_summary_tokens: 3000
 ```
 
 含义：
@@ -130,6 +136,8 @@ cache_keep_days: 14
 - `deep_research_candidates_per_week`：周报里 Deep Research 候选数量，只允许 1-3 条
 - `low_priority_llm_min_score`：低于该启发式分数的候选不调用 LLM，使用降级摘要
 - `cache_keep_days`：URL 去重缓存保留天数
+- `estimated_daily_tokens_per_llm_item`：运行摘要里估算日报 LLM token 用量
+- `estimated_weekly_summary_tokens`：运行摘要里估算周报总结 token 用量
 
 模型策略：
 
@@ -177,11 +185,19 @@ sources:
 把 X、知乎、GitHub、博客链接粘到 `inbox/links.md`：
 
 ```markdown
-- https://github.com/vercel/ai/releases
-- https://x.com/example/status/123456789
+- https://github.com/vercel/ai/releases #repo #ai-sdk @github !high
+- https://x.com/example/status/123456789 #agent @x
 ```
 
 程序每天会读取这些链接，标记为 `manual_input: true`，并进入日报候选。手动输入如果是 X / 二手来源，可信度会按规则限制。
+
+支持的手动标记：
+
+- `#tag`：手动标签，会进入日报 tags
+- `@source`：手动来源，例如 `@x`、`@zhihu`、`@github`
+- `!high`：强制进入高优先级候选，仍受可信度规则约束
+
+非 dry-run 成功运行后，已处理的链接行会从 `inbox/links.md` 移动到 `inbox/processed.md`。
 
 ## 日报字段
 
@@ -222,8 +238,23 @@ notes/daily/YYYY-MM-DD.md
 notes/weekly/YYYY-WW.md
 ```
 
+周报会输出：
+
+- 本周概览
+- 本周趋势判断
+- 值得试用的 3 个工具
+- 值得深挖的研究问题
+- 下周观察清单
+- 本周 Deep Research 候选，以及可复制 prompt
+
 结构化归档：
 
 ```text
 data/items/YYYY-MM-DD.json
+```
+
+运行摘要：
+
+```text
+data/run-summary/YYYY-MM-DD.json
 ```

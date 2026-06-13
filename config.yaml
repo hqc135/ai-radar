@@ -11,6 +11,8 @@ category_section_limit: 8
 deep_research_candidates_per_week: 3
 low_priority_llm_min_score: 3
 cache_keep_days: 14
+estimated_daily_tokens_per_llm_item: 1000
+estimated_weekly_summary_tokens: 3000
 high_signal_terms:
   - release
   - launch

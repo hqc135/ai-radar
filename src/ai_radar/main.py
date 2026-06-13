@@ -37,6 +37,8 @@ class RadarConfig(BaseModel):
     deep_research_candidates_per_week: int = Field(default=3, ge=1, le=3)
     low_priority_llm_min_score: int = 3
     cache_keep_days: int = 14
+    estimated_daily_tokens_per_llm_item: int = 1000
+    estimated_weekly_summary_tokens: int = 3000
     high_signal_terms: list[str] = Field(
         default_factory=lambda: [
             "release",
@@ -103,6 +105,9 @@ class CandidateItem(BaseModel):
     category: str = "product"
     source_priority: int = 3
     manual_input: bool = False
+    manual_tags: list[str] = Field(default_factory=list)
+    manual_source: str | None = None
+    force_high: bool = False
     heuristic_score: int = 1
 
 
@@ -121,6 +126,31 @@ class AnalyzedItem(CandidateItem):
 
 class WeeklySummary(BaseModel):
     overview_cn: str
+    trend_judgement: list[str] = Field(default_factory=list)
+    tools_to_try: list[str] = Field(default_factory=list)
+    research_questions: list[str] = Field(default_factory=list)
+    watchlist_next_week: list[str] = Field(default_factory=list)
+
+
+class RunStats(BaseModel):
+    sources_total: int = 0
+    sources_success: int = 0
+    sources_failed: int = 0
+    source_warnings: int = 0
+    rss_items: int = 0
+    manual_items: int = 0
+    candidates_total: int = 0
+    candidates_new: int = 0
+    candidates_selected: int = 0
+    llm_planned: int = 0
+    llm_succeeded: int = 0
+    llm_failed: int = 0
+    fallback_items: int = 0
+    output_path: str = ""
+    archive_path: str = ""
+
+    def estimated_tokens(self, radar_config: RadarConfig) -> int:
+        return self.llm_planned * radar_config.estimated_daily_tokens_per_llm_item
 
 
 def log(level: str, message: str) -> None:
@@ -228,6 +258,13 @@ def heuristic_score(
     return max(1, min(score, 5))
 
 
+def parse_manual_line(line: str) -> tuple[list[str], str | None, bool]:
+    tags = [part[1:] for part in line.split() if part.startswith("#") and len(part) > 1]
+    source = next((part[1:] for part in line.split() if part.startswith("@") and len(part) > 1), None)
+    force_high = "!high" in line.split()
+    return tags, source, force_high
+
+
 def is_relevant(item: CandidateItem, keywords: list[str]) -> bool:
     text = f"{item.title}\n{item.raw_summary}\n{item.url}".lower()
     return any(keyword.lower() in text for keyword in keywords)
@@ -287,23 +324,36 @@ def prefilter_candidates(
     return selected
 
 
-def fetch_recent_items(config: SourcesConfig, since: datetime, radar_config: RadarConfig) -> list[CandidateItem]:
+def fetch_recent_items(
+    config: SourcesConfig,
+    since: datetime,
+    radar_config: RadarConfig,
+    stats: RunStats | None = None,
+) -> list[CandidateItem]:
     items: list[CandidateItem] = []
     seen_in_run: set[str] = set()
 
     for source in config.sources:
         if not source.enabled:
             continue
+        if stats:
+            stats.sources_total += 1
         try:
             feed = feedparser.parse(str(source.url))
         except Exception as exc:
+            if stats:
+                stats.sources_failed += 1
             log("warn", f"source failed name={source.name} url={source.url} error={exc}")
             continue
 
         if getattr(feed, "bozo", False):
+            if stats:
+                stats.source_warnings += 1
             log("warn", f"source parsed with warnings name={source.name} url={source.url}")
 
         entries = getattr(feed, "entries", [])
+        if stats:
+            stats.sources_success += 1
         log("info", f"source fetched name={source.name} entries={len(entries)}")
         for entry in entries:
             link = entry.get("link")
@@ -339,21 +389,26 @@ def fetch_recent_items(config: SourcesConfig, since: datetime, radar_config: Rad
             if is_relevant(item, radar_config.keywords):
                 items.append(item)
 
+    if stats:
+        stats.rss_items = len(items)
     return sorted(items, key=lambda item: item.published_at, reverse=True)
 
 
-def read_manual_inbox(path: Path, now: datetime, radar_config: RadarConfig) -> list[CandidateItem]:
+def read_manual_inbox(path: Path, now: datetime, radar_config: RadarConfig) -> tuple[list[CandidateItem], list[str]]:
     if not path.exists():
-        return []
+        return [], []
 
     items: list[CandidateItem] = []
     seen: set[str] = set()
+    processed_lines: list[str] = []
     for line in path.read_text(encoding="utf-8").splitlines():
+        line_items_before = len(items)
         for match in URL_RE.findall(line):
             url = normalize_url(match.rstrip(".,;"))
             if url in seen:
                 continue
             seen.add(url)
+            manual_tags, manual_source, force_high = parse_manual_line(line)
             host = urlparse(url).netloc.lower()
             kind = "social" if "x.com" in host or "twitter.com" in host else "secondary"
             category = "repo" if "github.com" in host else "manual"
@@ -368,6 +423,9 @@ def read_manual_inbox(path: Path, now: datetime, radar_config: RadarConfig) -> l
                 category=category,
                 source_priority=5,
                 manual_input=True,
+                manual_tags=manual_tags,
+                manual_source=manual_source,
+                force_high=force_high,
             )
             item.heuristic_score = heuristic_score(
                 title,
@@ -377,15 +435,19 @@ def read_manual_inbox(path: Path, now: datetime, radar_config: RadarConfig) -> l
                 True,
                 radar_config.high_signal_terms,
             )
+            if force_high:
+                item.heuristic_score = 5
             if is_relevant(item, radar_config.keywords):
                 items.append(item)
+        if len(items) > line_items_before:
+            processed_lines.append(line)
     log("info", f"manual inbox loaded path={path} links={len(items)}")
-    return items
+    return items, processed_lines
 
 
 def fallback_analysis(item: CandidateItem) -> ItemAnalysis:
     confidence = min(source_base_confidence(item), source_confidence_cap(item))
-    importance = min(item.heuristic_score, 3)
+    importance = 4 if item.force_high else min(item.heuristic_score, 3)
     summary = item.raw_summary.strip()
     if not summary:
         summary = f"{item.title}。该条目来自 {item.source}，建议打开原文确认细节。"
@@ -393,7 +455,7 @@ def fallback_analysis(item: CandidateItem) -> ItemAnalysis:
     summary = summary[:150]
     return ItemAnalysis(
         summary_cn=summary,
-        tags=["AI", item.source_kind, "待复查"],
+        tags=(item.manual_tags or ["AI", item.source_kind, "待复查"])[:5],
         importance=importance,
         confidence=confidence,
         action="打开原文快速判断是否需要深入跟进。",
@@ -541,6 +603,7 @@ def build_daily_sections(items: list[AnalyzedItem], radar_config: RadarConfig) -
 def format_daily_item(index: int, item: AnalyzedItem) -> list[str]:
     published = item.published_at.astimezone(BEIJING_TZ).strftime("%Y-%m-%d %H:%M")
     tags = "、".join(item.analysis.tags)
+    manual_source = item.manual_source or ""
     return [
         f"### {index}. {item.title}",
         "",
@@ -549,6 +612,7 @@ def format_daily_item(index: int, item: AnalyzedItem) -> list[str]:
         f"- url：{item.url}",
         f"- published_at：{published} 北京时间",
         f"- manual_input：{item.manual_input}",
+        f"- manual_source：{manual_source}",
         f"- summary_cn：{item.analysis.summary_cn}",
         f"- tags：{tags}",
         f"- importance：{item.analysis.importance}/5",
@@ -567,11 +631,45 @@ def format_compact_item(index: int, item: AnalyzedItem) -> str:
     )
 
 
+def archive_processed_inbox(inbox_path: Path, processed_path: Path, processed_lines: list[str], dry_run: bool) -> None:
+    if dry_run or not processed_lines or not inbox_path.exists():
+        return
+    original_lines = inbox_path.read_text(encoding="utf-8").splitlines()
+    processed_set = set(processed_lines)
+    remaining_lines = [line for line in original_lines if line not in processed_set]
+    processed_path.parent.mkdir(parents=True, exist_ok=True)
+    with processed_path.open("a", encoding="utf-8") as f:
+        f.write(f"\n## Processed {datetime.now(BEIJING_TZ).strftime('%Y-%m-%d %H:%M:%S')} 北京时间\n\n")
+        for line in processed_lines:
+            f.write(f"- {line.strip('- ').strip()}\n")
+    inbox_path.write_text("\n".join(remaining_lines).rstrip() + "\n", encoding="utf-8")
+
+
 def write_daily_archive(path: Path, items: list[AnalyzedItem], dry_run: bool) -> None:
     if dry_run:
         log("info", f"dry-run archive output skipped path={path}")
         return
     save_json(path, [item.model_dump(mode="json") for item in items])
+
+
+def write_run_summary(path: Path, stats: RunStats, radar_config: RadarConfig, dry_run: bool) -> None:
+    summary = stats.model_dump(mode="json")
+    summary["estimated_llm_tokens"] = stats.estimated_tokens(radar_config)
+    log(
+        "info",
+        "run summary "
+        f"sources={stats.sources_success}/{stats.sources_total} "
+        f"failed_sources={stats.sources_failed} warnings={stats.source_warnings} "
+        f"rss_items={stats.rss_items} manual_items={stats.manual_items} "
+        f"candidates={stats.candidates_total} new={stats.candidates_new} selected={stats.candidates_selected} "
+        f"llm_planned={stats.llm_planned} llm_ok={stats.llm_succeeded} llm_failed={stats.llm_failed} "
+        f"fallback={stats.fallback_items} estimated_tokens={summary['estimated_llm_tokens']} "
+        f"output={stats.output_path}",
+    )
+    if dry_run:
+        log("info", f"dry-run run summary output skipped path={path}")
+        return
+    save_json(path, summary)
 
 
 def load_archive_items(path: Path) -> list[AnalyzedItem]:
@@ -647,11 +745,15 @@ def summarize_weekly(client: OpenAI, model: str, items: list[AnalyzedItem]) -> W
         messages=[
             {
                 "role": "system",
-                "content": "你是 AI 行业周报编辑。只输出 JSON，字段为 overview_cn。overview_cn 控制在 200-300 字。",
+                "content": (
+                    "你是 AI 行业周报编辑。只输出 JSON，字段为 overview_cn, trend_judgement, "
+                    "tools_to_try, research_questions, watchlist_next_week。overview_cn 控制在 200-300 字，"
+                    "其余字段都是 3-5 条中文字符串数组。"
+                ),
             },
             {
                 "role": "user",
-                "content": "请基于过去 7 天高优先级条目，写一段中文周报概览，突出产品、论文、repo 和可动手尝试方向。\n\n"
+                "content": "请基于过去 7 天高优先级条目，写一份偏决策材料的周报摘要，突出趋势判断、可试用工具、值得深挖的问题和下周观察清单。\n\n"
                 f"{json.dumps(payload, ensure_ascii=False)}",
             },
         ],
@@ -660,7 +762,34 @@ def summarize_weekly(client: OpenAI, model: str, items: list[AnalyzedItem]) -> W
 
 
 def fallback_weekly_summary(items: list[AnalyzedItem]) -> WeeklySummary:
-    return WeeklySummary(overview_cn=f"本周共汇总 {len(items)} 条高优先级内容。请优先查看产品更新、论文、repo 和 Deep Research 候选部分。")
+    top_tags: dict[str, int] = {}
+    for item in items:
+        for tag in item.analysis.tags:
+            top_tags[tag] = top_tags.get(tag, 0) + 1
+    tags = "、".join(tag for tag, _ in sorted(top_tags.items(), key=lambda x: x[1], reverse=True)[:5])
+    return WeeklySummary(
+        overview_cn=f"本周共汇总 {len(items)} 条高优先级内容。主要主题集中在 {tags or '产品更新、论文和开源项目'}。请优先查看趋势判断、值得试用工具和 Deep Research 候选。",
+        trend_judgement=[
+            "优先关注官方发布和 GitHub release 中反复出现的能力方向。",
+            "论文和 repo 如果同时出现相似主题，通常值得进入下周观察。",
+            "手动 inbox 中被标记 !high 的内容应优先人工复核。",
+        ],
+        tools_to_try=[item.title for item in items if item.category in {"tool", "repo"}][:3],
+        research_questions=[f"{item.title} 背后的技术路线是否会影响现有 Agent/RAG 工作流？" for item in items[:3]],
+        watchlist_next_week=[item.source for item in items[:5]],
+    )
+
+
+def deep_research_prompt(item: AnalyzedItem) -> str:
+    return (
+        "请对以下 AI/LLM/Agent/RAG/Coding 主题做 Deep Research：\n"
+        f"标题：{item.title}\n"
+        f"来源：{item.source}\n"
+        f"链接：{item.url}\n"
+        f"摘要：{item.analysis.summary_cn}\n"
+        "请重点回答：1. 这件事为什么重要；2. 和现有方案相比有什么变化；"
+        "3. 对产品/研发/投资判断有什么影响；4. 有哪些一周内可以验证的行动。"
+    )
 
 
 def write_weekly_digest(
@@ -704,6 +833,22 @@ def write_weekly_digest(
         "",
         summary.overview_cn,
         "",
+        "## 本周趋势判断",
+        "",
+        *format_bullets(summary.trend_judgement),
+        "",
+        "## 值得试用的 3 个工具",
+        "",
+        *format_bullets(summary.tools_to_try[:3]),
+        "",
+        "## 值得深挖的研究问题",
+        "",
+        *format_bullets(summary.research_questions[:5]),
+        "",
+        "## 下周观察清单",
+        "",
+        *format_bullets(summary.watchlist_next_week[:5]),
+        "",
     ]
     for section, section_items in sections.items():
         lines.append(f"## {section}")
@@ -727,12 +872,20 @@ def write_weekly_digest(
                     "",
                 ]
             )
+            if section == "本周 Deep Research 候选":
+                lines.extend(["```text", deep_research_prompt(item), "```", ""])
     if dry_run:
         log("info", f"dry-run weekly output skipped path={path}")
         return path
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
     return path
+
+
+def format_bullets(items: list[str]) -> list[str]:
+    if not items:
+        return ["- 暂无。"]
+    return [f"- {item}" for item in items]
 
 
 def prune_cache(cache: dict[str, Any], cutoff: datetime) -> None:
@@ -754,24 +907,30 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
     now = datetime.now(timezone.utc)
     since = now - timedelta(hours=args.hours)
     note_date = now.astimezone(BEIJING_TZ)
+    stats = RunStats()
 
     sources = load_sources(args.sources)
     cache = load_cache(args.cache)
     prune_cache(cache, now - timedelta(days=radar_config.cache_keep_days))
 
-    rss_items = fetch_recent_items(sources, since, radar_config)
-    manual_items = read_manual_inbox(args.inbox, now, radar_config)
+    rss_items = fetch_recent_items(sources, since, radar_config, stats)
+    manual_items, processed_manual_lines = read_manual_inbox(args.inbox, now, radar_config)
+    stats.manual_items = len(manual_items)
     candidates_by_url = {item.url: item for item in rss_items + manual_items}
     new_items = [item for item in candidates_by_url.values() if item.url not in cache["seen_urls"]]
     before_prefilter = len(new_items)
     new_items = prefilter_candidates(new_items, sources, radar_config)
     new_items = sorted(new_items, key=candidate_rank_key, reverse=True)
+    stats.candidates_total = len(candidates_by_url)
+    stats.candidates_new = before_prefilter
+    stats.candidates_selected = len(new_items)
     log(
         "info",
         f"candidates total={len(candidates_by_url)} new={before_prefilter} selected={len(new_items)}",
     )
 
     llm_items = set(item.url for item in select_llm_items(new_items, radar_config))
+    stats.llm_planned = len(llm_items)
     client: OpenAI | None = None
     if llm_items and not args.dry_run:
         api_key = os.getenv("OPENAI_API_KEY")
@@ -788,11 +947,15 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
             log("info", f"analyzing title={item.title[:80]}")
             try:
                 analysis = analyze_item(client, model, item)
+                stats.llm_succeeded += 1
             except Exception as exc:
                 log("warn", f"OpenAI failed url={item.url} error={exc}")
                 analysis = fallback_analysis(item)
+                stats.llm_failed += 1
+                stats.fallback_items += 1
         else:
             analysis = fallback_analysis(item)
+            stats.fallback_items += 1
         analyzed.append(AnalyzedItem(**item.model_dump(), analysis=analysis))
         cache["seen_urls"][item.url] = now.isoformat()
 
@@ -812,6 +975,9 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
 
     output_path = args.output_dir / f"{note_date.strftime('%Y-%m-%d')}.md"
     archive_path = args.archive_dir / f"{note_date.strftime('%Y-%m-%d')}.json"
+    summary_path = args.run_summary_dir / f"{note_date.strftime('%Y-%m-%d')}.json"
+    stats.output_path = str(output_path)
+    stats.archive_path = str(archive_path)
     if not analyzed and output_path.exists():
         log("info", f"no new items; kept existing daily note path={output_path}")
     else:
@@ -820,6 +986,8 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
 
     if not args.dry_run:
         save_json(args.cache, cache)
+        archive_processed_inbox(args.inbox, args.processed_inbox, processed_manual_lines, args.dry_run)
+    write_run_summary(summary_path, stats, radar_config, args.dry_run)
     log("info", f"daily done items={len(analyzed)} output={output_path}")
 
 
@@ -829,9 +997,11 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--sources", type=Path, default=Path("sources.yaml"))
     parser.add_argument("--cache", type=Path, default=Path("data/cache.json"))
     parser.add_argument("--inbox", type=Path, default=Path("inbox/links.md"))
+    parser.add_argument("--processed-inbox", type=Path, default=Path("inbox/processed.md"))
     parser.add_argument("--output-dir", type=Path, default=Path("notes/daily"))
     parser.add_argument("--weekly-output-dir", type=Path, default=Path("notes/weekly"))
     parser.add_argument("--archive-dir", type=Path, default=Path("data/items"))
+    parser.add_argument("--run-summary-dir", type=Path, default=Path("data/run-summary"))
     parser.add_argument("--hours", type=int, default=24)
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--weekly", action="store_true", help="Generate weekly digest instead of daily note.")
