@@ -34,7 +34,11 @@ def main() -> None:
 
     try:
         config = load_config(config_path)
-        ok(f"config.yaml readable max_llm_items_per_day={config.max_llm_items_per_day}")
+        ok(
+            "config.yaml readable "
+            f"max_llm_items_per_day={config.max_llm_items_per_day} "
+            f"max_candidates_per_day={config.max_candidates_per_day}"
+        )
     except Exception as exc:
         fail(f"config.yaml invalid: {exc}")
 

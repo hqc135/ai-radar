@@ -2,88 +2,146 @@ sources:
   - name: OpenAI News
     url: https://openai.com/news/rss.xml
     kind: official
+    category: product
+    priority: 5
+    daily_limit: 8
 
   - name: Anthropic News
     url: https://www.anthropic.com/news/rss.xml
     kind: official
+    category: product
+    priority: 5
     enabled: false
 
   - name: Anthropic Claude Code Releases
     url: https://github.com/anthropics/claude-code/releases.atom
     kind: github
+    category: repo
+    priority: 5
+    daily_limit: 5
 
   - name: Anthropic Python SDK Releases
     url: https://github.com/anthropics/anthropic-sdk-python/releases.atom
     kind: github
+    category: repo
+    priority: 4
+    daily_limit: 3
 
   - name: Google AI Blog
     url: https://blog.google/technology/ai/rss/
     kind: official
+    category: product
+    priority: 4
+    daily_limit: 5
 
   - name: Google DeepMind Blog
     url: https://deepmind.google/blog/rss.xml
     kind: official
+    category: product
+    priority: 5
+    daily_limit: 5
 
   - name: Hugging Face Blog
     url: https://huggingface.co/blog/feed.xml
     kind: official
+    category: product
+    priority: 4
+    daily_limit: 5
 
   - name: arXiv cs.CL
     url: https://export.arxiv.org/rss/cs.CL
     kind: arxiv
+    category: paper
+    priority: 3
+    daily_limit: 5
 
   - name: arXiv cs.AI
     url: https://export.arxiv.org/rss/cs.AI
     kind: arxiv
+    category: paper
+    priority: 3
+    daily_limit: 5
 
   - name: arXiv cs.LG
     url: https://export.arxiv.org/rss/cs.LG
     kind: arxiv
+    category: paper
+    priority: 3
+    daily_limit: 5
 
   - name: LangChain Blog
     url: https://www.langchain.com/blog/rss.xml
     kind: official
+    category: product
+    priority: 4
+    daily_limit: 5
 
   - name: LangChain Changelog
     url: https://changelog.langchain.com/feed
     kind: official
+    category: product
+    priority: 4
+    daily_limit: 5
 
   - name: LlamaIndex Blog
     url: https://www.llamaindex.ai/blog/rss.xml
     kind: official
+    category: product
+    priority: 4
     enabled: false
 
   - name: Vercel Changelog
     url: https://vercel.com/changelog/rss
     kind: official
+    category: product
+    priority: 4
+    daily_limit: 5
 
   - name: Vercel AI SDK Releases
     url: https://github.com/vercel/ai/releases.atom
     kind: github
+    category: repo
+    priority: 5
+    daily_limit: 5
 
   - name: LangChain Releases
     url: https://github.com/langchain-ai/langchain/releases.atom
     kind: github
+    category: repo
+    priority: 4
+    daily_limit: 4
 
   - name: LlamaIndex Releases
     url: https://github.com/run-llama/llama_index/releases.atom
     kind: github
+    category: repo
+    priority: 4
+    daily_limit: 4
 
   - name: Cursor Changelog
     url: https://www.cursor.com/changelog/rss.xml
     kind: official
+    category: product
+    priority: 5
+    daily_limit: 5
 
   - name: Windsurf Changelog
     url: https://windsurf.com/changelog/rss
     kind: official
+    category: product
+    priority: 4
     enabled: false
 
   - name: GitHub Trending Python via RSSHub
     url: https://rsshub.app/github/trending/python/daily
     kind: secondary
+    category: repo
+    priority: 2
     enabled: false
 
   - name: GitHub Trending TypeScript via RSSHub
     url: https://rsshub.app/github/trending/typescript/daily
     kind: secondary
+    category: repo
+    priority: 2
     enabled: false

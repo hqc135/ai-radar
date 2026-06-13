@@ -1,11 +1,33 @@
 daily_summary_model: gpt-4.1-mini
 weekly_summary_model: gpt-4.1
 max_llm_items_per_day: 20
+max_candidates_per_day: 80
 max_daily_items: 50
+max_arxiv_items_per_day: 12
 high_priority_limit: 10
+must_read_limit: 5
+follow_up_limit: 10
+category_section_limit: 8
 deep_research_candidates_per_week: 3
 low_priority_llm_min_score: 3
 cache_keep_days: 14
+high_signal_terms:
+  - release
+  - launch
+  - announcing
+  - introducing
+  - paper
+  - benchmark
+  - agent
+  - rag
+  - coding
+  - model
+  - inference
+  - open source
+  - github
+  - sdk
+  - eval
+  - reasoning
 keywords:
   - ai
   - llm

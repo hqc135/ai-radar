@@ -105,8 +105,13 @@ Actions 会自动 commit：
 daily_summary_model: gpt-4.1-mini
 weekly_summary_model: gpt-4.1
 max_llm_items_per_day: 20
+max_candidates_per_day: 80
 max_daily_items: 50
+max_arxiv_items_per_day: 12
 high_priority_limit: 10
+must_read_limit: 5
+follow_up_limit: 10
+category_section_limit: 8
 deep_research_candidates_per_week: 3
 low_priority_llm_min_score: 3
 cache_keep_days: 14
@@ -115,8 +120,13 @@ cache_keep_days: 14
 含义：
 
 - `max_llm_items_per_day`：每天最多调用 LLM 摘要的条数
+- `max_candidates_per_day`：预筛选后最多进入日报分析流程的候选数
 - `max_daily_items`：日报最多输出多少条
+- `max_arxiv_items_per_day`：每天最多保留多少篇 arXiv 候选
 - `high_priority_limit`：日报高优先级最多保留多少条
+- `must_read_limit`：`今日必看` 最多多少条
+- `follow_up_limit`：`值得跟进` 最多多少条
+- `category_section_limit`：论文、Repo、产品更新等分组最多多少条
 - `deep_research_candidates_per_week`：周报里 Deep Research 候选数量，只允许 1-3 条
 - `low_priority_llm_min_score`：低于该启发式分数的候选不调用 LLM，使用降级摘要
 - `cache_keep_days`：URL 去重缓存保留天数
@@ -137,6 +147,9 @@ sources:
   - name: Your Source Name
     url: https://example.com/feed.xml
     kind: official
+    category: product
+    priority: 4
+    daily_limit: 5
     enabled: true
 ```
 
@@ -146,6 +159,16 @@ sources:
 - `news` / `blog`：可信度中等
 - `secondary` / `social`：可信度偏低
 - X / Twitter 链接可信度最高为 3
+
+`category` 会影响日报分组：
+
+- `product`：产品更新
+- `paper`：论文
+- `repo`：Repo / release
+- `tool`：值得动手试的工具
+- `manual`：手动 inbox
+
+`priority` 是 1-5，影响候选排序；`daily_limit` 用来限制单个源每天最多进入候选池的条数。
 
 单个源失败不会中断整体运行，日志会显示 `[WARN] source failed ...`。
 
@@ -161,6 +184,15 @@ sources:
 程序每天会读取这些链接，标记为 `manual_input: true`，并进入日报候选。手动输入如果是 X / 二手来源，可信度会按规则限制。
 
 ## 日报字段
+
+日报按以下分组输出：
+
+- `今日必看`：高重要性、高可信度，最多 5 条
+- `值得跟进`：中高重要性候选，最多 10 条
+- `重要论文`
+- `重要 Repo`
+- `产品更新`
+- `低优先级链接`：只保留紧凑标题和链接，不展开长摘要
 
 每条内容都会包含：
 

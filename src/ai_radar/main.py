@@ -27,11 +27,36 @@ class RadarConfig(BaseModel):
     daily_summary_model: str = "gpt-4.1-mini"
     weekly_summary_model: str = "gpt-4.1"
     max_llm_items_per_day: int = 20
+    max_candidates_per_day: int = 80
     max_daily_items: int = 50
+    max_arxiv_items_per_day: int = 12
     high_priority_limit: int = 10
+    must_read_limit: int = 5
+    follow_up_limit: int = 10
+    category_section_limit: int = 8
     deep_research_candidates_per_week: int = Field(default=3, ge=1, le=3)
     low_priority_llm_min_score: int = 3
     cache_keep_days: int = 14
+    high_signal_terms: list[str] = Field(
+        default_factory=lambda: [
+            "release",
+            "launch",
+            "announcing",
+            "introducing",
+            "paper",
+            "benchmark",
+            "agent",
+            "rag",
+            "coding",
+            "model",
+            "inference",
+            "open source",
+            "github",
+            "sdk",
+            "eval",
+            "reasoning",
+        ]
+    )
     keywords: list[str] = Field(
         default_factory=lambda: [
             "ai",
@@ -58,6 +83,9 @@ class Source(BaseModel):
     name: str
     url: HttpUrl
     kind: str = "blog"
+    category: str | None = None
+    priority: int = Field(default=3, ge=1, le=5)
+    daily_limit: int | None = None
     enabled: bool = True
 
 
@@ -72,6 +100,8 @@ class CandidateItem(BaseModel):
     published_at: datetime
     raw_summary: str = ""
     source_kind: str = "blog"
+    category: str = "product"
+    source_priority: int = 3
     manual_input: bool = False
     heuristic_score: int = 1
 
@@ -179,35 +209,82 @@ def source_base_confidence(item: CandidateItem) -> int:
     return 3
 
 
-def heuristic_score(title: str, summary: str, source_kind: str, manual_input: bool) -> int:
+def heuristic_score(
+    title: str,
+    summary: str,
+    source_kind: str,
+    source_priority: int,
+    manual_input: bool,
+    high_signal_terms: list[str],
+) -> int:
     text = f"{title}\n{summary}".lower()
     score = 1
-    high_terms = [
-        "release",
-        "launch",
-        "announcing",
-        "introducing",
-        "paper",
-        "benchmark",
-        "agent",
-        "rag",
-        "coding",
-        "model",
-        "inference",
-        "open source",
-        "github",
-    ]
-    score += sum(1 for term in high_terms if term in text)
+    score += min(source_priority - 1, 3)
+    score += sum(1 for term in high_signal_terms if term.lower() in text)
     if source_kind.lower() in {"official", "docs", "github", "arxiv"}:
         score += 1
     if manual_input:
-        score += 1
+        score += 2
     return max(1, min(score, 5))
 
 
 def is_relevant(item: CandidateItem, keywords: list[str]) -> bool:
     text = f"{item.title}\n{item.raw_summary}\n{item.url}".lower()
     return any(keyword.lower() in text for keyword in keywords)
+
+
+def infer_category(source: Source, title: str, summary: str) -> str:
+    if source.category:
+        return source.category
+    text = f"{title}\n{summary}\n{source.name}".lower()
+    if source.kind == "arxiv" or "paper" in text:
+        return "paper"
+    if source.kind == "github" or "release" in text or "repo" in text:
+        return "repo"
+    if "sdk" in text or "demo" in text or "example" in text:
+        return "tool"
+    return "product"
+
+
+def candidate_rank_key(item: CandidateItem) -> tuple[int, int, int, datetime]:
+    kind_bonus = 1 if item.source_kind.lower() in {"official", "github", "arxiv", "docs"} else 0
+    manual_bonus = 2 if item.manual_input else 0
+    return (item.heuristic_score, item.source_priority, kind_bonus + manual_bonus, item.published_at)
+
+
+def apply_source_limits(items: list[CandidateItem], sources: SourcesConfig) -> list[CandidateItem]:
+    limits = {source.name: source.daily_limit for source in sources.sources if source.daily_limit is not None}
+    if not limits:
+        return items
+    selected: list[CandidateItem] = []
+    counts: dict[str, int] = {}
+    for item in sorted(items, key=candidate_rank_key, reverse=True):
+        limit = limits.get(item.source)
+        count = counts.get(item.source, 0)
+        if limit is not None and count >= limit:
+            continue
+        selected.append(item)
+        counts[item.source] = count + 1
+    return selected
+
+
+def prefilter_candidates(
+    items: list[CandidateItem],
+    sources: SourcesConfig,
+    radar_config: RadarConfig,
+) -> list[CandidateItem]:
+    limited = apply_source_limits(items, sources)
+    arxiv_count = 0
+    selected: list[CandidateItem] = []
+    for item in sorted(limited, key=candidate_rank_key, reverse=True):
+        if item.source_kind == "arxiv":
+            arxiv_count += 1
+            if arxiv_count > radar_config.max_arxiv_items_per_day:
+                continue
+        selected.append(item)
+        if len(selected) >= radar_config.max_candidates_per_day:
+            break
+    return selected
 
 
 def fetch_recent_items(config: SourcesConfig, since: datetime, radar_config: RadarConfig) -> list[CandidateItem]:
@@ -248,8 +325,17 @@ def fetch_recent_items(config: SourcesConfig, since: datetime, radar_config: Rad
                 published_at=published_at,
                 raw_summary=raw_summary,
                 source_kind=source.kind,
+                category=infer_category(source, title, raw_summary),
+                source_priority=source.priority,
             )
-            item.heuristic_score = heuristic_score(title, raw_summary, source.kind, False)
+            item.heuristic_score = heuristic_score(
+                title,
+                raw_summary,
+                source.kind,
+                source.priority,
+                False,
+                radar_config.high_signal_terms,
+            )
             if is_relevant(item, radar_config.keywords):
                 items.append(item)
 
@@ -270,6 +356,7 @@ def read_manual_inbox(path: Path, now: datetime, radar_config: RadarConfig) -> l
             seen.add(url)
             host = urlparse(url).netloc.lower()
             kind = "social" if "x.com" in host or "twitter.com" in host else "secondary"
+            category = "repo" if "github.com" in host else "manual"
             title = line.strip("- ").strip() or url
             item = CandidateItem(
                 title=title[:180],
@@ -278,9 +365,18 @@ def read_manual_inbox(path: Path, now: datetime, radar_config: RadarConfig) -> l
                 published_at=now,
                 raw_summary="手动 inbox 链接，程序未抓取正文。",
                 source_kind=kind,
+                category=category,
+                source_priority=5,
                 manual_input=True,
             )
-            item.heuristic_score = heuristic_score(title, item.raw_summary, kind, True)
+            item.heuristic_score = heuristic_score(
+                title,
+                item.raw_summary,
+                kind,
+                5,
+                True,
+                radar_config.high_signal_terms,
+            )
             if is_relevant(item, radar_config.keywords):
                 items.append(item)
     log("info", f"manual inbox loaded path={path} links={len(items)}")
@@ -313,6 +409,9 @@ def analyze_item(client: OpenAI, model: str, item: CandidateItem) -> ItemAnalysi
         "published_at": item.published_at.isoformat(),
         "raw_summary": item.raw_summary[:3000],
         "source_kind": item.source_kind,
+        "category": item.category,
+        "source_priority": item.source_priority,
+        "heuristic_score": item.heuristic_score,
         "manual_input": item.manual_input,
         "confidence_cap": source_confidence_cap(item),
     }
@@ -355,16 +454,16 @@ def select_llm_items(items: list[CandidateItem], radar_config: RadarConfig) -> l
     ]
 
 
-def write_daily_note(path: Path, date: datetime, items: list[AnalyzedItem], dry_run: bool) -> None:
+def write_daily_note(path: Path, date: datetime, items: list[AnalyzedItem], dry_run: bool, radar_config: RadarConfig) -> None:
     date_str = date.astimezone(BEIJING_TZ).strftime("%Y-%m-%d")
-    high_priority = [item for item in items if item.analysis.importance >= 4][:10]
-    other_items = [item for item in items if item not in high_priority]
+    sections = build_daily_sections(items, radar_config)
     lines = [
         f"# AI Radar 日报 - {date_str}",
         "",
         f"生成时间：{datetime.now(BEIJING_TZ).strftime('%Y-%m-%d %H:%M:%S')} 北京时间",
         f"条目数：{len(items)}",
-        f"高优先级：{len(high_priority)}",
+        f"今日必看：{len(sections['今日必看'])}",
+        f"值得跟进：{len(sections['值得跟进'])}",
         f"dry_run：{dry_run}",
         "",
     ]
@@ -372,25 +471,71 @@ def write_daily_note(path: Path, date: datetime, items: list[AnalyzedItem], dry_
     if not items:
         lines.append("过去 24 小时没有抓取到新的相关内容。")
     else:
-        lines.append("## 高优先级")
-        lines.append("")
-        if not high_priority:
-            lines.append("今天没有高优先级内容。")
+        for section_name in ("今日必看", "值得跟进", "重要论文", "重要 Repo", "产品更新"):
+            section_items = sections[section_name]
+            lines.append(f"## {section_name}")
             lines.append("")
-        for index, item in enumerate(high_priority, start=1):
-            lines.extend(format_daily_item(index, item))
-
-        if other_items:
-            lines.append("## 其他候选")
-            lines.append("")
-            for index, item in enumerate(other_items, start=1):
+            if not section_items:
+                lines.append("暂无。")
+                lines.append("")
+                continue
+            for index, item in enumerate(section_items, start=1):
                 lines.extend(format_daily_item(index, item))
+
+        low_priority = sections["低优先级链接"]
+        if low_priority:
+            lines.append("## 低优先级链接")
+            lines.append("")
+            for index, item in enumerate(low_priority, start=1):
+                lines.append(format_compact_item(index, item))
+            lines.append("")
 
     if dry_run:
         log("info", f"dry-run daily output skipped path={path}")
         return
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
+
+
+def build_daily_sections(items: list[AnalyzedItem], radar_config: RadarConfig) -> dict[str, list[AnalyzedItem]]:
+    sections: dict[str, list[AnalyzedItem]] = {
+        "今日必看": [],
+        "值得跟进": [],
+        "重要论文": [],
+        "重要 Repo": [],
+        "产品更新": [],
+        "低优先级链接": [],
+    }
+    used: set[str] = set()
+    ranked = sorted(
+        items,
+        key=lambda item: (
+            item.analysis.importance,
+            item.analysis.confidence,
+            item.heuristic_score,
+            item.source_priority,
+            item.published_at,
+        ),
+        reverse=True,
+    )
+
+    def take(name: str, predicate: Any, limit: int) -> None:
+        for item in ranked:
+            if item.url in used or not predicate(item):
+                continue
+            sections[name].append(item)
+            used.add(item.url)
+            if len(sections[name]) >= limit:
+                break
+
+    take("今日必看", lambda item: item.analysis.importance >= 4 and item.analysis.confidence >= 4, radar_config.must_read_limit)
+    take("值得跟进", lambda item: item.analysis.importance >= 3, radar_config.follow_up_limit)
+    take("重要论文", lambda item: item.category == "paper" or item.source_kind == "arxiv", radar_config.category_section_limit)
+    take("重要 Repo", lambda item: item.category == "repo" or item.source_kind == "github", radar_config.category_section_limit)
+    take("产品更新", lambda item: item.category == "product", radar_config.category_section_limit)
+
+    sections["低优先级链接"] = [item for item in ranked if item.url not in used]
+    return sections
 
 
 def format_daily_item(index: int, item: AnalyzedItem) -> list[str]:
@@ -412,6 +557,14 @@ def format_daily_item(index: int, item: AnalyzedItem) -> list[str]:
         f"- reason：{item.analysis.reason}",
         "",
     ]
+
+
+def format_compact_item(index: int, item: AnalyzedItem) -> str:
+    tags = "、".join(item.analysis.tags[:3])
+    return (
+        f"{index}. [{item.title}]({item.url}) - {item.source} | "
+        f"importance {item.analysis.importance}/5 | confidence {item.analysis.confidence}/5 | {tags}"
+    )
 
 
 def write_daily_archive(path: Path, items: list[AnalyzedItem], dry_run: bool) -> None:
@@ -610,8 +763,13 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
     manual_items = read_manual_inbox(args.inbox, now, radar_config)
     candidates_by_url = {item.url: item for item in rss_items + manual_items}
     new_items = [item for item in candidates_by_url.values() if item.url not in cache["seen_urls"]]
-    new_items = sorted(new_items, key=lambda item: (item.heuristic_score, item.published_at), reverse=True)
-    log("info", f"candidates total={len(candidates_by_url)} new={len(new_items)}")
+    before_prefilter = len(new_items)
+    new_items = prefilter_candidates(new_items, sources, radar_config)
+    new_items = sorted(new_items, key=candidate_rank_key, reverse=True)
+    log(
+        "info",
+        f"candidates total={len(candidates_by_url)} new={before_prefilter} selected={len(new_items)}",
+    )
 
     llm_items = set(item.url for item in select_llm_items(new_items, radar_config))
     client: OpenAI | None = None
@@ -657,7 +815,7 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
     if not analyzed and output_path.exists():
         log("info", f"no new items; kept existing daily note path={output_path}")
     else:
-        write_daily_note(output_path, note_date, analyzed, args.dry_run)
+        write_daily_note(output_path, note_date, analyzed, args.dry_run, radar_config)
         write_daily_archive(archive_path, analyzed, args.dry_run)
 
     if not args.dry_run:
