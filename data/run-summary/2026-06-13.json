@@ -1,0 +1,18 @@
+{
+  "archive_path": "data/items/2026-06-13.json",
+  "candidates_new": 26,
+  "candidates_selected": 20,
+  "candidates_total": 26,
+  "estimated_llm_tokens": 20000,
+  "fallback_items": 0,
+  "llm_failed": 0,
+  "llm_planned": 20,
+  "llm_succeeded": 20,
+  "manual_items": 0,
+  "output_path": "notes/daily/2026-06-13.md",
+  "rss_items": 26,
+  "source_warnings": 1,
+  "sources_failed": 0,
+  "sources_success": 21,
+  "sources_total": 21
+}

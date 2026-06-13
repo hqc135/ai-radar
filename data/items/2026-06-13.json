@@ -1,0 +1,579 @@
+[
+  {
+    "analysis": {
+      "action": "阅读并留存架构设计细节，作为构建企业级 AI Agent 的参考案例。",
+      "confidence": 5,
+      "importance": 5,
+      "reason": "来自官方博客，可信度高；涵盖企业级 Agent 的完整实践，对 RAG 和权限控制有深入探讨，具有很高的参考价值。",
+      "summary_cn": "Box 利用 LangChain 的 Deep Agents 框架构建了企业内容智能体 Box Agent，能够搜索、分析和综合企业内容，同时保持安全、权限和模型灵活性。文章详细介绍了架构设计、检索增强生成实施以及应对企业级挑战的实践。",
+      "tags": [
+        "AI Agent",
+        "Enterprise Content",
+        "RAG",
+        "LangChain",
+        "Deep Agents",
+        "Box"
+      ]
+    },
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T16:59:08Z",
+    "raw_summary": "See how Box built Box Agent on Deep Agents to search, analyze, and synthesize enterprise content while preserving security, permissions, and model flexibility.",
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "title": "How Box AI built enterprise content agents with Deep Agents",
+    "url": "https://www.langchain.com/blog/building-box-ai-how-an-enterprise-content-platform-went-ai-native-with-deep-agents"
+  },
+  {
+    "analysis": {
+      "action": "关注，建议在 Vercel 项目中使用 Workflow SDK 以利用原生 Nitro 集成提升构建效率和调试体验。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方发布，高可信度；直接影响工作流开发流程和部署性能，对构建时间和包体积有显著改进。",
+      "summary_cn": "Workflow SDK 现在原生集成到 Nitro v3 中，步骤在相同的打包运行时内执行，支持 useStorage() 等服务器端 API。开发服务器提供工作流 Web UI 用于调试。路由作为应用构建的一部分打包，自动依赖追踪和树摇，加快构建速度，减小包体积。",
+      "tags": [
+        "Vercel",
+        "Workflow SDK",
+        "Nitro v3",
+        "集成",
+        "开发体验"
+      ]
+    },
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-13T00:00:00Z",
+    "raw_summary": "<p><a href=\"https://workflow-sdk.dev/\">Workflow SDK</a>'s native Nitro v3 integration is now in beta. Steps run inside the same bundled runtime as the rest of your app, instead of a separate bundle. Nitro's <code>useStorage()</code> and other server-side APIs work directly inside <code>\"use step\"</code> functions.</p><div></div><p>The Nitro dev server also serves the workflow web UI at <code>/_workflow</code>. Open it in your browser to inspect, monitor, and debug workflow runs.</p><p>Workflow routes are now bundled by Nitro as part of the app build. Dependencies are traced, and unused code is tree-shaken, so the output includes only what runs, with faster builds and smaller bundles.</p><p>Get started with <a href=\"https://workflow-sdk.dev/v5/docs/getting-started/nitro\">Workflow SDK on Nitro</a>.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/workflow-sdk-now-runs-natively-in-nitro-v3\">Read more</a>\n          </p>",
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "title": "Workflow SDK now runs natively in Nitro v3",
+    "url": "https://vercel.com/changelog/workflow-sdk-now-runs-natively-in-nitro-v3"
+  },
+  {
+    "analysis": {
+      "action": "深入阅读论文，关注技术细节和实验效果。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来自官方博客，可信度高；AI在医疗领域的应用具有重要社会价值；研究主体为知名机构。",
+      "summary_cn": "Google Research 发表博客，探讨如何利用 AI 帮助用户理解皮肤状况。研究可能涉及图像识别和诊断辅助，以提高皮肤科医疗的可及性和准确性。",
+      "tags": [
+        "AI应用",
+        "医疗健康",
+        "皮肤科",
+        "Google Research"
+      ]
+    },
+    "category": "paper",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T17:52:00Z",
+    "raw_summary": "Health & Bioscience",
+    "source": "Google Research Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "title": "Research into how AI can help users understand skin conditions",
+    "url": "https://research.google/blog/research-into-how-ai-can-help-users-understand-skin-conditions"
+  },
+  {
+    "analysis": {
+      "action": "纳入关注，跟踪技术细节和开源资源，评估在低功耗计算场景的潜力。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "谷歌官方博客权威性高，方法创新且直接关联AI基础设施的可持续性，重要性高。",
+      "summary_cn": "谷歌研究博客介绍了一个利用退役手机构建低碳计算平台的创新方法，通过将闲置手机组成集群，降低计算碳足迹，支持边缘计算和AI推理等应用，推动可持续计算发展。",
+      "tags": [
+        "可持续计算",
+        "边缘计算",
+        "硬件复用",
+        "谷歌研究",
+        "低碳"
+      ]
+    },
+    "category": "paper",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T17:37:00Z",
+    "raw_summary": "Climate & Sustainability",
+    "source": "Google Research Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "title": "A low-carbon computing platform from your retired phones",
+    "url": "https://research.google/blog/a-low-carbon-computing-platform-from-your-retired-phones"
+  },
+  {
+    "analysis": {
+      "action": "阅读并考虑集成到工作流中",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客来源，可信度高；涉及模型开发中的关键评估环节，对研究和工程实践有较大帮助。",
+      "summary_cn": "Olmo-Eval 是由 Allen AI 开发的评估工作台，旨在支持模型开发循环。它提供标准化的评估工具和指标，帮助研究人员跟踪模型性能变化，加速迭代。该工具目前处于开放阶段，可用于预训练和微调场景。",
+      "tags": [
+        "AI",
+        "LLM",
+        "评估",
+        "工作台",
+        "Allen AI",
+        "Olmo"
+      ]
+    },
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T15:56:10Z",
+    "raw_summary": "",
+    "source": "Hugging Face Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "title": "olmo-eval: An evaluation workbench for the model development loop",
+    "url": "https://huggingface.co/blog/allenai/olmo-eval"
+  },
+  {
+    "analysis": {
+      "action": "阅读博客，了解沙箱选型要点，考虑在AI Agent开发中采用推荐的隔离方案。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来自LangChain官方博客，可靠度高；内容实用，指导性强，直接关联AI Agent安全部署。",
+      "summary_cn": "LangChain博客指南：为AI智能体选择安全沙箱需关注文件系统隔离、网络访问控制、资源限制和微虚拟机（microVM）等技术。帮助开发者评估不同沙箱方案，确保智能体执行环境的安全性。",
+      "tags": [
+        "安全",
+        "沙箱",
+        "AI Agent",
+        "微虚拟机",
+        "隔离"
+      ]
+    },
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T15:00:16Z",
+    "raw_summary": "Learn how to choose a secure sandbox for AI agents, with guidance on filesystem isolation, network access, resource limits, and microVMs.",
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "title": "How to Choose the Right Sandbox for AI Agents",
+    "url": "https://www.langchain.com/blog/how-to-choose-the-right-sandbox-for-your-agent"
+  },
+  {
+    "analysis": {
+      "action": "关注并试用OKF规范，评估其与现有知识管理工具的兼容性",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来自Google Cloud官方博客，可信度高；OKF解决了LLM上下文缺失的关键问题，且设计简洁易用，对知识驱动型AI应用有潜在重要影响",
+      "summary_cn": "谷歌云推出开放知识格式（OKF），一种厂商中立的开源规范，将LLM-wiki模式标准化为Markdown目录+YAML前置元数据的格式。OKF使不同来源的wiki可被不同AI代理直接消费，无需复杂压缩或运行时。旨在为AI系统提供便携、可互操作的结构化上下文知识。",
+      "tags": [
+        "OKF",
+        "知识格式",
+        "LLM-wiki",
+        "Google Cloud",
+        "数据共享",
+        "互操作性",
+        "开源"
+      ]
+    },
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T13:00:00Z",
+    "raw_summary": "<div class=\"block-paragraph_advanced\"><p><span style=\"vertical-align: baseline;\">As foundation models continue to improve, the lack of relevant context often limits what they can do, especially as they are used to build agentic systems. While these models can help you write code, summarize documents, or analyze a dataset, they still need the right information to produce accurate and actionable results. </span></p>\n<p><span style=\"vertical-align: baseline;\">That’s why today, we’re introducing the Open Knowledge Format (OKF), an open specification that formalizes the <a href=\"https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f\" rel=\"noopener\" target=\"_blank\">LLM-wiki</a> pattern into a portable, interoperable format. This is a vendor-neutral, agent- and human-friendly standard for representing the metadata, context, and curated knowledge that modern AI systems need.</span></p>\n<p><span style=\"vertical-align: baseline;\">As published, </span><strong style=\"vertical-align: baseline;\">OKF v0.1</strong><span style=\"vertical-align: baseline;\"> represents knowledge as a directory of markdown files with YAML frontmatter, with a small set of agreed-upon conventions that let wikis written by different producers be consumed by different agents without translation.</span></p>\n<p><span style=\"vertical-align: baseline;\">That's it. No complex compression scheme, no new runtime, no required SDK. A bundle of OKF documents is:</span></p>\n<ul>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Just markdown</strong><span style=\"vertical-align: baseline;\"> — readable in any editor, renderable on GitHub, indexable by any search tool</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Just files</strong><span style=\"vertical-align: baseline;\"> — shippable as a tarball, hostable in any git repo, mountable on any filesystem</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Just YAML frontmatter</strong><span style=\"vertical-align: baseline;\"> — for the small set of structured fields that need to be queryable: </span><span style=\"vertical-align: baseline;\">type</span><span style=\"vertical-align: baseline;\">, </span><span style=\"vertical-align: baseline;\">title</span><span style=\"vertical-align: baseline;\">, </span><span style=\"vertical-align: baseline;\">description</span><span style=\"vertical-align: baseline;\">, </span><span style=\"vertical-align: baseline;\">resource</span><span style=\"vertical-align: baseline;\">, </span><span style=\"vertical-align: baseline;\">tags</span><span style=\"vertical-align: baseline;\">, and </span><span style=\"vertical-align: baseline;\">timestamp</span></p>\n</li>\n</ul>\n<p><span style=\"vertical-align: baseline;\">If you've used Obsidian, Notion, Hugo, or any of the LLM wiki patterns that have emerged over the past year, the shape will feel familiar. OKF formalizes the small set of conventions needed to make these patterns interoperable.</span></p>\n<p><span style=\"vertical-align: baseline;\">Let’s take a look at the problem that OKF can solve for your organization, how it works, how to get started with it, and what’s next.</span></p>\n<h3><span style=\"vertical-align: baseline;\">A fragmented context landscape</span></h3>\n<p><span style=\"vertical-align: baseline;\">In most organizations, the information that foundation models use is overwhelmingly internal knowledge: the schema of a table, your business’ meaning of a metric, the runbook for an incident, the join paths between two systems, the deprecation notice for an old API, etc.</span></p>\n<p><span style=\"vertical-align: baseline;\">Today, these atoms of knowledge live in a variety of highly fragmented systems:</span></p>\n<ul>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Metadata catalogs with their own APIs</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Wikis, third-party systems, or in shared drives</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Code comments, docstrings, or notebook cells</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">The heads of a few senior engineers</span></p>\n</li>\n</ul>\n<p><span style=\"vertical-align: baseline;\">When an AI agent needs to answer </span><span style=\"font-style: italic; vertical-align: baseline;\">\"How do I compute weekly active users from our event stream?\"</span><span style=\"vertical-align: baseline;\"> it has to assemble the answer from these scattered, mutually incompatible surfaces. Every vendor offers its own catalog, its own SDK, its own knowledge-graph schema, and none of the knowledge is easily portable across products or organizations.</span></p>\n<p><span style=\"vertical-align: baseline;\">The result: Every agent builder is solving the same context-assembly problem from scratch, every catalog vendor is reinventing the same data models, and the knowledge itself is locked behind whichever surface created it.</span></p>\n<h3><span style=\"vertical-align: baseline;\">Knowledge as a living wiki</span></h3>\n<p><span style=\"vertical-align: baseline;\">Developer teams are changing how they build AI agents. Instead of using models to search the same documents for the same facts over and over, you can give your agents a shared markdown library that grows more useful over time. This lets your agents take on the drudgery of reading and updating their own files, while your team curates the content and manages it like code. </span></p>\n<p><span style=\"vertical-align: baseline;\">Andrej Karpathy, the prominent AI researcher and educator, articulates this idea most crisply in his </span><a href=\"https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f\" rel=\"noopener\" target=\"_blank\"><span style=\"text-decoration: underline; vertical-align: baseline;\">LLM Wiki gist</span></a><span style=\"vertical-align: baseline;\">. \"LLMs don't get bored, don't forget to update a cross-reference, and can touch 15 files in one pass,\" he writes. The bookkeeping that causes humans to abandon personal wikis is exactly what LLMs are good at.</span></p>\n<p><span style=\"vertical-align: baseline;\">Similar knowledge-as-Wiki pattern keeps reappearing under different names: </span><a href=\"https://obsidian.md/help/vault\" rel=\"noopener\" target=\"_blank\"><span style=\"text-decoration: underline; vertical-align: baseline;\">Obsidian vaults</span></a><span style=\"vertical-align: baseline;\"> wired to coding agents, the </span><span style=\"vertical-align: baseline;\">AGENTS.md</span><span style=\"vertical-align: baseline;\"> / </span><span style=\"vertical-align: baseline;\">CLAUDE.md</span><span style=\"vertical-align: baseline;\"> family of convention files, repos full of </span><span style=\"vertical-align: baseline;\">index.md</span><span style=\"vertical-align: baseline;\"> and </span><span style=\"vertical-align: baseline;\">log.md</span><span style=\"vertical-align: baseline;\"> artifacts that agents consult before doing real work, and \"metadata as code\" repositories inside data teams. </span></p>\n<p><span style=\"vertical-align: baseline;\">The pattern is compelling and powerful, but each instance is bespoke. Karpathy's wiki and your team's wiki and a vendor's catalog export may all </span><span style=\"font-style: italic; vertical-align: baseline;\">look</span><span style=\"vertical-align: baseline;\"> alike (markdown, frontmatter, cross-links), but none of them are intentionally designed to cooperate. There is no agreed-upon answer to </span><span style=\"font-style: italic; vertical-align: baseline;\">what fields every document should carry</span><span style=\"vertical-align: baseline;\">, or </span><span style=\"font-style: italic; vertical-align: baseline;\">what filenames mean what</span><span style=\"vertical-align: baseline;\">. As a result, the knowledge encoded in wikis remains siloed within the original teams, leading to redundant effort whenever a new agent is built.</span></p>\n<h3><span style=\"vertical-align: baseline;\">What's missing is a format, not another service</span></h3>\n<p><span style=\"vertical-align: baseline;\">The answer to this problem isn’t another knowledge service. You need a </span><strong style=\"vertical-align: baseline;\">format</strong><span style=\"vertical-align: baseline;\">, a way to represent knowledge that:</span></p>\n<ul>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Anyone can produce, without an SDK</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Anyone can consume, without an integration</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Survives moving between systems, organizations, and tools</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Lives in version control alongside the code it describes</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Is readable by humans </span><span style=\"font-style: italic; vertical-align: baseline;\">and</span><span style=\"vertical-align: baseline;\"> parseable by agents: the same file, no translation layer</span></p>\n</li>\n</ul>\n<p><span style=\"vertical-align: baseline;\">By design, OKF is that format. </span></p>\n<h3><span style=\"vertical-align: baseline;\">How OKF works: The design in one screen</span></h3>\n<p><span style=\"vertical-align: baseline;\">An OKF </span><strong style=\"vertical-align: baseline;\">bundle</strong><span style=\"vertical-align: baseline;\"> is a directory of markdown files representing </span><strong style=\"vertical-align: baseline;\">concepts: </strong><span style=\"vertical-align: baseline;\">anything you want to capture, including tables, datasets, metrics, playbooks, runbooks, and APIs. Each concept is one file. The file path is the concept's identity:</span></p></div>\n<div class=\"block-code\"><dl>\n    <dt>code_block</dt>\n    <dd>&lt;ListValue: [StructValue([(&#x27;code&#x27;, &#x27;sales/\\r\\n├── index.md\\r\\n├── datasets/\\r\\n│   ├── index.md\\r\\n│   └── orders_db.md\\r\\n├── tables/\\r\\n│   ├── index.md\\r\\n│   ├── orders.md\\r\\n│   └── customers.md\\r\\n└── metrics/\\r\\n│   ├── index.md\\r\\n     └── weekly_active_users.md&#x27;), (&#x27;language&#x27;, &#x27;&#x27;), (&#x27;caption&#x27;, &lt;wagtail.rich_text.RichText object at 0x7facce211220&gt;)])]&gt;</dd>\n</dl></div>\n<div class=\"block-paragraph_advanced\"><p><span style=\"vertical-align: baseline;\">Each concept document has a small block of YAML front matter for structured fields and a markdown body for everything else:</span></p></div>\n<div class=\"block-code\"><dl>\n    <dt>code_block</dt>\n    <dd>&lt;ListValue: [StructValue([(&#x27;code&#x27;, &#x27;---\\r\\ntype: BigQuery Table\\r\\ntitle: Orders\\r\\ndescription: One row per completed customer order.\\r\\nresource: https://console.cloud.google.com/bigquery?p=acme&amp;d=sales&amp;t=orders\\r\\ntags: [sales, revenue]\\r\\ntimestamp: 2026-05-28T14:30:00Z\\r\\n---\\r\\n\\r\\n# Schema\\r\\n\\r\\n| Column        | Type      | Description                              |\\r\\n|---------------|-----------|------------------------------------------|\\r\\n| `order_id`    | STRING    | Globally unique order identifier.        |\\r\\n| `customer_id` | STRING    | FK to [customers](/tables/customers.md). |\\r\\n\\r\\n# Joins\\r\\n\\r\\nJoined with [customers](/tables/customers.md) on `customer_id`.&#x27;), (&#x27;language&#x27;, &#x27;&#x27;), (&#x27;caption&#x27;, &lt;wagtail.rich_text.RichText object at 0x7facce2118b0&gt;)])]&gt;</dd>\n</dl></div>\n<div class=\"block-paragraph_advanced\"><p><span style=\"vertical-align: baseline;\">Concepts link to each other with normal markdown links, turning the directory into a </span><strong style=\"vertical-align: baseline;\">graph</strong><span style=\"vertical-align: baseline;\"> of relationships that is richer than the parent/child links implied by the file system. Bundles can optionally include </span><span style=\"vertical-align: baseline;\">index.md</span><span style=\"vertical-align: baseline;\"> files (for progressive disclosure as agents navigate the hierarchy) and </span><span style=\"vertical-align: baseline;\">log.md</span><span style=\"vertical-align: baseline;\"> files (for chronological history of changes).</span></p>\n<p><span style=\"vertical-align: baseline;\">The full v0.1 specification (including conformance criteria, cross-linking rules, and the small number of reserved filenames) fits on a single page.</span></p>\n<h3><span style=\"vertical-align: baseline;\">Three principles behind the design</span></h3>\n<p><strong style=\"vertical-align: baseline;\">1. Minimally opinionated.</strong><span style=\"vertical-align: baseline;\"> OKF requires exactly one thing of every concept: a </span><span style=\"vertical-align: baseline;\">type</span><span style=\"vertical-align: baseline;\"> field. Everything else (e.g., what types exist, what other fields to include, what sections the body has) is left to the producer. The spec defines the </span><span style=\"font-style: italic; vertical-align: baseline;\">interoperability surface</span><span style=\"vertical-align: baseline;\">, not the content model.</span></p>\n<p><strong style=\"vertical-align: baseline;\">2. Producer/consumer independence.</strong><span style=\"vertical-align: baseline;\"> OKF cleanly separates </span><span style=\"font-style: italic; vertical-align: baseline;\">who writes the knowledge</span><span style=\"vertical-align: baseline;\"> from </span><span style=\"font-style: italic; vertical-align: baseline;\">who consumes it</span><span style=\"vertical-align: baseline;\">. A bundle hand-authored by a human can be consumed by an AI agent. A bundle generated by a metadata export pipeline can be browsed in a visualizer. A bundle synthesized by one LLM can be queried by another. The format is the contract; the tooling at each end is independently swappable.</span></p>\n<p><strong style=\"vertical-align: baseline;\">3. Format, not platform.</strong><span style=\"vertical-align: baseline;\"> OKF is not tied to any specific cloud, database, model provider, or agent framework. It will never require a proprietary account or SDK to read, write, or serve. We're publishing it as an open standard because the value of a knowledge format comes from how many parties speak it, not from who owns it.</span></p>\n<h3><span style=\"vertical-align: baseline;\">What we're shipping with the spec</span></h3>\n<p><span style=\"vertical-align: baseline;\">To make the format concrete, we're publishing </span><strong style=\"vertical-align: baseline;\">reference implementations</strong><span style=\"vertical-align: baseline;\"> at both the producer and consumer ends:</span></p>\n<ul>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">An </span><strong style=\"vertical-align: baseline;\">enrichment agent</strong><span style=\"vertical-align: baseline;\"> that walks a BigQuery dataset, drafts an OKF concept document for every table and view, then runs a second LLM pass that crawls authoritative documentation and enriches each concept with citations, schemas, and join paths.</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">A </span><strong style=\"vertical-align: baseline;\">static HTML visualizer</strong><span style=\"vertical-align: baseline;\"> that turns any OKF bundle into an interactive graph view in a single self-contained file; no backend, no install on the viewing side, no data leaves the page.</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Three ready-to-browse sample bundles</strong><span style=\"vertical-align: baseline;\">: </span><a href=\"https://developers.google.com/analytics/bigquery/web-ecommerce-demo-dataset\" rel=\"noopener\" target=\"_blank\"><span style=\"text-decoration: underline; vertical-align: baseline;\">GA4 e-commerce</span></a><span style=\"vertical-align: baseline;\">, </span><a href=\"https://pantheon.corp.google.com/marketplace/product/stack-exchange/stack-overflow?e=PanGm2themeLaunch::PanGm2themeEnabled,PanGm2themeDarkLaunch::PanGm2themeDarkControl&amp;mods=pan_ng2&amp;project=hormati-bqml\" rel=\"noopener\" target=\"_blank\"><span style=\"text-decoration: underline; vertical-align: baseline;\">Stack Overflow</span></a><span style=\"vertical-align: baseline;\">, and </span><a href=\"https://cloud.google.com/blog/topics/public-datasets/bitcoin-in-bigquery-blockchain-analytics-on-public-data?e=48754805\"><span style=\"text-decoration: underline; vertical-align: baseline;\">Bitcoin public datasets</span></a><span style=\"vertical-align: baseline;\">, produced by the reference agent and committed to the repo as living examples of conformant OKF.</span></p>\n</li>\n</ul>\n<p><span style=\"vertical-align: baseline;\">These are proofs of concept, deliberately. The agent demonstrates </span><span style=\"font-style: italic; vertical-align: baseline;\">one</span><span style=\"vertical-align: baseline;\"> way to produce OKF; nothing about the format requires a specific agent framework or LLM. The visualizer demonstrates </span><span style=\"font-style: italic; vertical-align: baseline;\">one</span><span style=\"vertical-align: baseline;\"> way to consume it; nothing about the format requires HTML or a graph view. We expect (and want!) the ecosystem of producers and consumers to grow far beyond what we've shipped.</span></p>\n<h3><span style=\"vertical-align: baseline;\">Where we go from here</span></h3>\n<p><span style=\"vertical-align: baseline;\">OKF v0.1 is a starting point, not a finished standard. The format will evolve as more producers and consumers emerge and as we collectively learn what knowledge representations agents actually need in practice.</span></p>\n<p><span style=\"vertical-align: baseline;\">We're publishing in the open from day one because that's the only way a knowledge format earns its name, whether you're building a knowledge catalog, an enrichment pipeline, a wiki tailored to AI agents, or anything in the AI knowledge domain. </span></p>\n<p><span style=\"vertical-align: baseline;\">From here, we encourage you to:</span></p>\n<ul>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Read the spec</strong><span style=\"vertical-align: baseline;\"> (it's short!)</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Write a producer</strong><span style=\"vertical-align: baseline;\"> for your source system, your database, your documentation site</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Write a consumer:</strong><span style=\"vertical-align: baseline;\"> a viewer, a search index, an agent that reasons over bundles</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Try the reference implementation</strong><span style=\"vertical-align: baseline;\"> against your own data</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">File issues, send PRs, or propose extensions:</strong><span style=\"vertical-align: baseline;\"> The spec is versioned and explicitly designed for backward-compatible growth</span></p>\n</li>\n</ul>\n<p><span style=\"vertical-align: baseline;\">The repo, the spec, and the sample bundles are available in </span><a href=\"https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/okf\" rel=\"noopener\" target=\"_blank\"><span style=\"text-decoration: underline; vertical-align: baseline;\">GitHub</span></a><span style=\"vertical-align: baseline;\">. We have also updated Google Cloud’s </span><a href=\"https://cloud.google.com/blog/products/data-analytics/introducing-the-google-cloud-knowledge-catalog\"><span style=\"text-decoration: underline; vertical-align: baseline;\">Knowledge Catalog</span></a><span style=\"vertical-align: baseline;\"> to be able to ingest Open Knowledge Format and serve it to our agents. You can find the relevant code and examples </span><a href=\"https://github.com/GoogleCloudPlatform/knowledge-catalog/tree/main/toolbox/mdcode/demo\" rel=\"noopener\" target=\"_blank\"><span style=\"text-decoration: underline; vertical-align: baseline;\">here</span></a><span style=\"vertical-align: baseline;\">.</span></p>\n<p><span style=\"vertical-align: baseline;\">The format itself is the contribution. The tools we've shipped exist to make it real, and to lower the cost of trying it out. Whatever shape your knowledge takes today, OKF is designed to be the </span><span style=\"font-style: italic; vertical-align: baseline;\">lingua franca</span><span style=\"vertical-align: baseline;\"> it can be exchanged for tomorrow. </span></p>\n<hr />\n<p><sup><span style=\"font-style: italic; vertical-align: baseline;\">Published by the Google Cloud Data Cloud team. Open Knowledge Format is an open specification; contributions, alternative implementations, and adoption beyond Google products are all explicitly welcomed.</span></sup></p>\n<p><sup><span style=\"font-style: italic; vertical-align: baseline;\">In addition to the authors, this work came together thanks to key ideas from many others at Google, and we thank them for their contributions.</span></sup></p></div>",
+    "source": "Google Cloud AI and Machine Learning Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "title": "Introducing the Open Knowledge Format",
+    "url": "https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing"
+  },
+  {
+    "analysis": {
+      "action": "关注课程内容，评估是否引入内部培训或推荐给团队学习",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方发布，来源可靠，涉及Agent应用和实用技能，对企业AI部署有指导意义",
+      "summary_cn": "OpenAI 推出三门学院课程，帮助用户构建实用 AI 技能、创建可重复的工作流程，并在日常工作中应用智能体。课程面向多角色，强调实操与自动化，助力工作转型。",
+      "tags": [
+        "OpenAI",
+        "AI课程",
+        "智能体",
+        "工作流",
+        "技能提升"
+      ]
+    },
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T10:00:00Z",
+    "raw_summary": "OpenAI introduces three Academy courses that help people build practical AI skills, create repeatable workflows, and apply agents in everyday work.",
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "title": "New OpenAI Academy courses for the next era of work",
+    "url": "https://openai.com/index/academy-courses-applying-ai-at-work"
+  },
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方 GitHub 发布日志，信息权威可信；但属于日常小版本更新，影响范围有限，重要性中等。",
+      "summary_cn": "LangChain 发布 langchain-openai==1.3.1 版本，主要变更包括：更新 README 安装指南（#38119）、改进反序列化白名单测试（#38118）、核心库发布 1.4.7（#38111）、修正包版本跟踪元数据（#38110）、在文档字符串中替换双反引号（#38095）、使用 gpt-4o 测试图片 token 计数（#38089）、为追踪元数据添加包版本号（#35295）、标准化 v1 流式工具调用（#35983）、统一 mypy 类型检查配置（#36470）、验证流式工具调用块（#34707）、收紧结构化输出模型回退（#38042）。",
+      "tags": [
+        "langchain",
+        "langchain-openai",
+        "版本发布",
+        "bug修复",
+        "新功能"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-13T02:43:09Z",
+    "raw_summary": "<p>Changes since langchain-openai==1.3.0</p>\n<p>docs: refresh <code>README</code> installation and resources (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38119\">#38119</a>)<br />\ntest(core,langchain): update tests for explicit deserialization allowlists (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38118\">#38118</a>)<br />\nrelease(core): 1.4.7 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38111\">#38111</a>)<br />\nfix(core,partners): rename package version trace metadata (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38110\">#38110</a>)<br />\nstyle(core,langchain,langchain-classic,partners): replace double backticks in docstrings (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38095\">#38095</a>)<br />\ntest(openai): use <code>gpt-4o</code> for image token counting (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38089\">#38089</a>)<br />\nrelease(core): 1.4.6 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38061\">#38061</a>)<br />\nfeat(core,partners): add package version tracking to tracing metadata (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/35295\">#35295</a>)<br />\nfix(core,openai): normalize v1 streamed tool calls (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/35983\">#35983</a>)<br />\nchore(infra): bump mypy to 2.1 and unify type-check config across the monorepo (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/36470\">#36470</a>)<br />\nfeat(standard-tests): validate tool call chunks during streaming (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/34707\">#34707</a>)<br />\nfix(langchain): tighten structured output model fallbacks (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38042\">#38042</a>)</p>",
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "title": "langchain-openai==1.3.1",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-openai%3D%3D1.3.1"
+  },
+  {
+    "analysis": {
+      "action": "阅读并记录变更，如有相关集成需求可安排升级。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来自官方 GitHub 发布页，可信度高；修复项较多但主要为稳定性改进，非重大功能更新，重要性中等。",
+      "summary_cn": "Anthropic 发布了 Claude Code v2.1.176，新增会话标题语言跟随、可配置正则匹配链接徽章、改进 Bedrock 凭据缓存等特性；修复了多模型可用性强制、Linux 沙盒启动、远程控制连接、后台会话状态持久化等十几个问题，提升了稳定性和兼容性。",
+      "tags": [
+        "Claude Code",
+        "工具更新",
+        "Bug修复",
+        "CLI",
+        "Anthropic"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T21:53:27Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Session titles are now generated in the language of your conversation (set the <code>language</code> setting to pin a specific language)</li>\n<li>Added <code>footerLinksRegexes</code> setting for regex-matched link badges in the footer row, configurable via user or managed settings</li>\n<li>Improved Bedrock credential caching: credentials from <code>awsCredentialExport</code> are now cached until their <code>Expiration</code> instead of a fixed 1 hour</li>\n<li>Fixed <code>availableModels</code> enforcement: alias model picks can no longer be redirected to a blocked model via <code>ANTHROPIC_DEFAULT_*_MODEL</code> environment variables, and <code>/fast</code> now refuses to toggle when it would switch to a model outside the allowlist</li>\n<li>Fixed auto mode failing on Fable 5 for organizations without Opus 4.8 enabled — the classifier now falls back to the best available Opus model</li>\n<li>Fixed hook <code>if</code> conditions for Read/Edit/Write tool paths: documented patterns like <code>Edit(src/**)</code>, <code>Read(~/.ssh/**)</code>, and <code>Read(.env)</code> now match correctly</li>\n<li>Fixed Linux sandbox failing to start when <code>.claude/settings.json</code> is a symlink with an absolute target</li>\n<li>Fixed <code>/copy</code> and mouse-selection copy not reaching the system clipboard inside tmux over SSH, and tmux paste buffer not loading on versions older than 3.2</li>\n<li>Fixed Remote Control connecting from web/mobile silently switching the session's model</li>\n<li>Fixed Remote Control disconnect notifications showing a bare numeric code instead of a human-readable reason, and connection failures adding a duplicate line to the conversation transcript</li>\n<li>Fixed Remote Control sessions not disconnecting when you sign in to a different account</li>\n<li>Fixed <code>/cd</code> and worktree moves leaving the session reporting the previous directory's git branch</li>\n<li>Fixed <code>claude agents</code>: pressing back in one window no longer detaches other windows attached to the same session</li>\n<li>Fixed backgrounded sessions showing \"Working\" forever when <code>/bg</code> mid-turn had nothing left to continue</li>\n<li>Fixed background agent search by PR URL: PRs opened during scheduled wakeups or while a job was blocked now appear in <code>claude agents</code> search</li>\n<li>Fixed the agents view input showing no text cursor on Windows</li>\n<li>Fixed <code>claude --bg -cn &lt;name&gt;</code> not seeding the session name</li>\n<li>Fixed background sessions to neutralize Windows network paths in persisted state before respawn</li>\n<li>Fixed background-session respawn rejecting malformed resume IDs from corrupted state files</li>\n<li>Fixed the Windows background-service daemon not starting when <code>~/.claude/daemon</code> has the ReadOnly attribute set</li>\n<li>Fixed cloud sessions failing with \"Could not resolve authentication method\" when idle for too long before being claimed</li>\n<li>Background sessions now show clearer guidance when a window left open across an auto-update can't submit a reply, and <code>claude daemon status</code> explains version-skew behavior</li>\n</ul>",
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "title": "v2.1.176",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.176"
+  },
+  {
+    "analysis": {
+      "action": "关注，建议在现有项目升级测试后更新，主要解决 Pydantic v1 兼容性问题。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方 GitHub 发布，可信度最高；修复了关键兼容性问题，但仅为补丁版本，重要性中等。",
+      "summary_cn": "LangChain 核心库发布 v1.4.7，主要修复了 Pydantic v1 在工具和可运行组件中的支持问题，同时更新了 tornado 依赖版本并优化了包版本跟踪元数据，属于维护性小版本更新。",
+      "tags": [
+        "LangChain",
+        "版本发布",
+        "Pydantic",
+        "依赖更新"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T19:24:13Z",
+    "raw_summary": "<p>Changes since langchain-core==1.4.6</p>\n<p>chore: bump tornado from 6.5.5 to 6.5.6 in /libs/core (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38115\">#38115</a>)<br />\nrelease(core): 1.4.7 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38111\">#38111</a>)<br />\nfix(core,partners): rename package version trace metadata (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38110\">#38110</a>)<br />\nfix(core): fix Pydantic v1 support in tools/runnable (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/33698\">#33698</a>)<br />\nstyle(core,langchain,langchain-classic,partners): replace double backticks in docstrings (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38095\">#38095</a>)</p>",
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "title": "langchain-core==1.4.7",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.4.7"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来自官方 GitHub 仓库，可信度高；属于常规依赖更新，重要性中等。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/workflow 包发布 1.0.0-canary.89 版本，主要更新了依赖项 @ai-sdk/provider-utils 至 5.0.0-canary.48 和 ai 至 7.0.0-canary.172，涉及多项底层功能优化，为 workflow 模块提供更稳定的基础。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "workflow",
+        "依赖更新",
+        "canary"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T15:37:24Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/aeda37394a7250a1a0061bb83f658f482d7ea0db\"><tt>aeda373</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/25a64f8bd43ed6145fc04abd102d2debfbf37495\"><tt>25a64f8</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/375fdd7eea4323454be663850202185c0df39d98\"><tt>375fdd7</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/f18b08fc0686e1ace7974d204736342fc6b417c9\"><tt>f18b08f</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/b4507d5069e69e1da50cac0607d71bac2f5ac495\"><tt>b4507d5</tt></a>]\n<ul>\n<li>@ai-sdk/provider-utils@5.0.0-canary.48</li>\n<li>ai@7.0.0-canary.172</li>\n</ul>\n</li>\n</ul>",
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "title": "@ai-sdk/workflow@1.0.0-canary.89",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%401.0.0-canary.89"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方来源，但仅涉及特定平台的额度调整，对 AI 领域影响有限。",
+      "summary_cn": "Vercel 将 Hobby 用户的 Blob 存储仓库上限从 5 个提升至 100 个，允许按项目、环境或区域组织数据，但存储、操作和传输限制不变。",
+      "tags": [
+        "Vercel",
+        "Blob存储",
+        "产品更新",
+        "Hobby计划"
+      ]
+    },
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-15T00:00:00Z",
+    "raw_summary": "<p>Hobby users can now create up to 100 Blob stores, up from 5. This gives teams more flexibility to organize data by project, environment, or region as applications grow. Storage, operations, and transfer limits still apply.\nLearn more in the <a href=\"https://vercel.com/docs/vercel-blob/usage-and-pricing\">Blob documentation</a>.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/increased-blob-store-limit-for-hobby-users\">Read more</a>\n          </p>",
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "title": "Increased Blob store limit for Hobby users",
+    "url": "https://vercel.com/changelog/increased-blob-store-limit-for-hobby-users"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "小版本更新，无具体内容，重要性低，无需深入跟进。",
+      "summary_cn": "Anthropic 发布 Claude Code v2.1.177，包含多项修复与改进，具体更新内容详见 GitHub 发布页面。",
+      "tags": [
+        "Claude Code",
+        "更新日志",
+        "Anthropic"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-13T01:25:15Z",
+    "raw_summary": "No content.",
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "title": "v2.1.177",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.177"
+  },
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub 发布，可信度高；但仅为依赖更新补丁，影响范围有限，重要性中等偏低。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/workflow 包发布 1.0.0-canary.90 版本，更新了依赖 ai@7.0.0-canary.173。此为实验性预发布版本，开发者可测试最新功能，但需注意稳定性风险。",
+      "tags": [
+        "Vercel AI SDK",
+        "工作流",
+        "预发布",
+        "依赖更新"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T21:11:07Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@7.0.0-canary.173</li>\n</ul>",
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "title": "@ai-sdk/workflow@1.0.0-canary.90",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%401.0.0-canary.90"
+  },
+  {
+    "analysis": {
+      "action": "留意后续稳定版本发布，当前版本为开发中版本，无需立即跟进。",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "来源为官方 GitHub Release，可信度高；但内容仅为依赖更新，无实质变化，重要性低。",
+      "summary_cn": "Vercel AI SDK 发布 Vue 集成包 @ai-sdk/vue@4.0.0-canary.173，更新依赖 ai@7.0.0-canary.173。属于主库的补丁更新，未涉及 Vue 特定变更。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "Vue",
+        "canary",
+        "补丁更新"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T21:11:04Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@7.0.0-canary.173</li>\n</ul>",
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "title": "@ai-sdk/vue@4.0.0-canary.173",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fvue%404.0.0-canary.173"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "修复的安全性和追踪增强对使用LangChain+Anthropic的开发者有参考价值，但版本号微小，重要性中等。",
+      "summary_cn": "LangChain发布anthropic集成包1.4.6版本，主要修复文件搜索结果限制、收紧allowed_prefixes配置，新增包版本跟踪到追踪元数据，提升工具调用流式验证和mypy统一类型检查。",
+      "tags": [
+        "langchain",
+        "anthropic",
+        "版本更新",
+        "修复",
+        "追踪",
+        "流式验证"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T16:54:33Z",
+    "raw_summary": "<p>Changes since langchain-anthropic==1.4.5</p>\n<p>release(anthropic): 1.4.6 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38105\">#38105</a>)<br />\nfix(langchain,anthropic): confine file-search results and tighten anthropic <code>allowed_prefixes</code> (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38106\">#38106</a>)<br />\nrelease(core): 1.4.6 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38061\">#38061</a>)<br />\nfeat(core,partners): add package version tracking to tracing metadata (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/35295\">#35295</a>)<br />\nchore(infra): bump mypy to 2.1 and unify type-check config across the monorepo (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/36470\">#36470</a>)<br />\nfeat(standard-tests): validate tool call chunks during streaming (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/34707\">#34707</a>)<br />\ntest(anthropic): make expected warnings explicit (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38044\">#38044</a>)<br />\ntest(anthropic): make tests robust to gateway base URL (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38043\">#38043</a>)</p>",
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "title": "langchain-anthropic==1.4.6",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-anthropic%3D%3D1.4.6"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "仅涉及依赖版本升级的补丁更新，无新功能或突破性进展，重要性低；来源为官方GitHub发布页，可信度极高。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/xai 包发布了 4.0.0-canary.74 版本，主要更新为依赖项的升级，包括 @ai-sdk/provider-utils 和 @ai-sdk/openai-compatible 的 canary 版本。此次为补丁更新，未引入重大功能变更，但保持了与最新工具链的兼容性。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "xAI",
+        "canary release",
+        "dependency update"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T15:37:27Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/aeda37394a7250a1a0061bb83f658f482d7ea0db\"><tt>aeda373</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/375fdd7eea4323454be663850202185c0df39d98\"><tt>375fdd7</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/b4507d5069e69e1da50cac0607d71bac2f5ac495\"><tt>b4507d5</tt></a>]\n<ul>\n<li>@ai-sdk/provider-utils@5.0.0-canary.48</li>\n<li>@ai-sdk/openai-compatible@3.0.0-canary.56</li>\n</ul>\n</li>\n</ul>",
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "title": "@ai-sdk/xai@4.0.0-canary.74",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%404.0.0-canary.74"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "该信息为预发布版本的常规依赖更新，未引入新功能或修复，对开发者影响有限，可忽略。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/vue@4.0.0-canary.172，为 Vue 框架的 AI SDK 预发布版本，更新依赖 `@ai-sdk/provider-utils` 和 `ai` 核心包，属于常规的 Canary 版本迭代。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "Vue",
+        "Canary",
+        "依赖更新"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-12T15:37:22Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/aeda37394a7250a1a0061bb83f658f482d7ea0db\"><tt>aeda373</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/25a64f8bd43ed6145fc04abd102d2debfbf37495\"><tt>25a64f8</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/375fdd7eea4323454be663850202185c0df39d98\"><tt>375fdd7</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/f18b08fc0686e1ace7974d204736342fc6b417c9\"><tt>f18b08f</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/b4507d5069e69e1da50cac0607d71bac2f5ac495\"><tt>b4507d5</tt></a>]\n<ul>\n<li>@ai-sdk/provider-utils@5.0.0-canary.48</li>\n<li>ai@7.0.0-canary.172</li>\n</ul>\n</li>\n</ul>",
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "title": "@ai-sdk/vue@4.0.0-canary.172",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fvue%404.0.0-canary.172"
+  },
+  {
+    "analysis": {
+      "action": "忽略",
+      "confidence": 4,
+      "importance": 2,
+      "reason": "此信息仅为版本号更新，无具体变更说明，对大部分用户影响较小，无需立即关注。",
+      "summary_cn": "langchain-openai 发布 1.3.2 版本，自 1.3.1 以来的变更记录，具体内容需参见 PR #38130。该版本是 LangChain 生态中 OpenAI 集成的维护更新。",
+      "tags": [
+        "langchain-openai",
+        "版本发布",
+        "OpenAI集成"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "published_at": "2026-06-13T05:46:57Z",
+    "raw_summary": "<p>Changes since langchain-openai==1.3.1</p>\n<p>release(openai): 1.3.2 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38130\">#38130</a>)</p>",
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "title": "langchain-openai==1.3.2",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-openai%3D%3D1.3.2"
+  }
+]
