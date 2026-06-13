@@ -27,6 +27,27 @@ sources:
     priority: 4
     daily_limit: 3
 
+  - name: OpenAI Python SDK Releases
+    url: https://github.com/openai/openai-python/releases.atom
+    kind: github
+    category: repo
+    priority: 4
+    daily_limit: 3
+
+  - name: OpenAI Node SDK Releases
+    url: https://github.com/openai/openai-node/releases.atom
+    kind: github
+    category: repo
+    priority: 4
+    daily_limit: 3
+
+  - name: OpenAI Agents Python Releases
+    url: https://github.com/openai/openai-agents-python/releases.atom
+    kind: github
+    category: repo
+    priority: 4
+    daily_limit: 3
+
   - name: Google AI Blog
     url: https://blog.google/technology/ai/rss/
     kind: official
@@ -39,6 +60,20 @@ sources:
     kind: official
     category: product
     priority: 5
+    daily_limit: 5
+
+  - name: Google Research Blog
+    url: https://research.google/blog/rss/
+    kind: official
+    category: paper
+    priority: 4
+    daily_limit: 5
+
+  - name: Google Cloud AI and Machine Learning Blog
+    url: https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/
+    kind: official
+    category: product
+    priority: 4
     daily_limit: 5
 
   - name: Hugging Face Blog

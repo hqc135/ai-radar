@@ -36,10 +36,14 @@ copy .env.example .env
 编辑 `.env`：
 
 ```text
-OPENAI_API_KEY=你的 OpenAI API Key
-AI_RADAR_DAILY_MODEL=gpt-4.1-mini
-AI_RADAR_WEEKLY_MODEL=gpt-4.1
+DEEPSEEK_API_KEY=你的 DeepSeek API Key
+OPENAI_BASE_URL=https://api.deepseek.com
+AI_RADAR_DAILY_MODEL=deepseek-v4-flash
+AI_RADAR_WEEKLY_MODEL=deepseek-v4-flash
 ```
+
+项目使用 OpenAI 兼容 SDK，默认按 DeepSeek 接口配置。也可以继续使用
+`OPENAI_API_KEY`；如果要切回 OpenAI 官方接口，删除 `OPENAI_BASE_URL` 并把模型改回 OpenAI 模型即可。
 
 生成日报：
 
@@ -70,29 +74,36 @@ python scripts/check.py
 
 - `config.yaml` 是否可读
 - `sources.yaml` 是否可读且有启用源
-- `OPENAI_API_KEY` 是否存在
+- `OPENAI_API_KEY` 或 `DEEPSEEK_API_KEY` 是否存在
 - `notes/daily`、`notes/weekly`、`data` 目录是否可用
 - 尝试抓取前 1-2 个测试源
 
-## GitHub Actions
+## GitHub-only 托管运行
+
+项目可以完全托管在 GitHub Actions 上运行，不需要在本地定时运行。推荐流程：
+
+1. 把仓库推到 GitHub。
+2. 打开 `Settings` -> `Secrets and variables` -> `Actions`。
+3. 在 `Secrets` 添加 `DEEPSEEK_API_KEY`。
+4. 确认 `Settings` -> `Actions` -> `General` -> `Workflow permissions` 允许 `Read and write permissions`。
+5. 到 `Actions` 页面手动运行一次 `Daily AI Radar`，确认能生成日报并自动 commit。
 
 已有两个 workflow：
 
 - `Daily AI Radar`：每天北京时间 9:00 运行，生成 `notes/daily/YYYY-MM-DD.md`
 - `Weekly AI Radar`：每周一北京时间 9:10 运行，生成 `notes/weekly/YYYY-WW.md`
 
-需要在 GitHub 仓库配置：
-
-`Settings` -> `Secrets and variables` -> `Actions`
-
 Secrets：
 
-- `OPENAI_API_KEY`：必填，OpenAI API Key
+- `DEEPSEEK_API_KEY`：推荐，DeepSeek API Key
+- `OPENAI_API_KEY`：可选，兼容 OpenAI 官方或其他 OpenAI-compatible 服务
 
 Variables：
 
-- `AI_RADAR_DAILY_MODEL`：可选，日报普通 RSS 摘要模型，默认 `gpt-4.1-mini`
-- `AI_RADAR_WEEKLY_MODEL`：可选，周报总结模型，默认 `gpt-4.1`
+- `OPENAI_BASE_URL`：可选，默认 `https://api.deepseek.com`
+- `AI_RADAR_DAILY_MODEL`：可选，日报普通 RSS 摘要模型，默认 `deepseek-v4-flash`
+- `AI_RADAR_WEEKLY_MODEL`：可选，周报总结模型，默认 `deepseek-v4-flash`
+- `AI_RADAR_DISABLE_THINKING`：可选，DeepSeek 下默认 `true`，用于省 token
 
 Actions 会自动 commit：
 
@@ -101,13 +112,22 @@ Actions 会自动 commit：
 - 手动 inbox 处理：`inbox/links.md`、`inbox/processed.md`
 - 周报：`notes/weekly`
 
+如果没有配置 `DEEPSEEK_API_KEY` 或 `OPENAI_API_KEY`，workflow 会直接失败，避免自动提交未调用模型的降级摘要。
+
+后续日常维护也可以只在 GitHub 网页完成：
+
+- 改 RSS 源：编辑 `sources.yaml`
+- 改成本和条数：编辑 `config.yaml`
+- 临时补链接：编辑 `inbox/links.md`
+- 立即运行：进入 `Actions`，手动触发 `Daily AI Radar`
+
 ## 配置成本控制
 
 编辑 `config.yaml`：
 
 ```yaml
-daily_summary_model: gpt-4.1-mini
-weekly_summary_model: gpt-4.1
+daily_summary_model: deepseek-v4-flash
+weekly_summary_model: deepseek-v4-flash
 max_llm_items_per_day: 20
 max_candidates_per_day: 80
 max_daily_items: 50
@@ -141,9 +161,9 @@ estimated_weekly_summary_tokens: 3000
 
 模型策略：
 
-- 普通 RSS 摘要：使用 `daily_summary_model` / `AI_RADAR_DAILY_MODEL`，建议快模型。
+- 普通 RSS 摘要：使用 `daily_summary_model` / `AI_RADAR_DAILY_MODEL`，默认 DeepSeek `deepseek-v4-flash`。
 - 高优先级候选：日报只筛出来，不自动做 Deep Research，适合人工丢给 ChatGPT 或 Deep Research。
-- 周报总结：使用 `weekly_summary_model` / `AI_RADAR_WEEKLY_MODEL`，建议比日报稍好的模型。
+- 周报总结：使用 `weekly_summary_model` / `AI_RADAR_WEEKLY_MODEL`，默认同样用便宜模型；如果周报质量不够，再单独换更强模型。
 - Deep Research：周报只输出 1-3 个候选，不自动调用 Deep Research。
 
 ## 添加信息源

@@ -51,10 +51,13 @@ def main() -> None:
     except Exception as exc:
         fail(f"sources.yaml invalid: {exc}")
 
-    if os.getenv("OPENAI_API_KEY"):
-        ok("OPENAI_API_KEY is set")
+    if os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY"):
+        ok("OPENAI_API_KEY or DEEPSEEK_API_KEY is set")
     else:
-        warn("OPENAI_API_KEY is not set; daily run will use fallback summaries or fail if strict usage is added later")
+        warn(
+            "OPENAI_API_KEY or DEEPSEEK_API_KEY is not set; "
+            "daily run will use fallback summaries or fail if strict usage is added later"
+        )
 
     output_dir.mkdir(parents=True, exist_ok=True)
     weekly_dir.mkdir(parents=True, exist_ok=True)

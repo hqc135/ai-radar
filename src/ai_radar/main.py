@@ -23,9 +23,9 @@ URL_RE = re.compile(r"https?://[^\s)>\]]+")
 
 
 class RadarConfig(BaseModel):
-    model: str = "gpt-4.1-mini"
-    daily_summary_model: str = "gpt-4.1-mini"
-    weekly_summary_model: str = "gpt-4.1"
+    model: str = "deepseek-v4-flash"
+    daily_summary_model: str = "deepseek-v4-flash"
+    weekly_summary_model: str = "deepseek-v4-flash"
     max_llm_items_per_day: int = 20
     max_candidates_per_day: int = 80
     max_daily_items: int = 50
@@ -463,6 +463,25 @@ def fallback_analysis(item: CandidateItem) -> ItemAnalysis:
     )
 
 
+def get_api_key() -> str | None:
+    return os.getenv("OPENAI_API_KEY") or os.getenv("DEEPSEEK_API_KEY")
+
+
+def create_llm_client(api_key: str) -> OpenAI:
+    base_url = os.getenv("OPENAI_BASE_URL")
+    if base_url:
+        return OpenAI(api_key=api_key, base_url=base_url)
+    return OpenAI(api_key=api_key)
+
+
+def completion_extra_body() -> dict[str, Any] | None:
+    base_url = os.getenv("OPENAI_BASE_URL", "")
+    disabled = os.getenv("AI_RADAR_DISABLE_THINKING", "true").lower() not in {"0", "false", "no"}
+    if "deepseek.com" in base_url and disabled:
+        return {"thinking": {"type": "disabled"}}
+    return None
+
+
 def analyze_item(client: OpenAI, model: str, item: CandidateItem) -> ItemAnalysis:
     prompt = {
         "title": item.title,
@@ -477,9 +496,14 @@ def analyze_item(client: OpenAI, model: str, item: CandidateItem) -> ItemAnalysi
         "manual_input": item.manual_input,
         "confidence_cap": source_confidence_cap(item),
     }
+    extra_body = completion_extra_body()
+    request_kwargs: dict[str, Any] = {}
+    if extra_body:
+        request_kwargs["extra_body"] = extra_body
     response = client.chat.completions.create(
         model=model,
         response_format={"type": "json_object"},
+        **request_kwargs,
         messages=[
             {
                 "role": "system",
@@ -739,9 +763,14 @@ def summarize_weekly(client: OpenAI, model: str, items: list[AnalyzedItem]) -> W
         }
         for item in items[:40]
     ]
+    extra_body = completion_extra_body()
+    request_kwargs: dict[str, Any] = {}
+    if extra_body:
+        request_kwargs["extra_body"] = extra_body
     response = client.chat.completions.create(
         model=model,
         response_format={"type": "json_object"},
+        **request_kwargs,
         messages=[
             {
                 "role": "system",
@@ -812,12 +841,12 @@ def write_weekly_digest(
         items, radar_config.deep_research_candidates_per_week
     )
     summary = fallback_weekly_summary(items)
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = get_api_key()
     if api_key and items and not dry_run:
         model = os.getenv("AI_RADAR_WEEKLY_MODEL", radar_config.weekly_summary_model)
         try:
             log("info", f"summarizing weekly model={model}")
-            summary = summarize_weekly(OpenAI(api_key=api_key), model, items)
+            summary = summarize_weekly(create_llm_client(api_key), model, items)
         except Exception as exc:
             log("warn", f"weekly summary failed error={exc}")
     path = output_dir / f"{week_id}.md"
@@ -933,11 +962,11 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
     stats.llm_planned = len(llm_items)
     client: OpenAI | None = None
     if llm_items and not args.dry_run:
-        api_key = os.getenv("OPENAI_API_KEY")
+        api_key = get_api_key()
         if not api_key:
-            log("warn", "OPENAI_API_KEY missing; using fallback summaries")
+            log("warn", "OPENAI_API_KEY or DEEPSEEK_API_KEY missing; using fallback summaries")
         else:
-            client = OpenAI(api_key=api_key)
+            client = create_llm_client(api_key)
 
     analyzed: list[AnalyzedItem] = []
     model = os.getenv("AI_RADAR_DAILY_MODEL", os.getenv("AI_RADAR_MODEL", radar_config.daily_summary_model))

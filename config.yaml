@@ -1,5 +1,5 @@
-daily_summary_model: gpt-4.1-mini
-weekly_summary_model: gpt-4.1
+daily_summary_model: deepseek-v4-flash
+weekly_summary_model: deepseek-v4-flash
 max_llm_items_per_day: 20
 max_candidates_per_day: 80
 max_daily_items: 50
