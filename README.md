@@ -121,6 +121,24 @@ Actions 会自动 commit：
 - 临时补链接：编辑 `inbox/links.md`
 - 立即运行：进入 `Actions`，手动触发 `Daily AI Radar`
 
+## GitHub Pages
+
+项目会从 `notes/daily`、`notes/weekly` 和 `data/items` 生成静态站点，并部署到 GitHub Pages。
+
+第一次启用：
+
+1. 打开仓库 `Settings` -> `Pages`
+2. `Build and deployment` -> `Source` 选择 `GitHub Actions`
+3. 进入 `Actions`，手动运行 `Deploy AI Radar Pages`
+
+部署后地址：
+
+```text
+https://hqc135.github.io/ai-radar/
+```
+
+后续 `Daily AI Radar` 和 `Weekly AI Radar` 成功运行后，会自动重新部署 Pages。`Deploy AI Radar Pages` 也可以手动运行，用于只刷新站点、不重新抓取 RSS。
+
 ## 配置成本控制
 
 编辑 `config.yaml`：
