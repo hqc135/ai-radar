@@ -1,1 +1,65 @@
-[]
+[
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来自官方 GitHub 的补丁发布，可信度极高；但仅为依赖更新，未提及重大功能变化，重要性中等。；已合并同事件来源：Vercel AI SDK Releases。",
+      "summary_cn": "Vercel AI SDK 发布了 @ai-sdk/svelte v3.0.202，这是一个补丁版本，更新了 ai 依赖至 5.0.202。此更新可能包含错误修复和小改进，对使用 Svelte 框架的 AI 应用开发者有参考价值。",
+      "tags": [
+        "AI SDK",
+        "Svelte",
+        "补丁更新"
+      ]
+    },
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-14T06:08:09Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@5.0.202</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Vercel AI SDK Releases",
+        "source_tier": 1,
+        "title": "@ai-sdk/workflow@1.0.0-canary.91",
+        "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%401.0.0-canary.91"
+      },
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "Vercel AI SDK Releases",
+        "source_tier": 1,
+        "title": "@ai-sdk/vue@3.0.205",
+        "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fvue%403.0.205"
+      },
+      {
+        "confidence": 5,
+        "importance": 1,
+        "source": "Vercel AI SDK Releases",
+        "source_tier": 1,
+        "title": "@ai-sdk/vue@2.0.202",
+        "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fvue%402.0.202"
+      },
+      {
+        "confidence": 5,
+        "importance": 1,
+        "source": "Vercel AI SDK Releases",
+        "source_tier": 1,
+        "title": "@ai-sdk/svelte@4.0.205",
+        "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fsvelte%404.0.205"
+      }
+    ],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/svelte@3.0.202",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fsvelte%403.0.202"
+  }
+]
