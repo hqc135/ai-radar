@@ -17,6 +17,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
   pages: write
   id-token: write
 
@@ -69,11 +70,129 @@ jobs:
           fi
           python src/ai_radar/main.py "${args[@]}"
 
+      - name: Open issue on daily generation failure
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="AI Radar daily failed: $(date -u +%F)"
+          body="Daily AI Radar failed in workflow run ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}."
+          if ! gh issue list --state open --search "$title in:title" --json title --jq '.[].title' | grep -Fxq "$title"; then
+            gh issue create --title "$title" --body "$body"
+          fi
+
+      - name: Check daily quality
+        id: quality
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          import os
+          from pathlib import Path
+
+          summaries = sorted(Path("data/run-summary").glob("*.json"))
+          if not summaries:
+              print("needs_issue=false")
+              raise SystemExit
+
+          path = summaries[-1]
+          data = json.loads(path.read_text(encoding="utf-8"))
+          needs_issue = bool(data.get("quality_needs_review")) or data.get("content_health") != "ok"
+          print(f"needs_issue={str(needs_issue).lower()}")
+          print(f"date={path.stem}")
+          print(f"score={data.get('quality_score', 'unknown')}")
+          print(f"health={data.get('content_health', 'unknown')}")
+          reasons = data.get("health_reasons", [])
+          body = [
+              f"Daily quality check flagged `{path.name}`.",
+              "",
+              f"- quality_score: {data.get('quality_score', 'unknown')}",
+              f"- content_health: {data.get('content_health', 'unknown')}",
+              f"- output_items: {data.get('output_items', 'unknown')}",
+              f"- must_read_items: {data.get('must_read_items', 'unknown')}",
+              f"- low_quality_release_ratio: {data.get('low_quality_release_ratio', 'unknown')}",
+              f"- sources_failed: {data.get('sources_failed', 'unknown')}",
+              "",
+              "Reasons:",
+              *(f"- {reason}" for reason in reasons),
+              "",
+              f"Workflow run: {os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
+          ]
+          body_path = Path(os.environ["RUNNER_TEMP"]) / f"{path.stem}-quality-issue.md"
+          body_path.write_text("\n".join(body) + "\n", encoding="utf-8")
+          print(f"body_path={body_path.as_posix()}")
+          PY
+
+      - name: Open issue on low quality daily
+        if: steps.quality.outputs.needs_issue == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="AI Radar daily quality low: ${{ steps.quality.outputs.date }}"
+          if ! gh issue list --state open --search "$title in:title" --json title --jq '.[].title' | grep -Fxq "$title"; then
+            gh issue create --title "$title" --body-file "${{ steps.quality.outputs.body_path }}"
+          fi
+
+      - name: Send optional daily notification
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.AI_RADAR_TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.AI_RADAR_TELEGRAM_CHAT_ID }}
+          FEISHU_WEBHOOK_URL: ${{ secrets.AI_RADAR_FEISHU_WEBHOOK_URL }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import urllib.parse
+          import urllib.request
+          from pathlib import Path
+
+          summaries = sorted(Path("data/run-summary").glob("*.json"))
+          if not summaries:
+              raise SystemExit
+
+          path = summaries[-1]
+          data = json.loads(path.read_text(encoding="utf-8"))
+          date = path.stem
+          text = (
+              f"AI Radar {date}\n"
+              f"质量分: {data.get('quality_score', 'unknown')}/100\n"
+              f"健康: {data.get('content_health', 'unknown')}\n"
+              f"条目: {data.get('output_items', 'unknown')}，必看: {data.get('must_read_items', 'unknown')}\n"
+              f"源失败: {data.get('sources_failed', 'unknown')}\n"
+              f"https://hqc135.github.io/ai-radar/daily/{date}.html"
+          )
+
+          bot_token = os.getenv("TELEGRAM_BOT_TOKEN", "")
+          chat_id = os.getenv("TELEGRAM_CHAT_ID", "")
+          if bot_token and chat_id:
+              try:
+                  payload = urllib.parse.urlencode({"chat_id": chat_id, "text": text}).encode()
+                  urllib.request.urlopen(
+                      f"https://api.telegram.org/bot{bot_token}/sendMessage",
+                      data=payload,
+                      timeout=20,
+                  ).read()
+              except Exception as exc:
+                  print(f"Telegram notification skipped: {exc}")
+
+          feishu_url = os.getenv("FEISHU_WEBHOOK_URL", "")
+          if feishu_url:
+              try:
+                  payload = json.dumps({"msg_type": "text", "content": {"text": text}}, ensure_ascii=False).encode()
+                  request = urllib.request.Request(
+                      feishu_url,
+                      data=payload,
+                      headers={"Content-Type": "application/json"},
+                  )
+                  urllib.request.urlopen(request, timeout=20).read()
+              except Exception as exc:
+                  print(f"Feishu notification skipped: {exc}")
+          PY
+
       - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add notes/daily data/items data/run-summary data/cache.json inbox/links.md
+          git add notes/daily data/items data/run-summary data/cache.json data/source-state.json inbox/links.md
           if [ -f inbox/processed.md ]; then
             git add inbox/processed.md
           fi

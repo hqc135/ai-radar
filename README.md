@@ -9,12 +9,14 @@
 ```text
 .
 ├── config.yaml                 # 成本控制、模型和筛选配置
+├── feedback.yaml               # 个人 like / hide 偏好
 ├── sources.yaml                # RSS / Atom 信息源
 ├── inbox/links.md              # 手动粘贴链接入口
 ├── inbox/processed.md          # 已处理手动链接归档
 ├── src/ai_radar/main.py        # 主程序
 ├── scripts/check.py            # 验收脚本
 ├── data/cache.json             # URL 去重缓存
+├── data/source-state.json      # 源贡献、噪音和日报质量状态
 ├── data/items/                 # 每日结构化 JSON 归档
 ├── data/run-summary/           # 每次运行摘要
 ├── notes/daily/                # 每日 Markdown 日报
@@ -97,6 +99,9 @@ Secrets：
 
 - `DEEPSEEK_API_KEY`：推荐，DeepSeek API Key
 - `OPENAI_API_KEY`：可选，兼容 OpenAI 官方或其他 OpenAI-compatible 服务
+- `AI_RADAR_TELEGRAM_BOT_TOKEN`：可选，配置后推送 Telegram 摘要
+- `AI_RADAR_TELEGRAM_CHAT_ID`：可选，Telegram chat id
+- `AI_RADAR_FEISHU_WEBHOOK_URL`：可选，飞书机器人 webhook
 
 Variables：
 
@@ -109,8 +114,15 @@ Actions 会自动 commit：
 
 - 日报：`notes/daily`、`data/items`、`data/cache.json`
 - 运行摘要：`data/run-summary`
+- 源状态：`data/source-state.json`
 - 手动 inbox 处理：`inbox/links.md`、`inbox/processed.md`
 - 周报：`notes/weekly`
+
+监控：
+
+- `Daily AI Radar` 生成失败时会自动创建 GitHub issue。
+- 日报质量分低于阈值或 `content_health != ok` 时会自动创建 GitHub issue。
+- 如果配置了 Telegram 或飞书 secret，会推送当天质量分、条目数、必看数和 Pages 链接；未配置时自动跳过。
 
 如果没有配置 `DEEPSEEK_API_KEY` 或 `OPENAI_API_KEY`，workflow 会直接失败，避免自动提交未调用模型的降级摘要。
 
@@ -165,6 +177,14 @@ min_daily_items: 8
 fallback_lookback_hours: 72
 backfill_limit: 12
 release_noise_max_importance: 2
+quality_score_threshold: 70
+quality_retry_lookback_hours: 96
+source_state_keep_days: 14
+source_limit_min: 1
+source_limit_max: 10
+source_fetch_timeout_seconds: 20
+source_observation_days: 3
+source_observation_daily_limit: 1
 personal_topic_weights:
   agent: 3
   coding: 3
@@ -191,6 +211,13 @@ personal_topic_weights:
 - `fallback_lookback_hours`：新内容不足时自动扩展到多少小时回看
 - `backfill_limit`：重复运行或新内容偏少时，最多从近期缓存补入多少条
 - `release_noise_max_importance`：纯补丁、canary、依赖 bump 这类维护性 release 的最高重要性
+- `quality_score_threshold`：日报质量分低于该阈值时标记需回看
+- `quality_retry_lookback_hours`：上次日报质量偏低时，下次自动扩展到多少小时回看
+- `source_state_keep_days`：源状态历史保留天数，默认保留 14 天
+- `source_limit_min` / `source_limit_max`：源状态自动调整 `daily_limit` 时的上下限
+- `source_fetch_timeout_seconds`：单个 RSS/Atom 源抓取超时时间，避免慢源拖住整次运行
+- `source_observation_days`：新源观察期天数
+- `source_observation_daily_limit`：已有源状态后，新加入源在观察期内的临时 `daily_limit`
 - `personal_topic_weights`：个人偏好主题权重，默认更关注 Agent、Coding、RAG、Eval、Reasoning，影响预筛选、LLM 调用顺序和主列表排序
 
 模型策略：
@@ -292,6 +319,63 @@ sources:
 
 完整结构化字段会保存在 `data/items/YYYY-MM-DD.json`，用于调试、周报和后续分析。
 
+## 日报质量闭环和源治理
+
+每次日报都会在 `data/run-summary/YYYY-MM-DD.json` 记录质量信号：
+
+- 内容量是否低于 `min_daily_items`
+- `今日必看` 数量
+- 低质量 GitHub release 占比
+- 源失败和解析警告数
+- 是否使用了回看窗口或缓存补入
+- `quality_score` 和 `quality_needs_review`
+
+如果 `quality_score` 低于 `quality_score_threshold`，当天日报会标记为需回看，并写入 `data/source-state.json`。下一次运行会自动使用 `quality_retry_lookback_hours` 扩大回看窗口，避免连续出现空日报或噪音日报。
+
+`data/source-state.json` 还会记录每个源近 7 天的有效贡献、必看贡献、低质量 release 和失败情况。运行时不会改写 `sources.yaml`，但会基于状态临时调整单源 `daily_limit`：高贡献低噪音源增加 1 条，长期失败或高噪音源降低 1 条，并受 `source_limit_min` / `source_limit_max` 约束。
+
+新加入的源如果还没有状态历史，会先按 `source_observation_daily_limit` 小流量观察；已经存在状态文件的老源不会被误判为新源。
+
+## 个人偏好学习
+
+编辑 `feedback.yaml` 可以让日报逐步贴近个人研究偏好：
+
+```yaml
+like:
+  titles:
+    - agent
+  sources:
+    - OpenAI News
+  tags:
+    - coding
+  keywords:
+    - eval
+
+hide:
+  titles:
+    - canary
+  sources:
+    - GitHub Trending
+  tags:
+    - social
+  keywords:
+    - dependency bump
+
+source_weights:
+  OpenAI News: 2
+  arXiv cs.CL: 1
+
+keyword_weights:
+  agent: 2
+  rag: 2
+  reasoning: 1
+```
+
+- `like`：匹配标题、来源、标签或关键词的条目会提高排序权重，也会补充相关关键词召回。
+- `hide`：匹配标题、来源、标签或关键词的条目会被过滤，不进入候选池。
+- `source_weights`：按来源名加减分，适合提升长期有价值的源。
+- `keyword_weights`：按关键词加减分，适合把 Agent、RAG、Eval、Coding 等研究偏好转成排序信号。
+
 OpenAI API 失败时会降级输出原始摘要或标题摘要，避免整次运行失败。
 
 ## 输出位置
@@ -312,9 +396,13 @@ notes/weekly/YYYY-WW.md
 
 - 本周概览
 - 本周趋势判断
+- 本周主题变化
+- 连续出现的方向
+- 本周噪音
 - 值得试用的 3 个工具
 - 值得深挖的研究问题
 - 下周观察清单
+- 下周应盯的源 / 项目
 - 本周 Deep Research 候选，以及可复制 prompt
 
 结构化归档：

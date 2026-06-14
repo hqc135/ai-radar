@@ -18,6 +18,14 @@ min_daily_items: 8
 fallback_lookback_hours: 72
 backfill_limit: 12
 release_noise_max_importance: 2
+quality_score_threshold: 70
+quality_retry_lookback_hours: 96
+source_state_keep_days: 14
+source_limit_min: 1
+source_limit_max: 10
+source_fetch_timeout_seconds: 20
+source_observation_days: 3
+source_observation_daily_limit: 1
 personal_topic_weights:
   agent: 3
   agents: 3

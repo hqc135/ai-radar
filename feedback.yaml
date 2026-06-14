@@ -1,0 +1,24 @@
+like:
+  titles: []
+  sources: []
+  tags:
+    - agent
+    - coding
+    - rag
+  keywords: []
+
+hide:
+  titles: []
+  sources: []
+  tags: []
+  keywords:
+    - dependency bump
+    - canary
+
+source_weights: {}
+keyword_weights:
+  agent: 2
+  coding: 2
+  rag: 2
+  eval: 1
+  reasoning: 1

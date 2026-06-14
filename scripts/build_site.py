@@ -81,6 +81,14 @@ def markdown_to_html(markdown: str) -> str:
         if in_code:
             code_lines.append(line)
             continue
+        if line in {"<details>", "</details>"}:
+            close_ul()
+            out.append(line)
+            continue
+        if line.startswith("<summary>") and line.endswith("</summary>"):
+            close_ul()
+            out.append(line)
+            continue
         if not line.strip():
             close_ul()
             continue
@@ -88,7 +96,10 @@ def markdown_to_html(markdown: str) -> str:
             close_ul()
             level = min(len(line) - len(line.lstrip("#")), 4)
             text = line[level:].strip()
-            out.append(f"<h{level}>{inline_markdown(text)}</h{level}>")
+            cls = ""
+            if text in {"维护性更新", "其他略过"}:
+                cls = ' class="muted-section"'
+            out.append(f"<h{level}{cls}>{inline_markdown(text)}</h{level}>")
             continue
         if line.startswith("- "):
             if not in_ul:
@@ -124,6 +135,61 @@ def load_daily_items(data_dir: Path) -> dict[str, list[dict[str, Any]]]:
     return items
 
 
+def load_run_summaries(summary_dir: Path) -> dict[str, dict[str, Any]]:
+    summaries: dict[str, dict[str, Any]] = {}
+    for path in sorted(summary_dir.glob("*.json")):
+        try:
+            summaries[path.stem] = read_json(path)
+        except Exception:
+            summaries[path.stem] = {}
+    return summaries
+
+
+def topic_label(item: dict[str, Any]) -> str:
+    analysis = item.get("analysis", {})
+    text = " ".join(
+        [
+            str(item.get("title", "")),
+            " ".join(str(tag) for tag in analysis.get("tags", [])),
+            str(analysis.get("summary_cn", "")),
+        ]
+    ).lower()
+    buckets = [
+        ("Agent / Coding", ("agent", "agents", "coding", "code", "claude code", "cursor", "windsurf")),
+        ("RAG / Knowledge", ("rag", "retrieval", "knowledge", "context")),
+        ("Model / Eval", ("model", "benchmark", "eval", "reasoning", "inference")),
+        ("Research / Paper", ("paper", "arxiv", "research", "论文", "研究")),
+        ("Infra / SDK", ("sdk", "workflow", "release", "repo", "github")),
+    ]
+    for label, terms in buckets:
+        if any(term in text for term in terms):
+            return label
+    return "Product / Ecosystem"
+
+
+def recent_trends(daily_items: dict[str, list[dict[str, Any]]], days: int = 3) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    for date in sorted(daily_items.keys(), reverse=True)[:days]:
+        items = daily_items.get(date, [])
+        topics: dict[str, int] = {}
+        must_read = 0
+        for item in items:
+            analysis = item.get("analysis", {})
+            topics[topic_label(item)] = topics.get(topic_label(item), 0) + 1
+            if analysis.get("importance", 0) >= 4 and analysis.get("confidence", 0) >= 4:
+                must_read += 1
+        top_topics = sorted(topics.items(), key=lambda row: row[1], reverse=True)[:3]
+        rows.append(
+            {
+                "date": date,
+                "items": len(items),
+                "must_read": must_read,
+                "topics": top_topics,
+            }
+        )
+    return rows
+
+
 def render_item_card(item: dict[str, Any]) -> str:
     analysis = item.get("analysis", {})
     title = item.get("title", "Untitled")
@@ -147,7 +213,24 @@ def render_item_card(item: dict[str, Any]) -> str:
 """
 
 
-def build_index(output_dir: Path, daily_items: dict[str, list[dict[str, Any]]]) -> None:
+def render_trend_row(row: dict[str, Any], summaries: dict[str, dict[str, Any]]) -> str:
+    summary = summaries.get(row["date"], {})
+    quality = summary.get("quality_score", "-")
+    health = summary.get("content_health", "ok")
+    topic_html = "".join(
+        f"<span>{html.escape(label)} · {count}</span>"
+        for label, count in row["topics"]
+    )
+    return f"""
+<article class="trend-row">
+  <h3><a href="/ai-radar/daily/{html.escape(row["date"])}.html">{html.escape(row["date"])}</a></h3>
+  <p class="meta">{row["items"]} 条 · 必看 {row["must_read"]} · 质量 {html.escape(str(quality))}/100 · {html.escape(str(health))}</p>
+  <div class="tags">{topic_html}</div>
+</article>
+"""
+
+
+def build_index(output_dir: Path, daily_items: dict[str, list[dict[str, Any]]], summaries: dict[str, dict[str, Any]]) -> None:
     latest_date = max(daily_items.keys(), default="")
     latest_items = sorted(
         daily_items.get(latest_date, []),
@@ -159,12 +242,18 @@ def build_index(output_dir: Path, daily_items: dict[str, list[dict[str, Any]]]) 
     )[:8]
     if latest_date:
         cards = "\n".join(render_item_card(item) for item in latest_items)
+        trends = "\n".join(render_trend_row(row, summaries) for row in recent_trends(daily_items))
         intro = f"""
 <section class="hero">
   <p class="eyebrow">Latest Daily Radar</p>
   <h1>AI Radar 日报</h1>
   <p>最新一期：<a href="/ai-radar/daily/{latest_date}.html">{latest_date}</a>，共 {len(daily_items.get(latest_date, []))} 条内容。</p>
 </section>
+<section class="trend-panel">
+  <h2>最近 3 天趋势</h2>
+  <div class="trend-grid">{trends}</div>
+</section>
+<h2 class="section-title">最新必看</h2>
 <section class="grid">{cards}</section>
 """
     else:
@@ -243,6 +332,7 @@ main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 56
 }
 .hero h1 { margin: 0 0 8px; font-size: 40px; line-height: 1.15; }
 .hero p { color: var(--muted); max-width: 760px; }
+.section-title { margin: 28px 0 14px; }
 .eyebrow {
   margin: 0 0 8px;
   text-transform: uppercase;
@@ -256,6 +346,24 @@ main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 56
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 16px;
 }
+.trend-panel {
+  padding: 20px 0 28px;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 24px;
+}
+.trend-panel h2 { margin: 0 0 14px; }
+.trend-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+.trend-row {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+}
+.trend-row h3 { margin: 0 0 6px; font-size: 16px; }
 .item-card {
   background: var(--card);
   border: 1px solid var(--line);
@@ -281,9 +389,23 @@ main { width: min(1120px, calc(100% - 32px)); margin: 0 auto; padding: 32px 0 56
 }
 .note h1 { margin-top: 0; font-size: 34px; }
 .note h2 { margin-top: 32px; padding-top: 18px; border-top: 1px solid var(--line); }
+.note h2.muted-section {
+  color: var(--muted);
+  font-size: 20px;
+}
 .note h3 { margin-top: 22px; }
 .note li, .note p { line-height: 1.75; }
 .note ul { padding-left: 22px; }
+details {
+  border-top: 1px solid var(--line);
+  margin-top: 28px;
+  padding-top: 16px;
+}
+summary {
+  cursor: pointer;
+  color: var(--accent);
+  font-weight: 700;
+}
 .list-page ul { line-height: 2; }
 pre {
   overflow-x: auto;
@@ -316,7 +438,8 @@ def build_site(output_dir: Path) -> None:
     output_dir.mkdir(parents=True)
     write_assets(output_dir)
     daily_items = load_daily_items(ROOT / "data" / "items")
-    build_index(output_dir, daily_items)
+    summaries = load_run_summaries(ROOT / "data" / "run-summary")
+    build_index(output_dir, daily_items, summaries)
     build_note_pages(output_dir, ROOT / "notes" / "daily", "daily", "日报归档")
     build_note_pages(output_dir, ROOT / "notes" / "weekly", "weekly", "周报归档")
     output_dir.joinpath(".nojekyll").write_text("", encoding="utf-8")
