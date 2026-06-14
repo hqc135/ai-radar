@@ -69,6 +69,14 @@ sources:
     priority: 4
     daily_limit: 5
 
+  - name: Microsoft Research
+    url: https://www.microsoft.com/en-us/research/feed/
+    kind: official
+    category: paper
+    priority: 3
+    tier: 1
+    daily_limit: 4
+
   - name: Google Cloud AI and Machine Learning Blog
     url: https://cloudblog.withgoogle.com/products/ai-machine-learning/rss/
     kind: official
@@ -82,6 +90,38 @@ sources:
     category: product
     priority: 4
     daily_limit: 5
+
+  - name: Simon Willison AI
+    url: https://simonwillison.net/tags/ai.atom
+    kind: blog
+    category: tool
+    priority: 4
+    tier: 2
+    daily_limit: 4
+
+  - name: Latent Space
+    url: https://www.latent.space/feed
+    kind: blog
+    category: product
+    priority: 4
+    tier: 2
+    daily_limit: 4
+
+  - name: Ahead of AI
+    url: https://magazine.sebastianraschka.com/feed
+    kind: blog
+    category: paper
+    priority: 4
+    tier: 2
+    daily_limit: 4
+
+  - name: The Gradient
+    url: https://thegradient.pub/rss/
+    kind: blog
+    category: paper
+    priority: 3
+    tier: 2
+    daily_limit: 3
 
   - name: arXiv cs.CL
     url: https://export.arxiv.org/rss/cs.CL
@@ -137,21 +177,21 @@ sources:
     kind: github
     category: repo
     priority: 5
-    daily_limit: 5
+    daily_limit: 3
 
   - name: LangChain Releases
     url: https://github.com/langchain-ai/langchain/releases.atom
     kind: github
     category: repo
     priority: 4
-    daily_limit: 4
+    daily_limit: 3
 
   - name: LlamaIndex Releases
     url: https://github.com/run-llama/llama_index/releases.atom
     kind: github
     category: repo
     priority: 4
-    daily_limit: 4
+    daily_limit: 3
 
   - name: Cursor Changelog
     url: https://www.cursor.com/changelog/rss.xml

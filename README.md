@@ -90,7 +90,7 @@ python scripts/check.py
 
 已有两个 workflow：
 
-- `Daily AI Radar`：每天北京时间 9:00 运行，生成 `notes/daily/YYYY-MM-DD.md`
+- `Daily AI Radar`：每天北京时间 9:17 左右运行，生成 `notes/daily/YYYY-MM-DD.md`
 - `Weekly AI Radar`：每周一北京时间 9:10 运行，生成 `notes/weekly/YYYY-WW.md`
 
 Secrets：
@@ -120,6 +120,7 @@ Actions 会自动 commit：
 - 改成本和条数：编辑 `config.yaml`
 - 临时补链接：编辑 `inbox/links.md`
 - 立即运行：进入 `Actions`，手动触发 `Daily AI Radar`
+- 重建当天日报：手动触发 `Daily AI Radar` 时设置 `hours=72`、勾选 `ignore_cache`
 
 ## GitHub Pages
 
@@ -160,6 +161,10 @@ cache_keep_days: 14
 estimated_daily_tokens_per_llm_item: 1000
 estimated_weekly_summary_tokens: 3000
 theme_cluster_limit: 3
+min_daily_items: 8
+fallback_lookback_hours: 72
+backfill_limit: 12
+release_noise_max_importance: 2
 personal_topic_weights:
   agent: 3
   coding: 3
@@ -182,6 +187,10 @@ personal_topic_weights:
 - `estimated_daily_tokens_per_llm_item`：运行摘要里估算日报 LLM token 用量
 - `estimated_weekly_summary_tokens`：运行摘要里估算周报总结 token 用量
 - `theme_cluster_limit`：日报顶部“今天主要发生的几件事”最多输出多少个主题
+- `min_daily_items`：低于该条数时，日报标记内容偏少并触发补偿逻辑
+- `fallback_lookback_hours`：新内容不足时自动扩展到多少小时回看
+- `backfill_limit`：重复运行或新内容偏少时，最多从近期缓存补入多少条
+- `release_noise_max_importance`：纯补丁、canary、依赖 bump 这类维护性 release 的最高重要性
 - `personal_topic_weights`：个人偏好主题权重，默认更关注 Agent、Coding、RAG、Eval、Reasoning，影响预筛选、LLM 调用顺序和主列表排序
 
 模型策略：
@@ -251,12 +260,14 @@ sources:
 日报按以下分组输出：
 
 - `今天主要发生的 3 件事`：按主题聚类给出当天核心变化，不只是逐条 RSS 摘要
+- `内容健康`：说明候选少、回看补充、源抓取异常或缓存补入等情况
 - `来源分层`：统计 Tier 1 / Tier 2 / Tier 3 的内容占比
 - `今日必看`：高重要性、高可信度，最多 5 条
 - `值得跟进`：中高重要性候选，最多 10 条
 - `重要论文`
 - `重要 Repo`
 - `产品更新`
+- `维护性更新`：集中放置低价值 GitHub release、canary、依赖更新
 - `低优先级链接`：只保留紧凑标题、链接和“不值得进主列表”的原因
 
 源分层规则：

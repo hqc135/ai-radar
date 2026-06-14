@@ -40,6 +40,10 @@ class RadarConfig(BaseModel):
     estimated_daily_tokens_per_llm_item: int = 1000
     estimated_weekly_summary_tokens: int = 3000
     theme_cluster_limit: int = 3
+    min_daily_items: int = 8
+    fallback_lookback_hours: int = 72
+    backfill_limit: int = 12
+    release_noise_max_importance: int = 2
     personal_topic_weights: dict[str, int] = Field(
         default_factory=lambda: {
             "agent": 3,
@@ -122,6 +126,7 @@ class CandidateItem(BaseModel):
     manual_tags: list[str] = Field(default_factory=list)
     manual_source: str | None = None
     force_high: bool = False
+    backfilled_from_cache: bool = False
     heuristic_score: int = 1
     preference_score: int = 0
     source_tier: int = 3
@@ -172,6 +177,12 @@ class RunStats(BaseModel):
     llm_succeeded: int = 0
     llm_failed: int = 0
     fallback_items: int = 0
+    lookback_hours: int = 24
+    fallback_lookback_used: bool = False
+    backfill_items: int = 0
+    output_items: int = 0
+    content_health: str = "ok"
+    health_reasons: list[str] = Field(default_factory=list)
     output_path: str = ""
     archive_path: str = ""
 
@@ -308,6 +319,60 @@ def topic_preference_score(title: str, summary: str, topic_weights: dict[str, in
     return min(score, 6)
 
 
+def is_release_noise(item: CandidateItem) -> bool:
+    if item.source_kind.lower() != "github":
+        return False
+    title = item.title.lower()
+    raw = item.raw_summary.lower()
+    text = f"{title}\n{raw}"
+    if "patch changes" in raw and (
+        "updated dependencies" in raw
+        or "canary" in title
+        or re.search(r"(?:<li>|\n)\s*@?[a-z0-9_.-]+(?:/[a-z0-9_.-]+)?@\d", raw)
+    ):
+        return True
+    noise_terms = (
+        "patch changes",
+        "updated dependencies",
+        "dependency",
+        "dependencies",
+        "bump ",
+        "chore:",
+        "docs:",
+        "test:",
+        "canary",
+    )
+    has_noise = any(term in text for term in noise_terms)
+    has_signal = any(
+        term in text
+        for term in (
+            "breaking",
+            "security",
+            "vulnerability",
+            "rag",
+            "retrieval",
+            "reasoning",
+            "sandbox",
+            "codex",
+            "claude code",
+        )
+    )
+    return has_noise and not has_signal
+
+
+def apply_release_noise_rules(item: CandidateItem, analysis: ItemAnalysis, radar_config: RadarConfig) -> ItemAnalysis:
+    if not is_release_noise(item):
+        return analysis
+    max_importance = max(1, min(radar_config.release_noise_max_importance, 5))
+    if analysis.importance > max_importance:
+        analysis.importance = max_importance
+    if "常规版本/依赖更新降噪" not in analysis.reason:
+        analysis.reason = f"{analysis.reason}；常规版本/依赖更新降噪。"
+    if analysis.action.lower() not in {"ignore", "info"}:
+        analysis.action = "info"
+    return analysis
+
+
 def heuristic_score(
     title: str,
     summary: str,
@@ -407,6 +472,7 @@ def fetch_recent_items(
 ) -> list[CandidateItem]:
     items: list[CandidateItem] = []
     seen_in_run: set[str] = set()
+    latest_allowed = datetime.now(timezone.utc) + timedelta(hours=6)
 
     for source in config.sources:
         if not source.enabled:
@@ -436,6 +502,8 @@ def fetch_recent_items(
             published_at = parse_entry_date(entry)
             if not link or not title or published_at is None or published_at < since:
                 continue
+            if published_at > latest_allowed:
+                continue
 
             url = normalize_url(link)
             if url in seen_in_run:
@@ -463,6 +531,8 @@ def fetch_recent_items(
                 radar_config.high_signal_terms,
             )
             item.preference_score = topic_preference_score(title, raw_summary, radar_config.personal_topic_weights)
+            if is_release_noise(item):
+                item.heuristic_score = min(item.heuristic_score, radar_config.low_priority_llm_min_score)
             if is_relevant(item, radar_config.keywords):
                 items.append(item)
 
@@ -753,7 +823,14 @@ def build_theme_clusters(items: list[AnalyzedItem], limit: int) -> list[dict[str
     return sorted(clusters, key=lambda cluster: cluster["score"], reverse=True)[:limit]
 
 
-def write_daily_note(path: Path, date: datetime, items: list[AnalyzedItem], dry_run: bool, radar_config: RadarConfig) -> None:
+def write_daily_note(
+    path: Path,
+    date: datetime,
+    items: list[AnalyzedItem],
+    dry_run: bool,
+    radar_config: RadarConfig,
+    stats: RunStats | None = None,
+) -> None:
     date_str = date.astimezone(BEIJING_TZ).strftime("%Y-%m-%d")
     sections = build_daily_sections(items, radar_config)
     clusters = build_theme_clusters(items, radar_config.theme_cluster_limit)
@@ -767,9 +844,14 @@ def write_daily_note(path: Path, date: datetime, items: list[AnalyzedItem], dry_
         f"已合并重复来源：{merged_count}",
         f"今日必看：{len(sections['今日必看'])}",
         f"值得跟进：{len(sections['值得跟进'])}",
+        f"内容健康：{stats.content_health if stats else 'unknown'}",
         f"dry_run：{dry_run}",
         "",
     ]
+    if stats and stats.health_reasons:
+        lines.extend(["## 内容健康", ""])
+        lines.extend(f"- {reason}" for reason in stats.health_reasons)
+        lines.append("")
 
     if not items:
         lines.append("过去 24 小时没有抓取到新的相关内容。")
@@ -797,7 +879,7 @@ def write_daily_note(path: Path, date: datetime, items: list[AnalyzedItem], dry_
                 "",
             ]
         )
-        for section_name in ("今日必看", "值得跟进", "重要论文", "重要 Repo", "产品更新"):
+        for section_name in ("今日必看", "值得跟进", "重要论文", "重要 Repo", "产品更新", "维护性更新"):
             section_items = sections[section_name]
             lines.append(f"## {section_name}")
             lines.append("")
@@ -830,6 +912,7 @@ def build_daily_sections(items: list[AnalyzedItem], radar_config: RadarConfig) -
         "重要论文": [],
         "重要 Repo": [],
         "产品更新": [],
+        "维护性更新": [],
         "低优先级链接": [],
     }
     used: set[str] = set()
@@ -858,9 +941,22 @@ def build_daily_sections(items: list[AnalyzedItem], radar_config: RadarConfig) -
 
     take("今日必看", lambda item: item.analysis.importance >= 4 and item.analysis.confidence >= 4, radar_config.must_read_limit)
     take("值得跟进", lambda item: item.analysis.importance >= 3, radar_config.follow_up_limit)
-    take("重要论文", lambda item: item.category == "paper" or item.source_kind == "arxiv", radar_config.category_section_limit)
-    take("重要 Repo", lambda item: item.category == "repo" or item.source_kind == "github", radar_config.category_section_limit)
-    take("产品更新", lambda item: item.category == "product", radar_config.category_section_limit)
+    take(
+        "重要论文",
+        lambda item: item.analysis.importance >= 3 and (item.category == "paper" or item.source_kind == "arxiv"),
+        radar_config.category_section_limit,
+    )
+    take(
+        "重要 Repo",
+        lambda item: item.analysis.importance >= 3 and (item.category == "repo" or item.source_kind == "github"),
+        radar_config.category_section_limit,
+    )
+    take("产品更新", lambda item: item.analysis.importance >= 3 and item.category == "product", radar_config.category_section_limit)
+    take(
+        "维护性更新",
+        lambda item: item.analysis.importance <= 2 and (item.category == "repo" or item.source_kind == "github"),
+        radar_config.category_section_limit,
+    )
 
     sections["低优先级链接"] = [item for item in ranked if item.url not in used]
     return sections
@@ -952,6 +1048,8 @@ def write_run_summary(path: Path, stats: RunStats, radar_config: RadarConfig, dr
         f"candidates={stats.candidates_total} new={stats.candidates_new} selected={stats.candidates_selected} "
         f"llm_planned={stats.llm_planned} llm_ok={stats.llm_succeeded} llm_failed={stats.llm_failed} "
         f"fallback={stats.fallback_items} estimated_tokens={summary['estimated_llm_tokens']} "
+        f"output_items={stats.output_items} content_health={stats.content_health} "
+        f"lookback_hours={stats.lookback_hours} backfill={stats.backfill_items} "
         f"output={stats.output_path}",
     )
     if dry_run:
@@ -1206,12 +1304,71 @@ def prune_cache(cache: dict[str, Any], cutoff: datetime) -> None:
             del seen_urls[url]
 
 
+def select_candidate_items(
+    candidates_by_url: dict[str, CandidateItem],
+    cache: dict[str, Any],
+    sources: SourcesConfig,
+    radar_config: RadarConfig,
+    ignore_cache: bool,
+) -> tuple[list[CandidateItem], int]:
+    if ignore_cache:
+        items = list(candidates_by_url.values())
+    else:
+        items = [item for item in candidates_by_url.values() if item.url not in cache["seen_urls"]]
+    before_prefilter = len(items)
+    selected = prefilter_candidates(items, sources, radar_config)
+    return sorted(selected, key=candidate_rank_key, reverse=True), before_prefilter
+
+
+def backfill_from_cache(
+    candidates_by_url: dict[str, CandidateItem],
+    cache: dict[str, Any],
+    selected: list[CandidateItem],
+    sources: SourcesConfig,
+    radar_config: RadarConfig,
+) -> list[CandidateItem]:
+    selected_urls = {item.url for item in selected}
+    cached = [
+        item
+        for item in candidates_by_url.values()
+        if item.url in cache["seen_urls"] and item.url not in selected_urls
+    ]
+    backfill = prefilter_candidates(cached, sources, radar_config)
+    needed = max(0, radar_config.min_daily_items - len(selected))
+    limit = min(radar_config.backfill_limit, needed)
+    for item in backfill[:limit]:
+        item.backfilled_from_cache = True
+    return selected + backfill[:limit]
+
+
+def update_content_health(stats: RunStats, items: list[AnalyzedItem], radar_config: RadarConfig) -> None:
+    stats.output_items = len(items)
+    reasons: list[str] = []
+    if len(items) < radar_config.min_daily_items:
+        stats.content_health = "low"
+        reasons.append(f"主列表条目数 {len(items)} 低于阈值 {radar_config.min_daily_items}。")
+    else:
+        stats.content_health = "ok"
+    if stats.fallback_lookback_used:
+        reasons.append(f"新内容偏少，已自动把回看窗口扩展到 {stats.lookback_hours} 小时。")
+    if stats.backfill_items:
+        reasons.append(f"从近期缓存补入 {stats.backfill_items} 条，避免重复运行后日报变空。")
+    if stats.rss_items < radar_config.min_daily_items:
+        reasons.append(f"RSS 相关候选只有 {stats.rss_items} 条，可能是信息源当日更新少。")
+    if stats.source_warnings or stats.sources_failed:
+        reasons.append(f"信息源抓取异常：失败 {stats.sources_failed} 个，警告 {stats.source_warnings} 个。")
+    if not reasons:
+        reasons.append("内容量正常；筛选、去重和来源抓取未发现明显异常。")
+    stats.health_reasons = reasons
+
+
 def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
     load_dotenv()
     now = datetime.now(timezone.utc)
     since = now - timedelta(hours=args.hours)
     note_date = now.astimezone(BEIJING_TZ)
     stats = RunStats()
+    stats.lookback_hours = args.hours
 
     sources = load_sources(args.sources)
     cache = load_cache(args.cache)
@@ -1221,19 +1378,40 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
     manual_items, processed_manual_lines = read_manual_inbox(args.inbox, now, radar_config)
     stats.manual_items = len(manual_items)
     candidates_by_url = {item.url: item for item in rss_items + manual_items}
-    if args.ignore_cache:
-        new_items = list(candidates_by_url.values())
-    else:
-        new_items = [item for item in candidates_by_url.values() if item.url not in cache["seen_urls"]]
-    before_prefilter = len(new_items)
-    new_items = prefilter_candidates(new_items, sources, radar_config)
-    new_items = sorted(new_items, key=candidate_rank_key, reverse=True)
+    new_items, before_prefilter = select_candidate_items(
+        candidates_by_url,
+        cache,
+        sources,
+        radar_config,
+        args.ignore_cache,
+    )
+    if len(new_items) < radar_config.min_daily_items and radar_config.fallback_lookback_hours > args.hours:
+        fallback_since = now - timedelta(hours=radar_config.fallback_lookback_hours)
+        fallback_rss_items = fetch_recent_items(sources, fallback_since, radar_config, None)
+        candidates_by_url = {item.url: item for item in fallback_rss_items + manual_items}
+        new_items, before_prefilter = select_candidate_items(
+            candidates_by_url,
+            cache,
+            sources,
+            radar_config,
+            args.ignore_cache,
+        )
+        stats.fallback_lookback_used = True
+        stats.lookback_hours = radar_config.fallback_lookback_hours
+        stats.rss_items = len(fallback_rss_items)
+
+    if len(new_items) < radar_config.min_daily_items and not args.ignore_cache:
+        before_backfill = len(new_items)
+        new_items = backfill_from_cache(candidates_by_url, cache, new_items, sources, radar_config)
+        stats.backfill_items = len(new_items) - before_backfill
+
     stats.candidates_total = len(candidates_by_url)
     stats.candidates_new = before_prefilter
     stats.candidates_selected = len(new_items)
     log(
         "info",
-        f"candidates total={len(candidates_by_url)} new={before_prefilter} selected={len(new_items)}",
+        f"candidates total={len(candidates_by_url)} new={before_prefilter} selected={len(new_items)} "
+        f"lookback_hours={stats.lookback_hours} backfill={stats.backfill_items}",
     )
 
     llm_items = set(item.url for item in select_llm_items(new_items, radar_config))
@@ -1263,6 +1441,9 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
         else:
             analysis = fallback_analysis(item)
             stats.fallback_items += 1
+        analysis = apply_release_noise_rules(item, analysis, radar_config)
+        if item.backfilled_from_cache:
+            analysis.reason = f"{analysis.reason}；今日新内容偏少，从近期缓存中补入供回看。"
         analyzed.append(AnalyzedItem(**item.model_dump(), analysis=analysis))
         cache["seen_urls"][item.url] = now.isoformat()
 
@@ -1286,13 +1467,14 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
                 item.analysis.reason = f"{item.analysis.reason}；因每日高优先级上限降级。"
     analyzed = sorted(analyzed, key=analyzed_rank_key, reverse=True)
     analyzed = analyzed[: radar_config.max_daily_items]
+    update_content_health(stats, analyzed, radar_config)
 
     stats.output_path = str(output_path)
     stats.archive_path = str(archive_path)
     if not analyzed and output_path.exists():
         log("info", f"no new items; kept existing daily note path={output_path}")
     else:
-        write_daily_note(output_path, note_date, analyzed, args.dry_run, radar_config)
+        write_daily_note(output_path, note_date, analyzed, args.dry_run, radar_config, stats)
         write_daily_archive(archive_path, analyzed, args.dry_run)
 
     if not args.dry_run:
@@ -1313,7 +1495,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--weekly-output-dir", type=Path, default=Path("notes/weekly"))
     parser.add_argument("--archive-dir", type=Path, default=Path("data/items"))
     parser.add_argument("--run-summary-dir", type=Path, default=Path("data/run-summary"))
-    parser.add_argument("--hours", type=int, default=24)
+    parser.add_argument("--hours", type=int, default=36)
     parser.add_argument("--ignore-cache", action="store_true", help="Analyze candidates even if their URLs are already cached.")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--weekly", action="store_true", help="Generate weekly digest instead of daily note.")
