@@ -260,8 +260,7 @@ sources:
 日报按以下分组输出：
 
 - `今天主要发生的 3 件事`：按主题聚类给出当天核心变化，不只是逐条 RSS 摘要
-- `内容健康`：说明候选少、回看补充、源抓取异常或缓存补入等情况
-- `来源分层`：统计 Tier 1 / Tier 2 / Tier 3 的内容占比
+- `内容健康`：仅在候选少、回看补充、源抓取异常或缓存补入时显示
 - `今日必看`：高重要性、高可信度，最多 5 条
 - `值得跟进`：中高重要性候选，最多 10 条
 - `重要论文`
@@ -278,20 +277,20 @@ sources:
 
 同一事件如果来自多个源，日报会合并为一条代表内容，并在 `related_sources` 中保留其他来源链接。
 
-每条内容都会包含：
+日报正文保持简洁，每条主要包含：
 
 - `title`
 - `source`
-- `source_tier`
 - `url`
 - `summary_cn`
 - `tags`
 - `importance`
 - `confidence`
-- `preference_score`
 - `action`
 - `reason`
 - `related_sources`
+
+完整结构化字段会保存在 `data/items/YYYY-MM-DD.json`，用于调试、周报和后续分析。
 
 OpenAI API 失败时会降级输出原始摘要或标题摘要，避免整次运行失败。
 

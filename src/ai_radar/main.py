@@ -600,7 +600,7 @@ def fallback_analysis(item: CandidateItem) -> ItemAnalysis:
     confidence = min(source_base_confidence(item), source_confidence_cap(item))
     importance = 4 if item.force_high else min(item.heuristic_score, 3)
     summary = item.raw_summary.strip()
-    if not summary:
+    if not summary or summary.lower() in {"no content.", "no content"}:
         summary = f"{item.title}。该条目来自 {item.source}，建议打开原文确认细节。"
     summary = re.sub(r"<[^>]+>", "", summary)
     summary = summary[:150]
@@ -839,16 +839,15 @@ def write_daily_note(
     lines = [
         f"# AI Radar 日报 - {date_str}",
         "",
-        f"生成时间：{datetime.now(BEIJING_TZ).strftime('%Y-%m-%d %H:%M:%S')} 北京时间",
-        f"条目数：{len(items)}",
-        f"已合并重复来源：{merged_count}",
-        f"今日必看：{len(sections['今日必看'])}",
-        f"值得跟进：{len(sections['值得跟进'])}",
-        f"内容健康：{stats.content_health if stats else 'unknown'}",
-        f"dry_run：{dry_run}",
+        (
+            f"{datetime.now(BEIJING_TZ).strftime('%Y-%m-%d %H:%M')} 更新 | "
+            f"{len(items)} 条 | 必看 {len(sections['今日必看'])} | "
+            f"跟进 {len(sections['值得跟进'])} | 合并 {merged_count} 条重复来源"
+        ),
+        f"来源：Tier 1 {tier_counts[1]} / Tier 2 {tier_counts[2]} / Tier 3 {tier_counts[3]}",
         "",
     ]
-    if stats and stats.health_reasons:
+    if stats and stats.content_health != "ok":
         lines.extend(["## 内容健康", ""])
         lines.extend(f"- {reason}" for reason in stats.health_reasons)
         lines.append("")
@@ -864,37 +863,33 @@ def write_daily_note(
         )
         if clusters:
             for index, cluster in enumerate(clusters, start=1):
-                item_links = "；".join(f"[{item.title}]({item.url})" for item in cluster["items"])
-                lines.append(f"{index}. **{cluster['label']}**：{cluster['reason']}。代表条目：{item_links}")
+                item_links = "、".join(f"[{item.title}]({item.url})" for item in cluster["items"][:2])
+                lines.append(f"{index}. **{cluster['label']}**：{cluster['reason']}。{item_links}")
         else:
             lines.append("暂无足够内容形成主题聚类。")
-        lines.extend(
-            [
-                "",
-                "## 来源分层",
-                "",
-                f"- {source_tier_label(1)}：{tier_counts[1]} 条",
-                f"- {source_tier_label(2)}：{tier_counts[2]} 条",
-                f"- {source_tier_label(3)}：{tier_counts[3]} 条",
-                "",
-            ]
-        )
-        for section_name in ("今日必看", "值得跟进", "重要论文", "重要 Repo", "产品更新", "维护性更新"):
+        lines.append("")
+        for section_name in ("今日必看", "值得跟进", "重要论文", "重要 Repo", "产品更新"):
             section_items = sections[section_name]
+            if not section_items:
+                continue
             lines.append(f"## {section_name}")
             lines.append("")
-            if not section_items:
-                lines.append("暂无。")
-                lines.append("")
-                continue
             for index, item in enumerate(section_items, start=1):
                 lines.extend(format_daily_item(index, item))
 
+        maintenance = sections["维护性更新"]
+        if maintenance:
+            lines.append("## 维护性更新")
+            lines.append("")
+            for index, item in enumerate(maintenance, start=1):
+                lines.append(format_compact_item(index, item))
+            lines.append("")
+
         low_priority = sections["低优先级链接"]
         if low_priority:
-            lines.append("## 低优先级链接")
+            lines.append("## 其他略过")
             lines.append("")
-            for index, item in enumerate(low_priority, start=1):
+            for index, item in enumerate(low_priority[:10], start=1):
                 lines.append(format_compact_item(index, item))
             lines.append("")
 
@@ -965,38 +960,29 @@ def build_daily_sections(items: list[AnalyzedItem], radar_config: RadarConfig) -
 def format_daily_item(index: int, item: AnalyzedItem) -> list[str]:
     published = item.published_at.astimezone(BEIJING_TZ).strftime("%Y-%m-%d %H:%M")
     tags = "、".join(item.analysis.tags)
-    manual_source = item.manual_source or ""
     lines = [
-        f"### {index}. {item.title}",
+        f"### {index}. [{item.title}]({item.url})",
         "",
-        f"- title：{item.title}",
-        f"- source：{item.source}",
-        f"- source_tier：{source_tier_label(item.source_tier)}",
-        f"- url：{item.url}",
-        f"- published_at：{published} 北京时间",
-        f"- manual_input：{item.manual_input}",
-        f"- manual_source：{manual_source}",
-        f"- summary_cn：{item.analysis.summary_cn}",
-        f"- tags：{tags}",
-        f"- importance：{item.analysis.importance}/5",
-        f"- confidence：{item.analysis.confidence}/5",
-        f"- preference_score：{item.preference_score}",
-        f"- action：{item.analysis.action}",
-        f"- reason：{item.analysis.reason}",
+        f"{item.analysis.summary_cn}",
+        "",
+        f"- 来源：{item.source} | {published} | 重要性 {item.analysis.importance}/5 | 可信度 {item.analysis.confidence}/5",
+        f"- 标签：{tags}",
+        f"- 为什么看：{item.analysis.reason}",
+        f"- 建议动作：{item.analysis.action}",
     ]
     if item.related_items:
-        related = "；".join(f"[{related.title}]({related.url})（{related.source}，Tier {related.source_tier}）" for related in item.related_items)
-        lines.append(f"- related_sources：{related}")
+        related = "；".join(f"[{related.title}]({related.url})" for related in item.related_items[:3])
+        more = f" 等 {len(item.related_items)} 条" if len(item.related_items) > 3 else ""
+        lines.append(f"- 合并来源：{related}{more}")
     lines.append("")
     return lines
 
 
 def format_compact_item(index: int, item: AnalyzedItem) -> str:
-    tags = "、".join(item.analysis.tags[:3])
     reason = low_priority_reason(item)
     return (
         f"{index}. [{item.title}]({item.url}) - {item.source} | "
-        f"importance {item.analysis.importance}/5 | confidence {item.analysis.confidence}/5 | {tags} | 未进主列表：{reason}"
+        f"{item.analysis.importance}/5 | 略过原因：{reason}"
     )
 
 
