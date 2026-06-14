@@ -641,11 +641,24 @@ def event_signature(item: CandidateItem) -> str:
     path_parts = [part for part in urlparse(item.url).path.lower().split("/") if part]
     if "github.com" in host and len(path_parts) >= 2:
         repo = "/".join(path_parts[:2])
+        release_family = github_release_family(item.title)
+        if release_family:
+            return f"github:{repo}:{release_family}"
         title = normalize_event_text(item.title)
         if not title or title in {"v", "release"} or re.fullmatch(r"v?\d+", title):
             return f"github:{repo}:release-stream"
         return f"github:{repo}:{title}"
     return normalize_event_text(item.title)
+
+
+def github_release_family(title: str) -> str:
+    package_match = re.match(r"@?([a-z0-9_.-]+/[a-z0-9_.-]+)@v?\d", title, re.IGNORECASE)
+    if package_match:
+        return f"package:{package_match.group(1).lower()}"
+    package_match = re.match(r"([a-z0-9_.-]+)==v?\d", title, re.IGNORECASE)
+    if package_match:
+        return f"package:{package_match.group(1).lower()}"
+    return ""
 
 
 def normalize_event_text(text: str) -> str:
@@ -954,6 +967,17 @@ def load_archive_items(path: Path) -> list[AnalyzedItem]:
     return [AnalyzedItem.model_validate(item) for item in data]
 
 
+def merge_with_existing_daily_archive(path: Path, new_items: list[AnalyzedItem]) -> list[AnalyzedItem]:
+    if not path.exists():
+        return new_items
+    combined: dict[str, AnalyzedItem] = {}
+    for item in load_archive_items(path):
+        combined[item.url] = item
+    for item in new_items:
+        combined[item.url] = item
+    return sorted(combined.values(), key=analyzed_rank_key, reverse=True)
+
+
 def weekly_key(item: AnalyzedItem) -> str:
     tags = "-".join(sorted(tag.lower() for tag in item.analysis.tags[:2]))
     words = re.sub(r"[^a-zA-Z0-9\u4e00-\u9fff ]", " ", item.title.lower()).split()
@@ -1197,7 +1221,10 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
     manual_items, processed_manual_lines = read_manual_inbox(args.inbox, now, radar_config)
     stats.manual_items = len(manual_items)
     candidates_by_url = {item.url: item for item in rss_items + manual_items}
-    new_items = [item for item in candidates_by_url.values() if item.url not in cache["seen_urls"]]
+    if args.ignore_cache:
+        new_items = list(candidates_by_url.values())
+    else:
+        new_items = [item for item in candidates_by_url.values() if item.url not in cache["seen_urls"]]
     before_prefilter = len(new_items)
     new_items = prefilter_candidates(new_items, sources, radar_config)
     new_items = sorted(new_items, key=candidate_rank_key, reverse=True)
@@ -1244,6 +1271,11 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
         key=analyzed_rank_key,
         reverse=True,
     )
+    output_path = args.output_dir / f"{note_date.strftime('%Y-%m-%d')}.md"
+    archive_path = args.archive_dir / f"{note_date.strftime('%Y-%m-%d')}.json"
+    summary_path = args.run_summary_dir / f"{note_date.strftime('%Y-%m-%d')}.json"
+    if analyzed:
+        analyzed = merge_with_existing_daily_archive(archive_path, analyzed)
     analyzed = merge_duplicate_events(analyzed)
     high_count = 0
     for item in analyzed:
@@ -1255,9 +1287,6 @@ def run_daily(args: argparse.Namespace, radar_config: RadarConfig) -> None:
     analyzed = sorted(analyzed, key=analyzed_rank_key, reverse=True)
     analyzed = analyzed[: radar_config.max_daily_items]
 
-    output_path = args.output_dir / f"{note_date.strftime('%Y-%m-%d')}.md"
-    archive_path = args.archive_dir / f"{note_date.strftime('%Y-%m-%d')}.json"
-    summary_path = args.run_summary_dir / f"{note_date.strftime('%Y-%m-%d')}.json"
     stats.output_path = str(output_path)
     stats.archive_path = str(archive_path)
     if not analyzed and output_path.exists():
@@ -1285,6 +1314,7 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--archive-dir", type=Path, default=Path("data/items"))
     parser.add_argument("--run-summary-dir", type=Path, default=Path("data/run-summary"))
     parser.add_argument("--hours", type=int, default=24)
+    parser.add_argument("--ignore-cache", action="store_true", help="Analyze candidates even if their URLs are already cached.")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--weekly", action="store_true", help="Generate weekly digest instead of daily note.")
     return parser
