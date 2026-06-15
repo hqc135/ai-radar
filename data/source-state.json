@@ -1,0 +1,572 @@
+{
+  "last_quality": {
+    "content_health": "ok",
+    "date": "2026-06-15",
+    "needs_review": false,
+    "reasons": [
+      "信息源抓取异常：失败 1 个，警告 0 个。"
+    ],
+    "score": 99
+  },
+  "sources": {
+    "Ahead of AI": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Anthropic Claude Code Releases": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Anthropic News": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Anthropic Python SDK Releases": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Cursor Changelog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "GitHub Trending Python via RSSHub": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "GitHub Trending TypeScript via RSSHub": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Google AI Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Google Cloud AI and Machine Learning Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Google DeepMind Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Google Research Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Hugging Face Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "LangChain Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "LangChain Changelog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "LangChain Releases": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Latent Space": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "LlamaIndex Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "LlamaIndex Releases": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Microsoft Research": {
+      "effective_items_7d": 0,
+      "failures_7d": 1,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 1,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "OpenAI Agents Python Releases": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "OpenAI News": {
+      "effective_items_7d": 1,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 1
+    },
+    "OpenAI Node SDK Releases": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "OpenAI Python SDK Releases": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Simon Willison AI": {
+      "effective_items_7d": 1,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 1
+    },
+    "The Gradient": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Vercel AI SDK Releases": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Vercel Changelog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "Windsurf Changelog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 0
+    },
+    "arXiv cs.AI": {
+      "effective_items_7d": 5,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 5,
+          "failed": 0,
+          "must_read_items": 4,
+          "noise_items": 0,
+          "output_items": 5,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 5
+    },
+    "arXiv cs.CL": {
+      "effective_items_7d": 5,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 5,
+          "failed": 0,
+          "must_read_items": 3,
+          "noise_items": 0,
+          "output_items": 5,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 5
+    },
+    "arXiv cs.LG": {
+      "effective_items_7d": 2,
+      "failures_7d": 0,
+      "history": [
+        {
+          "date": "2026-06-15",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 2
+    }
+  },
+  "version": 1
+}
