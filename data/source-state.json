@@ -1,7 +1,7 @@
 {
   "last_quality": {
     "content_health": "ok",
-    "date": "2026-06-19",
+    "date": "2026-06-20",
     "needs_review": false,
     "reasons": [
       "内容量正常；质量分 100/100，筛选、去重和来源抓取未发现明显异常。"
@@ -51,6 +51,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -111,6 +120,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -159,6 +177,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -219,6 +246,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -273,6 +309,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -321,6 +366,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -381,6 +435,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -429,6 +492,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -489,6 +561,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -537,6 +618,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -597,6 +687,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -604,6 +703,7 @@
       "output_items_7d": 1
     },
     "Hugging Face Blog": {
+      "current_adjusted_daily_limit": 6,
       "effective_items_7d": 6,
       "failures_7d": 0,
       "history": [
@@ -650,6 +750,15 @@
           "must_read_items": 1,
           "noise_items": 0,
           "output_items": 2,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
           "warning": 0
         }
       ],
@@ -706,6 +815,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -754,6 +872,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -814,6 +941,15 @@
           "noise_items": 1,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 1,
@@ -821,6 +957,7 @@
       "output_items_7d": 2
     },
     "Latent Space": {
+      "current_adjusted_daily_limit": 5,
       "effective_items_7d": 6,
       "failures_7d": 0,
       "history": [
@@ -867,6 +1004,15 @@
           "must_read_items": 0,
           "noise_items": 0,
           "output_items": 2,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
           "warning": 0
         }
       ],
@@ -916,6 +1062,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -976,6 +1131,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1024,6 +1188,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1084,6 +1257,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1091,6 +1273,7 @@
       "output_items_7d": 1
     },
     "OpenAI News": {
+      "current_adjusted_daily_limit": 9,
       "effective_items_7d": 7,
       "failures_7d": 0,
       "history": [
@@ -1137,6 +1320,15 @@
           "must_read_items": 1,
           "noise_items": 0,
           "output_items": 3,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
           "warning": 0
         }
       ],
@@ -1186,6 +1378,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1246,6 +1447,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1254,7 +1464,7 @@
     },
     "Simon Willison AI": {
       "current_adjusted_daily_limit": 5,
-      "effective_items_7d": 9,
+      "effective_items_7d": 10,
       "failures_7d": 0,
       "history": [
         {
@@ -1301,11 +1511,20 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 9
+      "output_items_7d": 10
     },
     "The Gradient": {
       "effective_items_7d": 0,
@@ -1355,6 +1574,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1363,7 +1591,7 @@
     },
     "Vercel AI SDK Releases": {
       "current_adjusted_daily_limit": 2,
-      "effective_items_7d": 0,
+      "effective_items_7d": 2,
       "failures_7d": 0,
       "history": [
         {
@@ -1410,11 +1638,20 @@
           "noise_items": 1,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 2,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
         }
       ],
       "noise_items_7d": 8,
-      "noise_ratio_7d": 1.0,
-      "output_items_7d": 8
+      "noise_ratio_7d": 0.8,
+      "output_items_7d": 10
     },
     "Vercel Changelog": {
       "current_adjusted_daily_limit": 6,
@@ -1459,6 +1696,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1519,6 +1765,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1527,7 +1782,7 @@
     },
     "arXiv cs.AI": {
       "current_adjusted_daily_limit": 6,
-      "effective_items_7d": 29,
+      "effective_items_7d": 35,
       "failures_7d": 0,
       "history": [
         {
@@ -1574,11 +1829,20 @@
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 6,
+          "failed": 0,
+          "must_read_items": 5,
+          "noise_items": 0,
+          "output_items": 6,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 29
+      "output_items_7d": 35
     },
     "arXiv cs.CL": {
       "current_adjusted_daily_limit": 6,
@@ -1629,6 +1893,15 @@
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
+        },
+        {
+          "date": "2026-06-20",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1677,6 +1950,15 @@
         },
         {
           "date": "2026-06-19",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-06-20",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
