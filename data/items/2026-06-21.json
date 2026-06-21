@@ -1,0 +1,241 @@
+[
+  {
+    "analysis": {
+      "action": "关注并考虑集成 sandbox 功能以增强 Agent 工具执行的安全性。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub 发布，可信度最高；Agent 工具执行沙箱是实用更新，且 Agent 是用户偏好领域。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/tui 包发布 v1.0.0-beta.18，主要更新包括：允许 runAgentTUI 接受任意 AI SDK Agent 泛型组合；新增 sandbox 选项，用于在 agent stream 调用中执行工具时转发沙箱配置，提升 Agent 工具执行的灵活性和安全性。",
+      "tags": [
+        "Agent",
+        "TUI",
+        "Vercel AI SDK",
+        "tool execution",
+        "sandbox"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-19T13:27:06Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/e150ad7a64dabd64bb6bf69455753d49e6354314\"><tt>e150ad7</tt></a>: Allow <code>runAgentTUI</code> to accept any AI SDK <code>Agent</code> generic combination.</li>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/b06e09298f2055a43cf77f99bc06caedbf2d311f\"><tt>b06e092</tt></a>: Add a <code>sandbox</code> option to <code>runAgentTUI</code> and forward it to every agent stream call for tool execution.</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/tui@1.0.0-beta.18",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Ftui%401.0.0-beta.18"
+  },
+  {
+    "analysis": {
+      "action": "update",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub 发布，高可信度；新增预审批护栏和工具输出自定义数据功能对 Agent 开发有实用价值，且用户偏好 Agent 提高重要性。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI Agents Python v0.17.6 发布，新增预审批工具输入护栏和 SDK 专用工具输出自定义数据，同时修复了转交工具名称空格警告和 JSON 合约强制问题，提升 Agent 安全性与开发体验。",
+      "tags": [
+        "OpenAI",
+        "Agent",
+        "Python",
+        "Release",
+        "Guardrails",
+        "Tool Custom Data"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-19T06:03:31Z",
+    "raw_summary": "<h2>What's Changed</h2>\n<ul>\n<li>feat: add pre-approval tool input guardrails by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3487\">#3487</a></li>\n<li>feat: add SDK-only custom data for tool outputs by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3486\">#3486</a>\n<ul>\n<li>fix: enforce the documented strict JSON-compatible contract for <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3486\">#3486</a> by <a class=\"user-mention notranslate\" href=\"https://github.com/siddiksawani\">@siddiksawani</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3657\">#3657</a></li>\n</ul>\n</li>\n<li>fix: suppress handoff whitespace tool-name warnings by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3652\">#3652</a></li>\n</ul>\n<h3>Documentation &amp; Other Changes</h3>\n<ul>\n<li>docs: fix typo in sandbox guide by <a class=\"user-mention notranslate\" href=\"https://github.com/mshsheikh\">@mshsheikh</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3628\">#3628</a></li>\n<li>Release 0.17.6 by @github-actions[bot] in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3659\">#3659</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/siddiksawani\">@siddiksawani</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3657\">#3657</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a class=\"commit-link\" href=\"https://github.com/openai/openai-agents-python/compare/v0.17.5...v0.17.6\"><tt>v0.17.5...v0.17.6</tt></a></p>",
+    "related_items": [],
+    "source": "OpenAI Agents Python Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v0.17.6",
+    "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.17.6"
+  },
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "Anthropic 官方 GitHub Release，可信度最高；改进自动模式安全性对 Coding Agent 用户至关重要，修复多项重要 bug，用户偏好高。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic 发布 Claude Code v2.1.183，自动模式下阻止危险 git 命令和 terraform/pulumi/cdk destroy，新增弃用模型警告、attribution.sessionUrl 配置和 /config --help，修复子代理思考禁用错误、WebSearch 返回空结果、Windows Terminal 界面损坏、静默完成等问题。",
+      "tags": [
+        "Agent",
+        "Coding",
+        "Tool Use"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-19T01:20:50Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Improved auto mode safety: destructive git commands (<code>git reset --hard</code>, <code>git checkout -- .</code>, <code>git clean -fd</code>, <code>git stash drop</code>) are now blocked when you didn't ask to discard local work, <code>git commit --amend</code> is blocked when the commit wasn't made by the agent this session, and <code>terraform destroy</code>/<code>pulumi destroy</code>/<code>cdk destroy</code> are blocked unless you asked for the specific stack</li>\n<li>Added a warning when the requested model is deprecated or automatically updated to a newer model, shown on stderr in print mode (<code>-p</code>) and now also covering models set in agent frontmatter</li>\n<li>Added <code>attribution.sessionUrl</code> setting to omit the claude.ai session link from commits and PRs in web and Remote Control sessions</li>\n<li>Added <code>/config --help</code> to list all available shorthand keys for <code>/config key=value</code></li>\n<li>Changed <code>/config</code> toggle behavior: Enter and Space both change the selected setting, and Esc now saves and closes instead of reverting</li>\n<li>Removed the startup \"setup issues\" line under the logo — run <code>/doctor</code> to see configuration issues or use <code>--debug</code></li>\n<li>Fixed <code>thinking.disabled.display: Extra inputs are not permitted</code> 400 errors on subagent spawns and session-title generation for affected configurations</li>\n<li>Fixed WebSearch returning empty results in subagents</li>\n<li>Fixed the terminal cursor being stranded above the prompt after navigating history in vim mode with the native cursor enabled</li>\n<li>Fixed fullscreen TUI corruption (statusline mid-screen, duplicated spinner rows, merged text) in Windows Terminal under heavy nested-subagent load</li>\n<li>Fixed turns silently completing with no visible output when the model returned only a thinking block; Claude now re-prompts once</li>\n<li>Fixed user-level skills appearing multiple times in slash-command autocomplete when multiple plugins are enabled</li>\n<li>Fixed MCP servers requiring authentication exposing auth-stub tools to the model in headless/SDK mode</li>\n<li>Fixed tmux teammate panes failing to launch when the shell has slow rc-file initialization, and keystrokes typed during agent spawn leaking into the new tmux pane instead of the leader prompt</li>\n<li>Fixed background tasks started by a teammate being killed when the teammate finishes a turn</li>\n<li>Fixed scheduled task and webhook trigger deliveries being treated as keyboard input; they now classify as task notifications and can no longer approve a pending action or set the session title in auto mode</li>\n<li>Fixed focus mode showing \"Ran N PostToolUse hooks\" timing lines under each response</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 1,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.185",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.185"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.183",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.183"
+  },
+  {
+    "analysis": {
+      "action": "阅读原文，了解 GPT-5.5 Instant 在健康领域的具体改进和评估方法。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方博客，来源可信度高（tier1），内容涉及 GPT 模型推理能力提升，与 reasoning 偏好相关，但健康领域非用户核心偏好，故重要性中高。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI 发布 GPT-5.5 Instant，提升 ChatGPT 在健康与 wellness 领域的回答质量，通过更强推理、更好上下文理解、更清晰沟通和医生参与评估实现。",
+      "tags": [
+        "health",
+        "GPT-5.5",
+        "reasoning",
+        "ChatGPT",
+        "OpenAI",
+        "product update"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-18T11:00:00Z",
+    "raw_summary": "Learn how GPT-5.5 Instant improves ChatGPT’s health and wellness responses with stronger reasoning, better context, clearer communication, and physician-informed evaluations.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "Improving health intelligence in ChatGPT",
+    "url": "https://openai.com/index/improving-health-intelligence-in-chatgpt"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub 发布，可信度高；涉及 Agent 核心行为变更，重要性高；与 Agent、Coding 偏好相关。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/workflow@1.0.0-beta.101 版本发布，主要变更：WorkflowAgent 默认拒绝 prompt 或 messages 中的系统消息，与 generateText/streamText 行为一致。可通过设置 allowSystemInMessages: true 恢复旧行为。",
+      "tags": [
+        "Agent",
+        "AI SDK",
+        "Vercel",
+        "WorkflowAgent",
+        "系统消息"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-19T13:27:07Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/b402b958391e9065ea1ae251efed0350da33aad0\"><tt>b402b95</tt></a>: <code>WorkflowAgent</code> now rejects system messages inside <code>prompt</code> or <code>messages</code> by default, matching the behavior of <code>generateText</code>/<code>streamText</code>. Set <code>allowSystemInMessages: true</code> to opt in to the previous behavior.</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow@1.0.0-beta.101",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%401.0.0-beta.101"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "Vercel AI SDK 官方补丁发布，可信度高；但仅包含依赖更新，功能变化小，对 Agent/Coding 等偏好领域影响有限。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/azure@4.0.0-beta.77，更新依赖 @ai-sdk/openai@4.0.0-beta.75。这是补丁版本，主要同步上游变更，无新增功能。适合关注 Azure 集成的开发者。",
+      "tags": [
+        "Vercel AI SDK",
+        "Azure",
+        "补丁更新",
+        "依赖同步",
+        "AI SDK"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-19T17:11:29Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/1772a632438b85b9a648575151ba0f7b3da20eb0\"><tt>1772a63</tt></a>]\n<ul>\n<li>@ai-sdk/openai@4.0.0-beta.75</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/azure@4.0.0-beta.77",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fazure%404.0.0-beta.77"
+  },
+  {
+    "analysis": {
+      "action": "忽略",
+      "confidence": 4,
+      "importance": 1,
+      "reason": "内容无实质性进展，仅为社区推广，重要性低。",
+      "summary_cn": "Latent Space 发布 AI 新闻，提到今日 AI 领域相对平静，最后推广 AI 事件（AIE）。适合回顾，但无重大突破。",
+      "tags": [
+        "AI News",
+        "Latent Space",
+        "AIE",
+        "产品推广"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-20T08:06:05Z",
+    "raw_summary": "a quiet day lets us promo AIE one last time",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] not much happened today",
+    "url": "https://www.latent.space/p/ainews-not-much-happened-today-e7b"
+  }
+]
