@@ -1,0 +1,226 @@
+[
+  {
+    "analysis": {
+      "action": "追踪",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方来源，可信度高，涉及企业级AI在编码和通用场景的大规模落地，符合用户对Coding和Agent偏好。",
+      "summary_cn": "三星电子向全球员工部署ChatGPT Enterprise和Codex，成为OpenAI最大规模的企业级AI应用案例之一，涵盖编码助手和通用AI工具。",
+      "tags": [
+        "ChatGPT",
+        "Codex",
+        "企业部署",
+        "编码助手",
+        "三星"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-06-21T23:00:00Z",
+    "raw_summary": "Samsung Electronics deploys ChatGPT Enterprise and Codex to employees worldwide, marking one of OpenAI’s largest enterprise AI rollouts.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "Samsung Electronics brings ChatGPT and Codex to employees",
+    "url": "https://openai.com/index/samsung-electronics-chatgpt-codex-deployment"
+  },
+  {
+    "analysis": {
+      "action": "纳入关注列表，待MCP相关讨论进一步成熟后再深入评估。",
+      "confidence": 3,
+      "importance": 4,
+      "reason": "来自Simon Willison博客，属于中高可信来源；内容关于MCP的核心价值，但只是单一评论观点，需要更多验证。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Sean Lynch 指出 MCP 的核心价值在于将认证流程隔离出 agent 的上下文窗口，甚至完全脱离 agent 框架。他设想 MCP 的理想形态可能只是一个 API 认证网关，但这本身就是重大改进。",
+      "tags": [
+        "MCP",
+        "认证",
+        "Agent",
+        "API"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-19T22:45:49Z",
+    "raw_summary": "<blockquote cite=\"https://news.ycombinator.com/item?id=48592163#48593190\"><p>The real valuable capability MCP offers over skills/CLI is isolating the auth flow outside of the agent’s context window, and potentially out of the harness completely. [...]</p>\n<p>Maybe the idealized form of MCP is just an auth gateway for the API and nothing else. That’d still be a win.</p></blockquote>\n<p class=\"cite\">&mdash; <a href=\"https://news.ycombinator.com/item?id=48592163#48593190\">Sean Lynch</a>, comment on Hacker News</p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/model-context-protocol\">model-context-protocol</a>, <a href=\"https://simonwillison.net/tags/skills\">skills</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Quoting Sean Lynch",
+    "url": "https://simonwillison.net/2026/Jun/19/sean-lynch"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "仅为依赖版本号更新，无实质功能变更，且为 beta 版本，重要性低。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/workflow 包发布 1.0.0-beta.102 版本，更新为依赖 ai@7.0.0-beta.183，属于补丁变更。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "workflow",
+        "发布"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-22T06:09:19Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@7.0.0-beta.183</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow@1.0.0-beta.102",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%401.0.0-beta.102"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方发布，可信度高，但仅为补丁更新，重要性中等。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布了 @ai-sdk/vue@4.0.0-beta.183 版本，更新内容为依赖 ai@7.0.0-beta.183 的补丁变更。作为官方 GitHub 发布，可信度最高，对 Agent 和 Coding 开发者有参考价值，建议关注更新日志以了解具体修复。",
+      "tags": [
+        "Vercel AI SDK",
+        "@ai-sdk/vue",
+        "版本发布",
+        "补丁"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-22T06:09:18Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@7.0.0-beta.183</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/vue@4.0.0-beta.183",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fvue%404.0.0-beta.183"
+  },
+  {
+    "analysis": {
+      "action": "忽略",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "仅为小幅更新，修改提示文案和等待阈值，不涉及功能或性能重大变化，来自官方 GitHub 但优先级低。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Anthropic 发布 Claude Code v2.1.185，改进 API 流响应等待提示：将‘未收到 API 响应·重试中’改为‘等待 API 响应·将在…后重试’，并将触发静默等待时间从 10 秒延长至 20 秒。",
+      "tags": [
+        "Anthropic",
+        "Claude Code",
+        "Agent",
+        "可靠性改进",
+        "用户体验"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-20T20:59:19Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>The stream-stall hint now reads \"Waiting for API response · will retry in …\" instead of \"No response from API · Retrying in …\", and triggers after 20s of silence instead of 10s</li>\n</ul>",
+    "related_items": [],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.185",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.185"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 4,
+      "importance": 2,
+      "reason": "信息为商业促销，非技术进展；来源可信度高但时效性强，重要性较低，适合作为参考信息。",
+      "summary_cn": "一份订阅者专享优惠，提供 AI Engineer 门票减免 250 美元，截止日期为下周一。该信息来自 Latent Space 博客，属于产品推广性质，对关注 Agent、Coding 的用户有一定价值。",
+      "tags": [
+        "AI Engineer",
+        "优惠",
+        "Latent Space"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-21T15:01:23Z",
+    "raw_summary": "special offer for subscribers - $250 off AI Engineer tix til Monday",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[Exclusive] $250 off AI Engineer tix til Monday",
+    "url": "https://www.latent.space/p/exclusive-250-off-ai-engineer-tix"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 4,
+      "importance": 2,
+      "reason": "内容平淡，主要为产品推广，缺乏技术或研究价值，且与用户偏好的 Agent/Coding/RAG/Eval/Reasoning 无关。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Latent Space 的 AI 新闻简报指出当天行业平静，主要是在最后一次推广 AIE 产品。文章属于产品类博客，来源优先级 4，可信度较高，但重要性一般。",
+      "tags": [
+        "产品推广",
+        "新闻简报",
+        "Latent Space"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-20T08:06:05Z",
+    "raw_summary": "a quiet day lets us promo AIE one last time",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] not much happened today",
+    "url": "https://www.latent.space/p/ainews-not-much-happened-today-e7b"
+  }
+]
