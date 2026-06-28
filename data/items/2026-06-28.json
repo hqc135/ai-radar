@@ -1,0 +1,245 @@
+[
+  {
+    "analysis": {
+      "action": "观察",
+      "confidence": 3,
+      "importance": 5,
+      "reason": "信息来自博客且原始链接非官方，可信度受限于medium来源；但内容涉及前沿模型发布，重要性高；建议等待官方确认。",
+      "summary_cn": "OpenAI 分三层（Sol、Terra、Luna）发布 GPT-5.6，仅限受信任合作伙伴访问，同时开放给 Anthropic。同日发布表明竞争加剧，但细节有限，需谨慎对待。",
+      "tags": [
+        "OpenAI",
+        "GPT-5.6",
+        "分层发布",
+        "Anthropic",
+        "合作伙伴"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-27T05:23:22Z",
+    "raw_summary": "Oddly tiered releases to both OAI and ANT on the same day.",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] OpenAI GPT-5.6 Sol / Terra / Luna — restricted to trusted partners",
+    "url": "https://www.latent.space/p/ainews-openai-gpt-56-sol-terra-luna"
+  },
+  {
+    "analysis": {
+      "action": "阅读",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub 发布，可信度极高；涉及 Agent 核心功能改进与多项 BUG 修复，对用户偏好 Agent 和 Coding 的领域有实际价值。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic 发布了 Claude Code v2.1.195，新增环境变量禁用全屏模式下的鼠标点击；修复了带连字符的挂钩匹配器子串匹配问题、macOS 语音输入捕捉静音、无空格语言自动提交失效、外部插件安装确认等多项缺陷；改进了 Linux 语音模式错误区分、后台代理连接可靠性及远程会话启动体验。",
+      "tags": [
+        "Claude Code",
+        "Bug Fix",
+        "Voice",
+        "Plugin",
+        "Agent"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-26T21:29:42Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Added <code>CLAUDE_CODE_DISABLE_MOUSE_CLICKS</code> to disable mouse click/drag/hover in fullscreen mode while keeping wheel scroll</li>\n<li>Fixed hook matchers with hyphenated identifiers (e.g. <code>code-reviewer</code>, <code>mcp__brave-search</code>) accidentally substring-matching — they now exact-match. Use <code>mcp__brave-search__.*</code> to match all tools from a hyphenated MCP server.</li>\n<li>Fixed voice dictation on macOS capturing silence in long-running sessions after the default input device changes</li>\n<li>Fixed voice dictation auto-submit never firing for languages written without spaces (Japanese, Chinese, Thai)</li>\n<li>Fixed external plugins enabled only by project <code>.claude/settings.json</code> not requiring explicit install consent on every loader path</li>\n<li>Fixed <code>/plugin</code> Enable/Disable not working when a plugin's <code>plugin.json</code> <code>name</code> differs from its marketplace entry name</li>\n<li>Fixed background jobs disappearing from <code>claude agents</code> or losing data when written by a newer Claude Code version</li>\n<li>Fixed reopening a crashed background task showing a blank screen for up to 5 seconds instead of its restart</li>\n<li>Fixed background agent daemons running unreachable when the control socket fails to start, blocking restarts</li>\n<li>Improved voice mode on Linux: now distinguishes \"no microphone\" from \"SoX not installed\" when SoX is present but no audio capture device exists</li>\n<li>Improved <code>claude agents</code> completed list to fill available vertical space; on short terminals the header compacts so live sessions stay visible</li>\n<li>Improved Remote session startup with a provisioning checklist while the container starts</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.193",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.193"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.195",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.195"
+  },
+  {
+    "analysis": {
+      "action": "监测正式发布信息，评估编码性能影响，关注安全细节。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来自官方渠道（OpenAI News），类别为产品发布，涉及用户偏好的Coding领域，重要性高，可信度高。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI 预览下一代模型 GPT-5.6 Sol，在编码、科学和网络安全方面能力更强，并配备最先进的安全堆栈。",
+      "tags": [
+        "GPT-5.6 Sol",
+        "OpenAI",
+        "模型预览",
+        "能力提升",
+        "安全"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-26T10:00:00Z",
+    "raw_summary": "OpenAI previews GPT-5.6 Sol, a next-generation model with stronger capabilities in coding, science, and cybersecurity, paired with its most advanced safety stack.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "Previewing GPT-5.6 Sol: a next-generation model",
+    "url": "https://openai.com/index/previewing-gpt-5-6-sol"
+  },
+  {
+    "analysis": {
+      "action": "阅读并关注LangChain新功能，特别是Agent相关的Fleet On-Call Copilot和Deep Agents Rubrics，考虑在自己的项目中试用。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客发布，可信度高；内容涉及Agent、Coding、Eval等用户偏好领域，且有实际产品更新；重要性和优先级均较高。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "LangChain 6月新闻通讯，发布Fleet On-Call Copilot用于告警分类、计算机使用代理、语音追踪调试、实验状态跟踪。新增深度代理评估脚本、程序化子代理、LangSmith部署课程，并预告芝加哥、柏林、华盛顿、拉斯维加斯等地活动。",
+      "tags": [
+        "LangChain",
+        "Agent",
+        "LangSmith",
+        "Copilot",
+        "Debug",
+        "Evaluation"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-26T18:34:19Z",
+    "raw_summary": "New in LangSmith: a Fleet on-call copilot for alert triage, computer use for agents, voice trace debugging, and experiment status tracking. Plus Deep Agents Rubrics, programmatic subagents, a new LangSmith Deployment course, and upcoming events in Chicago, Berlin, DC, and Vegas.",
+    "related_items": [],
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "June 2026: LangChain Newsletter — Fleet On-Call Copilot, Deep Agents Rubrics, and More",
+    "url": "https://www.langchain.com/blog/june-2026-langchain-newsletter"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "来自知名 AI 研究者 Sebastian Raschka 的博客，内容涉及当前热门的本地编码代理方案，与用户偏好的 Coding 和 Agent 高度相关，且来源可信度较高。",
+      "summary_cn": "Sebastian Raschka 探讨使用开源权重模型（如 DeepSeek、Granite Code、Llama、Qwen 等）在本地编码助手中的实践，作为 Claude Code 和 Codex 订阅的替代方案，强调本地运行的隐私和成本优势，并介绍了架构与评估。",
+      "tags": [
+        "Local Coding Agents",
+        "Open-Weight Models",
+        "Claude Code",
+        "Codex",
+        "Sebastian Raschka",
+        "Coding",
+        "Privacy",
+        "Cost-Efficiency"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "paper",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-06-27T11:21:58Z",
+    "raw_summary": "Using Open-Weight Models in Local Coding Harnesses as an Alternative to Claude Code and Codex Subscriptions",
+    "related_items": [],
+    "source": "Ahead of AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Using Local Coding Agents",
+    "url": "https://magazine.sebastianraschka.com/p/using-local-coding-agents"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub 发布，来源可靠，涉及开发者工具更新，但仅为补丁级别变化，对日常工作影响有限。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/fireworks@2.0.62 版本新增了 serviceTier 提供商选项，允许开发者指定 Fireworks 聊天模型的服务层级。该更新属于 SDK 的补丁变更，增强了 Fireworks 提供商的功能灵活性。",
+      "tags": [
+        "Fireworks",
+        "Vercel AI SDK",
+        "serviceTier",
+        "更新",
+        "AI SDK"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-06-28T00:09:55Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/df00b88c6549c51b5c4476fd737caceff0cbc1e9\"><tt>df00b88</tt></a>: Add <code>serviceTier</code> provider option for Fireworks chat models.</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/fireworks@2.0.62",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Ffireworks%402.0.62"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "仅为补丁版本发布，无新功能或重大变化，对 Agent、Coding 等偏好领域影响极小。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布了 @ai-sdk/xai@4.0.2 补丁版本，主要更新了依赖包 @ai-sdk/provider-utils@5.0.1 和 @ai-sdk/openai-compatible@3.0.1，修复了可能的兼容性问题。",
+      "tags": [
+        "AI SDK",
+        "Vercel",
+        "版本更新",
+        "依赖"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-06-27T19:29:26Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/6a436e31d247d678ddaedfc6f61e73ac0595e4b4\"><tt>6a436e3</tt></a>]\n<ul>\n<li>@ai-sdk/provider-utils@5.0.1</li>\n<li>@ai-sdk/openai-compatible@3.0.1</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/xai@4.0.2",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%404.0.2"
+  }
+]
