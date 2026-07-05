@@ -1,0 +1,216 @@
+[
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方发布说明，修复多项后台 agent 实用问题，提升稳定性，与 Agent 偏好高度相关。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic 发布 Claude Code v2.1.200，主要变更包括：AskUserQuestion 对话框默认不再自动继续；权限模式默认改为手动；修复多项后台会话和后台代理的崩溃及稳定性问题；增强无障碍访问和插件加载兼容性；改进了 tmux 下的渲染同步与安装脚本内存不足提示。",
+      "tags": [
+        "Claude Code",
+        "Agent",
+        "Bug Fix",
+        "Accessibility",
+        "CLI"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-03T16:52:33Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Changed <code>AskUserQuestion</code> dialogs to no longer auto-continue by default; opt into an idle timeout via <code>/config</code></li>\n<li>Changed the \"default\" permission mode to \"Manual\" across the CLI, <code>--help</code>, VS Code, and JetBrains; <code>--permission-mode manual</code> and <code>\"defaultMode\": \"manual\"</code> are accepted alongside <code>default</code></li>\n<li>Fixed a crash at startup when <code>disabledMcpServers</code> or <code>enabledMcpServers</code> in <code>.claude.json</code> is set to a non-array value</li>\n<li>Fixed background sessions silently stopping mid-turn after sleep/wake or when reopening a stalled session</li>\n<li>Fixed background sessions re-running a turn cancelled with Esc after a stall respawn</li>\n<li>Fixed background agents never starting again after a crash left a stale <code>daemon.lock</code> whose PID the OS reused</li>\n<li>Fixed background-agent daemon handover so a reinstalled older build can no longer take over the daemon; build recency is now judged by the version's embedded build timestamp</li>\n<li>Fixed background-agent roster issues: transient corruption permanently disabling orphan cleanup, older binaries not preserving fields written by newer versions, and socket auth tokens being stripped during daemon restarts</li>\n<li>Fixed subagents cut off by a rate limit before producing any text output returning an empty result instead of failing cleanly</li>\n<li>Fixed control bytes from background-agent output reaching the terminal in the agent view</li>\n<li>Fixed <code>claude agents --plugin-dir &lt;dir&gt;</code> not showing the plugin's agents and skills in the agent view when the flag is placed after <code>agents</code></li>\n<li>Fixed project-scoped plugins not loading correctly from git worktrees of the same repository</li>\n<li>Fixed <code>/mcp</code> server list not tracking focus for screen readers and magnifiers</li>\n<li>Fixed voice dictation showing a misleading \"Voice connection failed\" message when a recording captures no audio</li>\n<li>Fixed rendering flicker under tmux 3.4+ by enabling synchronized terminal output</li>\n<li>Improved screen-reader output: decorative glyphs are now hidden, transcript symbols read as short labels, and nested tables read as <code>Header: value.</code> lines</li>\n<li>Improved the install script to explain when installation is killed by the system running out of memory</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 4,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.199",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.199"
+      },
+      {
+        "confidence": 5,
+        "importance": 4,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.198",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.198"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.200",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.200"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客，高可信度；涉及远程存储挂载和跨沙箱状态共享，对 Agent/Coding 场景有潜在价值，提升数据处理灵活性。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Vercel Sandbox 支持 FUSE 文件系统，可挂载 S3 等远程存储为本地路径，实现大型数据集流式传输、跨沙箱状态共享及远程源 POSIX 操作，无需提前拷贝数据。",
+      "tags": [
+        "Vercel",
+        "Sandbox",
+        "FUSE",
+        "远程存储"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-03T01:00:00Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/sandbox\">Vercel Sandbox</a> now supports FUSE, letting you mount remote storage and custom filesystems inside a running Sandbox. Use it to attach S3 buckets, network filesystems, or any other FUSE-compatible driver as a regular path.</p><div></div><p>This makes it possible to stream large datasets directly from object storage, share state across Sandboxes through a common filesystem, or run tools that expect POSIX paths against remote sources without copying data into the Sandbox first.</p><p>Learn more about <a href=\"https://vercel.com/docs/sandbox/mount-remote-storage\">remote storage mounts</a> in the documentation.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/vercel-sandbox-now-supports-fuse-based-filesystems\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Vercel Sandbox now supports FUSE-based filesystems",
+    "url": "https://vercel.com/changelog/vercel-sandbox-now-supports-fuse-based-filesystems"
+  },
+  {
+    "analysis": {
+      "action": "warn",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "来自知名开发者博客，原始链接为 Armin Ronacher 的博客，来源可靠性中等。内容涉及 Agent 工具调用中的关键问题，对 Coding 工具开发者有警示意义，符合用户偏好。",
+      "summary_cn": "Armin Ronacher 在开发 Pi 时发现，较新的 Claude 模型（如 Opus 4.8、Sonnet 5）在调用自定义编辑工具时，会凭空生成未定义的字段，导致工具调用被拒绝。他认为这是 Anthropic 针对自家编辑工具进行 RL 训练带来的副作用。该现象提醒第三方编码工具需要考虑适配多种编辑工具以获得最佳兼容性。",
+      "tags": [
+        "Agent",
+        "Coding",
+        "工具调用",
+        "Anthropic",
+        "Claude",
+        "模型退化"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-04T22:53:52Z",
+    "raw_summary": "<p><strong><a href=\"https://lucumr.pocoo.org/2026/7/4/better-models-worse-tools/\">Better Models: Worse Tools</a></strong></p>\nArmin reports on a weird problem he ran into while hacking on Pi:</p>\n<blockquote>\n<p>The short version is that newer Claude models sometimes call Pi’s edit tool with extra, invented fields in the nested <code>edits[]</code> array. And not Haiku or some small model: Opus 4.8. The edit itself is usually correct but the arguments do not match the schema as the model invents made-up keys and Pi thus rejects the tool call and asks to try again.</p>\n<p>That alone is not too surprising as models emit malformed tool calls sometimes. Particularly small ones. What surprised me is that this is getting worse with newer Anthropic models as both Opus 4.8 and Sonnet 5 show it but none of the older models. In other words, the SOTA models of the family are worse at this specific tool schema than their older siblings.</p>\n</blockquote>\n<p>Armin theorizes that this is because more recent Anthropic models have been specifically trained (presumably via Reinforcement Learning) to better use the edit tools that are baked into Claude Code. This has the unfortunate effect that other coding harnesses, such as Pi, may find that their own custom edit tools are more likely to be used incorrectly.</p>\n<p>Claude's edit tool <a href=\"https://platform.claude.com/docs/en/agents-and-tools/tool-use/text-editor-tool#str-replace\">uses search and replace</a>. OpenAI's Codex <a href=\"https://developers.openai.com/api/docs/guides/tools-apply-patch\">uses an apply_patch mechanism instead</a>, and OpenAI have talked in the past about how their models are trained to use that tool effectively.</p>\n<p>Does this mean third-party coding harnesses like Pi should implement multiple edit tools just so they can use the one with the best performance for the underlying model the user has selected?\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/armin-ronacher\">armin-ronacher</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/openai\">openai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/anthropic\">anthropic</a>, <a href=\"https://simonwillison.net/tags/llm-tool-use\">llm-tool-use</a>, <a href=\"https://simonwillison.net/tags/coding-agents\">coding-agents</a>, <a href=\"https://simonwillison.net/tags/pi\">pi</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Better Models: Worse Tools",
+    "url": "https://simonwillison.net/2026/Jul/4/better-models-worse-tools"
+  },
+  {
+    "analysis": {
+      "action": "monitor",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方博客，可信度最高。功能偏向部署工具链，对 Agent/Coding 有一定帮助，但非核心突破，重要性中等偏低。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Vercel CLI 新增 `vercel flags segments` 命令，支持通过 `--add`、`--remove` 和 `--data` 管理功能开关的细分（segment），包含 `include`、`exclude`、`rule` 令牌，支持 `--json` 输出，适合 CI、本地工作流和 Agent 驱动管线。",
+      "tags": [
+        "Vercel",
+        "CLI",
+        "Flags",
+        "Agent",
+        "Coding"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-03T00:00:00Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/docs/flags\">Vercel Flags</a> segments can now be managed from the <a href=\"https://vercel.com/docs/cli/flags\">Vercel CLI</a> with the new <code>vercel flags segments</code> command.</p><p>A segment is the targeting primitive a flag uses to decide who sees what. Membership composes from three repeatable tokens: <code>include:</code>, <code>exclude:</code>, and <code>rule:</code>. Pass them to <code>--add</code> or <code>--remove</code> for incremental edits. For full replacement, <code>--data</code> takes the entire segment definition as raw JSON.</p><div></div><p>All segment commands support <code>--json</code> output, making them scriptable from CI, local workflows, and agent-driven pipelines that need to inspect or update flag targeting from the terminal.</p><p>Update to the latest version of the Vercel CLI and learn more in the <a href=\"https://vercel.com/docs/cli/flags\">Vercel Flags CLI documentation</a> to get started.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/manage-vercel-flags-segments-with-vercel-cli\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Manage Vercel Flags segments with Vercel CLI",
+    "url": "https://vercel.com/changelog/manage-vercel-flags-segments-with-vercel-cli"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "属于日常补丁更新，无重大功能或影响，无需特别关注。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/harness 组件 1.0.18 补丁版本，仅涉及依赖项 @ai-sdk/harness 的更新。可能修复了之前版本中的小问题，无重大功能变更。",
+      "tags": [
+        "AI SDK",
+        "AI Agent",
+        "工具链更新",
+        "补丁"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-07-04T06:13:16Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>@ai-sdk/harness@1.0.18</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow-harness@1.0.18",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow-harness%401.0.18"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "来自官方 GitHub 发布页，可信度极高；仅修复性更新，无新功能，与 Agent/Coding/RAG 等偏好无直接关联，重要性较低。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/workflow 包发布 v1.0.15，本次为错误修复更新，同步更新 ai 核心包至 v7.0.15。建议关注 Workflow 稳定性改进，无需立即升级。",
+      "tags": [
+        "AI SDK",
+        "Workflow",
+        "Bug Fix",
+        "Vercel",
+        "Patch"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-07-04T06:13:15Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@7.0.15</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow@1.0.15",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%401.0.15"
+  }
+]
