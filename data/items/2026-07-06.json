@@ -1,0 +1,245 @@
+[
+  {
+    "analysis": {
+      "action": "关注并更新",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub 发布，高可信度；涉及 Agent、Coding 核心功能改进与 bug 修复，与用户偏好高度相关。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic 发布 Claude Code v2.1.200，主要更新包括：AskUserQuestion 对话框默认不再自动继续，权限模式改为手动；修复大量后台会话、崩溃、子代理、插件、屏幕阅读器等问题；改进 tmux 下渲染和安装脚本。",
+      "tags": [
+        "Claude Code",
+        "Agent",
+        "Coding",
+        "Bug Fix",
+        "Release"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-03T16:52:33Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Changed <code>AskUserQuestion</code> dialogs to no longer auto-continue by default; opt into an idle timeout via <code>/config</code></li>\n<li>Changed the \"default\" permission mode to \"Manual\" across the CLI, <code>--help</code>, VS Code, and JetBrains; <code>--permission-mode manual</code> and <code>\"defaultMode\": \"manual\"</code> are accepted alongside <code>default</code></li>\n<li>Fixed a crash at startup when <code>disabledMcpServers</code> or <code>enabledMcpServers</code> in <code>.claude.json</code> is set to a non-array value</li>\n<li>Fixed background sessions silently stopping mid-turn after sleep/wake or when reopening a stalled session</li>\n<li>Fixed background sessions re-running a turn cancelled with Esc after a stall respawn</li>\n<li>Fixed background agents never starting again after a crash left a stale <code>daemon.lock</code> whose PID the OS reused</li>\n<li>Fixed background-agent daemon handover so a reinstalled older build can no longer take over the daemon; build recency is now judged by the version's embedded build timestamp</li>\n<li>Fixed background-agent roster issues: transient corruption permanently disabling orphan cleanup, older binaries not preserving fields written by newer versions, and socket auth tokens being stripped during daemon restarts</li>\n<li>Fixed subagents cut off by a rate limit before producing any text output returning an empty result instead of failing cleanly</li>\n<li>Fixed control bytes from background-agent output reaching the terminal in the agent view</li>\n<li>Fixed <code>claude agents --plugin-dir &lt;dir&gt;</code> not showing the plugin's agents and skills in the agent view when the flag is placed after <code>agents</code></li>\n<li>Fixed project-scoped plugins not loading correctly from git worktrees of the same repository</li>\n<li>Fixed <code>/mcp</code> server list not tracking focus for screen readers and magnifiers</li>\n<li>Fixed voice dictation showing a misleading \"Voice connection failed\" message when a recording captures no audio</li>\n<li>Fixed rendering flicker under tmux 3.4+ by enabling synchronized terminal output</li>\n<li>Improved screen-reader output: decorative glyphs are now hidden, transcript symbols read as short labels, and nested tables read as <code>Header: value.</code> lines</li>\n<li>Improved the install script to explain when installation is killed by the system running out of memory</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.201",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.201"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.200",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.200"
+  },
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "揭示了模型训练对工具兼容性的潜在负面影响，对构建可靠 Agent 系统的开发者有重要参考价值，且来自可信博客，与 Coding、Agent 相关。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Armin 发现新版 Claude 模型（Opus 4.8、Sonnet 5）在调用 Pi 的编辑工具时会生成模式外的额外字段，导致工具调用被拒绝。尽管旧模型表现正常，但新模型因训练时强化了 Claude Code 内置编辑工具的使用，反而对第三方工具的兼容性变差。这引发思考：第三方编码工具是否需要为不同模型适配多种编辑工具，以获取最佳性能。",
+      "tags": [
+        "Agent",
+        "Coding",
+        "Tool Use",
+        "Anthropic",
+        "Claude",
+        "Pi"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-04T22:53:52Z",
+    "raw_summary": "<p><strong><a href=\"https://lucumr.pocoo.org/2026/7/4/better-models-worse-tools/\">Better Models: Worse Tools</a></strong></p>\nArmin reports on a weird problem he ran into while hacking on Pi:</p>\n<blockquote>\n<p>The short version is that newer Claude models sometimes call Pi’s edit tool with extra, invented fields in the nested <code>edits[]</code> array. And not Haiku or some small model: Opus 4.8. The edit itself is usually correct but the arguments do not match the schema as the model invents made-up keys and Pi thus rejects the tool call and asks to try again.</p>\n<p>That alone is not too surprising as models emit malformed tool calls sometimes. Particularly small ones. What surprised me is that this is getting worse with newer Anthropic models as both Opus 4.8 and Sonnet 5 show it but none of the older models. In other words, the SOTA models of the family are worse at this specific tool schema than their older siblings.</p>\n</blockquote>\n<p>Armin theorizes that this is because more recent Anthropic models have been specifically trained (presumably via Reinforcement Learning) to better use the edit tools that are baked into Claude Code. This has the unfortunate effect that other coding harnesses, such as Pi, may find that their own custom edit tools are more likely to be used incorrectly.</p>\n<p>Claude's edit tool <a href=\"https://platform.claude.com/docs/en/agents-and-tools/tool-use/text-editor-tool#str-replace\">uses search and replace</a>. OpenAI's Codex <a href=\"https://developers.openai.com/api/docs/guides/tools-apply-patch\">uses an apply_patch mechanism instead</a>, and OpenAI have talked in the past about how their models are trained to use that tool effectively.</p>\n<p>Does this mean third-party coding harnesses like Pi should implement multiple edit tools just so they can use the one with the best performance for the underlying model the user has selected?\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/armin-ronacher\">armin-ronacher</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/openai\">openai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/anthropic\">anthropic</a>, <a href=\"https://simonwillison.net/tags/llm-tool-use\">llm-tool-use</a>, <a href=\"https://simonwillison.net/tags/coding-agents\">coding-agents</a>, <a href=\"https://simonwillison.net/tags/pi\">pi</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Better Models: Worse Tools",
+    "url": "https://simonwillison.net/2026/Jul/4/better-models-worse-tools"
+  },
+  {
+    "analysis": {
+      "action": "recommend",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "来自知名博主 Simon Willison 的博客，原始链接指向 AI Engineer 大会的官方信息，可信度较高。内容涉及 agent 自主判断与模型路由策略，对提升 agent 效率和成本控制有实际参考价值，与用户偏好 Agent、Coding 高度相关。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Simon Willison 在 AI Engineer 大会的炉边聊天中了解到，让 Fable（以及 Opus）使用自己的判断来工作，比硬性规定如何工作效果更好。例如，让 Fable 自行决定何时写测试，而不是规定“仅对大型功能使用自动化测试”。他还分享了一个节省 Fable token 的技巧：让 Fable 自行判断将小型任务委托给更便宜的模型。他向 Claude Code 提示“对于所有编码任务，使用你的判断来决定一个合适的低功耗模型，并在子 agent 中运行”，Claude 创建了一个记忆文件来记录这个策略，效果很好。",
+      "tags": [
+        "Claude Code",
+        "Fable",
+        "Agent",
+        "Coding",
+        "模型选择",
+        "成本优化",
+        "AIE 2026"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-03T18:51:06Z",
+    "raw_summary": "<p>One of the most interesting tips I got from <a href=\"https://www.ai.engineer/worldsfair/schedule?session=asn_slot_2026_06_30_main_stage_1230_2026_06_08t09_35_43_039z\">the Fireside Chat</a> I hosted with Cat Wu and Thariq Shihipar from the Claude Code team at AIE on Wednesday was to let Fable (and to a certain extent Opus) use their own judgement rather than dictating how they should work.</p>\n<p>The example they gave was testing. You can tell Fable \"only use automated testing for larger features, don't update and run tests for small copy or design changes\" - but it's better to just tell Fable to use its own judgement when deciding to write tests instead.</p>\n<p>Jesse Vincent just gave me a related tip to help avoid burning too many of those valuable Fable tokens in the few days we have left before the prices go up. Tell Fable to use other models for smaller tasks, applying its own judgement about which model to use.</p>\n<p>I prompted Claude Code just now with:</p>\n<blockquote>\n<p><code>For all coding tasks use your judgement to decide an appropriate lower power model and run that in a subagent</code></p>\n</blockquote>\n<p>Claude saved this memory file in <code>~/.claude/projects/name-of-project/memory/delegate-coding-to-subagents.md</code>:</p>\n<blockquote>\n<pre><code>---\nname: delegate-coding-to-subagents\ndescription: Simon wants coding tasks delegated to subagents running an appropriately lower-power model\nmetadata: \n  node_type: memory\n  type: feedback\n  originSessionId: 30068d78-43a9-4fb1-bb29-9799e18c526a\n---\n</code></pre>\n<p>Stated by Simon on 2026-07-03: \"For all coding tasks use your judgement to\ndecide an appropriate lower power model and run that in a subagent.\"</p>\n<p><strong>Why:</strong> cost/efficiency — implementation work rarely needs the top-tier\nmodel; judgment, review, and synthesis stay with the main loop.</p>\n<p><strong>How to apply:</strong> when a task in this project is primarily writing/editing\ncode, spawn an Agent with a model override (sonnet for substantive\nimplementation, haiku for trivial/mechanical edits) and a self-contained\nprompt; review the result in the main loop before committing. Design,\nauditing, data synthesis, and anything judgment-heavy stays in the main\nmodel. See also [[project-goals]].</p>\n</blockquote>\n<p>So far it seems to be working well. I'm getting a <em>ton</em> of work done and my Fable allowance is shrinking less quickly than before.</p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/prompt-engineering\">prompt-engineering</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/anthropic\">anthropic</a>, <a href=\"https://simonwillison.net/tags/claude\">claude</a>, <a href=\"https://simonwillison.net/tags/coding-agents\">coding-agents</a>, <a href=\"https://simonwillison.net/tags/claude-code\">claude-code</a>, <a href=\"https://simonwillison.net/tags/claude-mythos-fable\">claude-mythos-fable</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Fable's judgement",
+    "url": "https://simonwillison.net/2026/Jul/3/judgement"
+  },
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方GitHub发布，可信度高；增加了自定义HTTP头功能，对Agent集成有一定价值，但变化较小，重要性中等。",
+      "summary_cn": "LangChain OpenRouter 集成库发布 0.2.6 版本，主要修复支持 default_headers 自定义 HTTP 头注入，并刷新模型配置文件数据。",
+      "tags": [
+        "LangChain",
+        "OpenRouter",
+        "Release",
+        "Agent",
+        "LLM"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-07-05T20:53:14Z",
+    "raw_summary": "<p>Changes since langchain-openrouter==0.2.5</p>\n<p>release(openrouter): 0.2.6 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38681\">#38681</a>)<br />\nfix(openrouter): support <code>default_headers</code> for custom HTTP header injection (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/36582\">#36582</a>)<br />\nchore(model-profiles): refresh model profile data (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38663\">#38663</a>)</p>",
+    "related_items": [],
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "langchain-openrouter==0.2.6",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-openrouter%3D%3D0.2.6"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub 发布，高可信度；直接关联 Vercel AI SDK 和 Anthropic 集成，修复了可能影响 token 使用的实际 bug，对使用 Sonnet 5 等模型的开发者有实际操作价值。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 Anthropic 适配器 v3.0.93 修复了 thinking 参数问题：此前设置 thinking.type='disabled' 会被静默忽略，对于默认开启思考的模型（如 Sonnet 5）会导致意外消耗 token。现在正确转发该值到 Anthropic API。",
+      "tags": [
+        "Anthropic",
+        "AI SDK",
+        "bug-fix",
+        "thinking",
+        "token"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-07-05T23:09:18Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>\n<p><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/4241b49be98f987fb7f4e1137292cbd53b9bf6b5\"><tt>4241b49</tt></a>: fix(anthropic): forward <code>thinking: { type: 'disabled' }</code> to the API instead of stripping it</p>\n<p>Previously, setting <code>providerOptions.anthropic.thinking = { type: 'disabled' }</code> was accepted by the schema but silently dropped from the outgoing request. For models that default thinking on (e.g. Sonnet 5), this left thinking enabled and could consume a small <code>max_tokens</code> budget entirely. The <code>disabled</code> value is now sent to the Anthropic Messages API.</p>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/anthropic@3.0.93",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fanthropic%403.0.93"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "这是一个小版本更新，主要增加引用和停止序列功能，对普通用户影响有限。虽然来源可信，但重要性较低，不推荐优先处理。；常规版本/依赖更新降噪。",
+      "summary_cn": "LangChain MistralAI 集成包发布 v1.1.6，新增对话回复中的引用元数据提取和停止序列支持，并修复了包版本追踪、文档字符串格式等。同时更新了模型配置文件和依赖版本。",
+      "tags": [
+        "LangChain",
+        "MistralAI",
+        "集成更新",
+        "引用元数据",
+        "停止序列"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-07-05T21:30:36Z",
+    "raw_summary": "<p>Changes since langchain-mistralai==1.1.5</p>\n<p>release(mistralai): 1.1.6 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38684\">#38684</a>)<br />\nfeat(mistralai): surface citation metadata from chat responses (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/37008\">#37008</a>)<br />\nchore(model-profiles): refresh model profile data (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38663\">#38663</a>)<br />\nchore: bump vcrpy from 8.1.1 to 8.2.1 in /libs/partners/mistralai (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38302\">#38302</a>)<br />\nchore: bump langsmith from 0.8.5 to 0.8.18 in /libs/partners/mistralai (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38304\">#38304</a>)<br />\nchore(model-profiles): refresh model profile data (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38210\">#38210</a>)<br />\ndocs: refresh <code>README</code> installation and resources (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38119\">#38119</a>)<br />\nrelease(core): 1.4.7 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38111\">#38111</a>)<br />\nfix(core,partners): rename package version trace metadata (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38110\">#38110</a>)<br />\nstyle(core,langchain,langchain-classic,partners): replace double backticks in docstrings (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38095\">#38095</a>)<br />\nrelease(core): 1.4.6 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38061\">#38061</a>)<br />\nfeat(core,partners): add package version tracking to tracing metadata (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/35295\">#35295</a>)<br />\nchore(infra): bump mypy to 2.1 and unify type-check config across the monorepo (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/36470\">#36470</a>)<br />\nfeat(mistralai): support <code>stop</code> sequences (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/38047\">#38047</a>)</p>",
+    "related_items": [],
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "langchain-mistralai==1.1.6",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-mistralai%3D%3D1.1.6"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub 发布，可信度高；小补丁，影响范围有限，但涉及图像处理，对使用 inline image 的开发者有参考价值。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK @ai-sdk/openai 4.0.8 版本发布，修补了图像处理问题：在 OpenAI 聊天请求中，内联图像文件部分现在以 data URL 形式发送，而不是裸 base64 字符串。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "OpenAI",
+        "图像",
+        "补丁"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-07-05T23:10:25Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/b51ed36c0005bb6690f47e3c2c30b87b0915eb18\"><tt>b51ed36</tt></a>: Send inline image file parts in OpenAI chat requests as data URLs instead of bare base64 strings.</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/openai@4.0.8",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fopenai%404.0.8"
+  }
+]
