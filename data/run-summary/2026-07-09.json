@@ -1,0 +1,56 @@
+{
+  "archive_path": "data/items/2026-07-09.json",
+  "backfill_items": 0,
+  "candidates_new": 475,
+  "candidates_selected": 38,
+  "candidates_total": 486,
+  "content_health": "ok",
+  "estimated_llm_tokens": 20000,
+  "fallback_items": 18,
+  "fallback_lookback_used": false,
+  "health_reasons": [
+    "信息源抓取异常：失败 0 个，警告 1 个。"
+  ],
+  "llm_failed": 0,
+  "llm_planned": 20,
+  "llm_succeeded": 20,
+  "lookback_hours": 36,
+  "low_quality_release_items": 2,
+  "low_quality_release_ratio": 0.056,
+  "manual_items": 0,
+  "must_read_items": 9,
+  "output_items": 36,
+  "output_path": "notes/daily/2026-07-09.md",
+  "quality_needs_review": false,
+  "quality_score": 99,
+  "quality_signals": {
+    "backfill_items": 0,
+    "fallback_lookback_used": false,
+    "low_quality_release_items": 2,
+    "low_quality_release_ratio": 0.056,
+    "min_daily_items": 8,
+    "must_read_items": 9,
+    "output_items": 36,
+    "source_warnings": 1,
+    "sources_failed": 0
+  },
+  "rss_items": 486,
+  "source_adjustments": {
+    "Anthropic Claude Code Releases": 6,
+    "Google Cloud AI and Machine Learning Blog": 6,
+    "Latent Space": 5,
+    "Simon Willison AI": 5,
+    "Vercel AI SDK Releases": 2,
+    "Vercel Changelog": 6,
+    "arXiv cs.AI": 6,
+    "arXiv cs.CL": 6
+  },
+  "source_failures": [],
+  "source_warning_names": [
+    "LangChain Changelog"
+  ],
+  "source_warnings": 1,
+  "sources_failed": 0,
+  "sources_success": 26,
+  "sources_total": 26
+}
