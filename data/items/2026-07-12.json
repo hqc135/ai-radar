@@ -1,0 +1,220 @@
+[
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方GitHub发布，涉及用户偏好的Agent和Coding领域，新增multi-agent beta和GPT-5.6支持，重要性和可信度高。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI Agents Python SDK发布v0.18.2版本，主要新增对GPT-5.6的控制支持、托管的multi-agent beta，并修复沙箱、实时通信等多项问题，大幅重构沙箱相关代码以提升共享和稳定性。",
+      "tags": [
+        "Agent",
+        "Coding",
+        "OpenAI",
+        "Python SDK",
+        "GPT-5.6",
+        "multi-agent",
+        "sandbox"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-11T01:07:46Z",
+    "raw_summary": "<h2>What's Changed</h2>\n<ul>\n<li>feat: support GPT-5.6 request controls by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3794\">#3794</a></li>\n<li>feat: add hosted multi-agent beta support by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3788\">#3788</a></li>\n<li>fix(sandbox): own Daytona PTY worker tasks by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3778\">#3778</a></li>\n<li>fix(realtime): enqueue callback errors synchronously by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3777\">#3777</a></li>\n<li>fix(realtime): use monotonic playback timing by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3776\">#3776</a></li>\n<li>fix(sandbox): own Docker deferred cleanup tasks by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3779\">#3779</a></li>\n<li>fix(sandbox): own Unix PTY fd close tasks by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3780\">#3780</a></li>\n<li>fix(litellm): surface content-filter refusals instead of an empty turn by <a class=\"user-mention notranslate\" href=\"https://github.com/seanturner83\">@seanturner83</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3769\">#3769</a></li>\n<li>refactor(sandbox): share core PTY output collection by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3796\">#3796</a></li>\n<li>refactor(sandbox): share extension PTY output collection by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3797\">#3797</a></li>\n<li>refactor(sandbox): share E2B rclone setup by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3798\">#3798</a></li>\n<li>refactor(sandbox): share Runloop rclone setup by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3799\">#3799</a></li>\n<li>refactor: share retry error metadata extraction by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3800\">#3800</a></li>\n<li>refactor: share retry-after parsing by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3801\">#3801</a></li>\n</ul>\n<h3>Documentation &amp; Other Changes</h3>\n<ul>\n<li>fix: serialize model-backed rollout interruptions as dicts by <a class=\"user-mention notranslate\" href=\"https://github.com/Otis0408\">@Otis0408</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3790\">#3790</a></li>\n<li>chore: enable G004 logging lint rule by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3802\">#3802</a></li>\n<li>chore: enable RUF012 for runtime source by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3803\">#3803</a></li>\n<li>chore: remove unused noqa directives by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3804\">#3804</a></li>\n<li>chore: exempt OpenAI package from dependency cooldown by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3792\">#3792</a></li>\n<li>Release 0.18.2 by @github-actions[bot] in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3805\">#3805</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Otis0408\">@Otis0408</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3790\">#3790</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/seanturner83\">@seanturner83</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/3769\">#3769</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a class=\"commit-link\" href=\"https://github.com/openai/openai-agents-python/compare/v0.18.1...v0.18.2\"><tt>v0.18.1...v0.18.2</tt></a></p>",
+    "related_items": [],
+    "source": "OpenAI Agents Python Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v0.18.2",
+    "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.18.2"
+  },
+  {
+    "analysis": {
+      "action": "阅读",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方发布，可信度高；涉及Agent和Coding工具核心更新，Auto模式正式开放对开发效率影响大；修复大量影响使用的Bug，改进体验，重要性高。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic发布Claude Code v2.1.207版本，正式在Bedrock/Vertex/Foundry开放Auto模式，修复终端卡顿、远程管理、提示注入等大量Bug，改进粘贴体验和代理视图，默认模型改为Claude Opus 4.8，优化多项边缘场景兼容性。",
+      "tags": [
+        "Anthropic",
+        "Claude Code",
+        "Agent",
+        "Coding",
+        "发布",
+        "Bug修复",
+        "Auto模式"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-11T00:52:10Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Auto mode is now available without <code>CLAUDE_CODE_ENABLE_AUTO_MODE</code> opt-in on Bedrock, Vertex AI, and Foundry; disable via <code>disableAutoMode</code> in settings</li>\n<li>Fixed the terminal freezing and keystrokes lagging while streaming responses containing very long lists, tables, paragraphs, or code blocks</li>\n<li>Fixed remote managed settings from a non-interactive run (<code>claude -p</code>, the SDK) being permanently recorded as consented without ever showing the security consent dialog</li>\n<li>Fixed spurious prompt-injection warnings triggered by benign system-generated conversation updates</li>\n<li>Fixed the auto-updater overwriting a custom launcher script or symlink at <code>~/.local/bin/claude</code> on every release; <code>/doctor</code> now reports an externally managed launcher</li>\n<li>Fixed compound commands with <code>cd</code> prompting for permission when the only output redirect was to <code>/dev/null</code></li>\n<li>Fixed the transcript jumping above the start of the answer when a response finishes streaming</li>\n<li>Fixed <code>extensions.worktreeConfig</code> being left in the repo's <code>.git/config</code> (breaking go-git tools like <code>tea</code>) after the last <code>worktree.sparsePaths</code> worktree was removed</li>\n<li>Fixed malformed bracket patterns in rules globs, skill paths, <code>.ignore</code>, and <code>.worktreeinclude</code> breaking file reads, file suggestions, and worktree creation</li>\n<li>Fixed a crash loop in agent teams where a malformed teammate mailbox message caused repeated errors every second until the mailbox file was manually deleted</li>\n<li>Fixed background sessions auto-named by accepting a plan not showing that name on their agent-view row</li>\n<li>Fixed background sessions that entered a git worktree resuming blank after a cold reopen from the agent list</li>\n<li>Fixed Remote Control task status updates being lost when the connection recovered from a network interruption or credential refresh</li>\n<li>Fixed Remote Control sessions hosted by the desktop app not showing background agent and workflow progress on mobile and web</li>\n<li>Fixed Deep research runs labeling every Fetch-phase agent \"unknown\" — chips now show the source hostname</li>\n<li>Fixed Bedrock repeatedly requesting fresh AWS SSO credentials from IAM Identity Center on every API request</li>\n<li>Improved agent view: pasting the same text again now expands the collapsed <code>[Pasted text #N]</code> placeholder instead of adding a second one</li>\n<li>Improved agent view: blocked session peeks now lead with the question and show a worded staleness clock (<code>waiting 3m</code>) instead of the same timestamp twice</li>\n<li>Changed Bedrock, Vertex, and Claude Platform on AWS to default to Claude Opus 4.8</li>\n<li>Changed auto mode to no longer read <code>autoMode</code> from <code>.claude/settings.local.json</code> (repo-resident); use <code>~/.claude/settings.json</code> instead</li>\n<li>Fixed an indefinite hang on Windows when AWS credential resolution stalls (e.g. a stuck <code>credential_process</code>): the 60-second stall guard now fires instead of waiting forever.</li>\n<li>Plugin hooks/monitors/MCP headersHelper: <code>${user_config.*}</code> in shell-form commands is now rejected (shell-injection fix). Hooks: use exec form (<code>args</code> array) or <code>$CLAUDE_PLUGIN_OPTION_&lt;KEY&gt;</code>; monitors and headersHelper: read the value inside the script (config file or the server's <code>env</code> block).</li>\n<li>Plugin option values (<code>pluginConfigs</code>) are no longer read from project-level <code>.claude/settings.json</code>; only user, <code>--settings</code>, and managed settings are honored</li>\n<li>Fixed <code>/usage-credits</code> amount inputs silently stripping malformed values (e.g. a pasted timestamp) to digits; malformed amounts are now rejected with an error, and amounts over $1,000 require a typed confirmation</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 4,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.206",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.206"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.207",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.207"
+  },
+  {
+    "analysis": {
+      "action": "参考并推荐给团队，建议试用侧边聊天和对话搜索功能。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客发布，来源可信；增强编码工作流和 Agent 对话管理，与用户偏好 Agent、Coding 高度相关，重要性较高。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Cursor 更新：新增侧边聊天功能，主聊天旁运行不中断工作流；支持搜索 Agent 对话记录；简化项目和仓库选择器，提升编码效率。",
+      "tags": [
+        "Side Chat",
+        "Conversation Search",
+        "Cursor",
+        "Agent",
+        "Coding"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-10T00:00:00Z",
+    "raw_summary": "This release makes it easier to stay in flow with side chats that run alongside your main chat, the ability to search agent transcripts, and simplified project and repo pickers.",
+    "related_items": [],
+    "source": "Cursor Changelog",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "Side Chats and Conversation Search",
+    "url": "https://cursor.com/changelog/side-chat"
+  },
+  {
+    "analysis": {
+      "action": "关注并评估其对Agent工作流的潜在影响",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来自官方博客，可信度高；Agent和Coding相关，符合用户偏好；产品发布具有行业影响力。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI推出ChatGPT Work，一个能在应用和文件中执行操作、持续数小时跟进项目、将目标转化为完成工作的AI代理。",
+      "tags": [
+        "Agent",
+        "Product"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-09T10:00:00Z",
+    "raw_summary": "ChatGPT Work is an agent that can take action across your apps and files, stay with a project for hours if needed, and turn a goal into finished work.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "ChatGPT is now a partner for your most ambitious work",
+    "url": "https://openai.com/index/chatgpt-for-your-most-ambitious-work"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方发布，可信度极高；内容涵盖 Agent/RAG 相关领域（图像生成与编辑）与开发工具（AI Gateway），对提升应用效率有价值。",
+      "summary_cn": "Vercel 的 AI Gateway 现已支持 Seedream 5.0 Pro 模型，该模型擅长图像生成和编辑，包括文本渲染、排版和复杂信息图制作；AI Gateway 提供统一 API、用量跟踪、成本优化及零数据保留、预算管理等高级功能，且无平台加价。",
+      "tags": [
+        "Seedream 5.0 Pro",
+        "AI Gateway",
+        "图像生成",
+        "Vercel",
+        "文本渲染",
+        "信息图"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-07-11T00:00:00Z",
+    "raw_summary": "<p>Seedream 5.0 Pro is now available on <a href=\"https://vercel.com/ai-gateway\">AI Gateway</a>.</p><p>Seedream 5.0 Pro is an image generation and editing model. It generates images from text, rendering text without spelling errors and following typographic rules, and produces dense infographics with charts, timelines, and layouts alongside realistic imagery.</p><p>To use Seedream 5.0 Pro, set <code>model</code> to <code>bytedance/seedream-5.0-pro</code> in the <a href=\"https://ai-sdk.dev/\">AI SDK</a>:</p><div></div><div></div><p>AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in <a href=\"https://vercel.com/changelog/custom-reporting-ai-gateway\">custom reporting</a>, <a href=\"https://vercel.com/blog/zdr-on-ai-gateway\">Zero Data Retention support</a>, <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys\">budgets for API keys</a>, <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/routing-rules\">routing rules</a>, and more.</p><p>AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">Bring Your Own Key</a> (BYOK) requests.</p><p>Try Seedream 5.0 Pro in the <a href=\"https://vercel.com/ai-gateway/models/seedream-5.0-pro\">model playground</a>.</p><div></div><p></p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/seedream-5-0-pro-is-now-available-on-ai-gateway\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Seedream 5.0 Pro is now available on AI Gateway",
+    "url": "https://vercel.com/changelog/seedream-5-0-pro-is-now-available-on-ai-gateway"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "这是一个小版本补丁，修复了一个具体的缓存统计问题，对使用 Groq 并依赖缓存计费数据的开发者有实际帮助，但非重大更新，重要性为2。来源是 GitHub 官方发布，可信度5。建议关注，无需立即升级。；常规版本/依赖更新降噪。；已合并同事件来源：Vercel AI SDK Releases。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/groq 3.0.51 版本修复了一个 bug：之前 prompt cache 命中未被正确计入 usage，现在缓存读取会正确显示为 cacheRead 并计入 cachedInputTokens，从 noCache 中扣除。此修复对 Groq 用户有用。",
+      "tags": [
+        "Groq",
+        "Vercel AI SDK",
+        "Bug Fix",
+        "Prompt Caching",
+        "Usage Tracking"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-07-11T20:59:35Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>\n<p><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/cee7e4560ff99bf71ed65e9e539068cd01b1b58b\"><tt>cee7e45</tt></a>: fix (provider/groq): surface prompt cache reads in usage</p>\n<p><code>convertGroqUsage</code> accepted <code>prompt_tokens_details.cached_tokens</code> but never read it, so cache hits were reported as <code>cacheRead: undefined</code> and the entire prompt was counted as <code>noCache</code>. Groq's implicit prompt caching now surfaces as <code>usage.cachedInputTokens</code> (mapped to <code>cacheRead</code>, subtracted from <code>noCache</code>). Groq has no cache-creation charge, so <code>cacheWrite</code> remains undefined.</p>\n</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "Vercel AI SDK Releases",
+        "source_tier": 1,
+        "title": "@ai-sdk/groq@4.0.8",
+        "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fgroq%404.0.8"
+      }
+    ],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/groq@3.0.51",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fgroq%403.0.51"
+  }
+]
