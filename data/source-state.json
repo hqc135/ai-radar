@@ -1,7 +1,7 @@
 {
   "last_quality": {
     "content_health": "ok",
-    "date": "2026-07-14",
+    "date": "2026-07-15",
     "needs_review": false,
     "reasons": [
       "信息源抓取异常：失败 0 个，警告 1 个。"
@@ -13,15 +13,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 0,
@@ -132,6 +123,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -150,15 +150,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 1,
           "failed": 0,
@@ -268,6 +259,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 1,
           "failed": 0,
           "must_read_items": 0,
@@ -285,15 +285,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -403,6 +394,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -420,15 +420,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 1,
           "failed": 0,
@@ -538,6 +529,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -555,15 +555,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -673,6 +664,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -690,15 +690,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -808,6 +799,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -825,15 +825,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -943,6 +934,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -956,18 +956,9 @@
       "output_items_7d": 0
     },
     "Google AI Blog": {
-      "effective_items_7d": 1,
+      "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 2,
@@ -1084,26 +1075,26 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 1
+      "output_items_7d": 0
     },
     "Google Cloud AI and Machine Learning Blog": {
       "current_adjusted_daily_limit": 6,
-      "effective_items_7d": 7,
+      "effective_items_7d": 5,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 4,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 4,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 2,
@@ -1220,26 +1211,26 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 7
+      "output_items_7d": 5
     },
     "Google DeepMind Blog": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -1349,6 +1340,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1366,15 +1366,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 2,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 2,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -1484,6 +1475,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1498,18 +1498,9 @@
     },
     "Hugging Face Blog": {
       "current_adjusted_daily_limit": 6,
-      "effective_items_7d": 4,
+      "effective_items_7d": 2,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 3,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 3,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 1,
@@ -1626,26 +1617,26 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 4
+      "output_items_7d": 2
     },
     "LangChain Blog": {
       "current_adjusted_daily_limit": 6,
-      "effective_items_7d": 6,
+      "effective_items_7d": 5,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 2,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 2,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 3,
@@ -1762,26 +1753,26 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 6
+      "output_items_7d": 5
     },
     "LangChain Changelog": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 1
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -1891,6 +1882,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 1
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1909,15 +1909,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -2033,6 +2024,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 2,
@@ -2041,18 +2041,9 @@
     },
     "Latent Space": {
       "current_adjusted_daily_limit": 5,
-      "effective_items_7d": 5,
+      "effective_items_7d": 6,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 5,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 5,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 4,
@@ -2169,25 +2160,25 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 6
+      "output_items_7d": 7
     },
     "LlamaIndex Blog": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 0,
@@ -2298,6 +2289,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2315,15 +2315,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -2433,6 +2424,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2450,15 +2450,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -2574,6 +2565,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -2581,18 +2581,9 @@
       "output_items_7d": 3
     },
     "OpenAI Agents Python Releases": {
-      "effective_items_7d": 3,
+      "effective_items_7d": 2,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 0,
@@ -2709,26 +2700,26 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
-        }
-      ],
-      "noise_items_7d": 1,
-      "noise_ratio_7d": 0.25,
-      "output_items_7d": 4
-    },
-    "OpenAI News": {
-      "current_adjusted_daily_limit": 9,
-      "effective_items_7d": 12,
-      "failures_7d": 0,
-      "history": [
+        },
         {
-          "date": "2026-07-01",
-          "effective_items": 4,
+          "date": "2026-07-15",
+          "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
-          "output_items": 4,
+          "output_items": 0,
           "warning": 0
-        },
+        }
+      ],
+      "noise_items_7d": 1,
+      "noise_ratio_7d": 0.333,
+      "output_items_7d": 3
+    },
+    "OpenAI News": {
+      "current_adjusted_daily_limit": 9,
+      "effective_items_7d": 13,
+      "failures_7d": 0,
+      "history": [
         {
           "date": "2026-07-02",
           "effective_items": 0,
@@ -2845,26 +2836,26 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 3,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 3,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 12
+      "output_items_7d": 13
     },
     "OpenAI Node SDK Releases": {
       "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -2980,26 +2971,26 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 1,
+          "output_items": 1,
+          "warning": 0
         }
       ],
-      "noise_items_7d": 0,
-      "noise_ratio_7d": 0.0,
-      "output_items_7d": 1
+      "noise_items_7d": 1,
+      "noise_ratio_7d": 0.5,
+      "output_items_7d": 2
     },
     "OpenAI Python SDK Releases": {
       "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -3109,6 +3100,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -3123,18 +3123,9 @@
     },
     "Simon Willison AI": {
       "current_adjusted_daily_limit": 5,
-      "effective_items_7d": 11,
+      "effective_items_7d": 12,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 5,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 5,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 0,
@@ -3245,6 +3236,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 2,
           "failed": 0,
           "must_read_items": 0,
@@ -3255,21 +3255,12 @@
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 11
+      "output_items_7d": 12
     },
     "The Gradient": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 0,
@@ -3380,6 +3371,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -3394,18 +3394,9 @@
     },
     "Vercel AI SDK Releases": {
       "current_adjusted_daily_limit": 2,
-      "effective_items_7d": 1,
+      "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 2,
-          "output_items": 2,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 0,
@@ -3522,10 +3513,19 @@
           "noise_items": 2,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 2,
+          "output_items": 2,
+          "warning": 0
         }
       ],
-      "noise_items_7d": 7,
-      "noise_ratio_7d": 0.875,
+      "noise_items_7d": 8,
+      "noise_ratio_7d": 1.0,
       "output_items_7d": 8
     },
     "Vercel Changelog": {
@@ -3533,15 +3533,6 @@
       "effective_items_7d": 21,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 6,
@@ -3653,6 +3644,15 @@
         {
           "date": "2026-07-14",
           "effective_items": 5,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 6,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 6,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
@@ -3669,15 +3669,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -3787,6 +3778,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -3805,15 +3805,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 5,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 6,
           "failed": 0,
@@ -3929,6 +3920,15 @@
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 6,
+          "failed": 0,
+          "must_read_items": 3,
+          "noise_items": 0,
+          "output_items": 6,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -3940,15 +3940,6 @@
       "effective_items_7d": 35,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-07-01",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 5,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-07-02",
           "effective_items": 6,
@@ -4062,6 +4053,15 @@
           "effective_items": 6,
           "failed": 0,
           "must_read_items": 5,
+          "noise_items": 0,
+          "output_items": 6,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
+          "effective_items": 6,
+          "failed": 0,
+          "must_read_items": 4,
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
@@ -4076,15 +4076,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-07-01",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-07-02",
           "effective_items": 0,
           "failed": 0,
@@ -4194,6 +4185,15 @@
         },
         {
           "date": "2026-07-14",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-07-15",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
