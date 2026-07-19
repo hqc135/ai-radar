@@ -1,0 +1,238 @@
+[
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来自官方 GitHub Releases，可信度高，涉及 Agent/Coding 工具安全更新和功能增强，修复多个高危权限问题，对使用 Claude Code 的用户有重要参考价值。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Claude Code v2.1.214 发布，修复多项权限绕过漏洞（如 Windows PowerShell、Bash 重定向、超长命令等），增强安全性；新增 EndConversation 工具处理滥用用户；改进 OpenTelemetry 日志、Docker 权限提示、大内存消耗修复等。",
+      "tags": [
+        "Agent",
+        "Coding",
+        "Security",
+        "Tooling"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-18T01:20:30Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Fixed single-segment <code>dir/**</code> allow rules like <code>Edit(src/**)</code> auto-approving writes to nested <code>dir/</code> directories anywhere in the tree instead of only <code>&lt;cwd&gt;/dir</code></li>\n<li>Fixed a permission-check bypass affecting commands run in Windows PowerShell 5.1 sessions</li>\n<li>Fixed Bash permission checks to fail closed on file-descriptor redirect forms that bash parses differently than the permission analyzer</li>\n<li>Fixed Bash permission checks misjudging very long commands — commands over 10,000 characters now always prompt instead of running automatically</li>\n<li>Fixed Bash permission checks treating zsh variable subscripts and modifiers in <code>[[ ]]</code> comparisons as inert text — these commands now prompt for approval</li>\n<li>Fixed Bash permission checks to no longer auto-approve certain <code>help</code> and <code>man</code> commands that could run unsafe options, command substitutions, or backslash paths</li>\n<li>Fixed permission prompts on remote sessions that could proceed before the local confirmation dialog</li>\n<li>Added the EndConversation tool: Claude can end sessions with highly abusive users or jailbreak attempts, as on claude.ai since 2025 — see <a href=\"https://www.anthropic.com/research/end-subset-conversations\" rel=\"nofollow\">https://www.anthropic.com/research/end-subset-conversations</a></li>\n<li>Added a periodic progress heartbeat for long-running tool calls that previously went silent</li>\n<li>Added an ISO <code>modified</code> timestamp to memory file frontmatter</li>\n<li>Added <code>message.uuid</code>, <code>client_request_id</code>, and <code>tool_source</code> attributes to OpenTelemetry log events for message-level correlation and tool provenance</li>\n<li>Added <code>CLAUDE_CODE_OTEL_CONTENT_MAX_LENGTH</code> to configure the 60 KB truncation limit on OpenTelemetry content attributes</li>\n<li>Added reasoning effort to the <code>subagentStatusLine</code> payload, so custom agent rows can render model and effort</li>\n<li>Added permission prompts for <code>docker</code> commands (including the Podman <code>docker</code> shim) carrying daemon-redirect flags (<code>--url</code>, <code>--connection</code>, <code>--identity</code>, and Podman's remote mode) that previously ran without one</li>\n<li>Fixed a crash when a GrowthBook feature evaluates to null, and a bug where a malformed flag payload could wipe the cached feature flags</li>\n<li>Fixed Bash tool killing the Claude session when a <code>pkill -f</code> pattern accidentally matched the CLI's own process (Linux)</li>\n<li>Fixed unbounded memory growth when <code>--settings</code> points at a device file or multi-GB file; oversized (&gt;2 MiB) settings files now fail at startup with a clear error</li>\n<li>Fixed streaming turns failing with \"Socket is closed\" behind corporate proxies on Windows</li>\n<li>Fixed stream-json output truncation at exit for slow-reading SDK/pipeline consumers; the exit drain now scales with queued bytes instead of a flat 2s cap</li>\n<li>Fixed scheduled tasks refusing their own configured prompt as untrusted input — the fired prompt is now delivered as the session's assigned task</li>\n<li>Fixed PowerShell tool commands hanging until timeout when a child process waited on standard input (Windows)</li>\n<li>Fixed Python scripts under the PowerShell tool crashing with UnicodeDecodeError when reading non-UTF-8 data from standard input (Windows)</li>\n<li>Fixed Python scripts run via the PowerShell tool crashing with UnicodeEncodeError on non-ASCII output, and PowerShell 7 error messages containing raw ANSI escape sequences (Windows)</li>\n<li>Fixed the PowerShell tool reporting <code>where.exe</code>, <code>fc.exe</code>, and <code>diff.exe</code> as errors when they return a valid negative answer (Windows)</li>\n<li>Fixed <code>&gt;</code> and <code>&gt;&gt;</code> under the PowerShell tool on Windows PowerShell 5.1 writing UTF-16LE files that other tools couldn't read as UTF-8</li>\n<li>Fixed a displaced background daemon deleting its successor's control socket on shutdown, which made the next client kill the healthy replacement daemon</li>\n<li>Fixed background sessions parked with <code>←</code> or <code>/background</code> and left idle keeping the background daemon and a worker process alive indefinitely</li>\n<li>Fixed completed background sessions being impossible to remove via <code>claude rm</code> or the agent view once the background service had gone idle</li>\n<li>Fixed background sessions dispatched from a non-git folder being impossible to delete from the agents view</li>\n<li>Fixed reopening a stopped background session failing to restore its saved conversation when an unreadable folder exists in the session store</li>\n<li>Fixed the Remote Control \"session ready\" push notification firing for sessions where Remote Control was not explicitly enabled</li>\n<li>Fixed <code>/install-github-app</code> and the <code>/mcp</code> settings menu being blocked in agent-view sessions — they're now refused only in background sessions with no terminal attached</li>\n<li>Fixed plugins enabled via the <code>--settings</code> CLI flag not loading (regression since v2.1.181)</li>\n<li>Fixed feature flags going stale in long-running sessions after the OAuth token rotates</li>\n<li>Fixed <code>/ultrareview</code> refusing to run in repos with no merge base — it now offers to review all tracked files</li>\n<li>Fixed <code>claude update</code> and <code>claude doctor</code> hanging silently, and the <code>/status</code> System diagnostics section going blank, when a shell-config path is a directory</li>\n<li>Fixed memory frontmatter values being silently truncated at an inline <code>#</code> when memory files are saved</li>\n<li>Fixed session cost and token telemetry double-counting on streams that emit multiple cumulative <code>message_delta</code> frames</li>\n<li>Fixed a spurious \"check your network\" warning that appeared while the advisor was thinking</li>\n<li>Fixed hooks with exit code 2 not blocking as documented when the hook's stdout JSON fails schema validation</li>\n<li>Fixed OTel log events emitted outside the turn's async context missing the interaction span's trace context</li>\n<li>Fixed MCP transient errors during prompts/resources refresh clearing the server's slash commands and resources</li>\n<li>Improved the <code>claude rc</code> workspace-trust error in the home directory to say trust there is never saved and to suggest running from a project directory</li>\n<li>Changed single-segment <code>dir/**</code> hook <code>if:</code> conditions to match only <code>&lt;cwd&gt;/dir</code>; write <code>**/dir/**</code> for any-depth matching. <code>deny</code>/<code>ask</code> permission rules keep their any-depth match.</li>\n<li>Changed <code>file</code> commands using <code>-m</code>/<code>--magic-file</code> or <code>-f</code>/<code>--files-from</code> to require permission instead of being auto-allowed as read-only</li>\n<li>Changed keep-alive connection pooling to disable after a stale-connection error, so retries open a fresh socket</li>\n<li>Changed SessionStart hooks to report source <code>\"fork\"</code> when a session begins as a fork instead of <code>\"resume\"</code></li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.215",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.215"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.214",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.214"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "该内容与Reasoning和Efficiency高度相关，由知名博主撰写，来源可信度较高。控制推理努力度是当前重要方向，能提升实际应用效率。",
+      "summary_cn": "文章探讨了如何控制大型语言模型的推理努力程度，实现了低、中、高三档推理模式。通过调整推理步数或注意力机制，使模型在简单任务上快速响应，复杂任务上深入思考，从而平衡效率与准确性。",
+      "tags": [
+        "Reasoning",
+        "Efficiency",
+        "LLM"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "paper",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 4,
+    "published_at": "2026-07-18T11:16:09Z",
+    "raw_summary": "How LLMs Learn Low-, Medium-, and High-Effort Reasoning Modes",
+    "related_items": [],
+    "source": "Ahead of AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Controlling Reasoning Effort in LLMs",
+    "url": "https://magazine.sebastianraschka.com/p/controlling-reasoning-effort-in-llms"
+  },
+  {
+    "analysis": {
+      "action": "关注该模型在订阅计划中的实际性能表现，评估其对 Agent/Coding 任务的适用性。",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "信息来源于 Simon Willison 博客，为资深开发者可靠博客；内容涉及主流模型定价策略重大调整，对用户选择有直接影响，偏好 Agent/Coding 用户需关注此变化。",
+      "summary_cn": "Anthropic 宣布 Claude Fable 5 将永久保留在 Max 和 Team Premium 订阅中（额度减半），Pro 和 Team Standard 用户可继续通过使用积分访问并获赠 100 美元信用额度。此举是应对 GPT-5.6 Sol 和 Kimi 3 的竞争，放弃了此前仅通过 API 提供的计划。",
+      "tags": [
+        "Anthropic",
+        "Claude",
+        "Fable 5",
+        "pricing",
+        "competition",
+        "LLM"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-07-18T06:00:13Z",
+    "raw_summary": "<p><strong><a href=\"https://twitter.com/claudeai/status/2078302415804379218\">Claude make Fable 5 permanent</a></strong></p>\nAn update from the <code>@claudeai</code> account on Twitter:</p>\n<blockquote>\n<p>Beginning July 20, Claude Fable 5 will be included in all Max and Team Premium plans, at 50% of limits.</p>\n<p>Pro and Team Standard users will continue to have access to Fable via usage credits, and will receive a one-time $100 credit.</p>\n</blockquote>\n<p>As I was saying <a href=\"https://simonwillison.net/2026/Jul/12/bump/\">last week</a>, the competition from <a href=\"https://simonwillison.net/2026/Jul/9/gpt-5-6/\">GPT-5.6 Sol</a> (and maybe to a lesser extent <a href=\"https://simonwillison.net/2026/Jul/16/kimi-k3/\">Kimi 3</a>) made untenable Anthropic's plan to remove Fable 5 from their subscription accounts and make it available exclusively through API pricing.</p>\n<p>Why pay $100 or $200/month for a subscription plan that <em>doesn't</em> include Anthropic's best model?</p>\n<p>Their original plan was driven by concerns over compute capacity. I wonder if they'll have to dial back their training efforts in order to make more GPUs available to help serve the model.</p>\n<p>A lot of people were losing sleep over trying to make the most of Fable 5 before subscriber access was withdrawn. It's nice not to have to worry about the Fablepocalypse any more.</p>\n<p><strong>Update</strong>: Important to note that users on the $20/month plan will still not have access to Fable 5 on that subscription. The Max plans are $100 and $200/month.\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/anthropic\">anthropic</a>, <a href=\"https://simonwillison.net/tags/claude\">claude</a>, <a href=\"https://simonwillison.net/tags/llm-pricing\">llm-pricing</a>, <a href=\"https://simonwillison.net/tags/claude-mythos-fable\">claude-mythos-fable</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Claude make Fable 5 permanent",
+    "url": "https://simonwillison.net/2026/Jul/18/claude-make-fable-5-permanent"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 3,
+      "importance": 4,
+      "reason": "Linus Torvalds 作为 Linux 创始人，其表态对开源社区和 AI 应用方向有重要影响，但来源为二手博客，可信度受限。",
+      "summary_cn": "Linus Torvalds 在 Linux 媒体邮件列表上力挺 AI，称其为有效工具，并反对社区中排斥 AI 的倾向。他表示 Linux 不是反 AI 项目，质疑 AI 实用性的人显然没有真正用过。",
+      "tags": [
+        "Linus Torvalds",
+        "Linux",
+        "AI",
+        "开源",
+        "工具"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-07-16T13:26:10Z",
+    "raw_summary": "<blockquote cite=\"https://lore.kernel.org/linux-media/CAHk-=wi4zC+Ze8e+p3tMv8TtG_80KzsZ1syL9anBtmEh5Z40vg@mail.gmail.com/\"><p>I realize that some people really dislike AI, but this is an area where I'm willing to absolutely put my foot down as the top-level maintainer.</p>\n<p>Linux is not one of those anti-AI projects, and if somebody has issues with that, they can do the open-source thing and fork it.</p>\n<p>Or just walk away.</p>\n<p>AI is a tool, just like other tools we use.  And it's clearly a useful one.</p>\n<p>It may not have been that \"clearly\" even just a year ago, but it's no longer in question today.</p>\n<p>There are other questions around AI (like what the economy of it will actually look like in the end), but \"is it useful\" is no longer one of those questions. Anybody who doubts that clearly hasn't actually used it.</p></blockquote>\n<p class=\"cite\">&mdash; <a href=\"https://lore.kernel.org/linux-media/CAHk-=wi4zC+Ze8e+p3tMv8TtG_80KzsZ1syL9anBtmEh5Z40vg@mail.gmail.com/\">Linus Torvalds</a>, Linux Media Mailing List</p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/linus-torvalds\">linus-torvalds</a>, <a href=\"https://simonwillison.net/tags/linux\">linux</a>, <a href=\"https://simonwillison.net/tags/open-source\">open-source</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Quoting Linus Torvalds",
+    "url": "https://simonwillison.net/2026/Jul/16/linus-torvalds"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub 发布补丁，可信度高；修复了视频轮询和图片保留 bug，对使用相关功能的开发者有实际价值；用户偏好 Agent 和 Coding，SDK 更新相关。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/xai@4.0.16 补丁版本：修复了视频轮询时空 HTTP 202 响应处理问题，以及 Responses API 工具结果中图片保留问题；同时更新了依赖 @ai-sdk/provider-utils 和 @ai-sdk/openai-compatible。",
+      "tags": [
+        "Vercel AI SDK",
+        "xAI",
+        "bug fix",
+        "video polling",
+        "Responses API"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-07-17T12:04:01Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/1e2ae1f818fa92da8038c40056e0d9b233fe4945\"><tt>1e2ae1f</tt></a>: fix(xai): handle empty HTTP 202 responses while polling videos</li>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/54e5498d9c568fa5246cc0177d09ca79793220ed\"><tt>54e5498</tt></a>: fix(provider/xai): preserve images in Responses API tool results</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/cd064585a4e6ee663fd3bdc4e783f1bc4b4d2639\"><tt>cd06458</tt></a>]\n<ul>\n<li>@ai-sdk/provider-utils@5.0.11</li>\n<li>@ai-sdk/openai-compatible@3.0.12</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/xai@4.0.16",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%404.0.16"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "仅涉及补丁更新，无重大功能变更或关键修复，对用户影响极小。尽管来源权威（GitHub 官方发布），但信息价值低，无需特别关注。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/workflow-harness@1.0.36，包含补丁更新，主要为底层 @ai-sdk/harness 依赖的同步升级。这是 SDK 工作流工具的小版本迭代，对 Agent 工作流的稳定性有细微改进。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "Workflow",
+        "Agent",
+        "Patch"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-07-17T12:04:00Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>@ai-sdk/harness@1.0.36</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow-harness@1.0.36",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow-harness%401.0.36"
+  },
+  {
+    "analysis": {
+      "action": "忽略",
+      "confidence": 4,
+      "importance": 2,
+      "reason": "内容无实质技术信息，仅确认市场平静，对 Agent、RAG 等领域无直接帮助。",
+      "summary_cn": "Latent Space 的 AI 新闻简报指出当日是平静的一天，没有重大事件发生。适合作为市场动态参考，但缺乏具体技术细节。",
+      "tags": [
+        "新闻",
+        "市场动态",
+        "平静日"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-07-18T04:30:21Z",
+    "raw_summary": "a quiet day",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] not much happened today",
+    "url": "https://www.latent.space/p/ainews-not-much-happened-today-830"
+  }
+]
