@@ -120,8 +120,9 @@ Actions 会自动 commit：
 
 监控：
 
-- `Daily AI Radar` 生成失败时会自动创建 GitHub issue。
-- 日报质量分低于阈值或 `content_health != ok` 时会自动创建 GitHub issue。
+- `Daily AI Radar` 生成失败时会立即创建 `[HIGH]` GitHub issue。
+- 日报出现 LLM API 调用失败（`llm_failed > 0`）时会立即创建 `[HIGH]` GitHub issue，即使日报已降级生成成功。
+- 单日质量偏低只记录在 `data/run-summary`；只有连续两个自然日质量偏低才创建质量提醒 issue。
 - 如果配置了 Telegram 或飞书 secret，会推送当天质量分、条目数、必看数和 Pages 链接；未配置时自动跳过。
 
 如果没有配置 `DEEPSEEK_API_KEY` 或 `OPENAI_API_KEY`，workflow 会直接失败，避免自动提交未调用模型的降级摘要。

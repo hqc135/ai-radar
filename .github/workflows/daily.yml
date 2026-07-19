@@ -75,54 +75,27 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          title="AI Radar daily failed: $(date -u +%F)"
+          title="[HIGH] AI Radar daily failed: $(date -u +%F)"
           body="Daily AI Radar failed in workflow run ${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}."
           if ! gh issue list --state open --search "$title in:title" --json title --jq '.[].title' | grep -Fxq "$title"; then
             gh issue create --title "$title" --body "$body"
           fi
 
-      - name: Check daily quality
+      - name: Check daily alerts
         id: quality
+        run: python scripts/check_daily_alerts.py
+
+      - name: Open issue on LLM API failure
+        if: steps.quality.outputs.api_failure == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          python - <<'PY' >> "$GITHUB_OUTPUT"
-          import json
-          import os
-          from pathlib import Path
+          title="[HIGH] AI Radar daily API failure: ${{ steps.quality.outputs.date }}"
+          if ! gh issue list --state open --search "$title in:title" --json title --jq '.[].title' | grep -Fxq "$title"; then
+            gh issue create --title "$title" --body-file "${{ steps.quality.outputs.api_body_path }}"
+          fi
 
-          summaries = sorted(Path("data/run-summary").glob("*.json"))
-          if not summaries:
-              print("needs_issue=false")
-              raise SystemExit
-
-          path = summaries[-1]
-          data = json.loads(path.read_text(encoding="utf-8"))
-          needs_issue = bool(data.get("quality_needs_review")) or data.get("content_health") != "ok"
-          print(f"needs_issue={str(needs_issue).lower()}")
-          print(f"date={path.stem}")
-          print(f"score={data.get('quality_score', 'unknown')}")
-          print(f"health={data.get('content_health', 'unknown')}")
-          reasons = data.get("health_reasons", [])
-          body = [
-              f"Daily quality check flagged `{path.name}`.",
-              "",
-              f"- quality_score: {data.get('quality_score', 'unknown')}",
-              f"- content_health: {data.get('content_health', 'unknown')}",
-              f"- output_items: {data.get('output_items', 'unknown')}",
-              f"- must_read_items: {data.get('must_read_items', 'unknown')}",
-              f"- low_quality_release_ratio: {data.get('low_quality_release_ratio', 'unknown')}",
-              f"- sources_failed: {data.get('sources_failed', 'unknown')}",
-              "",
-              "Reasons:",
-              *(f"- {reason}" for reason in reasons),
-              "",
-              f"Workflow run: {os.environ['GITHUB_SERVER_URL']}/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
-          ]
-          body_path = Path(os.environ["RUNNER_TEMP"]) / f"{path.stem}-quality-issue.md"
-          body_path.write_text("\n".join(body) + "\n", encoding="utf-8")
-          print(f"body_path={body_path.as_posix()}")
-          PY
-
-      - name: Open issue on low quality daily
+      - name: Open issue on consecutive low quality daily
         if: steps.quality.outputs.needs_issue == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
