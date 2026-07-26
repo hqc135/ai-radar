@@ -1,0 +1,246 @@
+[
+  {
+    "analysis": {
+      "action": "跟踪评估",
+      "confidence": 5,
+      "importance": 5,
+      "reason": "Claude Opus 5 是 Anthropic 最新旗舰模型，针对代理编码和多文件任务优化，是用户偏好的 Agent 和 Coding 方向；官方 Changelog 来源，可信度极高；重要性高，需密切关注其在编码代理和多 agent 工作流中的表现。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Anthropic 的 Claude Opus 5 现已在 Vercel AI Gateway 上线，专为长周期编码代理优化，可处理多文件功能、大型重构和端到端任务，避免遗留存根。支持低/中推理模式以降低 token 和延迟，视觉能力增强，并默认启用推理。提供快速模式、模型回退和零数据保留，可通过 AI Gateway 在编码代理中集成。",
+      "tags": [
+        "Claude Opus 5",
+        "Agent",
+        "Coding",
+        "Vercel",
+        "AI Gateway",
+        "Reasoning",
+        "Model Release"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-24T00:00:00Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/ai-gateway/models/claude-opus-5\">Claude Opus 5</a> from Anthropic is now available on AI Gateway.</p><p>Opus 5 improves on previous Opus models for long-horizon agentic coding, handling multi-file features, larger refactors, and end-to-end feature work, and completing full tasks rather than leaving stubs or placeholders.</p><p>Opus 5 is effective at low and medium effort, which produce quality at a fraction of the tokens and latency of higher settings. Vision is stronger on charts, documents, diagrams, and UI replication, and Opus 5 makes effective use of tools to analyze, crop, and verify visual work. It also coordinates teams of subagents well, which suits multi-agent workflows.</p><p>Reasoning is on by default. In AI SDK 7, set the reasoning effort with the top-level <code>reasoning</code> option, from <code>minimal</code> up to <code>xhigh</code>, or <code>none</code>:</p><div></div><p>Like Fable 5, Opus 5 ships with elevated cybersecurity safeguards, so benign security work can occasionally trigger a safety classifier and get blocked. To add a backstop, use AI Gateway's model fallbacks. List backup models in a <code>models</code> array under <code>providerOptions.gateway</code>, and the gateway tries them in order when the primary model fails. The same option works across every AI Gateway API format.</p><div></div><p>Opus 5 is compatible with <a href=\"https://vercel.com/docs/ai-gateway/zdr\">Zero Data Retention</a>.</p><h2>Fast mode</h2><p>To enable fast mode, pass <code>speed: 'fast'</code> in the <code>anthropic</code> provider options in AI SDK:</p><div></div><h2>Providers and endpoints</h2><p>Opus 5 can be served by more than one provider. To see every provider serving it, along with per-provider pricing, supported parameters, uptime, throughput, and latency, call the model endpoints API:</p><div></div><h2>Use Opus 5 in your coding agent</h2><p>Route your coding agent through AI Gateway to run Opus 5 with unified spend tracking, model fallbacks, and access to every model.</p><p>Run <code>vercel ai-gateway coding-agents setup</code> to detect the agents on your machine, provision a key, and write their config. See how to <a href=\"https://vercel.com/docs/ai-gateway/coding-agents/claude-code\">set it up in Claude Code</a>.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/claude-opus-5-now-available-on-ai-gateway\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Claude Opus 5 now available on AI Gateway",
+    "url": "https://vercel.com/changelog/claude-opus-5-now-available-on-ai-gateway"
+  },
+  {
+    "analysis": {
+      "action": "观望",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方GitHub发布说明，可信度最高；引入新版Opus模型及多项开发者体验改进，与Agent、Coding用户偏好高度相关。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Anthropic 发布 Claude Code v2.1.219，新增 Opus 5 模型（1M 上下文，$10/$50 每百万 token），支持沙箱网络白名单、目录添加钩子、MCP 服务错误报告及子代理转发修复等多项功能与改进。",
+      "tags": [
+        "Anthropic",
+        "Claude Code",
+        "Claude Opus 5",
+        "沙箱安全",
+        "MCP"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-24T17:14:23Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Added Claude Opus 5 (<code>claude-opus-5</code>), now the default Opus model — 1M context, fast mode at $10/$50 per Mtok</li>\n<li>Added <code>sandbox.network.strictAllowlist</code> setting to deny non-allowlisted hosts for sandboxed commands without prompting</li>\n<li>Added <code>DirectoryAdded</code> hook that fires after <code>/add-dir</code> or the SDK <code>register_repo_root</code> control request registers a new working directory mid-session</li>\n<li>Added <code>mcp_server_errors</code> to the headless stream-json init event, listing <code>--mcp-config</code> entries skipped by config validation; terminal runs print a startup warning</li>\n<li>Added the <code>workflowSizeGuideline</code> settings key so the advisory Dynamic workflow size guideline can be set from any settings file; the <code>/config</code> row is hidden while one does</li>\n<li>Added nested subagent forwarding in stream-json: subagents spawned at depth-2+ now appear when <code>--forward-subagent-text</code> is set, keyed by their spawning Agent <code>tool_use</code> id</li>\n<li>Fixed <code>claude -p</code> text output dropping the answer already produced when a turn dies on a mid-stream API error</li>\n<li>Added HTTP status and error text to <code>claude mcp list</code> and <code>/mcp</code> when a server fails to connect, and a warning for MCP config values with hidden leading or trailing whitespace</li>\n<li>Fixed a permission you approved while a self-hosted runner was restarting being dropped when the session resumed, so the approved action now runs</li>\n<li>Fixed the Fable model row showing \"Requires usage credits\" for plans that include it, when a stale cache had baked the label in</li>\n<li>Fixed a SIGTERM arriving while a self-hosted runner was starting up leaving a stale active row until the lease expired; it now deregisters cleanly</li>\n<li>Added structured failure categories to self-hosted runner spawn and session failures, so hook errors, runner crashes and config errors can be told apart</li>\n<li>Fixed the <code>/model</code> picker showing the merged Opus row as plain \"Opus\" instead of \"Opus (1M context)\"</li>\n<li>Fixed copy-on-select inside GNU screen printing base64 into the terminal instead of copying the selection</li>\n<li>Fixed Remote Control clients keeping a stale fast-mode status after a model switch, reconnect, or failed org check</li>\n<li>Fixed <code>CLAUDE_CODE_GIT_BASH_PATH</code> on Windows exiting or being used as bash when the path isn't a bash/sh binary; it's now ignored with a warning</li>\n<li>Fixed Vim mode: pressing ← on an empty prompt now returns to the agent view from NORMAL mode, not just INSERT</li>\n<li>Fixed screen-reader mode rewriting the entire input line on every keystroke instead of echoing only the typed character</li>\n<li>Improved the \"Remote Control is only available via api.anthropic.com\" error to name the specific setting that caused it</li>\n<li>Improved <code>claude --teleport</code> to show which repo your current checkout points at when it doesn't match the session's repo</li>\n<li>Changed dynamic workflows to default to a medium size guideline (aim for fewer than 15 agents); pick another size or unrestricted with Dynamic workflow size in <code>/config</code></li>\n<li>Changed managed MCP allowlist/denylist <code>${VAR}</code> entries to resolve from the startup environment and managed-settings env instead of settings-file env</li>\n<li>Changed the <code>/model</code> picker to highlight only the newest model's name, so the highlight marks the new release rather than an arbitrary subset of the list</li>\n<li>Added the current default workflow size to the running-workflow status line, with a pointer to <code>/config</code> for changing it</li>\n<li>Removed Opus 4.7 from fast mode; <code>/fast</code> now applies to Opus 5 and Opus 4.8</li>\n<li>Updated the claude-api skill to default to Claude Opus 5, with a migration path from Opus 4.8</li>\n<li>Subagents can now spawn nested subagents up to depth 3 by default (was 1); set CLAUDE_CODE_MAX_SUBAGENT_SPAWN_DEPTH=1 to disable nesting</li>\n</ul>",
+    "related_items": [],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.219",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.219"
+  },
+  {
+    "analysis": {
+      "action": "详细阅读博客，了解 NemoClaw 蓝图设计思路及其对 Agent 开发的改进；试用 LangSmith Sandboxes 以评估其调试能力；关注 OpenWiki Brains 和 RLM 对 RAG 及推理的潜在影响。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客发布，可信度高；内容涉及 Agent、RAG、Reasoning 等用户偏好领域；多项新功能直接提升智能体开发与运维效率。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "LangChain 2026年7月新闻：发布 NemoClaw 深度智能体蓝图，推出 LangSmith Sandboxes 免费试用，Fleet 集成 Slack，新增语音追踪、OpenWiki Brains 及深度智能体中的 RLM 功能，显著扩展了智能体开发与协作能力。",
+      "tags": [
+        "LangChain",
+        "Agent",
+        "NemoClaw",
+        "LangSmith",
+        "Sandboxes",
+        "Fleet",
+        "OpenWiki Brains",
+        "RLM"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-24T02:31:15Z",
+    "raw_summary": "NemoClaw Deep Agents blueprint, LangSmith Sandboxes free trial, Fleet Slack integration, voice tracing, OpenWiki Brains, and RLMs in Deep Agents. See what's new at LangChain",
+    "related_items": [],
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "July 2026: LangChain Newsletter — NemoClaw Blueprint, OpenWiki Brains, and More",
+    "url": "https://www.langchain.com/blog/july-2026-langchain-newsletter"
+  },
+  {
+    "analysis": {
+      "action": "升级 @ai-sdk/anthropic 至 3.0.103 以确保推理 token 统计准确，尤其对依赖 token 计费或监控的 Agent 应用。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub 发布，高可信度；修复涉及 reasoning token，与用户偏好的 Agent 和 Reasoning 相关，重要性较高。；已合并同事件来源：Vercel AI SDK Releases。",
+      "summary_cn": "Vercel AI SDK 的 Anthropic 集成 v3.0.103 发布，修复了将 Anthropic 模型思考 token 报告为推理 token 使用量的问题，对使用 Agent/Reasoning 功能的开发者具有直接价值。",
+      "tags": [
+        "Vercel AI SDK",
+        "Anthropic",
+        "推理token",
+        "Agent",
+        "Reasoning",
+        "开源"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 4,
+    "published_at": "2026-07-26T02:51:55Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/7865a710d0af779a97e4c4d612fb7ed199c1344c\"><tt>7865a71</tt></a>: fix(anthropic): report thinking tokens as reasoning token usage</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Vercel AI SDK Releases",
+        "source_tier": 1,
+        "title": "@ai-sdk/anthropic@4.0.21",
+        "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fanthropic%404.0.21"
+      }
+    ],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/anthropic@3.0.103",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fanthropic%403.0.103"
+  },
+  {
+    "analysis": {
+      "action": "阅读原博客，重点关注企业构建自主AI系统时的关键要素和实施策略。",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "LangChain官方博客，来源可信，主题涉及Agent和RAG相关的最佳实践，对企业级AI应用有指导意义。",
+      "summary_cn": "LangChain 博客文章强调，企业必须自主掌控代理系统、治理、上下文和反馈循环，才能将通用 AI 转化为持久的业务优势。",
+      "tags": [
+        "Agent",
+        "LangChain",
+        "企业AI",
+        "治理",
+        "反馈循环"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-25T20:43:00Z",
+    "raw_summary": "Learn why companies must own their agent systems, governance, context, and feedback loops to turn generic AI into lasting business advantage.",
+    "related_items": [],
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Own Your Intelligence: The Key to Lasting AI Advantage",
+    "url": "https://www.langchain.com/blog/own-your-intelligence"
+  },
+  {
+    "analysis": {
+      "action": "阅读原文，了解具体评估指标和设置，借鉴其思路优化自身 Agent 评估流程。",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "来自官方博客，内容聚焦 Agent 评测方法，与用户偏好的 Agent 和 Eval 高度相关，具有实践参考价值。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "LangChain 博客介绍了其如何改造 Deep Agents 的基准测试方法，包括在编码、对话和检索任务上的评估设置，以及如何利用这些测试来推动产品改进。该方法将用于 Harbor 平台，强调系统化评估对 Agent 开发的重要性。",
+      "tags": [
+        "Agent",
+        "Eval",
+        "LangChain",
+        "Benchmark"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-07-24T02:31:15Z",
+    "raw_summary": "We revamped how we benchmark Deep Agents. Here's the eval setup we run in Harbor across coding, conversation, and retrieval, and how we use it to ship changes.",
+    "related_items": [],
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "How We Benchmark Deep Agents",
+    "url": "https://www.langchain.com/blog/how-we-benchmark-deep-agents"
+  },
+  {
+    "analysis": {
+      "action": "关注Anthropic官方公告，验证性能声明",
+      "confidence": 3,
+      "importance": 4,
+      "reason": "博客来源，非官方，可信度受限；但产品发布本身重要，且涉及模型蒸馏与定价策略，对用户偏好Agent/Coding/RAG等有潜在影响。",
+      "summary_cn": "Anthropic 发布 Claude Opus 5，声称以 Opus 价格提供 Fable 级别的性能，性能减半。Latent Space 博客报道，强调 Anthropic 在模型蒸馏方面的优势。",
+      "tags": [
+        "Anthropic",
+        "Claude Opus 5",
+        "模型蒸馏",
+        "性能对比"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-07-25T07:25:38Z",
+    "raw_summary": "ain't nobody beats Anthropic at distilling Fable!",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] Claude Opus 5: Fable-level performance at Opus price (half Fable)",
+    "url": "https://www.latent.space/p/ainews-claude-opus-5-fable-level"
+  }
+]
