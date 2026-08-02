@@ -1,0 +1,241 @@
+[
+  {
+    "analysis": {
+      "action": "阅读论文和 GitHub 仓库，重点关注推理过程与形式化验证方法",
+      "confidence": 4,
+      "importance": 5,
+      "reason": "官方发布、有 GitHub 和论文原始链接，可信度高；内容涉及推理和形式化证明，与用户偏好相关，重要性高。；已合并同事件来源：OpenAI News。",
+      "summary_cn": "OpenAI 宣布其内部版 Astra 模型在数学和理论计算机科学领域取得十项重大突破，每个问题成本低于 2000 美元。项目已在 GitHub 开源 Lean 4 形式化证明，并发布论文和推理过程。数学家对此反应强烈，引发关于 AI 驱动的“大数学”时代讨论。",
+      "tags": [
+        "OpenAI",
+        "数学",
+        "AI推理",
+        "Lean4",
+        "自动证明"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 4,
+    "published_at": "2026-08-01T20:34:49Z",
+    "raw_summary": "<p><strong><a href=\"https://openai.com/index/ten-advances-in-mathematics/\">Ten advances in mathematics and theoretical computer science</a></strong></p>\nA few days ago it was Anthropic <a href=\"https://simonwillison.net/2026/Jul/28/discovering-cryptographic-weaknesses-with-claude/\">discovering cryptographic weaknesses with Claude</a> using Mythos Preview, spending $100,000 on tokens and with prompts that included \"again we are not looking for low hanging fruit, we want proper research to find genuinly hard findings.\"</p>\n<p>Now it's OpenAI's turn to flex. They set \"an internal version of Astra, our next major model\" on finding solutions to ten mathematical problems that \"have seen no progress on the main result for at least a decade\". They claim to have spent less than $2,000 at GPT-5.6 Sol token prices on each one.</p>\n<p>(No news on how many problems they spent $2,000 on <em>without</em> reaching a solution though.)</p>\n<p>The <a href=\"https://github.com/openai/ten-proofs\">openai/ten-proofs</a> repository has Lean 4 formalizations of their results, and there's also <a href=\"https://cdn.openai.com/pdf/ten-proofs-oai.pdf\">a paper</a> describing the solutions and an additional <a href=\"https://cdn.openai.com/pdf/reasoning-walkthroughs.pdf\">LLM-generated PDF</a> where the model \"reconstructs how the proof came together\" based on the unpublished reasoning traces.</p>\n<p>That's a decent level of transparency, but I want to see the prompts they used!</p>\n<p>A lot of mathematicians online are experiencing a collective burst of <a href=\"https://simonwillison.net/2026/Feb/15/deep-blue/\">Deep Blue</a>. Mathematician Kirwin Hampshire published an impassioned essay last week, <a href=\"https://kirwinhampshire.substack.com/p/the-dark-night-of-mathematics\">The Dark Night of Mathematics</a>, describing \"a profound spiritual crisis\" brought on by previous (and less significant) results.</p>\n<p>OpenAI's results reminds me of what Terence Tao described as \"big mathematics\" in <a href=\"https://spectrum.ieee.org/ai-in-mathematics\">IEEE Spectrum in June</a>:</p>\n<blockquote>\n<p>Unlike some of his peers, Tao is neither dismissive of AI nor fearful. Instead, he sees it as the catalyst for a fundamental shift in the discipline—a transition toward what he calls “big mathematics.” He envisions a future of large-scale, decentralized collaborations between humans and machines, where complex mathematical tasks can be diced and sliced, with humans claiming the creative parts and AI doing the lion’s share of the technical grunt work.</p>\n</blockquote>\n\n    <p><small></small>Via <a href=\"https://news.ycombinator.com/item?id=49132058\">Hacker News</a></small></p>\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/mathematics\">mathematics</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/openai\">openai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/deep-blue\">deep-blue</a></p>",
+    "related_items": [
+      {
+        "confidence": 4,
+        "importance": 4,
+        "source": "OpenAI News",
+        "source_tier": 1,
+        "title": "Ten advances in mathematics and theoretical computer science",
+        "url": "https://openai.com/index/ten-advances-in-mathematics"
+      }
+    ],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Ten advances in mathematics and theoretical computer science",
+    "url": "https://simonwillison.net/2026/Aug/1/ten-advances-in-mathematics"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "涉及AI政策与开源权重，对Agent/RAG等技术生态有影响，但非直接技术进展。",
+      "summary_cn": "微软主导一封公开信，支持开源权重模型，235家公司签署，包括英伟达、亚马逊、OpenAI，强调开放模型的安全价值，反对因安全担忧而限制。Anthropic缺席，发表相反立场，呼吁打击蒸馏，但未主张全面禁令。",
+      "tags": [
+        "开源权重",
+        "AI政策",
+        "公开信",
+        "微软",
+        "Anthropic"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 6,
+    "published_at": "2026-08-02T04:16:52Z",
+    "raw_summary": "<h4>Open letters about AI development</h4>\n<p><em>I wrote this summary of the past few weeks of open letters as a section of <a href=\"https://simonwillison.net/2026/Aug/2/july-newsletter/\">my sponsors-only newsletter</a> but I've decided to share it here as well.</em></p>\n<p><strong><a href=\"https://www.microsoft.com/en-us/corporate-responsibility/topics/open-weight/\">Open Weights and American AI Leadership</a></strong> was shepherded by Microsoft, dated July 24th, and signed by 235 AI-adjacent companies including NVIDIA, Amazon, Y Combinator, The Linux Foundation and (a later signer) OpenAI.</p>\n<p>It's clearly an argument designed to counter <a href=\"https://www.axios.com/2026/07/20/ai-us-china-open-source-kimi\">any instincts</a> by the current US government to ban or limit open weight models over \"safety\" concerns - a reasonable consideration given <a href=\"https://simonwillison.net/2026/Jun/13/us-government-directive-to-suspend-access/\">what happened to Claude Fable 5</a>!</p>\n<blockquote>\n<p>Relying solely on closed models is not inherently safe: they can be breached, misused, or fail in ways that outsiders cannot detect. And concentrating advanced AI capabilities behind a small number of closed models compounds that risk. It results in a small number of single points of failure, weakens competition, and leaves critical technology in the hands of a few providers. Open weight models, on the other hand, allow a broad community of researchers and developers to examine their behavior, identify vulnerabilities, develop safeguards, and improve them over time.</p>\n</blockquote>\n<p>The one surprising note in the letter is that it comes out in support of distillation, where models train on output from other models:</p>\n<blockquote>\n<p>In shaping this ecosystem, policymakers should be careful not to conflate legitimate model-development techniques with misappropriation. Distillation, or the practice of using one model’s outputs to help train or improve another, is a widely used technique for model improvement, evaluation, and validation. It reflects a long tradition of learning from, building upon, and improving existing technologies, a tradition that has helped drive innovation since the rise of the open-source software movement.</p>\n</blockquote>\n<p>Notably absent from the signatures: Anthropic, who published their own response <a href=\"https://www.anthropic.com/news/position-open-weights-models\">Our position on open-weights models</a> three days later. CEO Dario Amodei doubled down on the risk of authoritarian governments building \"AI models that are more powerful than those built by the US\", and models being \"misused to carry out cyberattacks or biological attacks\", and called for \"a crack down on industrial-scale <a href=\"https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks\">distillation operations</a>\", while also stating that \"Anthropic has never advocated for a ban on open-weights models\".</p>\n<p>Then on July 28th <a href=\"https://www.pacingthefrontier.com\">Pacing the Frontier</a> was published, featuring signatures from \"1,324 employees of frontier AI companies\" - with names like Jakub Pachocki (Chief Scientist, OpenAI), Ilya Sutskever (Safe Superintelligence Inc, previously OpenAI), Dario Amodei (Anthropic), Jack Clark (Anthropic) and more. Their core message:</p>\n<blockquote>\n<p>We request that the U.S. government support an international effort to develop the technical and governance tools needed to deliberately pace the frontier of automated AI development.</p>\n</blockquote>\n<p>Their concern is intense competitive pressure combined with accelerated AI progress caused by automated AI research - and given that Anthropic <a href=\"https://www.anthropic.com/institute/recursive-self-improvement\">produce 80% of their code with Claude Code</a>, OpenAI had Sol <a href=\"https://openai.com/index/gpt-5-6-frontier-intelligence-efficiency/\">reduce their end-to-end serving costs by 20%</a>, and Kimi K3 <a href=\"https://www.kimi.com/blog/kimi-k3#chip-design\">designed a chip to serve a nano model built on its own architecture</a>, you can see why people are taking that risk more seriously right now.</p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/openai\">openai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/anthropic\">anthropic</a>, <a href=\"https://simonwillison.net/tags/ai-ethics\">ai-ethics</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Open letters about AI development",
+    "url": "https://simonwillison.net/2026/Aug/2/open-letters"
+  },
+  {
+    "analysis": {
+      "action": "watch",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方来源可信度高，对 Teams 机器人功能增强有一定价值，但与核心偏好（Agent、Coding、RAG、Eval、Reasoning）相关性中等，故重要性适中。",
+      "summary_cn": "Vercel Chat SDK 的 Microsoft Teams 适配器新增对消息反应和临时消息的支持，使机器人可通过统一 API 添加/移除表情回应，以及发送仅目标用户可见的原生定向消息（如权限提示）。该版本还增强了作者邮箱、自定义令牌工厂、原生 DM 状态显示、会话路由和提及转换等能力，提升跨平台聊天机器人的一致性与交互体验。",
+      "tags": [
+        "Agent",
+        "Chat SDK",
+        "Microsoft Teams",
+        "消息反应",
+        "临时消息"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-07-31T00:00:00Z",
+    "raw_summary": "<p>Chat SDK's <a href=\"https://chat-sdk.dev/adapters/official/teams\">Microsoft Teams adapter</a> now supports reactions and ephemeral messages through the same API as other adapters.</p><p>Bots can add and remove reactions on Teams messages, and call <code>thread.postEphemeral()</code> or <code>channel.postEphemeral()</code> to send native, targeted messages that only the intended user sees, like permission prompts.</p><div></div><p>This release also adds:</p><ul><li><p><b>Author emails: </b>Incoming Teams messages include the author's Microsoft Graph email, with their user principal name as a fallback.</p></li><li><p><b>Custom token factory: </b>Pass a token function in <code>TeamsAdapterConfig</code> to supply your own access tokens, so bots on runtimes without Azure IMDS can authenticate without a static client secret.</p></li><li><p><b>Native DM status: </b>Progress messages now show as a native Teams status in direct messages.</p></li><li><p><b>Conversation routing: </b>Group conversations are no longer misidentified as direct messages, so they're always handled correctly.</p></li><li><p><b>Mention conversion: </b>Email addresses, <code>@handles</code> inside URLs, and mentions inside code spans are no longer turned into Teams mentions.</p></li></ul><p>Read the <a href=\"https://chat-sdk.dev/adapters/official/teams\">Teams adapter documentation</a> to get started, or learn more about <a href=\"https://chat-sdk.dev/docs/ephemeral-messages\">ephemeral messages</a> and <a href=\"https://chat-sdk.dev/docs/emoji\">reactions</a>.</p><p><i>Special thanks to </i><a href=\"https://github.com/onmax\"><i>onmax</i></a><i> for their contributions to this release.</i></p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/chat-sdk-reactions-and-ephemeral-messages-on-teams\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Chat SDK now supports reactions and ephemeral messages on Teams",
+    "url": "https://vercel.com/changelog/chat-sdk-reactions-and-ephemeral-messages-on-teams"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 4,
+      "importance": 3,
+      "reason": "来自知名博客 Simon Willison，引用 Greg Brockman 的推文，关于 AI 在职场中人际影响的洞察，对 AI 产品设计有启发，但非技术类，优先级中。",
+      "summary_cn": "OpenAI 总裁 Greg Brockman 观察到，许多 OpenAI 员工将 ChatGPT 接入 Slack，但同事的 AI 代为求助时，人们往往不愿帮忙，即便任务相同。这凸显了人际关系与人类互助的重要性，说明 AI 应节省时间或增强人际联系，而非成为人际隔阂。",
+      "tags": [
+        "AI伦理",
+        "人机交互",
+        "OpenAI",
+        "Greg Brockman",
+        "Slack"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-01T22:29:44Z",
+    "raw_summary": "<blockquote cite=\"https://twitter.com/gdb/status/2083435180392673714\"><p>at openai, many people hook their chatgpt up to slack.</p>\n<p>people really don't like when a coworker's chatgpt contacts them asking for help with a task, even when they'd be perfectly happy doing that same work if asked by that coworker.</p>\n<p>reinforces how much people care about human relationships and helping each other, and want AI to give time back — or enhance time together — rather than become a layer separating people.</p></blockquote>\n<p class=\"cite\">&mdash; <a href=\"https://twitter.com/gdb/status/2083435180392673714\">Greg Brockman</a>, President and Co-Founder, OpenAI</p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/openai\">openai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/ai-ethics\">ai-ethics</a>, <a href=\"https://simonwillison.net/tags/ai-misuse\">ai-misuse</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Quoting Greg Brockman",
+    "url": "https://simonwillison.net/2026/Aug/1/greg-brockman"
+  },
+  {
+    "analysis": {
+      "action": "watch",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方更新，信息可靠，但主要面向 Vercel 平台用户，功能较具体，与 Agent、Coding、RAG、Eval、Reasoning 等偏好关联较弱，对多数用户重要性中等偏低，可关注以了解平台能力演进。",
+      "summary_cn": "Vercel Observability 为 Workflows 运行列表新增结构化搜索功能，支持按工作流、环境、部署 ID、区域或自定义属性过滤，可粘贴运行 ID 精确查找。搜索栏提供智能建议和最近搜索记录，应用后的过滤器以可移除标签形式组合查询，并支持通过 URL 分享和恢复过滤视图。",
+      "tags": [
+        "Vercel",
+        "Observability",
+        "Workflows",
+        "搜索",
+        "开发者工具"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-07-31T00:00:00Z",
+    "raw_summary": "<p>The runs list for <a href=\"https://vercel.com/docs/workflows\">Vercel Workflows</a> in Observability now has structured search, giving you more ways to find and investigate runs.</p><ul><li><p><b>Structured filters:</b> Filter runs by workflow, environment, deployment ID, <a href=\"https://vercel.com/docs/regions\">region</a>, or any custom run attribute. Paste a run ID to pull up that exact run.</p></li><li><p><b>Smarter suggestions:</b> The search bar suggests filters and values from your project's run data as you type, and recent searches are saved per project.</p></li><li><p><b>Editable queries:</b> Applied filters appear as removable chips that combine in one query, and the query lives in the URL, so a filtered view can be shared as a link and restores on load.</p></li></ul><p>For example, <code>workflow:sendEmail environment:preview region:iad1</code> pulls up preview runs of one workflow in one region, since the list otherwise shows production runs.</p><p>Search your runs from the Workflows tab in <a href=\"https://vercel.com/docs/observability\">Vercel Observability</a>.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/expanded-search-for-workflow-runs-in-vercel-observability\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Expanded search for workflow runs in Vercel Observability",
+    "url": "https://vercel.com/changelog/expanded-search-for-workflow-runs-in-vercel-observability"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub 发布信息，可信度高；但内容仅为补丁级依赖更新，无实质功能变更，对用户偏好主题影响小，故重要性低，建议保持关注即可。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/workflow-harness 1.0.54 版本，内容仅为依赖包 @ai-sdk/harness 的补丁更新，无具体功能说明。作为 SDK 子包的小版本迭代，对开发者影响有限，但反映了 Vercel 在 Agent 工作流工具链上的持续维护。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "Workflow",
+        "Agent",
+        "Release"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-01T22:29:19Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>@ai-sdk/harness@1.0.54</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow-harness@1.0.54",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow-harness%401.0.54"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "版本更新为常规补丁，信息直接来自官方 GitHub，可信度高；但无重大变化，重要性较低。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 workeflow 1.0.48 补丁更新，同步更新 ai 7.0.48。该版本为常规维护，无重大功能变更，但持续优化工作流稳定性。对 Agent 工作流开发者有一定参考价值。",
+      "tags": [
+        "Vercel AI SDK",
+        "workflow",
+        "补丁更新",
+        "Agent"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-01T22:29:18Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@7.0.48</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow@1.0.48",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%401.0.48"
+  }
+]
