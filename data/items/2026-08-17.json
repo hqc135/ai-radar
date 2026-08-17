@@ -1,0 +1,245 @@
+[
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub 发布，可信度高；涉及 Agent 核心稳定性与沙箱功能改进，对开发有实际价值，且与用户偏好 Agent 相关。；已合并同事件来源：OpenAI Agents Python Releases。",
+      "summary_cn": "OpenAI Agents Python v0.21.1 发布，新增模型调用超时、运行级沙箱工作目录、Docker 沙箱断网及 Modal 资源选项；修复审批决策、请求计数、MultiProvider 清理、部分锚点匹配、Chat Completions 推理重放等问题，强调稳定性与沙箱能力增强。",
+      "tags": [
+        "OpenAI",
+        "Agents",
+        "Python",
+        "沙箱",
+        "超时",
+        "修复"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-16T22:28:55Z",
+    "raw_summary": "<h2>What's Changed</h2>\n<ul>\n<li>feat(core): add model call timeouts by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4428\">#4428</a></li>\n<li>feat(sandbox): add run-scoped sandbox working directories by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4427\">#4427</a></li>\n<li>feat(sandbox): allow Docker sandboxes to disable networking by <a class=\"user-mention notranslate\" href=\"https://github.com/koadegno\">@koadegno</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4452\">#4452</a></li>\n<li>feat(sandbox): add Modal sandbox resource options by <a class=\"user-mention notranslate\" href=\"https://github.com/Filimoa\">@Filimoa</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4455\">#4455</a></li>\n<li>fix(core): honor exact call approval decisions by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4447\">#4447</a></li>\n<li>fix(core): count Responses requests without usage by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4453\">#4453</a></li>\n<li>fix(core): close all MultiProvider children after failures by <a class=\"user-mention notranslate\" href=\"https://github.com/fszcd\">@fszcd</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4438\">#4438</a></li>\n<li>fix(core): reject partially matched stacked anchors by <a class=\"user-mention notranslate\" href=\"https://github.com/Coiggahou2002\">@Coiggahou2002</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4431\">#4431</a></li>\n<li>fix(chat-completions): Chat Completions reasoning replay by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4432\">#4432</a></li>\n<li>fix(realtime): truncate audio at zero elapsed time by <a class=\"user-mention notranslate\" href=\"https://github.com/Chirag6722\">@Chirag6722</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4457\">#4457</a></li>\n<li>fix(realtime): end iteration after clean server close by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4461\">#4461</a></li>\n<li>fix(sessions): prevent advanced SQLite structure table conflicts by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4454\">#4454</a></li>\n<li>fix(sessions): include compaction usage in run totals by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4446\">#4446</a></li>\n<li>fix(sandbox): validate view_image raster content by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4462\">#4462</a></li>\n<li>fix(sandbox): keep model paths POSIX-normalized by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4416\">#4416</a></li>\n<li>fix(sandbox): normalize apply_patch paths as POSIX by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4437\">#4437</a></li>\n</ul>\n<h3>Documentation &amp; Other Changes</h3>\n<ul>\n<li>docs: updates for v0.21.0 release by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4381\">#4381</a></li>\n<li>docs: list Tuning Engines tracing integration by <a class=\"user-mention notranslate\" href=\"https://github.com/cerebrixos\">@cerebrixos</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4440\">#4440</a></li>\n<li>fix: update cffi lock for Python 3.14 by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4448\">#4448</a></li>\n<li>release: 0.21.1 by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4467\">#4467</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Coiggahou2002\">@Coiggahou2002</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4431\">#4431</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/fszcd\">@fszcd</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4438\">#4438</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/cerebrixos\">@cerebrixos</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4440\">#4440</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Filimoa\">@Filimoa</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4455\">#4455</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/koadegno\">@koadegno</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4452\">#4452</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Chirag6722\">@Chirag6722</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4457\">#4457</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a class=\"commit-link\" href=\"https://github.com/openai/openai-agents-python/compare/v0.21.0...v0.21.1\"><tt>v0.21.0...v0.21.1</tt></a></p>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 4,
+        "source": "OpenAI Agents Python Releases",
+        "source_tier": 1,
+        "title": "v0.21.0",
+        "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.21.0"
+      }
+    ],
+    "source": "OpenAI Agents Python Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v0.21.1",
+    "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.21.1"
+  },
+  {
+    "analysis": {
+      "action": "update",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方发布，涉及 Agent 工具链关键更新与安全修复，符合用户偏好，重要性高。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Anthropic Claude Code 发布 v2.1.233，新增 GitLab MR 链接支持、用户身份转发设置、Linux 内存 cgroup 限制及 WebFetch 缓存配置；修复 MCP v2 连接、通知钩子、Windows 路径安全问题，并优化自托管执行器启动与插件校验等。",
+      "tags": [
+        "Claude Code",
+        "Agent",
+        "Coding",
+        "GitLab",
+        "MCP",
+        "安全修复"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-14T22:20:57Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Added GitLab merge request URL support to the <code>--worktree</code> flag and the <code>claude agents</code> view (where MRs display as <code>!N</code>)</li>\n<li>Added an opt-in <code>forward_user_identity</code> apps gateway setting on Anthropic upstreams that sends the signed-in user's identity as headers, so a proxy behind the gateway can attribute spend per user</li>\n<li>Added opt-in memory cgroup support for Bash tool commands on Linux (<code>CLAUDE_CODE_TOOL_MEMORY_LIMIT</code>) so a runaway build can't stall the session</li>\n<li>Added <code>CLAUDE_CODE_WEBFETCH_CACHE_TTL_MS</code> environment variable to configure the WebFetch session URL cache TTL (default unchanged: 15 minutes)</li>\n<li>Fixed cloud sessions occasionally being marked as lost when the environment shut down while Claude was waiting on a permission prompt</li>\n<li>Fixed MCP v2 connections endlessly reopening the subscriptions/listen stream against servers that terminate long-held streams on a fixed timeout (e.g. serverless hosts)</li>\n<li>Fixed Notification hooks not firing for permission prompts when running under Claude Desktop or VS Code</li>\n<li>Fixed idle sessions on Linux sometimes keeping one CPU core at 100% when sandboxing is enabled</li>\n<li>Fixed bundled skill aliases like <code>/checkup</code> and <code>/review</code> reporting \"Unknown command\" in <code>-p</code> mode or with plugins/MCP loaded when a user or project skill shadows the bundled skill</li>\n<li>Fixed skill/command argument substitution to prevent argument values from being re-expanded as template markers</li>\n<li>Fixed Windows paths spelled with the NT <code>\\??\\</code> device prefix bypassing UNC path validation, closing an NTLM credential-leak vector</li>\n<li>Improved <code>claude self-hosted-runner</code> session start time: the session branch is now created without rewriting the working tree, and two server round trips no longer block the agent's launch</li>\n<li>Improved apps gateway error forwarding: 400/413 errors from Vertex, Foundry, and Claude Platform on AWS upstreams now carry the upstream's own message; fixes a bug with auto-compact on apps gateway</li>\n<li>Improved <code>claude plugin validate</code> to check a bare <code>.claude/skills</code> directory, reporting SKILL.md files whose frontmatter fails to parse</li>\n<li>Improved screen reader mode: the <code>/effort</code> selector renders as a numbered list with a typed-number prompt, and hint and dialog text is no longer clipped</li>\n<li>Improved print mode diagnostics: a <code>[claude-code:unrecognized_model]</code> line is written to stderr when a request goes out for a model ID Claude Code doesn't recognize; map it with <code>modelOverrides</code> to silence</li>\n<li>Changed the GitHub app setup tip to no longer appear in repositories whose origin remote is on gitlab.com or bitbucket.org; the enterprise marketplace tip now covers non-GitHub internal git hosts</li>\n<li>Todo/task-tracking tools (TaskCreate/Get/Update/List, TodoWrite) are no longer available on Opus 4.8, Sonnet 5, Fable 5, Mythos 5, and newer models; set <code>CLAUDE_CODE_ENABLE_TODO_TOOLS=1</code> to bring them back</li>\n<li>Windows: fixed auto mode repeatedly stopping for manual approval on ordinary <code>cd &lt;dir&gt; &amp;&amp; &lt;command&gt; &gt; file</code> Bash commands (a 2.1.232 regression)</li>\n<li>Reverted the 2.1.232 Bash permission changes for Cygwin-style symlinks on Windows and for input redirections (<code>&lt; file</code>); a narrower version will return in a later release</li>\n</ul>",
+    "related_items": [],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.233",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.233"
+  },
+  {
+    "analysis": {
+      "action": "精读并整理要点，结合项目实践进行验证。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来源为官方博客（Tier 2），可信度高；主题 Agent 契合用户偏好，且对工作流与 Agent 的区分具有实践指导价值。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "LangChain 官方博客深入解析 AI Agent 的定义与工作机制，重点讲解 LLM 循环中的 Agent 运作方式以及工作流（Workflow）的定位，旨在帮助开发者构建可靠、可用于生产环境的自主系统，是理解 Agent 架构与设计哲学的基础资源。",
+      "tags": [
+        "Agent",
+        "LangChain",
+        "LLM Loop",
+        "Workflow",
+        "教程"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-16T10:53:35Z",
+    "raw_summary": "Learn what AI agents are, how they work in an LLM loop, and where workflows fit so you can build reliable, production-ready autonomous systems.",
+    "related_items": [],
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "What is an AI agent?",
+    "url": "https://www.langchain.com/blog/what-is-an-agent"
+  },
+  {
+    "analysis": {
+      "action": "关注并试用该模型，通过调整推理强度优化本地部署体验，并跟踪后续独立评测。",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "信息来自知名开发者 Simon Willison 的个人博客，内容可信度高；涉及用户偏好的推理与 Agent 相关主题，且模型性能与实用性问题对社区有较高参考价值。",
+      "summary_cn": "Qwen 3.8 27B 是阿里巴巴推出的 Apache 2.0 许可、27B 参数视觉语言模型，性能超越前代和闭源 Qwen 3.7-Plus。但其默认推理强度极高，导致严重过度思考，生成简单图像需 21 分钟和 2.2 万推理 token。用户可调低 reasoning_effort 或增大上下文以改善体验。",
+      "tags": [
+        "Qwen",
+        "开源模型",
+        "推理效率",
+        "视觉语言模型",
+        "本地部署"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-16T22:00:39Z",
+    "raw_summary": "<p>Friday's big release was <a href=\"https://huggingface.co/Qwen/Qwen3.8-27B\">Qwen 3.8 27B</a>, an Apache 2 licensed 27B parameter vision-capable LLM from Alibaba's Qwen research lab. I've been looking forward to this one: 27B is an excellent size for running a model on a reasonably specced laptop, and its predecessor <a href=\"https://simonwillison.net/2026/Apr/22/qwen36-27b/\">Qwen 3.6 27B</a> was impressive.</p>\n<p>Qwen's <a href=\"https://huggingface.co/Qwen/Qwen3.8-27B#benchmark-results\">self-reported benchmarks</a> for this model are eye-opening. They show a boost from both Qwen 3.6 27B <em>and</em> the closed-weight Qwen 3.7-Plus, which was one of Qwen's strongest models of any size as recently as <a href=\"https://qwen.ai/blog?id=qwen3.7-plus\">May this year</a>. It will be interesting to hear what independent benchmarks have to say about the model.</p>\n<p>I've been running the model on two different machines: my 128GB M5 Max MacBook Pro, and an <a href=\"https://simonwillison.net/2025/Oct/14/nvidia-dgx-spark/\">NVIDIA DGX Spark</a>. On both machines I'm running LM Studio and <a href=\"https://lmstudio.ai/models/qwen3.8\">their 17GB Q4_K_M quantized build</a>. I also tried  using <code>llama-server</code> directly on the Spark.</p>\n<h4 id=\"the-default-of-extra-high-results-in-spectacular-over-thinking\">The default of extra high results in spectacular over-thinking</h4>\n<p>Qwen's documentation describes the model as defaulting to <code>xhigh</code> for the reasoning effort, and the LM Studio GGUF I've been trying preserves that default:</p>\n<blockquote>\n<p>Qwen3.8 comes with official support for <code>reasoning_effort</code>, which can be used to adjust reasoning depth and control cost:</p>\n<ul>\n<li>\n<code>xhigh</code> (default): for complex tasks demanding thorough analysis</li>\n<li>\n<code>medium</code>: balancing accuracy and speed</li>\n<li>\n<code>low</code>: efficient reasoning optimizing for speed and cost</li>\n</ul>\n</blockquote>\n<p>This is a <em>hilarious</em> default. It's absolutely not a good way to run the model, especially on consumer hardware. I've been finding the results extremely entertaining.</p>\n<p>I quickly ran into problems with LM Studio's default context limit of 8,192 tokens - Qwen was using them all up thinking about even the most mundane of problems. I loaded the model with the full 262,144 maximum context length and that problem went away.</p>\n<p>Here's <a href=\"https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Ffc909bea4fecf752c7bf9bad0e9dbf2a\">the pelican riding a bicycle</a> SVG I got from my first attempt with that increased context length. It took <strong>21 minutes</strong> to generate, using 22,276 reasoning tokens to produce 3,223 tokens of output. You can read <a href=\"https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Ffc909bea4fecf752c7bf9bad0e9dbf2a\">the reasoning trace here</a>.</p>\n<p><img alt=\"A very pleasing image of a pelican riding a bicycle. The bicycle is red and has the correct frame shape. The pelican looks like a pelican and has its wing extended to the handlebars.\" src=\"https://static.simonwillison.net/static/2026/qwen-thinking-bicycle-27b.jpg\" /></p>\n<p>This is by far the best pelican SVG I've been able to generate with a model that runs on a local machine - and this Qwen is pretty small, just a 17GB file on disk. There's a lot to like about this:</p>\n<ol>\n<li>The bicycle frame is the right shape</li>\n<li>It has legs on each side of the bike - that's <em>very</em> rare</li>\n<li>Good, clear pelican pouch</li>\n<li>The wings extend to touch the handlebars!</li>\n<li>The motion lines are behind, not in front</li>\n<li>It has a tasteful background - nice sun, clouds, hill, flowers and grass.</li>\n</ol>\n<p>Was that worth waiting 21 minutes for? Absolutely not.</p>\n<p>Here's that same prompt run with reasoning turned off - <a href=\"https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F1265cfa8dce2f9ad5eb160792ff45a49\">transcript here</a>. This one produced <strong>3,715 tokens</strong> and took 137s - just over two minutes.</p>\n<p><img alt=\"The bicycle frame is a bad shape now. The pelican remains recognizable but has a less obvious pouch. The feet miss the pedal, there is no attempt to hold the handlebars.\" src=\"https://static.simonwillison.net/static/2026/qwen-3.8-27b-no-reasoning-pelican-2.png\" />\nAnd just for completeness, I used OpenRouter to run the same prompt through the much larger Qwen 3.8 2.4T-A95B (released <a href=\"https://huggingface.co/Qwen/Qwen3.8-2.4T-A95B\">last week</a>) and got this snazzy <a href=\"https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F557016f0895b2abb4b9957caec781734\">animated SVG</a>:</p>\n<p><video controls=\"controls\" height=\"548\" loop=\"loop•\" poster=\"https://static.simonwillison.net/static/2026/qwen-animated-first-frame.jpg\" preload=\"none\" style=\"display: block; width: 100%; height: auto;\" width=\"720\">\n    <source src=\"https://static.simonwillison.net/static/2026/qwen-animated-small.mp4\" type=\"video/mp4\" />\n    Your browser does not support HTML5 video.\n  </video>\n</p>\nI said Qwen at xhigh has a tendency to over-think things, but how bad really is it?\n<p>I tried a much simpler prompt, again with that default extra high setting:</p>\n<blockquote>\n<p><code>draw an svg of a circle</code></p>\n</blockquote>\n<p>Qwen's reasoning trace started like this:</p>\n<blockquote>\n<p>The user is asking for an SVG drawing of a circle. Simple request — but I want it to be a carefully crafted piece. Let me make something that goes beyond just <code>&lt;circle&gt;</code>: a single self-contained SVG file with character — maybe a geometric \"circle study,\" with subtle animation, layered rings, and a distinctive palette.</p>\n<p>Keep the scope right: they asked for an SVG of a circle. So the core is a circle. But I can add craft: concentric guide circles (like a compass/geometry drawing), tick marks, a soft gradient fill on the main circle, restrained ambient motion (a slowly rotating dashed ring, pulsing glow). Respect prefers-reduced-motion? That's more for CSS; SVG SMIL or CSS inside SVG will do.</p>\n<p>Palette options: deep teal ink on warm paper? Or bold vermilion circle on off-white with navy construction lines — Bauhaus/compass-drawing vibe. Let me go with a \"geometric study\" look: cool slate background, or bright paper white? Paper white is fine if it's not the cream-and-terracotta combo. [...]</p>\n</blockquote>\n<p>Several minutes later it <a href=\"https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2F6f9e48293be5c916652d29f0dc0b0657\">produced</a> this <em>absolutely beautiful</em> animated circle, which was entirely not what I had asked for!</p>\n<p><video controls=\"controls\" height=\"1080\" loop=\"loop\" poster=\"https://static.simonwillison.net/static/2026/circle-web-first-frame.jpg\" preload=\"none\" style=\"display: block; width: 100%; height: auto;\" width=\"1078\">\n    <source src=\"https://static.simonwillison.net/static/2026/circle-web.mp4\" type=\"video/mp4\" />\n    Your browser does not support HTML5 video.\n  </video>\n</p>\nMy strong recommendation: ignore that default. Run Qwen 3.8 27B on low or even no reasoning levels at first. It's a great model, but wow that default setting is a bad place to start.\n<h4 id=\"it-s-very-good-at-bounding-boxes\">It's very good at bounding boxes</h4>\n<p>A fun way to test a vision model is to see how well it can return bounding boxes around items in a photograph. I've seen previous Qwen models deal well with this, so I decided to put it to the test drawing bounding boxes around some pelicans.</p>\n<p>I've seen asking for 0-1000 scale produce good results in the past. I tried this:</p>\n<div class=\"highlight highlight-source-shell\"><pre>llm -a https://static.inaturalist.org/photos/714731804/large.jpg \\\n  -m lmstudio/qwen/qwen3.8-27b \\\n  <span class=\"pl-s\"><span class=\"pl-pds\">'</span>Return JSON bounding boxes for the pelicans in this photo, 0-1000 scale for each dimension<span class=\"pl-pds\">'</span></span></pre></div>\n<p>Here's <a href=\"https://gist.github.com/simonw/a05cc78b2061555bd61d3bb9686e689f\">the reasoning trace</a>, which produced this:</p>\n<div class=\"highlight highlight-source-json\"><pre>[\n  {<span class=\"pl-ent\">\"bbox_2d\"</span>: [<span class=\"pl-c1\">195</span>, <span class=\"pl-c1\">290</span>, <span class=\"pl-c1\">370</span>, <span class=\"pl-c1\">780</span>], <span class=\"pl-ent\">\"label\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>pelicans<span class=\"pl-pds\">\"</span></span>},\n  {<span class=\"pl-ent\">\"bbox_2d\"</span>: [<span class=\"pl-c1\">445</span>, <span class=\"pl-c1\">320</span>, <span class=\"pl-c1\">675</span>, <span class=\"pl-c1\">850</span>], <span class=\"pl-ent\">\"label\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>pelicans<span class=\"pl-pds\">\"</span></span>}\n]</pre></div>\n<p>This is <em>such a good match</em>. Here are those boxes rendered on top of the photo:</p>\n<p><img alt=\"A photograph of two pelicans on a rocky outcrop, with three other smaller birds. The pelicans both have bounding boxes exactly surrounding them, each with a label that says pelican.\" src=\"https://static.simonwillison.net/static/2026/qwen-over-engineered-bbox.webp\" /></p>\n<h4 id=\"building-a-tool-to-label-bounding-boxes\">Building a tool to label bounding boxes</h4>\n<p>That visualization of the bounding boxes was taken using a new custom tool that I had Qwen 3.8 27B build for me, running offline on my laptop.</p>\n<p>I forgot to dial down the thinking effort so it was <em>massively over-engineered</em>, but it did manage to produce <a href=\"https://static.simonwillison.net/static/2026/qwen-over-thinking-bbox.html\">this full interface</a> from <a href=\"https://gist.github.com/simonw/121ad098860028b2fab603fa12da1fd9\">this single prompt</a>:</p>\n<blockquote>\n<pre><code>[\n   {\"bbox_2d\": [195, 290, 370, 780], \"label\": \"pelicans\"},\n   {\"bbox_2d\": [445, 320, 675, 850], \"label\": \"pelicans\"}\n]\n</code></pre>\n<p><code>Build an HTML page which has an input box for accepting the URL to an image and a textarea for accepting the above style of JSON.</code></p>\n<p><code>It appends the image to the page, measures its width and height, then treats the coords in the bbox_2d as scaled from 0-1000 and scales them against the actual width and height, then it renders labelled boxes over the image.</code></p>\n</blockquote>\n<p>This screenshot shows one of the features I did <em>not</em> ask for - a demo scene, for if you don't have a photograph to test the tool with:</p>\n<p><img alt=\"Screenshot of bbox·lab, a dark-themed web tool that overlays object-detection bounding boxes on an image, with an input panel on the left and a stage on the right showing two labeled boxes around stylized pelicans in a sunset illustration. Header: bbox·lab — normalized 0–1000 coords → pixel overlay; status indicator: RENDERED · 2 BOXES. Panel 01 INPUT (URL + detections) contains an IMAGE URL field reading data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+, a DETECTIONS — JSON textarea reading  {&quot;bbox_2d&quot;: 195, 290, 370, 780, &quot;label&quot;: &quot;pelicans&quot;}, {&quot;bbox_2d&quot;: 445, 320, 675, 850, &quot;label&quot;: &quot;pelicans&quot;} , an orange RENDER BOXES button, and dashed boxes labeled DEMO SCENE and CLEAR. Panel 03 STAGE header: display 661 × 661 px · 1 unit = 0.661px x 0.661px · nat 1000×1000. The stage shows a flat-style illustration of two dark pelican silhouettes with orange beaks standing in calm water against an orange-to-purple sunset sky with a pale yellow sun and distant birds; an orange bounding box labeled 1 · pelicans surrounds the left pelican and a cyan bounding box labeled 2 · pelicans surrounds the right pelican. Footer: move the cursor over the image to read grid coords; boxes map 0–1000 → displayed px.\" src=\"https://static.simonwillison.net/static/2026/qwen-full-ui-with-pelicans.webp\" /></p>\n<p>Here's the relevant segment of the thinking trace, where it decided to draw its own pelicans purely because I had used the label \"pelicans\" in the example JSON I gave it in the prompt:</p>\n<blockquote>\n<p>Also a \"load sample\" that uses a known image? Can't depend on external images, but… the image URL input is user-provided; I could add a \"try with sample\" button [...] Hmm, I can draw a simple scene on canvas, export it as a data URL, and load it into the image — that's self-contained and demo-able! [...] But the user's coords are for an actual pelican image; a generated placeholder can still demo the scaling. Generate a 1000x1000 placeholder: gradient water + two blob-like \"pelican\" silhouettes placed at the given bboxes (using the same scale — cute: silhouettes at the exact 0-1000 positions, showing the boxes align). This makes for a fun, self-contained demo. Keep it simple: sky gradient, sun, water, two pelican-ish shapes (ellipse body, circle head, beak). Place at bbox centers.</p>\n</blockquote>\n<p>(I'm slightly nervous that models around the world might have a bias towards drawing pelicans at any chance they can get, brought on by nearly two years of exposure to my own stupid benchmark.)</p>\n<p>Is all that over-thinking necessary? Maybe it is, at least a bit. I tried with reasoning turned off and got <a href=\"https://static.simonwillison.net/static/2026/qwen-no-thinking-bbox.html\">this version</a>, (<a href=\"https://gist.github.com/simonw/8e78b1c64d9a56d08eedb954aa9445ee\">transcript here</a>), which nearly works but shows the boxes in the wrong place:</p>\n<p><img alt=\"BBox Studio screenshot - a solid UI but the yellow and green boxes do not cover the pelicans.\" src=\"https://static.simonwillison.net/static/2026/qwen-no-reasoning-bug.webp\" /></p>\n<p>So without reasoning it didn't quite one-shot a working tool. I'm sure it could get there with some follow-up prompts, but this is a good example of how reasoning can make a difference.</p>\n<h4 id=\"yes-it-can-drive-coding-agents\">Yes, it can drive coding agents</h4>\n<p>One of the biggest questions around local models is whether or not they have enough horsepower to successfully run a coding agent loop. Coding agents require long context, strong code generation support and reliable tool-calling. On paper Qwen 3.8 27B has all three of these, so is it up to the task?</p>\n<p>My initial experiments with <a href=\"https://pi.dev/\">Pi</a> have been very promising. I chose Pi because it has a shorter system prompt than most other options, making it a better fit for trying out smaller models.</p>\n<p>I configured Pi to use Qwen 3.8 27B running in LM Studio on the Spark (shared via <code>tailscale serve</code>) by adding this to <code>~/.pi/agent/models.json</code>:</p>\n<div class=\"highlight highlight-source-json\"><pre>{\n  <span class=\"pl-ent\">\"providers\"</span>: {\n    <span class=\"pl-ent\">\"spark\"</span>: {\n      <span class=\"pl-ent\">\"baseUrl\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>https://spark-18b3.tail68a31.ts.net/v1<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-ent\">\"api\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>openai-responses<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-ent\">\"apiKey\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>dummy<span class=\"pl-pds\">\"</span></span>,\n      <span class=\"pl-ent\">\"models\"</span>: [\n        {\n          <span class=\"pl-ent\">\"id\"</span>: <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>qwen3.8-27b<span class=\"pl-pds\">\"</span></span>,\n          <span class=\"pl-ent\">\"reasoning\"</span>: <span class=\"pl-c1\">true</span>\n        }\n      ]\n    }\n  }\n}</pre></div>\n<p>Then ran <code>pi --provider spark --model qwen3.8-27b</code> in my <code>~/dev/datasette</code> folder and prompted:</p>\n<blockquote>\n<p><code>how does auth work?</code></p>\n</blockquote>\n<p>After a sequence of reasoning and tool calls that accessed a bunch of different files it produced <a href=\"https://gist.github.com/simonw/6693d74a6bd45f641d43ceb9961dd95f#core-idea-actors--plugins-no-built-in-user-accounts\">this reply</a>, which is very solid.</p>\n<p>Just one problem: I wanted to share that transcript. So I pointed Pi and Qwen 3.8 27B at the JSONL transcript file in <code>~/.pi/agent/sessions/--Users-simon-Dropbox-dev-datasette--</code> and prompted:</p>\n<blockquote>\n<p><code>Write Python code to convert this jsonl to markdown</code></p>\n</blockquote>\n<p>And it built and tested this <a href=\"https://github.com/simonw/tools/blob/main/python/pi_jsonl_to_md.py\">pi_jsonl_to_md.py</a>, which did exactly what I needed. Here's <a href=\"https://gist.github.com/simonw/491e55ac9d741202ea0af5d9d93775d4\">that session transcript</a>, published using the tool that it created.</p>\n<h4 id=\"the-quest-for-speed\">The quest for speed</h4>\n<p>So far this is all looking <em>very</em> promising. We have a 17GB model that runs on high-end consumer hardware and can write code, drive tools, annotate images and generally do everything that I need from an LLM for getting real work done.</p>\n<p>There's one very significant catch: it feels slow - especially when it starts over-thinking, but even without that it's not particularly sprightly.</p>\n<p>I've been getting around 15-30 tokens a second from LM Studio. That's not terrible, but it's slow enough that it's going to be hard to win me away from hosted API models, which can return results a whole lot faster. Artificial Analysis <a href=\"https://artificialanalysis.ai/models#speed\">track token speed</a> and show OpenAI 5.6 Sol at 74 tokens/second and 5.6 Luna at an impressive 184/second.</p>\n<p>The good news is that the community have been exploring ways to speed things up since the model was first released two days ago.</p>\n<p>One of the most promising optimizations is baked into the model itself. Qwen supports <a href=\"https://sebastianraschka.com/llm-architecture-gallery/mtp/\">Multi-Token Prediction</a>, an architecture trick where a cheaper mechanism guesses several tokens ahead and the main model can then quickly verify if the guesses were correct. This can have quite a dramatic effect on inference performance.</p>\n<p>Based on <a href=\"https://twitter.com/ggerganov/status/2088340681701925253\">this tweet</a> from <code>llama.cpp</code> creator Georgi Gerganov I tried running the model with MTP like this on the Spark:</p>\n<div class=\"highlight highlight-source-shell\"><pre>llama serve \\\n -hf  ggml-org/Qwen3.8-27B-GGUF:Q4_K_M \\\n -hfd ggml-org/Qwen3.8-27B-GGUF:Q4_0 \\\n --spec-default \\\n --spec-type draft-mtp \\\n --reasoning-preserve</pre></div>\n<p>And sure enough, this gave me a significant boost. I had GPT-5.6 in Codex run <a href=\"https://gist.github.com/simonw/b08c7eb9c126c806ba8987e269ea736b\">a comparative benchmark on the Spark</a> and the <code>--spec-type draft-mtp</code> server outperformed the LM Studio default GGUF by around 72%.</p>\n<p>I expect we'll see a whole lot more innovation around serving this model faster over the next few weeks. The MLX community likely have some tricks brewing as well.</p>\n<h4 id=\"some-observations\">Some observations</h4>\n<p>The fact that a 17GB file can do all of this stuff on my home machines is a <em>miracle</em>. Once again, I'm delighted and amazed at how much progress local models have made this year. A year ago this would have been competitive with the best and most expensive of the proprietary models - today it can run on a capable laptop.</p>\n<p>The only thing holding this back from being a daily driver is performance. It feels pretty slow on both the M5 Mac and the DGX Spark. That's the catch with these dense (non-Mixture-of-Experts) models - they require a whole lot of memory bandwidth to perform well, and neither of the machines I have access to are top performers in that regard.</p>\n<p>The most important thing about Qwen 3.8 27B is <strong>what it demonstrates</strong>. We can have an open weights general purpose model with a long context, effective tool calling, strong vision ability, and competent code generation, and we can fit the whole thing in just a 17GB file.</p>\n<p>The models at this size continue to get better at an impressive rate. We don't need to spend half a million dollars on datacenter-class hardware just to run a competent model.</p>\n    \n        <p>Tags: <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/local-llms\">local-llms</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/qwen\">qwen</a>, <a href=\"https://simonwillison.net/tags/pelican-riding-a-bicycle\">pelican-riding-a-bicycle</a>, <a href=\"https://simonwillison.net/tags/llm-reasoning\">llm-reasoning</a>, <a href=\"https://simonwillison.net/tags/llama-cpp\">llama-cpp</a>, <a href=\"https://simonwillison.net/tags/llm-release\">llm-release</a>, <a href=\"https://simonwillison.net/tags/coding-agents\">coding-agents</a>, <a href=\"https://simonwillison.net/tags/lm-studio\">lm-studio</a>, <a href=\"https://simonwillison.net/tags/ai-in-china\">ai-in-china</a>, <a href=\"https://simonwillison.net/tags/nvidia-spark\">nvidia-spark</a>, <a href=\"https://simonwillison.net/tags/pi\">pi</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Qwen 3.8 27B is excellent, but it defaults to wildly overthinking things",
+    "url": "https://simonwillison.net/2026/Aug/16/qwen-38-27b"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "这是官方 GitHub 发布的小版本补丁，可信度高，但仅修复一个具体事件时机问题，影响面有限，不改变核心功能，重要性较低。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 harness-acp 包发布 1.0.10 补丁版本，修复了 finish-step 事件发射时机不正确的问题。该修复确保步骤完成事件的触发时间符合预期，提升 Agent 流程中事件处理的准确性。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "harness-acp",
+        "bugfix",
+        "Agent",
+        "Coding"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-08-15T18:57:03Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/8d05a5574aed8533df3f8e2e6a019cbf15bd4a15\"><tt>8d05a55</tt></a>: fix(harness-acp): fix incorrect <code>finish-step</code> emission timing</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/harness-acp@1.0.10",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fharness-acp%401.0.10"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub 发布，可信度高；但仅涉及特定模型更新，与用户核心偏好（Agent、Coding、RAG、Eval、Reasoning）关联较弱，故重要性中等。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 xAI 提供商更新至 v3.0.121，新增对 Grok Imagine Video 1.5 的支持，包括 1080p 文本/图像转视频、引用视频限制及修复，并支持引用音频（referenceVoiceIds）。",
+      "tags": [
+        "Vercel AI SDK",
+        "xAI",
+        "Grok",
+        "视频生成",
+        "RAG",
+        "Agent"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-08-14T06:33:05Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/70a6c3bce8ecea4e857d0d9926191450b8fe531b\"><tt>70a6c3b</tt></a>: feat (provider/xai): support Grok Imagine Video 1.5. Adds the <code>grok-imagine-video-1.5</code> model id and native <code>1080p</code> for text-to-video and image-to-video (the standard <code>resolution: '1920x1080'</code> now maps to <code>1080p</code>). Reference-to-video remains capped at <code>720p</code>, so a <code>1080p</code> request in that mode is downgraded with a warning. Also fixes reference routing: previously any non-empty <code>inputReferences</code> array selected reference-to-video, so an array holding only a non-image reference sent <code>reference_images: []</code> with no usable references.</li>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/70a6c3bce8ecea4e857d0d9926191450b8fe531b\"><tt>70a6c3b</tt></a>: feat (provider/xai): add <code>referenceVoiceIds</code> for reference-to-video reference audio. Pass up to 3 xAI preset voice ids (e.g. <code>['eve']</code>) and reference them from the prompt with <code>&lt;AUDIO_0&gt;</code>–<code>&lt;AUDIO_2&gt;</code>; they are sent as <code>reference_audios: [{ voice_id }]</code> on <code>POST /v1/videos/generations</code>.</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/xai@3.0.121",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%403.0.121"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 3,
+      "importance": 2,
+      "reason": "内容为行业领袖观点，但非技术进展，与用户偏好Agent/Coding等关联弱，重要性低。来源为博客转发引文，置信度设3。",
+      "summary_cn": "Anthropic CEO Dario Amodei 回应公众对AI的负面看法，认为这是信任危机而非警告所致。他反对华丽的营销宣传，主张通过实际兑现造福世界的承诺来赢得信任，承认AI公司尚未实现重大承诺是准确的批评。",
+      "tags": [
+        "AI政策",
+        "信任危机",
+        "Anthropic",
+        "Dario Amodei"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-16T15:05:36Z",
+    "raw_summary": "<blockquote cite=\"https://twitter.com/darioamodei/status/2088758819304443967\"><p>I do agree that the public has a negative view of AI (and that this is a big problem), but I don’t think it is primarily caused by me or any other AI leader warning about AI’s risks.  I think it is fundamentally a crisis of trust.  I think that ordinary people don’t trust companies, governments, or the tech industry and always suspect that we are cooking up some new way to screw them over.  The causes of this go back decades and AI is just the latest iteration of it.  I don’t think that a glitzy marketing campaign with a positive spin (which some have advocated that Anthropic do) is the way to win back that trust — at this point, saying that AI will cure cancer is more a cliche than it is inspiring, and most people think it is deceptive.  The thing that will work is <em>actually curing cancer</em>.  I think by far the most accurate criticism of AI companies including Anthropic is that we haven’t yet delivered on our big promises to benefit the world.  That is totally on us, and I think it’s the criticism you should be making, instead of all this stuff about messaging and marketing.</p></blockquote>\n<p class=\"cite\">&mdash; <a href=\"https://twitter.com/darioamodei/status/2088758819304443967\">Dario Amodei</a></p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/anthropic\">anthropic</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/ai-backlash\">ai-backlash</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Quoting Dario Amodei",
+    "url": "https://simonwillison.net/2026/Aug/16/dario-amodei"
+  }
+]
