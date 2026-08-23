@@ -1,0 +1,269 @@
+[
+  {
+    "analysis": {
+      "action": "review",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "Linus Torvalds 的权威经验背书证明 AI 在晦涩内核调试中的实用价值，且符合用户对 Coding 与 Agent 的偏好，来源为知名博客及 GitHub 原始提交链接，可信度较高。",
+      "summary_cn": "Linus Torvalds 在 Linux 内核调试中通过 AI 协助完成艰巨任务，称赞其面对困难时仍持续添加调试代码并忠实分析，尽管 AI 曾多次建议放弃。这展示了 AI 在真实复杂编码场景中的潜力与局限。",
+      "tags": [
+        "Agent",
+        "Coding",
+        "AI辅助编程",
+        "Linus Torvalds"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-22T21:04:26Z",
+    "raw_summary": "<blockquote cite=\"https://github.com/torvalds/linux/commit/818bebeb63dd6bf5f4e07e145f6cdbace520a34c\"><p>And this was a debug session from hell, enormously helped by an AI doing much of the grunt-work.</p>\n<p>I'd like to call it my tireless helper, but the AI several times stated flat out that this was impossible and unsolvable and that we should just write a report about it.</p>\n<p>I suspect those things have been trained by people who may not be quite as stubborn as I am.</p>\n<p>But while the AI was ready to give up several times, it did keep adding debug code and analyzing it faithfully when I pushed. So credit where credit is due and I let the AI write the commit message above.</p></blockquote>\n<p class=\"cite\">&mdash; <a href=\"https://github.com/torvalds/linux/commit/818bebeb63dd6bf5f4e07e145f6cdbace520a34c\">Linus Torvalds</a>, drm/xe: Don't hand out the flat CCS storage as usable VRAM</p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/linus-torvalds\">linus-torvalds</a>, <a href=\"https://simonwillison.net/tags/linux\">linux</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/ai-assisted-programming\">ai-assisted-programming</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Quoting Linus Torvalds",
+    "url": "https://simonwillison.net/2026/Aug/22/linus-torvalds"
+  },
+  {
+    "analysis": {
+      "action": "阅读原文，参考其关于验证编程智能体输出的方法论，以优化自身工作流。",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "作者为知名AI博主，内容聚焦coding agent实践，符合用户偏好，且来源可信度较高。",
+      "summary_cn": "该文指出，高效使用编程智能体的关键在于能够自信地指导其进行修改，并验证改动是否正确。逐行审查代码并非唯一或最有效的方式，应探索更高效的验证方法。",
+      "tags": [
+        "Coding",
+        "Agent",
+        "Code Review",
+        "AI"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-22T15:56:54Z",
+    "raw_summary": "<p>The key skill required to make productive use of coding agents is being able to confidently instruct them on how to make changes and then confidently verify that those changes have been applied in the correct way.</p>\n<p>Sometimes this involves reviewing every line of code they have written, but there are other ways to achieve that goal. Eyeballing every line of code has never been the most effective way to validate a chance to a piece of software.</p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/code-review\">code-review</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/coding-agents\">coding-agents</a>, <a href=\"https://simonwillison.net/tags/agentic-engineering\">agentic-engineering</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "More than just code review",
+    "url": "https://simonwillison.net/2026/Aug/22/more-than-just-code-review"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "内容涉及Agent发展趋势，与用户偏好Agent高度相关，且来源为知名技术博客，可信度较高。",
+      "summary_cn": "文章探讨了智能体框架（Agent Harness）的演变趋势：模型逐渐将外部工具和流程内化到自身权重中，未来框架或将从辅助模型转向引导人类注意力，重塑人机协作模式。",
+      "tags": [
+        "Agent",
+        "模型演进",
+        "人机交互"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-22T07:30:52Z",
+    "raw_summary": "Models keep absorbing the harness into their weights &#8212; soon, it will be a harness for human attention rather than for the model.",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "The Evolution of the Agent Harness",
+    "url": "https://www.latent.space/p/attention-interface"
+  },
+  {
+    "analysis": {
+      "action": "深入阅读原文，重点关注模拟技术在 Agent 和 RAG 场景中的应用案例，评估其可行性。",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "文章来自高可信度的技术博客，观点新颖且涉及成本与性能权衡，对 RSI 和模拟的讨论与用户偏好的 Agent 和 RAG 领域潜在相关，但需进一步验证具体细节。",
+      "summary_cn": "Latent Space 的 AINews 文章提出，模拟（Simulation）正在接管 AI 领域，相比真实训练成本低 100 倍、速度快 10000 倍，但性能仅差 10%。文章质疑 RSI（递归自我改进）是否止步于模型训练，暗示模拟将扩展至更广泛的应用场景。",
+      "tags": [
+        "模拟",
+        "AI训练",
+        "成本优化",
+        "递归自我改进"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-22T07:36:00Z",
+    "raw_summary": "Did you think RSI stopped at model training?",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] 10% worse, 100x cheaper, 10000x faster: Why Simulation is taking over",
+    "url": "https://www.latent.space/p/ainews-10-worse-100x-cheaper-10000x"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "属于 AI SDK 的工具库更新，对集成 Deepgram 的开发者有用，但非核心框架变更。来源为 GitHub 官方发布，可信度高。",
+      "summary_cn": "Vercel AI SDK 的 Deepgram 集成发布 3.1.0 版本，修复转录选项如 keyterm 等被静默丢弃问题，不再默认启用付费的说话人分离功能。语音合成支持基于 voice 和 language 组合模型 ID，透传 speed 参数，并改进 API 错误解析和元数据返回。",
+      "tags": [
+        "AI SDK",
+        "Deepgram",
+        "语音合成",
+        "转录",
+        "错误处理"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-23T01:46:57Z",
+    "raw_summary": "<h3>Minor Changes</h3>\n<ul>\n<li>\n<p><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/00fe856cc76de6c6fc26eccfa03ad2344c4383ca\"><tt>00fe856</tt></a>: feat(deepgram): transcription option fixes + speech voice/language composition, usage metadata, speed passthrough, and error parsing</p>\n<p>Transcription:</p>\n<ul>\n<li><code>keyterm</code>, <code>paragraphs</code>, <code>intents</code>, <code>sentiment</code>, and <code>replace</code> were<br />\naccepted in <code>providerOptions.deepgram</code> but silently dropped from the<br />\n<code>/v1/listen</code> request. They are now sent as query parameters. Also widens<br />\nthe provider callable signature from <code>'nova-3'</code> to any transcription<br />\nmodel ID.</li>\n<li><strong>Behavior change:</strong> <code>diarize</code> no longer defaults to <code>true</code>. Speaker<br />\ndiarization is a paid Deepgram add-on, and the provider previously sent<br />\n<code>diarize=true</code> on every pre-recorded request unless explicitly opted<br />\nout. It is now only sent when explicitly set in<br />\n<code>providerOptions.deepgram</code>. Users who relied on the old default must<br />\npass <code>providerOptions: { deepgram: { diarize: true } }</code>.</li>\n</ul>\n<p>Speech:</p>\n<ul>\n<li>Bare voice family IDs (<code>aura-2</code>, <code>aura</code>) compose the upstream model ID<br />\nfrom the <code>generateSpeech</code> <code>voice</code> and <code>language</code> options<br />\n(<code>&lt;family&gt;-&lt;voice&gt;-&lt;language&gt;</code>, language defaults to <code>en</code>) and require<br />\n<code>voice</code>; full voice IDs (e.g. <code>aura-2-helena-en</code>) keep passing through<br />\nunchanged. The <code>DeepgramSpeechModelId</code> union is trimmed to the family<br />\nIDs plus the string escape hatch.</li>\n<li><code>providerMetadata.deepgram</code> carries <code>modelName</code>, <code>modelUuid</code>,<br />\n<code>additionalModelUuids</code>, <code>charCount</code> (the billed character count),<br />\n<code>breaksApplied</code>, <code>pronunciationsApplied</code>, <code>pronunciationWarnings</code> (when<br />\npresent), and <code>requestId</code> from the <code>/v1/speak</code> response headers.</li>\n<li>The <code>speed</code> option is passed through to Deepgram's <code>speed</code> parameter<br />\n(accepted range 0.7–1.5) instead of being ignored with a warning.</li>\n<li>API errors now parse Deepgram's <code>{ \"err_code\", \"err_msg\", \"request_id\" }</code><br />\nerror shape, so <code>APICallError.message</code> carries the real cause instead of<br />\nthe HTTP reason phrase. The legacy <code>{ \"error\": { \"message\", \"code\" } }</code><br />\nschema was dropped: no endpoint returns it.</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/deepgram@3.1.0",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fdeepgram%403.1.0"
+  },
+  {
+    "analysis": {
+      "action": "普通关注，可进行版本更新",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来自官方 GitHub 仓库，可信度高；但仅为小版本维护更新，无重大功能变化，重要性一般；与 Coding 相关，略有偏好加成。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic Claude Code 发布 v2.1.240 版本，主要包含错误修复和可靠性改进。对于使用该工具的开发者，建议更新以获得更稳定的编码体验。",
+      "tags": [
+        "Claude Code",
+        "版本更新",
+        "Bug修复",
+        "可靠性"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-22T14:45:30Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Bug fixes and reliability improvements</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.241",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.241"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.240",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.240"
+  },
+  {
+    "analysis": {
+      "action": "阅读",
+      "confidence": 4,
+      "importance": 3,
+      "reason": "水印技术是AI安全与检测的重要方向，但与用户偏好关注点相关性较低，故重要性中等。来源为知名研究者博客，可信度较高。",
+      "summary_cn": "Sebastian Raschka 通过48分钟的视频讲解，深入剖析 Claude 的 AI 文本水印技术，涵盖 token 采样、水印检测及移除方法。该博客基于论文解析，对理解水印对抗与检测有参考价值，但因来源为博客且内容依赖视频，重要性与可信度适中。",
+      "tags": [
+        "水印",
+        "Claude",
+        "文本检测",
+        "AI安全",
+        "Token采样"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "paper",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-22T11:11:39Z",
+    "raw_summary": "A 48-minute video walkthrough of token sampling, watermark detection, and removal",
+    "related_items": [],
+    "source": "Ahead of AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "How Claude Watermarks AI-Generated Text",
+    "url": "https://magazine.sebastianraschka.com/p/claude-watermarking"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "仅为依赖更新，无实质新功能或重要修复，与用户偏好的 Agent、Coding、RAG 等领域关联度低，重要性不高；来源为官方 GitHub，可信度最高，但信息价值有限。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/xai 4.0.43 补丁版本，更新了底层依赖 @ai-sdk/provider-utils 至 5.0.29，属于常规维护性更新，无新增功能。",
+      "tags": [
+        "Vercel",
+        "AI SDK",
+        "xAI",
+        "依赖更新",
+        "补丁版本"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-22T06:03:31Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/b74971f7cc72bd1da1678479e05f46f2c16fbfbb\"><tt>b74971f</tt></a>]\n<ul>\n<li>@ai-sdk/provider-utils@5.0.29</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/xai@4.0.43",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%404.0.43"
+  }
+]
