@@ -1,0 +1,214 @@
+[
+  {
+    "analysis": {
+      "action": "track",
+      "confidence": 5,
+      "importance": 5,
+      "reason": "官方GitHub发布，MCP是Agent工具集成核心，Alpha版需关注但可快速验证。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：LangChain Releases。",
+      "summary_cn": "LangChain发布1.4.0a2 alpha预览版，引入首个官方MCP适配器langchain.mcp，可将任何MCP服务器转换为LangChain工具并直接接入create_agent。基于FastMCP客户端处理连接，支持URL、本地脚本、进程内服务器等多种目标，工具生命周期独立于连接上下文，为Agent集成MCP生态提供官方路径。",
+      "tags": [
+        "Agent",
+        "MCP",
+        "LangChain",
+        "Tool"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-28T16:58:59Z",
+    "raw_summary": "<p>Alpha preview of <code>langchain.mcp</code> — a first-party adapter that turns any MCP server into LangChain tools you can hand straight to <code>create_agent</code>.</p>\n<p>Connection handling is <a href=\"https://gofastmcp.com/clients/client\" rel=\"nofollow\">FastMCP</a>'s, so its client features are available as-is rather than re-implemented behind a narrower interface.</p>\n<div class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\"><pre>pip install <span class=\"pl-s\"><span class=\"pl-pds\">\"</span>langchain[mcp]==1.4.0a2<span class=\"pl-pds\">\"</span></span></pre></div>\n<h2>Connect</h2>\n<p><code>MCPAdapter</code> takes any target <code>fastmcp.Client</code> accepts — transport is inferred, so there is one entry point rather than one per protocol.</p>\n<div class=\"highlight highlight-source-python notranslate position-relative overflow-auto\"><pre><span class=\"pl-k\">from</span> <span class=\"pl-s1\">langchain</span>.<span class=\"pl-s1\">agents</span> <span class=\"pl-k\">import</span> <span class=\"pl-s1\">create_agent</span>\n<span class=\"pl-k\">from</span> <span class=\"pl-s1\">langchain</span>.<span class=\"pl-s1\">mcp</span> <span class=\"pl-k\">import</span> <span class=\"pl-v\">MCPAdapter</span>\n\n<span class=\"pl-k\">async</span> <span class=\"pl-k\">with</span> <span class=\"pl-en\">MCPAdapter</span>(<span class=\"pl-s\">\"https://example.com/mcp\"</span>) <span class=\"pl-k\">as</span> <span class=\"pl-s1\">adapter</span>:\n    <span class=\"pl-s1\">agent</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">create_agent</span>(<span class=\"pl-s\">\"anthropic:claude-sonnet-5\"</span>, <span class=\"pl-k\">await</span> <span class=\"pl-s1\">adapter</span>.<span class=\"pl-c1\">get_tools</span>())\n    <span class=\"pl-s1\">result</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-s1\">agent</span>.<span class=\"pl-c1\">ainvoke</span>({<span class=\"pl-s\">\"messages\"</span>: [{<span class=\"pl-s\">\"role\"</span>: <span class=\"pl-s\">\"user\"</span>, <span class=\"pl-s\">\"content\"</span>: <span class=\"pl-s\">\"...\"</span>}]})</pre></div>\n<p>Valid targets: a URL, a local script path (launched over stdio), an in-process <code>FastMCP</code> server, a config naming several servers at once, or a <code>fastmcp.Client</code> you built yourself.</p>\n<p>Tools returned by <code>get_tools()</code> hold the adapter's client, so they stay callable after the context exits — the <code>async with</code> block scopes discovery, not tool lifetime.</p>\n<h2>Auth, caching, timeouts — build the client</h2>\n<p><code>MCPAdapter</code> takes two arguments: the target and <code>elicitation</code>. Everything else FastMCP supports is configured on a <code>fastmcp.Client</code> that you build and hand over as the target. This is the pattern to reach for whenever you need more than a bare connection:</p>\n<div class=\"highlight highlight-source-python notranslate position-relative overflow-auto\"><pre><span class=\"pl-k\">from</span> <span class=\"pl-s1\">fastmcp</span>.<span class=\"pl-s1\">client</span> <span class=\"pl-k\">import</span> <span class=\"pl-v\">Client</span>\n<span class=\"pl-k\">from</span> <span class=\"pl-s1\">langchain</span>.<span class=\"pl-s1\">mcp</span> <span class=\"pl-k\">import</span> <span class=\"pl-v\">MCPAdapter</span>\n\n<span class=\"pl-s1\">client</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">Client</span>(\n    <span class=\"pl-s\">\"https://example.com/mcp\"</span>,\n    <span class=\"pl-s1\">auth</span><span class=\"pl-c1\">=</span><span class=\"pl-s\">\"oauth\"</span>,       <span class=\"pl-c\"># or a bearer token string, or any httpx auth</span>\n    <span class=\"pl-s1\">cache</span><span class=\"pl-c1\">=</span><span class=\"pl-c1\">True</span>,         <span class=\"pl-c\"># opt-in response caching</span>\n    <span class=\"pl-s1\">timeout</span><span class=\"pl-c1\">=</span><span class=\"pl-c1\">30</span>,\n)\n\n<span class=\"pl-k\">async</span> <span class=\"pl-k\">with</span> <span class=\"pl-en\">MCPAdapter</span>(<span class=\"pl-s1\">client</span>) <span class=\"pl-k\">as</span> <span class=\"pl-s1\">adapter</span>:\n    <span class=\"pl-s1\">tools</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-s1\">adapter</span>.<span class=\"pl-c1\">get_tools</span>()</pre></div>\n<p><strong>Auth</strong> accepts <code>\"oauth\"</code> to run the OAuth flow, a token string for bearer auth, or an <code>httpx.Auth</code> instance for anything custom — see <a href=\"https://gofastmcp.com/clients/auth\" rel=\"nofollow\">FastMCP's auth docs</a>. Per-server headers and auth can also be set in a multi-server config (below).</p>\n<p><strong>Caching</strong> is opt-in and off by default: <code>cache=True</code> enables it with defaults, honoring the server's own <code>ttlMs</code> and <code>cacheScope</code> hints; a <code>CacheConfig</code> customizes it. The cache is per-client and in-memory.</p>\n<p><strong>Everything else</strong> on <a href=\"https://gofastmcp.com/clients/client\" rel=\"nofollow\"><code>fastmcp.Client</code></a> — <code>timeout</code>, <code>log_handler</code>, <code>progress_handler</code>, <code>message_handler</code>, <code>roots</code>, <code>sampling_handler</code> — works the same way. The adapter passes your client through untouched, so FastMCP behavior is not re-implemented or restricted.</p>\n<p>One caveat: with <code>elicitation=\"interrupt\"</code>, the adapter clones your client so it does not overwrite a callback you set. Configuration (auth, cache settings, handlers) carries over to the clone; cached <em>entries</em> do not, since the clone gets its own store.</p>\n<p><code>adapter.client</code> exposes the underlying client for prompts, resources, and anything else the adapter does not wrap.</p>\n<h2>Multiple servers</h2>\n<p>Point the adapter at a config and it fans out to every server through one connection, presenting a single tool list to your agent.</p>\n<div class=\"highlight highlight-source-python notranslate position-relative overflow-auto\"><pre><span class=\"pl-s1\">config</span> <span class=\"pl-c1\">=</span> {\n    <span class=\"pl-s\">\"mcpServers\"</span>: {\n        <span class=\"pl-s\">\"weather\"</span>: {<span class=\"pl-s\">\"url\"</span>: <span class=\"pl-s\">\"https://weather.example.com/mcp\"</span>},\n        <span class=\"pl-s\">\"calendar\"</span>: {\n            <span class=\"pl-s\">\"url\"</span>: <span class=\"pl-s\">\"https://calendar.example.com/mcp\"</span>,\n            <span class=\"pl-s\">\"headers\"</span>: {<span class=\"pl-s\">\"Authorization\"</span>: <span class=\"pl-s\">\"Bearer ...\"</span>},\n        },\n    }\n}\n\n<span class=\"pl-k\">async</span> <span class=\"pl-k\">with</span> <span class=\"pl-en\">MCPAdapter</span>(<span class=\"pl-s1\">config</span>) <span class=\"pl-k\">as</span> <span class=\"pl-s1\">adapter</span>:\n    <span class=\"pl-s1\">agent</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">create_agent</span>(<span class=\"pl-s\">\"anthropic:claude-sonnet-5\"</span>, <span class=\"pl-k\">await</span> <span class=\"pl-s1\">adapter</span>.<span class=\"pl-c1\">get_tools</span>())</pre></div>\n<p>With more than one server, tools are namespaced by server name — <code>weather_get_forecast</code>, <code>calendar_create_event</code> — so collisions between servers are impossible. With exactly one server, the adapter connects directly and names are unprefixed. Each entry takes its own <code>headers</code>, <code>auth</code>, <code>transport</code>, and <code>timeout</code>, so servers with different credentials compose in one agent. A local server uses <code>command</code>/<code>args</code> instead of <code>url</code> and is launched over stdio. The config follows FastMCP's <a href=\"https://gofastmcp.com/integrations/mcp-json-configuration\" rel=\"nofollow\">MCP JSON schema</a>, so a config you already use elsewhere works here unchanged.</p>\n<h2>Old and new protocol servers, side by side</h2>\n<p>MCP has moved from the <code>initialize</code> handshake to <code>server/discover</code>, and servers in the wild sit on both sides of that line. FastMCP negotiates the era per connection, so the adapter reaches either without you selecting one:</p>\n<div class=\"highlight highlight-source-python notranslate position-relative overflow-auto\"><pre><span class=\"pl-c\"># handshake-era server over SSE</span>\n<span class=\"pl-s1\">legacy</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">MCPAdapter</span>(<span class=\"pl-s\">\"https://legacy.example.com/sse\"</span>)\n\n<span class=\"pl-c\"># modern-era server over streamable HTTP</span>\n<span class=\"pl-s1\">modern</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">MCPAdapter</span>(<span class=\"pl-s\">\"https://modern.example.com/mcp\"</span>)</pre></div>\n<p>Separate adapters negotiate independently and can run concurrently, each on its own era. This is covered by integration tests that stand up one server of each era and call both.</p>\n<p>The one rule worth knowing: <strong>a multi-server config exposes a single era, so its oldest backend sets the era for the whole fleet.</strong> Mixing a handshake-era server into a config pulls the modern backends back to the handshake era — they still work, but era-gated features go with it. Keep a legacy server in its own adapter when you want the others on the modern protocol:</p>\n<div class=\"highlight highlight-source-python notranslate position-relative overflow-auto\"><pre><span class=\"pl-k\">async</span> <span class=\"pl-k\">with</span> (\n    <span class=\"pl-en\">MCPAdapter</span>({<span class=\"pl-s\">\"mcpServers\"</span>: {...<span class=\"pl-s1\">modern</span> <span class=\"pl-s1\">servers</span>...}}) <span class=\"pl-k\">as</span> <span class=\"pl-s1\">modern</span>,\n    <span class=\"pl-en\">MCPAdapter</span>(<span class=\"pl-s\">\"https://legacy.example.com/sse\"</span>) <span class=\"pl-k\">as</span> <span class=\"pl-s1\">legacy</span>,\n):\n    <span class=\"pl-s1\">tools</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-s1\">modern</span>.<span class=\"pl-c1\">get_tools</span>() <span class=\"pl-c1\">+</span> <span class=\"pl-k\">await</span> <span class=\"pl-s1\">legacy</span>.<span class=\"pl-c1\">get_tools</span>()</pre></div>\n<h2>Results</h2>\n<p>Each tool is async. An MCP tool that runs and reports failure comes back as a <code>ToolMessage</code> with <code>status=\"error\"</code> carrying the server's own error text, so the agent can correct itself and retry. Transport failures and unconvertible content raise instead — a model cannot act on those.</p>\n<p>Structured output rides along on the tool message artifact:</p>\n<div class=\"highlight highlight-source-python notranslate position-relative overflow-auto\"><pre><span class=\"pl-k\">from</span> <span class=\"pl-s1\">langchain</span>.<span class=\"pl-s1\">mcp</span> <span class=\"pl-k\">import</span> <span class=\"pl-v\">MCPToolArtifact</span>\n\n<span class=\"pl-s1\">artifact</span>: <span class=\"pl-v\">MCPToolArtifact</span> <span class=\"pl-c1\">|</span> <span class=\"pl-c1\">None</span> <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">tool_message</span>.<span class=\"pl-c1\">artifact</span>  <span class=\"pl-c\"># None when there is no structured content</span>\n<span class=\"pl-s1\">artifact</span>[<span class=\"pl-s\">\"structured_content\"</span>]</pre></div>\n<h2>Elicitation — servers that ask questions mid-call</h2>\n<p>Some MCP tools need input before they can finish. Opt in, and the request surfaces as a LangGraph <code>interrupt()</code>, so the human already reviewing the agent's work answers the server too.</p>\n<div class=\"highlight highlight-source-python notranslate position-relative overflow-auto\"><pre><span class=\"pl-s1\">adapter</span> <span class=\"pl-c1\">=</span> <span class=\"pl-en\">MCPAdapter</span>(<span class=\"pl-s1\">target</span>, <span class=\"pl-s1\">elicitation</span><span class=\"pl-c1\">=</span><span class=\"pl-s\">\"interrupt\"</span>)</pre></div>\n<p>The capability is opt-in rather than default because declaring it is a promise made on the wire: an agent with no path to a human cannot keep it. Left unset, nothing is declared, and a server whose tool <em>requires</em> an answer declines the call rather than running without one.</p>\n<p>The run stops with a typed payload, and resumes with one answer per request key:</p>\n<div class=\"highlight highlight-source-python notranslate position-relative overflow-auto\"><pre><span class=\"pl-k\">from</span> <span class=\"pl-s1\">langgraph</span>.<span class=\"pl-s1\">types</span> <span class=\"pl-k\">import</span> <span class=\"pl-v\">Command</span>\n\n<span class=\"pl-s1\">result</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-s1\">agent</span>.<span class=\"pl-c1\">ainvoke</span>({<span class=\"pl-s\">\"messages\"</span>: [...]}, <span class=\"pl-s1\">config</span>)\n\n[<span class=\"pl-s1\">pause</span>] <span class=\"pl-c1\">=</span> <span class=\"pl-s1\">result</span>[<span class=\"pl-s\">\"__interrupt__\"</span>]\n<span class=\"pl-s1\">pause</span>.<span class=\"pl-c1\">value</span>[<span class=\"pl-s\">\"type\"</span>]       <span class=\"pl-c\"># \"mcp_elicitation\"</span>\n<span class=\"pl-s1\">pause</span>.<span class=\"pl-c1\">value</span>[<span class=\"pl-s\">\"tool_name\"</span>]  <span class=\"pl-c\"># the tool that is waiting</span>\n<span class=\"pl-s1\">pause</span>.<span class=\"pl-c1\">value</span>[<span class=\"pl-s\">\"requests\"</span>]   <span class=\"pl-c\"># each question, in the order to ask them</span>\n\n<span class=\"pl-s1\">answer</span> <span class=\"pl-c1\">=</span> {<span class=\"pl-s\">\"responses\"</span>: {<span class=\"pl-s1\">key</span>: {<span class=\"pl-s\">\"action\"</span>: <span class=\"pl-s\">\"accept\"</span>, <span class=\"pl-s\">\"content\"</span>: {<span class=\"pl-s\">\"guests\"</span>: <span class=\"pl-c1\">4</span>}}}}\n<span class=\"pl-s1\">result</span> <span class=\"pl-c1\">=</span> <span class=\"pl-k\">await</span> <span class=\"pl-s1\">agent</span>.<span class=\"pl-c1\">ainvoke</span>(<span class=\"pl-en\">Command</span>(<span class=\"pl-s1\">resume</span><span class=\"pl-c1\">=</span><span class=\"pl-s1\">answer</span>), <span class=\"pl-s1\">config</span>)</pre></div>\n<p>Requests narrow on <code>mode</code>: a <code>\"form\"</code> request carries <code>requested_schema</code> for the answer to satisfy, a <code>\"url\"</code> request carries an address for the human to visit. Answers narrow on <code>action</code> — <code>\"accept\"</code> (with <code>content</code>), <code>\"decline\"</code> (skip the question, let the call proceed), or <code>\"cancel\"</code> (abandon the tool call). Requires a checkpointer, as any interrupt does.</p>\n<p>Sampling and roots are not answered through interrupts; leave those to your client's own handlers.</p>\n<p>Types for handlers — <code>MCPElicitationInterrupt</code>, <code>MCPElicitationRequest</code>, <code>MCPElicitationResponse</code>, <code>MCPElicitationResume</code>, and the <code>ELICITATION_INTERRUPT_TYPE</code> discriminator — live in <code>langchain.mcp.elicitation</code>.</p>\n<h2>Further reading</h2>\n<ul>\n<li><a href=\"https://gofastmcp.com/clients/client\" rel=\"nofollow\">FastMCP client docs</a> — auth, caching, transports, and handler configuration</li>\n<li><a href=\"https://gofastmcp.com/clients/transports\" rel=\"nofollow\">Client transports</a> — what each target type infers</li>\n<li><a href=\"https://gofastmcp.com/clients/elicitation\" rel=\"nofollow\">Elicitation</a> — the underlying protocol feature</li>\n</ul>\n<hr />\n<p>This is an alpha: the interface may shift before 1.4.0 is final. Feedback on the API shape is exactly what we're after.</p>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "LangChain Releases",
+        "source_tier": 1,
+        "title": "langchain==1.3.18",
+        "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.3.18"
+      }
+    ],
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "langchain==1.4.0a2",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain%3D%3D1.4.0a2"
+  },
+  {
+    "analysis": {
+      "action": "watch",
+      "confidence": 4,
+      "importance": 5,
+      "reason": "对AI研究者或开发者是重要的新开源模型发布，参数规模大，表现值得关注。",
+      "summary_cn": "腾讯发布Hy4 Preview开源权重模型，拥有770B总参数、49B激活参数和1M上下文窗口，相比七月发布的Hy3大幅提升。模型支持高推理和禁用思考两种模式。作者测试了SVG生成，通过OpenRouter可用，模型规模巨大。",
+      "tags": [
+        "腾讯",
+        "Hy4",
+        "开源模型",
+        "推理模型"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 4,
+    "published_at": "2026-08-29T23:53:13Z",
+    "raw_summary": "<p><strong><a href=\"https://hy.tencent.ai/research/hy4-preview\">Introducing Hy4 Preview</a></strong></p>\nNew open weight text input (no vision)  LLM from Chinese company Tencent today: 770B total parameters, 49B active parameters, 1M token context window, <a href=\"https://huggingface.co/tencent/Hy4-preview\">1.56TB on Hugging Face</a>.</p>\n<p>This is a big size increase from their previous <a href=\"https://huggingface.co/tencent/Hy3\">Hy3</a> in July, which was 295B, 21B active, 256,000 context, 598GB.</p>\n<p>I recently started using model chat templates to better understand their capabilities. Here's Hy4's  <a href=\"https://huggingface.co/tencent/Hy4-preview/blob/main/chat_template.jinja\">chat_template.jinja</a> on Hugging Face, which includes this section:</p>\n<div class=\"highlight highlight-text-html-django\"><pre><span class=\"pl-e\">{%</span>- <span class=\"pl-k\">if</span> <span class=\"pl-k\">not</span> <span class=\"pl-s\">reasoning_effort</span> <span class=\"pl-s\">is</span> <span class=\"pl-s\">defined</span> <span class=\"pl-e\">%}</span>\n    <span class=\"pl-e\">{%</span>- <span class=\"pl-s\">set</span> <span class=\"pl-s\">reasoning_effort</span> = <span class=\"pl-s\">'high'</span> <span class=\"pl-e\">%}</span>\n<span class=\"pl-e\">{%</span>- <span class=\"pl-s\">elif</span> <span class=\"pl-s\">reasoning_effort</span> <span class=\"pl-k\">not</span> <span class=\"pl-k\">in</span> [<span class=\"pl-s\">'high'</span>, <span class=\"pl-s\">'no_think'</span>] <span class=\"pl-e\">%}</span>\n    <span class=\"pl-e\">{%</span>- <span class=\"pl-k\">if</span> <span class=\"pl-s\">reasoning_effort</span> <span class=\"pl-s\">is</span> <span class=\"pl-s\">none</span> <span class=\"pl-e\">%}</span>\n        {{- raise_exception('reasoning_effort error : None, should be no_think/high') }}\n    <span class=\"pl-e\">{%</span>- <span class=\"pl-k\">else</span> <span class=\"pl-e\">%}</span>\n        {{- raise_exception('reasoning_effort error : ' + reasoning_effort + ', should be no_think/high') }}\n    <span class=\"pl-e\">{%</span>- <span class=\"pl-k\">endif</span> <span class=\"pl-e\">%}</span>\n<span class=\"pl-e\">{%</span>- <span class=\"pl-k\">endif</span> <span class=\"pl-e\">%}</span></pre></div>\n<p>So it looks like there are just two reasoning effort levels: \"high\" (the default) and \"no_think\" (reason by disabled).</p>\n<p>I tried my \"Generate an SVG of a pelican riding a bicycle\" prompt with the default high reasoning <a href=\"https://openrouter.ai/tencent/hy4-preview#apps\">via OpenRouter</a> and <a href=\"https://tools.simonwillison.net/markdown-svg-renderer#url=https%3A%2F%2Fgist.github.com%2Fsimonw%2Fcb69816b3fb940f2782569a82a523af1\">got this</a>:</p>\n<p><img alt=\"Flat vector cartoon illustration of a white pelican with a large orange bill riding a red bicycle to the right along a grey road with a dashed white centre line, its orange webbed feet on the pedals and grey tail feathers fanned out behind, against a pale blue sky with a yellow sun, white clouds and horizontal white motion lines suggesting speed\" src=\"https://static.simonwillison.net/static/2026-08-29/IMG_7725.jpeg\" /></p>\n<p>Quoting the reasoning trace:</p>\n<blockquote>\n<p>[...] Let's maybe add a helmet? It could improve riding theme, but may obscure head. Maybe a small cycling cap or helmet? The user didn't ask; can add red helmet? Might be cute. But pelican with big beak; a helmet might obscure. Better maybe no.</p>\n<p>Maybe add sunglasses? no.</p>\n<p>Maybe add water? no.</p>\n</blockquote>\n<p>It's interesting how the reasoning trace uses slightly truncated English, presumably because perfect grammar isn't useful or token efficient for hidden reasoning text.\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/pelican-riding-a-bicycle\">pelican-riding-a-bicycle</a>, <a href=\"https://simonwillison.net/tags/llm-reasoning\">llm-reasoning</a>, <a href=\"https://simonwillison.net/tags/llm-release\">llm-release</a>, <a href=\"https://simonwillison.net/tags/ai-in-china\">ai-in-china</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Introducing Hy4 Preview",
+    "url": "https://simonwillison.net/2026/Aug/29/hy4"
+  },
+  {
+    "analysis": {
+      "action": "关注并评估，建议升级到该版本以利用新钩子和安全修复，特别是对模型切换控制和缓存统计感兴趣的用户。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub 发布，信息权威；涵盖 Agent 相关的新钩子和安全修复，对 Coding 和 Agent 用户有实际价值；安全漏洞修复对稳定性有影响。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Claude Code v2.1.251 新增 PreModelSwitch/PostModelSwitch 钩子，支持模型切换控制；遥测增强，包括用量限制栏和缓存统计；修复多项安全漏洞，如符号链接路径穿越、插件路径越界等；优化子代理流式传输和团队协作稳定性。",
+      "tags": [
+        "Claude Code",
+        "Agent",
+        "安全修复",
+        "钩子",
+        "遥测",
+        "编程助手"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-08-28T18:19:32Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Added <code>PreModelSwitch</code> and <code>PostModelSwitch</code> hook events (block, confirm, or annotate a model switch); <code>SessionStart</code> resume hooks now receive session staleness and the estimated re-cache cost</li>\n<li>Added live streaming of a foreground subagent's tool calls and results to Remote Control clients (background subagents, the default, still show status only)</li>\n<li>Added a Spend limit bar to <code>/usage</code> and a <code>rate_limits.spend_limit</code> status line field for developers behind a Claude apps gateway with spend limits</li>\n<li>Added a per-session prompt-cache line to <code>/cost</code> (hit ratio, misses, tokens re-cached, warm/cold) and a matching <code>prompt_cache</code> object for status line scripts</li>\n<li>Added <code>attach</code>, <code>logs</code>, <code>stop</code>, <code>respawn</code>, and <code>rm</code> to <code>claude --help</code>; the <code>--resume</code> message for a running background session now names the exact <code>claude attach &lt;id&gt;</code> command</li>\n<li>Fixed file tools (Read, Write, Edit) following a symlink swapped inside the working directory after the permission check, which could read or write outside the approved location</li>\n<li>Fixed plugin commands declared in a marketplace entry being able to point outside the plugin directory; such paths are now rejected with a path-traversal error</li>\n<li>Fixed project settings being able to enable detailed beta tracing or raw API body logging, and a lower-scope beta tracing endpoint bypassing an OTLP collector pinned by managed settings or a host app</li>\n<li>Fixed the Workflow tool reading (and quoting in errors) a <code>scriptPath</code> outside what the session may read before the permission check ran</li>\n<li>Fixed Grep and Glob not applying <code>Read(...)</code> deny rules to files reached through a symlinked search path</li>\n<li>Fixed conversations getting stuck on \"text content blocks must be non-empty\" errors after a turn where the model produced only thinking</li>\n<li>Fixed the first launch on a fresh install starting in default mode instead of auto mode for accounts whose startup default is auto mode</li>\n<li>Fixed Opus 5 requests failing with \"effort … is not supported when thinking is disabled\" when effort was xhigh/max and thinking was turned off; effort is now sent as <code>high</code> in that case</li>\n<li>Fixed replying to a message Claude Desktop delivered from another session: <code>SendMessage</code> to that session id now delivers through Claude Desktop instead of failing with \"not reachable\"</li>\n<li>Fixed TUI lag with many parallel subagents: per-second progress ticks now replace their predecessor instead of piling up in the transcript</li>\n<li>Fixed agent teams: a teammate's final answer not reaching the team lead — it now arrives in the idle notification instead of a content-free \"available\" notice</li>\n<li>Fixed background subagents being unable to reply to a message from an unnamed sibling or parent agent (<code>from</code> was the agent type, which is not an address)</li>\n<li>Fixed managed-settings <code>disableAutoMode</code> arriving mid-session not moving an already-running auto-mode session back to default mode</li>\n<li>Fixed a \"switch to Opus 1M for 5x more context\" tip that appeared even when the current Opus model already has a 1M context window</li>\n<li>Fixed Claude apps gateway sessions treating a stored Anthropic profile (e.g. a Console sign-in) as active: listing it in <code>/status</code> and retrying gateway 401s with it, though requests never use it</li>\n<li>Fixed cloud sessions telling Claude the model had changed when the host was only setting the session's initial model</li>\n<li>Fixed Remote Control reporting a failure when an organization's policy disables it; it now shows a single quiet notice instead</li>\n<li>Fixed <code>/mcp reconnect</code> on Remote Control showing a generic withheld-detail error instead of the real remedy when a server was disabled in another session</li>\n<li>Fixed <code>--input-format stream-json</code>: client-injected assistant tool calls sent without a message id were merged into the first one and their results lost, including when resuming older sessions</li>\n<li>Fixed session transcripts being silently overwritten when a directory change relocated a session onto an existing same-ID transcript</li>\n<li>Fixed background sessions and their subagents being unable to edit files inside a git worktree they created with <code>git worktree add</code></li>\n<li>Fixed background sessions occasionally starting without any plugin skills (and staying that way) when another Claude Code process was refreshing the plugin marketplace at the same moment</li>\n<li>Fixed selecting text in an opened background session inside tmux over SSH: it now copies to the tmux buffer like a foreground session instead of falling back to OSC 52</li>\n<li>Fixed SDK and cloud sessions hanging indefinitely when an SDK MCP server's handshake acknowledgment was lost; the wait now times out after 70 seconds and marks only that server failed</li>\n<li>Fixed self-hosted runner leaving a stuck session's Bash tool processes running after the session was force-stopped</li>\n<li>Fixed <code>/usage-credits</code> for Team and Enterprise members whose admin set the org's usage-credit limit to $0: it now offers to ask the admin instead of saying a cap was reached</li>\n<li>Fixed <code>--worktree --tmux</code> with a merge-request number on a gitlab.com origin trying a doomed GitHub-style fetch first instead of fetching the GitLab ref directly</li>\n<li>Fixed Ctrl+G failing with \"Emacs quit unexpectedly\" in background sessions for editors that open <code>/dev/tty</code>, such as <code>emacs -nw</code> and <code>micro</code></li>\n<li>Fixed an <code>additionalDirectories</code> entry containing a null byte crashing startup, or breaking <code>/add-dir</code> and later settings updates when it came from an SDK host, IDE, or hook; it is now skipped</li>\n<li>Fixed the MCP server menu's copy shortcut: it now says how the sign-in URL was copied instead of always claiming success</li>\n<li>Fixed italic text (such as the session recap line) rendering as highlighted blocks in GNU screen and in tmux sessions using a <code>screen</code> terminal type</li>\n<li>Fixed <code>claude mcp add --header</code> and <code>claude mcp add-json</code> help text naming the wrong transports</li>\n<li>Fixed <code>claude ultrareview</code> and <code>/ultrareview</code> waiting the full 30 minutes when the cloud session fails to start; they now stop early and report the reason</li>\n<li>Fixed Bash permission checks auto-approving commands that assign an arithmetic expression to an integer shell variable (e.g. <code>OPTIND=1/0</code>, <code>RANDOM=2+2</code>); these now prompt for approval</li>\n<li>Fixed backgrounded sessions (<code>←</code>, <code>/background</code>, <code>--bg</code>) losing a Vertex/Bedrock gateway (<code>ANTHROPIC_*_BASE_URL</code> + <code>CLAUDE_CODE_SKIP_*_AUTH</code>) exported in the shell, so every request failed</li>\n<li>Fixed <code>claude --bg --model fable</code> on Max plans stopping to ask for usage credits while the interactive session on the same account still had Fable allowance</li>\n<li>Fixed the one-time \"make auto mode your default\" offer appearing in unattended sessions (e.g. agent-team teammate panes), where a stray keypress could accept it unread</li>\n<li>Fixed the managed-settings approval prompt re-appearing after signing in again to the same Claude apps gateway when the settings are unchanged</li>\n<li>Fixed disabled <code>/bug</code> and <code>/share</code> reporting that <code>/feedback</code> was disabled; tips, <code>/help</code>, and refusal messages no longer suggest <code>/feedback</code> when an org policy or env var turns it off</li>\n<li>Fixed cloud session creation advising GitHub setup after a transient GitHub connection failure — the message now says to retry instead</li>\n<li>Improved CPU usage during turns in interactive sessions by cutting redundant UI re-renders</li>\n<li>Improved install size: the native binary is about 5 MB smaller</li>\n<li>Improved cloud sessions: when the session's network proxy drops a connection during a Bash command, the tool result now names the host and reason instead of only \"connection reset\"</li>\n<li>Improved <code>/schedule</code> to explain that MCP servers configured in Claude Code can't be attached to cloud routines, instead of a bare \"No MCP connectors\" message</li>\n<li>Improved framing of messages from your own subagents: Claude is told the sender is a worker inside this session, not an unrelated Claude session</li>\n<li>Improved the prompt placeholder to read \"Message <a class=\"user-mention notranslate\" href=\"https://github.com/name\">@name</a>…\" while viewing a background subagent or fork transcript opened from the subagent panel or <code>/tasks</code></li>\n<li>Improved sanitization of MCP server names in error messages, menus, and command results</li>\n<li>Improved Amazon Bedrock session start under <code>CLAUDE_CODE_PROVIDER_MANAGED_BY_HOST</code> (e.g. Claude Desktop): a session given a Bedrock model ID or ARN no longer waits for inference-profile discovery</li>\n<li>Improved the managed settings approval dialog to list only the settings that changed since you last approved them</li>\n<li>Improved retry when the model's tool call is malformed: the broken output is now dropped from the retry context, including on Bedrock, Vertex, and Foundry</li>\n<li>Changed <code>/radio</code> to be available on Bedrock, Vertex AI, Foundry, and Claude Platform on AWS, and when telemetry is disabled</li>\n<li>Changed Claude in Chrome so browser actions always go through Claude Code's permission checks, including in sessions with telemetry disabled, which previously used the Chrome extension's own prompts</li>\n<li>Changed <code>CLAUDE_CODE_SUBAGENT_MODEL</code> to set the default subagent model rather than override everything: an agent definition's <code>model:</code> and an explicit per-spawn model now take precedence over it</li>\n<li>Changed the default commit trailer to <code>Co-Authored-By: Claude Code</code> when the active model isn't a recognized Claude model (e.g. third-party models behind a custom <code>ANTHROPIC_BASE_URL</code>)</li>\n<li>Changed the default model for seat-based Enterprise subscriptions to Opus 5, matching other premium plans</li>\n<li>Changed <code>/effort</code> to save your default effort level per model, so each model keeps its own setting when you switch</li>\n<li>Changed analytics to no longer turn off before sign-in solely because managed settings force gateway login (or cannot be read); they stay off once signed in to the gateway or via <code>DISABLE_TELEMETRY</code></li>\n<li>Changed the footer PR badge on Bedrock, Vertex, and Foundry, and when telemetry is off, to call the GitHub API directly (via <code>gh auth token</code>, <code>GH_TOKEN</code>, or <code>GITHUB_TOKEN</code>) instead of <code>gh pr view</code></li>\n<li>Changed how Bash command output files are created and read back when commands run in the sandbox, so a sandboxed command cannot redirect or replace them</li>\n<li>Changed plugin/LSP install suggestions and the auto-mode default offer to wait until you've sent or cleared what you're typing, so the Enter that sends your prompt can't answer them</li>\n<li>Changed server-managed settings that terminate sandbox TLS, route sandbox traffic through your own proxy, inject credentials, or weaken sandbox isolation to require approval before they apply</li>\n<li>Changed <code>ANTHROPIC_CUSTOM_HEADERS</code> from managed or project settings to require approval when it sets a credential, org/tenant, routing, or API-behavior header (e.g. <code>Authorization</code>, <code>Host</code>)</li>\n<li>Changed project-level <code>.claude/settings.json</code> <code>env</code> to no longer set <code>CLAUDE_CONFIG_DIR</code>, <code>CLAUDE_CODE_TMPDIR</code>, or <code>TMPDIR</code>/<code>TMP</code>/<code>TEMP</code>; set them in your shell, user, or managed settings instead</li>\n<li>Removed syntax highlighting for six rarely used languages (1c, gml, isbl, mathematica, maxima, sqf); the binary is 2.5 MB smaller</li>\n<li>[VSCode] Fixed the sign-in screen's \"Bedrock, Foundry, or Vertex\" button opening the docs at the top of the page instead of the third-party provider setup section</li>\n<li>[VSCode] Changed the Remote Control banner to a footer pill (shown while Remote Control is on or has failed) that opens the session on claude.ai/code; turn it on or off with <code>/remote-control</code></li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 4,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.248",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.248"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.251",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.251"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "作为官方 GitHub 发布，技术变化影响使用 LangChain 的 Agent 和 RAG 应用，但功能改进相对边缘，重要性适中，可信度高，建议监控以跟进依赖更新。；常规版本/依赖更新降噪。",
+      "summary_cn": "LangChain 核心库发布 1.6.1 版本，包含对 genai v1 流式内容索引的修复、StructuredTool 的 JSON 序列化支持，以及错误路径上网关信息的传播改进。同时涉及依赖升级和版本发布回滚操作，整体属于维护性更新。",
+      "tags": [
+        "LangChain",
+        "Agent",
+        "Coding",
+        "RAG"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-08-27T19:31:36Z",
+    "raw_summary": "<p>Changes since langchain-core==1.6.0</p>\n<p>revert: release(core): 1.6.2 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39971\">#39971</a>)<br />\nrelease(core): 1.6.2 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39967\">#39967</a>)<br />\nfix(core): shore up indexing in genai v1 streaming content (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39964\">#39964</a>)<br />\nfix(core): make <code>StructuredTool</code> JSON-serializable (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39631\">#39631</a>)<br />\nchore(deps): bump minor and patch dependencies (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39869\">#39869</a>)<br />\nrelease(core): 1.6.1 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39832\">#39832</a>)<br />\nfeat(core): propagate gateway information on error path (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39829\">#39829</a>)</p>",
+    "related_items": [],
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "langchain-core==1.6.1",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-core%3D%3D1.6.1"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "普通补丁更新，无用户偏好相关内容，重要性低；官方 GitHub 源可信度高。建议忽略以避免噪声。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 workflow-harness 包发布 1.0.93 补丁版本，仅更新了依赖 @ai-sdk/harness，无新增功能或修复说明。这属于常规版本维护，对开发者影响较小。",
+      "tags": [
+        "AI SDK",
+        "workflow",
+        "版本更新",
+        "维护"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-28T17:34:14Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/cc9f6ce4dd7a4c6f45e7f2b398b8ada9de5e72cf\"><tt>cc9f6ce</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/76082104acf7de3c932d640932f602424f26e96a\"><tt>7608210</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/6f8a2d796687b061b8bb17134dce272f6a7865bb\"><tt>6f8a2d7</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/14d4fc03114529c0d87962bc48093d09387daea9\"><tt>14d4fc0</tt></a>]\n<ul>\n<li>@ai-sdk/harness@1.0.93</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow-harness@1.0.93",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow-harness%401.0.93"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "补丁版本，仅更新依赖，无重要功能变化，对用户偏好主题影响低。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/workflow 包发布 2.0.14 补丁版本，主要更新依赖，包括 ai 升至 7.0.84 和 @ai-sdk/provider-utils 升至 5.0.33。此次更新没有新增功能，仅修复或改进底层依赖，对使用工作流功能的开发者影响较小。",
+      "tags": [
+        "Vercel AI SDK",
+        "workflow",
+        "补丁更新",
+        "依赖更新"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-08-28T17:34:13Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/6669d691c79f6161b3a03effafd44f9d4c361d03\"><tt>6669d69</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/a6463ca0d72cb4e5392e456f87ed39c7ae54737c\"><tt>a6463ca</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/e604532216be75cb29f642f2531b9c52575062cd\"><tt>e604532</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/90192f19a1348eec52a482a6b33118f1768790b7\"><tt>90192f1</tt></a>]\n<ul>\n<li>ai@7.0.84</li>\n<li>@ai-sdk/provider-utils@5.0.33</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow@2.0.14",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%402.0.14"
+  }
+]

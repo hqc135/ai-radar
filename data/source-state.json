@@ -1,27 +1,23 @@
 {
   "last_quality": {
-    "content_health": "ok",
-    "date": "2026-08-29",
-    "needs_review": false,
+    "content_health": "low",
+    "date": "2026-08-30",
+    "needs_review": true,
     "reasons": [
-      "信息源抓取异常：失败 0 个，警告 1 个。"
+      "主列表条目数 6 低于阈值 8。",
+      "低质量 release 占比 50% 偏高，下一轮会压低噪音源限额。",
+      "新内容偏少，已自动把回看窗口扩展到 72 小时。",
+      "从近期缓存补入 3 条，避免重复运行后日报变空。",
+      "信息源抓取异常：失败 0 个，警告 1 个。",
+      "质量分 58/100 低于阈值 70，已标记下次运行回看。"
     ],
-    "score": 99
+    "score": 58
   },
   "sources": {
     "Ahead of AI": {
-      "effective_items_7d": 1,
+      "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 1,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -132,6 +128,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -142,22 +147,13 @@
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 1
+      "output_items_7d": 0
     },
     "Anthropic Claude Code Releases": {
       "current_adjusted_daily_limit": 6,
       "effective_items_7d": 7,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 1,
@@ -268,6 +264,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 1,
           "failed": 0,
           "must_read_items": 1,
@@ -285,15 +290,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -409,6 +405,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -419,15 +424,6 @@
       "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -544,6 +540,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 1,
@@ -554,15 +559,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -673,6 +669,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -690,15 +695,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -808,6 +804,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -825,15 +830,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -943,6 +939,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -960,15 +965,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -1078,6 +1074,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1096,15 +1101,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -1220,6 +1216,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1230,15 +1235,6 @@
       "effective_items_7d": 3,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -1349,6 +1345,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1366,15 +1371,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -1484,6 +1480,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1502,15 +1507,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -1620,6 +1616,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1638,15 +1643,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 1,
           "failed": 0,
@@ -1762,6 +1758,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1772,15 +1777,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 1
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -1897,6 +1893,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 1
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 1
         }
       ],
       "noise_items_7d": 0,
@@ -1905,18 +1910,9 @@
     },
     "LangChain Releases": {
       "current_adjusted_daily_limit": 2,
-      "effective_items_7d": 4,
+      "effective_items_7d": 5,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -2033,26 +2029,26 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 1,
+          "output_items": 2,
+          "warning": 0
         }
       ],
-      "noise_items_7d": 1,
-      "noise_ratio_7d": 0.2,
-      "output_items_7d": 5
+      "noise_items_7d": 2,
+      "noise_ratio_7d": 0.286,
+      "output_items_7d": 7
     },
     "Latent Space": {
       "current_adjusted_daily_limit": 5,
-      "effective_items_7d": 9,
+      "effective_items_7d": 7,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -2169,25 +2165,25 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
-        }
-      ],
-      "noise_items_7d": 0,
-      "noise_ratio_7d": 0.0,
-      "output_items_7d": 9
-    },
-    "LlamaIndex Blog": {
-      "effective_items_7d": 0,
-      "failures_7d": 0,
-      "history": [
+        },
         {
-          "date": "2026-08-16",
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
-        },
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 7
+    },
+    "LlamaIndex Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -2298,6 +2294,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2315,15 +2320,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -2433,6 +2429,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2450,15 +2455,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -2568,6 +2564,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2585,15 +2590,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 1,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 1,
           "failed": 0,
@@ -2703,6 +2699,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2721,15 +2726,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -2845,6 +2841,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -2855,15 +2860,6 @@
       "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -2974,6 +2970,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2991,15 +2996,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-17",
           "effective_items": 0,
           "failed": 0,
@@ -3115,6 +3111,15 @@
           "noise_items": 1,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 1,
@@ -3123,18 +3128,9 @@
     },
     "Simon Willison AI": {
       "current_adjusted_daily_limit": 5,
-      "effective_items_7d": 8,
+      "effective_items_7d": 7,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 1,
@@ -3251,25 +3247,25 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 8
+      "output_items_7d": 7
     },
     "The Gradient": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -3386,6 +3382,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -3394,18 +3399,9 @@
     },
     "Vercel AI SDK Releases": {
       "current_adjusted_daily_limit": 2,
-      "effective_items_7d": 4,
+      "effective_items_7d": 3,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 2,
-          "output_items": 2,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -3522,10 +3518,19 @@
           "noise_items": 2,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 2,
+          "output_items": 2,
+          "warning": 0
         }
       ],
-      "noise_items_7d": 10,
-      "noise_ratio_7d": 0.714,
+      "noise_items_7d": 11,
+      "noise_ratio_7d": 0.786,
       "output_items_7d": 14
     },
     "Vercel Changelog": {
@@ -3533,15 +3538,6 @@
       "effective_items_7d": 21,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -3658,6 +3654,15 @@
           "noise_items": 0,
           "output_items": 3,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -3668,15 +3673,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -3793,6 +3789,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -3804,15 +3809,6 @@
       "effective_items_7d": 29,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 6,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -3929,6 +3925,15 @@
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -3940,15 +3945,6 @@
       "effective_items_7d": 24,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -4065,6 +4061,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-08-30",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -4076,15 +4081,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-16",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-17",
           "effective_items": 0,
@@ -4195,6 +4191,15 @@
         },
         {
           "date": "2026-08-29",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-08-30",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
