@@ -1,0 +1,59 @@
+{
+  "archive_path": "data/items/2026-09-05.json",
+  "backfill_items": 0,
+  "candidates_new": 18,
+  "candidates_selected": 10,
+  "candidates_total": 25,
+  "content_health": "ok",
+  "estimated_llm_tokens": 10000,
+  "fallback_items": 0,
+  "fallback_lookback_used": false,
+  "health_reasons": [
+    "低质量 release 占比 40% 偏高，下一轮会压低噪音源限额。",
+    "信息源抓取异常：失败 0 个，警告 1 个。"
+  ],
+  "llm_failed": 0,
+  "llm_planned": 10,
+  "llm_succeeded": 10,
+  "lookback_hours": 36,
+  "low_quality_release_items": 4,
+  "low_quality_release_ratio": 0.4,
+  "manual_items": 0,
+  "must_read_items": 3,
+  "output_items": 10,
+  "output_path": "notes/daily/2026-09-05.md",
+  "quality_needs_review": false,
+  "quality_score": 94,
+  "quality_signals": {
+    "backfill_items": 0,
+    "fallback_lookback_used": false,
+    "low_quality_release_items": 4,
+    "low_quality_release_ratio": 0.4,
+    "min_daily_items": 8,
+    "must_read_items": 3,
+    "output_items": 10,
+    "source_warnings": 1,
+    "sources_failed": 0
+  },
+  "rss_items": 25,
+  "source_adjustments": {
+    "Anthropic Claude Code Releases": 6,
+    "Hugging Face Blog": 6,
+    "Latent Space": 5,
+    "OpenAI News": 9,
+    "Simon Willison AI": 5,
+    "Vercel AI SDK Releases": 2,
+    "Vercel Changelog": 6,
+    "arXiv cs.AI": 6,
+    "arXiv cs.CL": 6,
+    "arXiv cs.LG": 6
+  },
+  "source_failures": [],
+  "source_warning_names": [
+    "LangChain Changelog"
+  ],
+  "source_warnings": 1,
+  "sources_failed": 0,
+  "sources_success": 26,
+  "sources_total": 26
+}

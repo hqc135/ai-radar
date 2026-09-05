@@ -1,27 +1,19 @@
 {
   "last_quality": {
     "content_health": "ok",
-    "date": "2026-09-04",
+    "date": "2026-09-05",
     "needs_review": false,
     "reasons": [
+      "低质量 release 占比 40% 偏高，下一轮会压低噪音源限额。",
       "信息源抓取异常：失败 0 个，警告 1 个。"
     ],
-    "score": 99
+    "score": 94
   },
   "sources": {
     "Ahead of AI": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 1,
@@ -132,6 +124,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -150,15 +151,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 1,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 1,
           "failed": 0,
@@ -268,6 +260,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 1,
           "failed": 0,
           "must_read_items": 1,
@@ -285,15 +286,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -409,6 +401,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -419,15 +420,6 @@
       "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -544,25 +536,25 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 1,
+          "output_items": 1,
+          "warning": 0
         }
       ],
-      "noise_items_7d": 0,
-      "noise_ratio_7d": 0.0,
-      "output_items_7d": 1
+      "noise_items_7d": 1,
+      "noise_ratio_7d": 0.5,
+      "output_items_7d": 2
     },
     "Cursor Changelog": {
       "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -673,6 +665,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -690,15 +691,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -808,6 +800,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -825,15 +826,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -943,6 +935,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -960,15 +961,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -1078,6 +1070,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1092,18 +1093,9 @@
     },
     "Google Cloud AI and Machine Learning Blog": {
       "current_adjusted_daily_limit": 6,
-      "effective_items_7d": 3,
+      "effective_items_7d": 4,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 2,
-          "failed": 0,
-          "must_read_items": 1,
-          "noise_items": 0,
-          "output_items": 2,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -1220,26 +1212,26 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 3
+      "output_items_7d": 4
     },
     "Google DeepMind Blog": {
       "effective_items_7d": 3,
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -1354,6 +1346,15 @@
           "must_read_items": 0,
           "noise_items": 0,
           "output_items": 1,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
           "warning": 0
         }
       ],
@@ -1366,15 +1367,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 2,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 2,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -1490,6 +1482,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1501,15 +1502,6 @@
       "effective_items_7d": 6,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -1626,6 +1618,15 @@
           "noise_items": 0,
           "output_items": 4,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1637,15 +1638,6 @@
       "effective_items_7d": 2,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -1762,6 +1754,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1772,15 +1773,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 1
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -1897,6 +1889,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 1
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 1
         }
       ],
       "noise_items_7d": 0,
@@ -1905,18 +1906,9 @@
     },
     "LangChain Releases": {
       "current_adjusted_daily_limit": 4,
-      "effective_items_7d": 4,
+      "effective_items_7d": 3,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 1,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -2033,26 +2025,26 @@
           "noise_items": 1,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 1,
+          "output_items": 1,
+          "warning": 0
         }
       ],
-      "noise_items_7d": 2,
-      "noise_ratio_7d": 0.333,
+      "noise_items_7d": 3,
+      "noise_ratio_7d": 0.5,
       "output_items_7d": 6
     },
     "Latent Space": {
       "current_adjusted_daily_limit": 5,
-      "effective_items_7d": 7,
+      "effective_items_7d": 6,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 2,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 2,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 2,
@@ -2169,25 +2161,25 @@
           "noise_items": 0,
           "output_items": 2,
           "warning": 0
-        }
-      ],
-      "noise_items_7d": 0,
-      "noise_ratio_7d": 0.0,
-      "output_items_7d": 7
-    },
-    "LlamaIndex Blog": {
-      "effective_items_7d": 0,
-      "failures_7d": 0,
-      "history": [
+        },
         {
-          "date": "2026-08-22",
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
-        },
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 6
+    },
+    "LlamaIndex Blog": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -2298,6 +2290,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2315,15 +2316,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -2439,6 +2431,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -2449,15 +2450,6 @@
       "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -2574,6 +2566,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -2584,15 +2585,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -2709,6 +2701,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -2717,18 +2718,9 @@
     },
     "OpenAI News": {
       "current_adjusted_daily_limit": 9,
-      "effective_items_7d": 13,
+      "effective_items_7d": 12,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -2845,25 +2837,25 @@
           "noise_items": 0,
           "output_items": 4,
           "warning": 0
-        }
-      ],
-      "noise_items_7d": 0,
-      "noise_ratio_7d": 0.0,
-      "output_items_7d": 13
-    },
-    "OpenAI Node SDK Releases": {
-      "effective_items_7d": 1,
-      "failures_7d": 0,
-      "history": [
+        },
         {
-          "date": "2026-08-22",
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
-        },
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 12
+    },
+    "OpenAI Node SDK Releases": {
+      "effective_items_7d": 1,
+      "failures_7d": 0,
+      "history": [
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -2979,6 +2971,15 @@
           "must_read_items": 0,
           "noise_items": 0,
           "output_items": 1,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
           "warning": 0
         }
       ],
@@ -2991,15 +2992,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -3115,26 +3107,26 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
-        }
-      ],
-      "noise_items_7d": 1,
-      "noise_ratio_7d": 0.333,
-      "output_items_7d": 3
-    },
-    "Simon Willison AI": {
-      "current_adjusted_daily_limit": 5,
-      "effective_items_7d": 10,
-      "failures_7d": 0,
-      "history": [
+        },
         {
-          "date": "2026-08-22",
-          "effective_items": 2,
+          "date": "2026-09-05",
+          "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
-          "output_items": 2,
+          "output_items": 0,
           "warning": 0
-        },
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 2
+    },
+    "Simon Willison AI": {
+      "current_adjusted_daily_limit": 5,
+      "effective_items_7d": 11,
+      "failures_7d": 0,
+      "history": [
         {
           "date": "2026-08-23",
           "effective_items": 2,
@@ -3251,26 +3243,26 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 10
+      "output_items_7d": 11
     },
     "The Gradient": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 0,
           "failed": 0,
@@ -3380,6 +3372,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -3398,15 +3399,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 2,
-          "output_items": 2,
-          "warning": 0
-        },
-        {
           "date": "2026-08-23",
           "effective_items": 1,
           "failed": 0,
@@ -3522,6 +3514,15 @@
           "noise_items": 2,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 2,
+          "output_items": 2,
+          "warning": 0
         }
       ],
       "noise_items_7d": 14,
@@ -3530,18 +3531,9 @@
     },
     "Vercel Changelog": {
       "current_adjusted_daily_limit": 6,
-      "effective_items_7d": 15,
+      "effective_items_7d": 14,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 1,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -3658,25 +3650,25 @@
           "noise_items": 0,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 18
+      "output_items_7d": 17
     },
     "Windsurf Changelog": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -3793,6 +3785,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -3801,18 +3802,9 @@
     },
     "arXiv cs.AI": {
       "current_adjusted_daily_limit": 6,
-      "effective_items_7d": 29,
+      "effective_items_7d": 23,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 4,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -3929,26 +3921,26 @@
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 30
+      "output_items_7d": 24
     },
     "arXiv cs.CL": {
       "current_adjusted_daily_limit": 6,
       "effective_items_7d": 30,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 3,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -4065,6 +4057,15 @@
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
+        },
+        {
+          "date": "2026-09-05",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -4076,15 +4077,6 @@
       "effective_items_7d": 5,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-08-22",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-08-23",
           "effective_items": 0,
@@ -4195,6 +4187,15 @@
         },
         {
           "date": "2026-09-04",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-05",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
