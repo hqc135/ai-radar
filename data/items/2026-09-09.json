@@ -1,0 +1,797 @@
+[
+  {
+    "analysis": {
+      "action": "monitor",
+      "confidence": 3,
+      "importance": 5,
+      "reason": "该消息若属实，将是 AI 在科学发现上的重大突破，对 Agent 应用有深远影响。但来源为博客且非官方，可信度受限，需进一步确认。",
+      "summary_cn": "OpenAI 使用 Astra-next 及约一万个智能体处理纳维-斯托克斯方程问题，在 88 小时内找到奇点，消耗 1300 亿 tokens（成本超 4000 万美元），可能促成第二个千禧年大奖。该发现引发对 AI 科研能力的关注。",
+      "tags": [
+        "Agent",
+        "OpenAI",
+        "科学发现",
+        "千禧年大奖"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-09T05:04:51Z",
+    "raw_summary": "Overshadowing Cognition's $48B Series E, Mistral's $24B Series D, Meta's Muse agent, and GPT Image 2.5. The most jam packed, feel the AGI day in the history of AI.",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] OpenAI reports Navier-Stokes singularity find in 88 hours using Astra-next, roughly 10,000 agents and 130B tokens (>$40M), a contender for second ever Millennium Prize awarded",
+    "url": "https://www.latent.space/p/ainews-openai-reports-navier-stokes"
+  },
+  {
+    "analysis": {
+      "action": "关注后续细节及官方回应，警惕夸大宣传",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "事件涉及AI解决重大数学问题及伦理争议，但来源为博文且细节待证实，可信度受限。；已合并同事件来源：OpenAI News。",
+      "summary_cn": "OpenAI 使用未发布模型解决了 Navier-Stokes 千禧年难题，但被指控剽窃。NYU 教授 Tristan 与 Anthropic 数学家 Levent 合作近一年，使用 Claude 和 Codex 取得突破，随后 OpenAI 团队在相似问题上取得结果，且未邀请 Levent 合著，引发争议。",
+      "tags": [
+        "OpenAI",
+        "Navier-Stokes",
+        "千禧年难题",
+        "AI科研",
+        "抄袭争议",
+        "Anthropic"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-08T23:55:12Z",
+    "raw_summary": "<p><strong><a href=\"https://openai.com/index/navier-stokes-solution/\">On the Navier–Stokes Millennium Prize Problem</a></strong></p>\nImpressive result from OpenAI, who used an unreleased model to produce a resolution to <a href=\"https://en.wikipedia.org/wiki/Navier–Stokes_existence_and_smoothness\">the Navier–Stokes existence and smoothness problem</a>, one of the seven <a href=\"https://en.wikipedia.org/wiki/Millennium_Prize_Problems\">Millennium Prize Problems</a> that have been subject to a $1,000,000 prize since May 24th, 2000.</p>\n<p>The discovery is somewhat overshadowed by accusations of skulduggery from Tristan Buckmaster, an NYU mathematics professor who was collaborating on related problems with Levent Alpöge, an accomplished mathematician who currently works for Anthropic.</p>\n<p>Tristan's complaint accompanied <a href=\"https://mastodon.social/@tristanbuckmaster/117233413705701198\">a hastily published version</a> of their own results. <a href=\"https://cims.nyu.edu/~tristanb/statement.pdf\">Here's the PDF describing what happened</a>. The <em>very</em> short version is that Tristan and Levent worked on the problem for almost a year, making extensive use of Claude and Codex (mainly GPT-5.6 Sol), then had a breakthrough on August 15th. The mathematical rumour mill kicked into gear and Tristan and Levent heard that OpenAI had heard that Anthropic had resolved \"a major open problem\", so they reached out and learned that OpenAI had a team working on a related problem, with a similar approach. Quoting Tristan:</p>\n<blockquote>\n<p>I asked when the first prompt had been sent by them. This question was not answered directly by OpenAI for some time. Eventually it was agreed that it had been sent in the past few days, after information about our work had reached OpenAI.</p>\n<p>I asked whether the model had been trained on, or had access to, our sessions in Codex, into which we had been putting all our drafts for the whole of this project. I was told the model did not look up user data. I asked again, about training, and I did not get an answer.</p>\n</blockquote>\n<p>It gets more complicated from there. The OpenAI team offered to wait for Tristan to publish, or to have him author a paper about their result, but were clear that Levent would <em>not</em> be invited as a co-author due to OpenAI's competitive relationship with his employer.</p>\n<p>Here's how OpenAI described their work:</p>\n<blockquote>\n<p>On Tuesday, September 1, we heard rumors that two Millennium Prize problems had been resolved. Inspired by these rumors and by the step change in performance of our internal model, we launched an effort to evaluate it on all open Millennium Prize problems and a few other high-impact problems. [...]</p>\n<p>The agents arrived at their resolution on Saturday, September 5, about 88 hours after the first agents were launched. Lean formalization and verification took an additional 17 hours via GPT‑6 Astra.</p>\n<p>Across all attempted problems, the agents sent 4.9 million messages and used about 300 billion output tokens. In the process of resolving the Navier–Stokes problem, the agents sent 2.7 million messages and used approximately 130 billion output tokens.</p>\n</blockquote>\n<p>(We don't know the cost structure of the internal model they used, but 300 billion output tokens at public API prices for GPT-6 Astra would cost <a href=\"https://www.llm-prices.com/#ot=300000000000&amp;sel=gpt-6-astra\">$15,000,000</a>.)</p>\n<p>Here's where they provide their perspective on Tristan and Levent's work (emphasis mine):</p>\n<blockquote>\n<p>Our effort began on September 1st after hearing a rumor which we later realized was related to Levent Alpöge, an Anthropic employee, and Tristan Buckmaster, a math professor at NYU. After the completion of our full project and Lean verification (on September 6th), believing from the rumor they also had a solution of Navier–Stokes, we reached out to them to offer a concurrent release of our result and to recognize their priority in a joint announcement. [...]</p>\n<p>We (the researchers and the agents) did not see any of their work through any means until they released it publicly — in particular, no specific user data was accessed in order to solve this problem. <strong>While unlikely, we cannot rule out that de-identified data derived from their usage of our products helped <a href=\"https://openai.com/policies/how-your-data-is-used-to-improve-model-performance/\">improve our models</a></strong>. However, our proofs differ significantly and even the precise results proved are different in the Euler case (forced vs unforced).</p>\n</blockquote>\n<p>My interpretation of what happened here is that OpenAI heard that some Millennium Prize problems had been solved using LLMs and saw this as an opportunity to demonstrate the power of their latest model, without thinking too hard about the optics of scooping a team who had been using OpenAI's own models to work on this problem for the best part of a year.</p>\n<p>This situation appears to mirror what's happening in the world of computer security right now. Anil Madhavapeddy recently pointed out that <a href=\"https://anil.recoil.org/notes/rumour-is-the-exploit\">Just a rumour of a bug is enough to find a security exploit these days</a>, because if someone knows that some software has an unpatched vulnerability, they can set their agents the task of finding it. Is the same now true of mathematics? Just knowing that there is an unpublished solution to a problem might trigger millions of dollars in LLM spending to get there first.</p>\n<p>This also highlights one of my ongoing frustrations about how all of this works. When an AI lab says that my data is \"used to improve model performance\", <em>what does that actually mean</em>?</p>\n<p>My two favourite hypothetical questions regarding this used to be:</p>\n<ul>\n<li>If I'm running Codex and one of my API keys accidentally gets consumed in the context, what are the chances that someone else might ask for an API key in the future and get mine back? (I asked someone at OpenAI once and they called this the \"regurgitation\" problem and assured me that they take great pains to prevent that... but wouldn't describe how.)</li>\n<li>If I brainstorm with ChatGPT about potential new directions for my company, what's the chance that information might be exposed to a competitor in six months' time who asks \"what might company X plan to do next\"?</li>\n</ul>\n<p>My new preferred hypothetical for this is:</p>\n<ul>\n<li>If I use ChatGPT to help me partially solve a Millennium Prize problem, what are the chances that my work will influence training such that a later model helps someone <em>else</em> solve it first?</li>\n</ul>\n\n    <p><small></small>Via <a href=\"https://news.ycombinator.com/item?id=49613262\">Hacker News</a></small></p>\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/mathematics\">mathematics</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/openai\">openai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/training-data\">training-data</a>, <a href=\"https://simonwillison.net/tags/ai-ethics\">ai-ethics</a></p>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "OpenAI News",
+        "source_tier": 1,
+        "title": "On the Navier–Stokes Millennium Prize Problem",
+        "url": "https://openai.com/index/navier-stokes-solution"
+      }
+    ],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "On the Navier–Stokes Millennium Prize Problem",
+    "url": "https://simonwillison.net/2026/Sep/8/on-navier-stokes"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "OpenAI 旗舰图像模型更新，涉及多模态能力提升，对 Agent 与 Coding 工具链中图像处理有潜在应用价值，且来源为官方发布和开发者博客，可信度高；已合并同事件来源：OpenAI News。",
+      "summary_cn": "OpenAI 发布图像生成模型 ChatGPT Images 2.5，API 新增 gpt-image-2.5-sunburst 和 gpt-image-2.5-flare 两个版本，提升了多轮指令遵循和参考图主体保持能力。Simon Willison 更新了 CLI 工具，支持传入多张参考图快速生成编辑效果。",
+      "tags": [
+        "OpenAI",
+        "图像生成",
+        "多模态",
+        "编辑",
+        "模型迭代"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-08T22:46:33Z",
+    "raw_summary": "<p><strong><a href=\"https://openai.com/index/introducing-chatgpt-images-2-5/\">Introducing ChatGPT Images 2.5</a></strong></p>\nOpenAI's image generation models are apparently used \"more than 3 billion images across ChatGPT Images and the GPT‑Image models in the API\". This latest release improves their instruction-following ability across multiple turns, responds faster, and \"is better at preserving the subjects in your reference photos\".</p>\n<p>There are two new model IDs in the API: <code>gpt-image-2.5-sunburst</code> and <code>gpt-image-2.5-flare</code>. Based <a href=\"https://developers.openai.com/api/docs/guides/image-generation#overview\">on this</a> I think Sunburst is the stronger option:</p>\n<blockquote>\n<p>Choose Sunburst for workflows where editing precision matters most, and Flare for fast, high-quality everyday image generation.</p>\n</blockquote>\n<p>I <a href=\"https://github.com/simonw/tools/pull/333\">upgraded</a> my <a href=\"https://tools.simonwillison.net/python/#openai_imagepy\">openai_image.py</a> CLI tool to support passing in one or more reference images, so now this works:</p>\n<div class=\"highlight highlight-source-shell\"><pre>uv run https://tools.simonwillison.net/python/openai_image.py \\\n  <span class=\"pl-s\"><span class=\"pl-pds\">'</span>add a raccoon scientist studying the chart thoughtfully<span class=\"pl-pds\">'</span></span> \\\n  -i https://static.simonwillison.net/static/2026/openai-agent-usage.webp \\\n  -m gpt-image-2.5-sunburst</pre></div>\n\n<p>This is the <a href=\"https://static.simonwillison.net/static/2026/openai-agent-usage.webp\">original image</a>, and here's what I got back from that prompt to \"add a raccoon scientist studying the chart thoughtfully\":</p>\n<p><img alt=\"Line chart with cartoon illustration. Title: &quot;Usage of internal coding agents is increasing significantly—Median researcher&quot;. Y-axis labeled &quot;Daily $ / researcher&quot; from 0 to 700; x-axis shows Feb 2026, Apr 2026, Jun 2026, Aug 2026. A blue line stays near zero through April, rises gradually to around 150 by June and July, then climbs steeply to about 600 by late August. In the foreground a cartoon raccoon in glasses and a white lab coat, chin in hand, holds a clipboard at a desk with a mug bearing the OpenAI logo, some printed charts, and a stack of three books titled &quot;AI AGENTS&quot;, &quot;SOFTWARE ENGINEERING&quot;, and &quot;PRODUCTIVITY&quot;. An OpenAI logo appears in the top right corner.\" src=\"https://static.simonwillison.net/static/2026/racoon-chart.webp\" />\n\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/tools\">tools</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/openai\">openai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/uv\">uv</a>, <a href=\"https://simonwillison.net/tags/text-to-image\">text-to-image</a></p>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "OpenAI News",
+        "source_tier": 1,
+        "title": "Introducing ChatGPT Images 2.5",
+        "url": "https://openai.com/index/introducing-chatgpt-images-2-5"
+      }
+    ],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Introducing ChatGPT Images 2.5",
+    "url": "https://simonwillison.net/2026/Sep/8/introducing-chatgpt-images-25"
+  },
+  {
+    "analysis": {
+      "action": "阅读并收藏，关注 context modes 实现细节，考虑在 Agent 设计中使用。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客来源，可信度高；内容直接相关 Agent 用户偏好，且涉及上下文管理这一重要性能优化点，对实际构建多代理系统有参考价值。",
+      "summary_cn": "LangChain 博客介绍了 multi-agent 框架中上下文管理方式，通过 deepagents 的 context modes 让子代理继承或隔离上下文，以实现更快、更便宜、更聚焦的多代理工作。",
+      "tags": [
+        "Agent",
+        "Context Management",
+        "LangChain",
+        "Multi-Agent"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-08T18:07:23Z",
+    "raw_summary": "Learn how context modes in deepagents help subagents fork a supervisor's context or start isolated — for faster, cheaper, more focused multi-agent work.",
+    "related_items": [],
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Organizing Context in a Multi-Agent Harness",
+    "url": "https://www.langchain.com/blog/organizing-context-in-a-multi-agent-harness"
+  },
+  {
+    "analysis": {
+      "action": "阅读原文，提炼RAG性能优化和评估框架的具体技术方案，应用于相关项目设计。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客来源，可信度高；内容涉及RAG性能优化与评估，贴近用户偏好，案例具参考价值。",
+      "summary_cn": "日本电信运营商KDDI开发了基于RAG的消费者AI应用Buffmee，通过Google Cloud的Agent开发工具包和自动化评估框架优化性能，将响应延迟降低38%，TTFT提升近18%，同时确保内容引用可靠、减少幻觉。该案例展示了企业级RAG系统在性能调优和评估方面的实践方法。",
+      "tags": [
+        "RAG",
+        "Agent",
+        "Eval",
+        "企业案例",
+        "性能优化",
+        "Google Cloud"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-08T16:00:00Z",
+    "raw_summary": "<div class=\"block-paragraph_advanced\"><p><span style=\"vertical-align: baseline;\">When building consumer-facing generative AI applications,  balancing high generation quality with fast response times across diverse media types, can be challenging. KDDI, a major telecommunications carrier in Japan, tackled this challenge head-on when they developed Buffmee, their consumer Retrieval-Augmented Generation (RAG) app.  </span></p>\n<p><span style=\"vertical-align: baseline;\">Buffmee is an interactive AI service built on the concept of 'AI that helps you grow.' By grounding responses in over 100 sources — including books, magazines, and web media — it helps users search for information, summarize key points, and explore personalized learning and hobby interests. By citing sources, Buffmee alleviates concerns about information reliability, allowing users to safely deepen their knowledge.</span></p>\n<p><span style=\"vertical-align: baseline;\">As part of their app launch, the engineer team needed to ground a massive variety of proprietary content, including books and magazines. However, they struggled with latency issues that prevented them from meeting their target response times, and they needed a reliable way to ensure hallucination-free results. </span></p></div>\n<div class=\"block-image_full_width\">\n\n\n\n\n\n\n  \n    <div class=\"article-module h-c-page\">\n      <div class=\"h-c-grid\">\n  \n\n    <figure class=\"article-image--large\n      \n      \n        h-c-grid__col\n        h-c-grid__col--6 h-c-grid__col--offset-3\n        \n        \n      \">\n\n      \n      \n        \n        <img alt=\"image1\" src=\"https://storage.googleapis.com/gweb-cloudblog-publish/images/image1_9ZYjQgt.max-1000x1000.png\" />\n        \n        </a>\n      \n        <figcaption class=\"article-image__caption \"><p>Buffmee App Description and Images</p></figcaption>\n      \n    </figure>\n\n  \n      </div>\n    </div>\n  \n\n\n\n\n</div>\n<div class=\"block-paragraph_advanced\"><p><span style=\"vertical-align: baseline;\">To meet these performance targets, organizations need a systematic approach to AI evaluation and real-time bottleneck identification. That is why we are sharing the automated evaluation framework and performance optimization techniques that helped KDDI successfully launch their application. </span></p>\n<p><span style=\"vertical-align: baseline;\">The results were inspiring: </span><strong style=\"vertical-align: baseline;\">KDDI reduced total application response latency by 38%, successfully hitting their target response performance. They also achieved a nearly 18% improvement in TTFT.</strong></p>\n<p><span style=\"vertical-align: baseline;\">\"Our vision hinged on a platform where content, once ingested, would instantly function as a working RAG system. Google's careful, hands-on guidance made that a reality — we're sincerely grateful for their support.\" — Shunya Onoda, AI Product Department, KDDI.</span></p>\n<p><span style=\"vertical-align: baseline;\">With these performance and accuracy improvements, Buffmee now empowers users to safely explore their favorite media through interactive Q&amp;A and deep-dive analysis, delivering a highly personalized experience while maintaining strict trust and compliance for content providers.</span></p>\n<p><span style=\"vertical-align: baseline;\">Let’s deep dive into how they achieved these results. </span></p>\n<h3><span style=\"vertical-align: baseline;\">Establish automated evaluation for diverse content</span></h3>\n<p><span style=\"vertical-align: baseline;\">Traditional manual testing requires immense effort and cannot scale to accommodate a large content library. To solve this, the development team designed a systematic AI evaluation process using Gemini Enterprise Agent Platform Evaluation Service.</span></p>\n<p><span style=\"vertical-align: baseline;\">By implementing automated evaluation frameworks like LLM-as-a-Judge and the Rule of Hundreds, the team replaced labor-intensive manual testing with a data-driven process. They ingested their extensive document corpus, constructed hundreds of automated evaluation tests, and built a comprehensive benchmark dataset to measure the reliability of answers for each use case. As a result, the team improved their groundedness scores by 25%, helping deliver highly accurate and reliable outputs.</span></p></div>\n<div class=\"block-image_full_width\">\n\n\n\n\n\n\n  \n    <div class=\"article-module h-c-page\">\n      <div class=\"h-c-grid\">\n  \n\n    <figure class=\"article-image--large\n      \n      \n        h-c-grid__col\n        h-c-grid__col--6 h-c-grid__col--offset-3\n        \n        \n      \">\n\n      \n      \n        \n        <img alt=\"image2\" src=\"https://storage.googleapis.com/gweb-cloudblog-publish/images/image2_R5gWUyX.max-1000x1000.png\" />\n        \n        </a>\n      \n        <figcaption class=\"article-image__caption \"><p>KDDI's automated evaluation loop: AI generates questions and scores answers, while humans calibrate thresholds and analyze edge-case failures.</p></figcaption>\n      \n    </figure>\n\n  \n      </div>\n    </div>\n  \n\n\n\n\n</div>\n<div class=\"block-paragraph_advanced\"><h3><span style=\"vertical-align: baseline;\">Identify bottlenecks and optimize performance with an agentic loop</span></h3>\n<p><span style=\"vertical-align: baseline;\">To improve response speeds, the team implemented BigQuery Agent Analytics and the Agent Development Kit (ADK) log analysis agent. By analyzing actual production logs, they visualized how skill division and prompt bloat—especially with highly complex, multi-page system prompts — impacted the Time To First Token (TTFT).</span></p>\n<p><span style=\"vertical-align: baseline;\">The team optimized the system prompt, including the inline integration of skills, and reviewed the sub-agent routing. This allowed them to identify and resolve deep-stack bottlenecks in real time without sacrificing response accuracy.</span></p>\n<h3><span style=\"vertical-align: baseline;\">Four core principles for reliable evaluation </span></h3>\n<p><span style=\"vertical-align: baseline;\">To achieve these results, the team implemented four core technical practices:</span></p>\n<ol>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Transitioning to binary evaluation: </strong><span style=\"vertical-align: baseline;\">By selectively moving away from ambiguous 1–5 ratings to a binary \"pass (1) / fail (0)\" system for critical metrics, the team minimized variance and noise, helping improve automation accuracy.</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Strategic content sampling:</strong><span style=\"vertical-align: baseline;\"> Rather than attempting to evaluate every single document, the team classified their entire corpus along a two-dimensional grid: File Format (Web articles, EPUBs, PDFs, structured data) and Media Composition (Text-heavy, image-heavy, or mixed). By selecting representative samples from each cell of this difficulty grid, they reduced the evaluation workload by 75% while maintaining comprehensive test coverage.</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Thresholds grounded in product judgment:</strong><span style=\"vertical-align: baseline;\"> Instead of relying solely on default tool parameters, the product owner reviewed randomly sampled answers alongside their automated scores to calibrate and establish what \"good enough to ship\" actually meant for the user experience.</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><strong style=\"vertical-align: baseline;\">Modular splitting of massive prompts into ADK Skills:</strong><span style=\"vertical-align: baseline;\"> Because massive system prompts exceeding 800 lines can cause LLM attention drift and latency degradation, the team split prompts by function into Agent Development Kit (ADK) Skills, dynamically loading only the required logic to optimize response times.</span></p>\n</li>\n</ol>\n<h3><span style=\"vertical-align: baseline;\">Get started</span></h3>\n<p><span style=\"vertical-align: baseline;\">Building scalable, reliable generative AI applications requires both automated evaluation and deep performance analytics. To apply these techniques to your own applications:</span></p>\n<ul>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Measure quality systematically with the </span><a href=\"https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/evaluation-overview?hl=ja\"><span style=\"text-decoration: underline; vertical-align: baseline;\">Gen AI evaluation service</span></a></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Structure your agents with </span><a href=\"https://docs.cloud.google.com/gemini-enterprise-agent-platform/build/adk\"><span style=\"text-decoration: underline; vertical-align: baseline;\">Agent Development Kit</span></a><span style=\"vertical-align: baseline;\"> and apply progressive disclosure deliberately</span></p>\n</li>\n<li style=\"vertical-align: baseline;\">\n<p><span style=\"vertical-align: baseline;\">Ground your agents with </span><a href=\"https://docs.cloud.google.com/generative-ai-app-builder/docs\"><span style=\"text-decoration: underline; vertical-align: baseline;\">Agent Search</span></a><span style=\"vertical-align: baseline;\"> and inspect your retrieval queries</span></p>\n</li>\n</ul></div>",
+    "related_items": [],
+    "source": "Google Cloud AI and Machine Learning Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "How KDDI built Buffmee, a faster, reliable consumer RAG app",
+    "url": "https://cloud.google.com/blog/topics/customers/how-kddi-optimized-rag-performance-with-agent-development-kit"
+  },
+  {
+    "analysis": {
+      "action": "关注其技术细节，评估其在自动化实验编排与工具调用方面的能力，并思考其对 Agent 与 Coding 任务的通用性影响。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客可信度高，案例涉及前沿模型在复杂科研场景的应用，展示 AI 自主性，虽并非核心偏好但具有重要趋势意义。",
+      "summary_cn": "OpenAI 展示了 MIT 研究人员使用 GPT-5.6 Sol 与 Codex 自主运行量子计算实验、分析结果并校准量子比特的能力。该案例表明，前沿 AI 模型正从代码生成向复杂的实验驱动和自动化科研推进。",
+      "tags": [
+        "OpenAI",
+        "GPT-5.6",
+        "Codex",
+        "量子计算",
+        "科研自动化",
+        "AI Agent"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-09-08T17:00:00Z",
+    "raw_summary": "See how an MIT researcher uses GPT-5.6 Sol with Codex to autonomously run quantum computing experiments, analyze results, and calibrate qubits.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "How GPT-5.6 Sol helps run quantum computing experiments",
+    "url": "https://openai.com/index/codex-quantum-computing-experiments"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方渠道发布的真实企业案例，量化提升效果显著，且与用户偏好的 Coding/Agent 领域直接相关。",
+      "summary_cn": "1Password 工程师利用 OpenAI Codex 快速构建新功能和内部工具，提升工程生产力 21%，同时保持严格的安全策略并达到生产就绪状态。此案例展示了 AI 编程助手在真实安全敏感环境中的落地成效，为同类企业采用 Coding Agent 提供参考。",
+      "tags": [
+        "Coding",
+        "Agent",
+        "LLM",
+        "案例"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-09-08T00:00:00Z",
+    "raw_summary": "Engineers at 1Password use Codex to rapidly build new features and internal tools, reaching production-readiness while maintaining rigorous security policies.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "1Password increases engineering productivity 21% with Codex",
+    "url": "https://openai.com/index/1password"
+  },
+  {
+    "analysis": {
+      "action": "阅读原文，提炼细粒度安全拒绝的方法与评估结果，并将其与 Agent 安全机制设计关联，考虑纳入安全对齐实践。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方博客来源可信度高，话题涉及 AI 安全与对齐，对提升 Agent 在敏感内容上的安全性有启发，且发布时间较新，故重要性较高。",
+      "summary_cn": "Hugging Face 博客发布文章，探讨 AI 安全拒绝机制应精确拒绝话题的有害子集，而非整个话题。提出细粒度安全对齐方法，以提升模型在敏感话题上的可用性和安全性，对安全评估与对齐研究有参考价值，特别适用于 Agent 和内容安全场景。",
+      "tags": [
+        "AI安全",
+        "对齐",
+        "安全拒绝",
+        "细粒度控制",
+        "Hugging Face"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-08T14:23:07Z",
+    "raw_summary": "",
+    "related_items": [],
+    "source": "Hugging Face Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Safety for Whom? Refusing the Right Subset of a Topic, Not the Whole Topic",
+    "url": "https://huggingface.co/blog/MultiverseComputingCAI/safety-for-whom"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方渠道，可信度高；虽为增量更新，但涉及Agent行为修复和插件管理优化，对开发流程有实际影响。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic 发布 Claude Code v2.1.265，新增远程遥测支持、插件文件夹加载及1GB工具结果磁盘上限；修复子代理恢复、插件路径安全、会话终止、后台任务等问题，提升稳定性与效率，值得开发者关注。",
+      "tags": [
+        "Claude Code",
+        "更新",
+        "插件",
+        "代理",
+        "修复"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-08T20:37:31Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Added <code>user.email</code> and <code>user.groups</code> to the telemetry Claude Desktop and Cowork send through a Claude apps gateway, matching terminal sessions</li>\n<li>Added support for pointing <code>--plugin-dir</code> at a folder of plugins: each child folder with a manifest loads, and children added or removed while running are picked up</li>\n<li>Added a 1 GB cap on tool results saved to disk; the in-conversation preview says when a saved file was truncated</li>\n<li>Fixed resuming a foreground-spawned subagent changing its tool list and system prompt prefix, which broke prompt-cache reuse for that agent</li>\n<li>Fixed agent teammates and resumed subagents moving SubagentStart hook context and preloaded skills out of the prompt prefix on later turns, which broke prompt-cache reuse</li>\n<li>Fixed resume after the previous process died while a tool was running: the last prompt is no longer rewritten, and the interrupted tool call is kept and marked interrupted</li>\n<li>Fixed <code>/model opusplan[1m]</code> being rejected with \"Model not found\"</li>\n<li>Fixed syntax-highlighted code in permission prompts and messages sometimes omitting a character after a Ruby <code>?</code>, Erlang <code>$</code>, or Perl <code>$</code> sigil</li>\n<li>Fixed the fullscreen transcript jumping by one row whenever the slash-command or @-file suggestion list opened or closed</li>\n<li>Fixed a plugin path containing a backslash bypassing the symlink containment check on macOS and Linux</li>\n<li>Fixed plugin directories whose names begin with two dots being wrongly refused as outside the plugin root</li>\n<li>Fixed VS Code and SDK sessions occasionally requiring re-login when a session was closed while refreshing its token</li>\n<li>Fixed Remote Control sessions sending the end-of-turn signal before the reply's last message, which could show a reply as finished in the Claude app before its last part arrived</li>\n<li>Fixed background (<code>--bg</code>) sessions occasionally being retired mid-turn when a message arrived just before the idle timeout</li>\n<li>Fixed Claude Code's own git status and diff probes running clean filters configured by a nested repository inside the working tree</li>\n<li>Fixed the advisor tool and its instructions being re-decided per request from the request's model; the decision is now made once and announced in the conversation when it changes</li>\n<li>Fixed artifact publish accepting connector tool names the connector doesn't expose; the publish is now refused when none of the declared tools exist, and warned when only some don't</li>\n<li>Fixed <code>/add-dir &lt;subdirectory&gt;</code> refusing to load a subdirectory's agents when managed settings lock only skills to plugins, and promising agents when only agents are locked</li>\n<li>Fixed two-key keyboard shortcuts cancelling silently when the second key arrived more than a second later, as happens inside tmux; they now wait 3 seconds and show a notice when they time out</li>\n<li>Fixed forked skills (<code>context: fork</code>) not streaming their kickoff prompt and, with <code>--forward-subagent-text</code>, their text turns as progress events in stream-json</li>\n<li>Fixed a plugin's default component folder that the OS cannot check, such as a symlink loop, being silently skipped; it is now reported in <code>/plugin</code> with the error code</li>\n<li>Fixed the Claude apps gateway's OTLP telemetry relay pausing all forwarding to a collector for 30 seconds after it rejected a few payloads as malformed or too large</li>\n<li>Fixed <code>/plugin</code> Discover/Browse and <code>claude plugin list --json --available</code> showing no description or display name for marketplace plugins whose metadata lives only in their <code>plugin.json</code></li>\n<li>Fixed <code>/login</code> showing \"no gateway URL is configured\" when re-run in a session that signed in to a Claude apps gateway set by managed settings</li>\n<li>Fixed <code>/model</code> claiming a model was \"saved as your default\" when the settings file couldn't be written; it now says the save failed and why</li>\n<li>Fixed <code>/clear</code> from Remote Control waiting on SessionStart hooks and on open terminal dialogs before completing</li>\n<li>Fixed the <code>/config</code> dialog changing height when switching between its tabs</li>\n<li>Fixed resuming a workflow run after its container restarted; a resume whose run journal is missing now fails with a clear error instead of rerunning every agent</li>\n<li>Fixed the <code>claude-api</code> skill's error-code reference: model access failures return 404 and unavailable beta headers return 400, not 403</li>\n<li>Fixed non-interactive sessions (<code>-p</code> with stream-json input, Agent SDK, cloud sessions) resetting the shell working directory at each new user message; a <code>cd</code> now persists across turns</li>\n<li>Fixed MCP servers configured as <code>http</code> that only speak the legacy HTTP+SSE transport never connecting; Claude Code now falls back to SSE as the MCP spec describes</li>\n<li>Fixed some claude.ai connectors in cloud sessions showing as needing authentication even though they are connected in claude.ai (servers that answer an unsupported request with HTTP 401)</li>\n<li>Fixed remote sessions keeping their sandbox container alive while a connector approval or sign-in link waits for you</li>\n<li>Fixed resumed sessions showing long model-facing recovery instructions in \"background task didn't finish\" notices instead of a short status line</li>\n<li>Windows: Fixed Read, Write and Edit refusing every file (\"symlink resolution changed after permission was checked\") when running inside an AppContainer or restricted-token sandbox</li>\n<li>Improved <code>--worktree</code> startup on large repositories: the new worktree is now checked out in parallel (git 2.32+)</li>\n<li>Improved <code>/workflows</code> agent detail: tool calls are marked running, failed or done, the subagent's task list is shown when it has one, and Enter unfolds the listed calls with their inputs and results</li>\n<li>Improved slash commands typed mid-prompt: matches now show in a list (Tab opens it outside fullscreen) instead of a single suggestion, and a plugin skill is now found by its bare name</li>\n<li>Improved remote MCP servers that need sign-in: Claude Code no longer registers an OAuth client with them until you actually authenticate</li>\n<li>Improved the time to resume long sessions that read many files</li>\n<li>Improved the error shown when an image over the size limits cannot be decoded: it now names the cause and how to fix it instead of only citing the limit</li>\n<li>Improved the Artifact tool's read of an artifact someone else wrote: the summary now treats the page as untrusted content and flags embedded instructions rather than relaying them</li>\n<li>Updated the <code>.claude</code> folder permission option to say what it actually allows: editing files in the project's <code>.claude</code> folder (or <code>~/.claude</code>) for the session</li>\n<li>Changed machines with <code>forceLoginGatewayUrl</code> in managed settings to be Claude apps gateway sessions from startup, like <code>forceLoginMethod: \"gateway\"</code>; a leftover claude.ai login or API key is not used</li>\n<li>Changed image processing to use the runtime's built-in image support; the CLI no longer extracts a native image module to the temp directory</li>\n<li>Changed plugin display metadata to prefer the marketplace entry over <code>plugin.json</code> on the Installed tab and <code>claude plugin details</code>, filling gaps from <code>plugin.json</code></li>\n<li>Changed Claude apps gateway sessions to export OpenTelemetry directly to a collector the gateway's managed settings name in <code>OTEL_EXPORTER_OTLP_ENDPOINT</code>, instead of through the gateway's relay; sessions without a named collector still use the relay</li>\n<li>[VSCode] Added automatic archiving of sessions inactive for a set period (new \"Archive inactive sessions\" setting, default 14 days)</li>\n<li>[VSCode] Fixed the sidebar chat coming back blank after Reload Window or a restart when the conversation had been open for more than 10 minutes</li>\n<li>[VSCode] Fixed the timeline dot sitting below the text on the \"Remote Control is active\" message</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.266",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.266"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.265",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.265"
+  },
+  {
+    "analysis": {
+      "action": "track",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方 GitHub 发布，可信度高；虽非重大更新，但影响开发者使用，且与 Coding 相关，涉及缓存诊断和 API 字段修正，值得关注。；已合并同事件来源：OpenAI Node SDK Releases。",
+      "summary_cn": "OpenAI Node SDK v7.11.0 发布，新增提示缓存诊断、服务账户 API 密钥过期字段、修正函数参数完成事件字段，并识别不完整的网页搜索状态。修复助手终端消息快照、音频录音及认证令牌交换计时等问题。",
+      "tags": [
+        "OpenAI",
+        "Node SDK",
+        "API",
+        "开发工具",
+        "更新日志"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-08T16:41:08Z",
+    "raw_summary": "<h2><a href=\"https://github.com/openai/openai-node/compare/v7.10.0...v7.11.0\">7.11.0</a> (2026-09-08)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>api:</strong> Add prompt cache diagnostics (<a href=\"https://github.com/openai/openai-node/issues/2608\">#2608</a>) (<a href=\"https://github.com/openai/openai-node/commit/f83de8fe4c4a309cabae861ab552a3ce6d4a2c65\">f83de8f</a>)</li>\n<li><strong>api:</strong> add service-account API key expiration fields (<a href=\"https://github.com/openai/openai-node/issues/2618\">#2618</a>) (<a href=\"https://github.com/openai/openai-node/commit/eecbebe294be7e657c99a34eb104a6a4b507335c\">eecbebe</a>)</li>\n<li><strong>api:</strong> correct function argument completion event fields (openapi-545) (<a href=\"https://github.com/openai/openai-node/issues/2611\">#2611</a>) (<a href=\"https://github.com/openai/openai-node/commit/31bf7e79a3bc7a9ab2911abe547d215a12ab6d68\">31bf7e7</a>)</li>\n<li><strong>api:</strong> recognize incomplete web search call status (<a href=\"https://github.com/openai/openai-node/issues/2576\">#2576</a>) (<a href=\"https://github.com/openai/openai-node/commit/c093c44e311ac8e4bf00f218f170f39c16efc190\">c093c44</a>)</li>\n</ul>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>assistants:</strong> retain terminal message snapshots (<a href=\"https://github.com/openai/openai-node/issues/2650\">#2650</a>) (<a href=\"https://github.com/openai/openai-node/commit/414677e40c9489bb3308200a8d9b23f7e10ad260\">414677e</a>)</li>\n<li><strong>audio:</strong> only signal started recording processes (<a href=\"https://github.com/openai/openai-node/issues/2665\">#2665</a>) (<a href=\"https://github.com/openai/openai-node/commit/cebdf7c0b8b7f206c5c0157117eab64ec1a240cd\">cebdf7c</a>)</li>\n<li><strong>audio:</strong> prefer readable inputs over body metadata (<a href=\"https://github.com/openai/openai-node/issues/2548\">#2548</a>) (<a href=\"https://github.com/openai/openai-node/commit/86ff7d578b6d2269d9da1bf0d0d3ac626eba5d2b\">86ff7d5</a>)</li>\n<li><strong>audio:</strong> use ALSA card identifiers when recording (<a href=\"https://github.com/openai/openai-node/issues/2564\">#2564</a>) (<a href=\"https://github.com/openai/openai-node/commit/67da19cf48601e2877b672cf4142928498d73a87\">67da19c</a>)</li>\n<li><strong>audio:</strong> wait for input cleanup before reporting success (<a href=\"https://github.com/openai/openai-node/issues/2624\">#2624</a>) (<a href=\"https://github.com/openai/openai-node/commit/5ed87fe978355df5cc0c70427f68c6ecc0dff038\">5ed87fe</a>)</li>\n<li><strong>auth:</strong> account for token exchange elapsed time (<a href=\"https://github.com/openai/openai-node/issues/2609\">#2609</a>) (<a href=\"https://github.com/openai/openai-node/commit/b0f6f20b2a90df25c1a764f13bf14ede97b2b760\">b0f6f20</a>)</li>\n<li><strong>auth:</strong> validate Azure metadata access token values (<a href=\"https://github.com/openai/openai-node/issues/2523\">#2523</a>) (<a href=\"https://github.com/openai/openai-node/commit/32b4d359e47dbfe130abc15fd4ace4676f22d285\">32b4d35</a>)</li>\n<li><strong>azure:</strong> carry declared options through withOptions and fix deployment paths (<a href=\"https://github.com/openai/openai-node/issues/2514\">#2514</a>) (<a href=\"https://github.com/openai/openai-node/commit/f8f29fb29f97875d254dde1a7050463ecf3cdf6c\">f8f29fb</a>)</li>\n<li><strong>bedrock:</strong> cancel requests awaiting AWS credentials (<a href=\"https://github.com/openai/openai-node/issues/2610\">#2610</a>) (<a href=\"https://github.com/openai/openai-node/commit/97c94e408fe5cee63b639f0e8c17d3264d436313\">97c94e4</a>)</li>\n<li>bound partial number recovery to its token (<a href=\"https://github.com/openai/openai-node/issues/2692\">#2692</a>) (<a href=\"https://github.com/openai/openai-node/commit/0d306caaed292ab2339657f97679619703721001\">0d306ca</a>)</li>\n<li><strong>build:</strong> fail on reported transpile errors (<a href=\"https://github.com/openai/openai-node/issues/2638\">#2638</a>) (<a href=\"https://github.com/openai/openai-node/commit/833e3e8dfdc040fe4c4c8d23ff8ff1c504eb5aa0\">833e3e8</a>)</li>\n<li><strong>build:</strong> fail when a compiler worker is signaled (<a href=\"https://github.com/openai/openai-node/issues/2633\">#2633</a>) (<a href=\"https://github.com/openai/openai-node/commit/cd79cd1d0bdd0958594d2c0a67f9dc954a517b97\">cd79cd1</a>)</li>\n<li><strong>build:</strong> honor configured compiler worker limits (<a href=\"https://github.com/openai/openai-node/issues/2635\">#2635</a>) (<a href=\"https://github.com/openai/openai-node/commit/aa08b4498b1923f9fa8c11d0055e83411d9457f3\">aa08b44</a>)</li>\n<li><strong>build:</strong> narrow Git-install staging detection (<a href=\"https://github.com/openai/openai-node/issues/2621\">#2621</a>) (<a href=\"https://github.com/openai/openai-node/commit/a6170d3fb9bcc0070ff71fbe1213ca06c6c3e24e\">a6170d3</a>)</li>\n<li><strong>build:</strong> postprocess the selected package manifest (<a href=\"https://github.com/openai/openai-node/issues/2620\">#2620</a>) (<a href=\"https://github.com/openai/openai-node/commit/1850d58b0f0cf669aa7f8cb8ba8c06a9ea857fbd\">1850d58</a>)</li>\n<li><strong>build:</strong> preserve CommonJS source-map positions (<a href=\"https://github.com/openai/openai-node/issues/2623\">#2623</a>) (<a href=\"https://github.com/openai/openai-node/commit/df0034d86fbac0f92247c2ec5333e692aa87b4a0\">df0034d</a>)</li>\n<li><strong>build:</strong> preserve config-relative compiler project paths (<a href=\"https://github.com/openai/openai-node/issues/2637\">#2637</a>) (<a href=\"https://github.com/openai/openai-node/commit/3acb064bb833194ea67ea94f2878d95e1ca56b05\">3acb064</a>)</li>\n<li><strong>build:</strong> preserve declaration file import specifiers (<a href=\"https://github.com/openai/openai-node/issues/2659\">#2659</a>) (<a href=\"https://github.com/openai/openai-node/commit/0098c2e80991c01043e7eee3752e3fac44525cbd\">0098c2e</a>)</li>\n<li><strong>ci:</strong> propagate Node matrix check failures (<a href=\"https://github.com/openai/openai-node/issues/2569\">#2569</a>) (<a href=\"https://github.com/openai/openai-node/commit/bff92c9c91c6dde8e79e83826fca092425304680\">bff92c9</a>)</li>\n<li><strong>ci:</strong> serialize release-please branch updates (<a href=\"https://github.com/openai/openai-node/issues/2631\">#2631</a>) (<a href=\"https://github.com/openai/openai-node/commit/bb0e400b0d6359e9d918f40f220012a8b72b4f92\">bb0e400</a>)</li>\n<li>clean up failed mock-server startups (<a href=\"https://github.com/openai/openai-node/issues/2558\">#2558</a>) (<a href=\"https://github.com/openai/openai-node/commit/83c92f0e16cdac775031fc3f6b74ba12bd5fc38b\">83c92f0</a>)</li>\n<li><strong>deps:</strong> bump qs to 6.16.0 for security fixes (<a href=\"https://github.com/openai/openai-node/issues/2588\">#2588</a>) (<a href=\"https://github.com/openai/openai-node/commit/4e5c6e325404db97171534ed76aeb076925a46fc\">4e5c6e3</a>)</li>\n<li><strong>docs:</strong> await headers in Next.js webhook examples (<a href=\"https://github.com/openai/openai-node/issues/2595\">#2595</a>) (<a href=\"https://github.com/openai/openai-node/commit/7e48f05ed40728f0fee1145ab19d9fac7278ca83\">7e48f05</a>)</li>\n<li><strong>docs:</strong> correct the chat streaming helper contract (<a href=\"https://github.com/openai/openai-node/issues/2596\">#2596</a>) (<a href=\"https://github.com/openai/openai-node/commit/135ac7ef85cebeadf7ba600b59b42f937af44c3d\">135ac7e</a>)</li>\n<li><strong>docs:</strong> include image detail in the Vision example (<a href=\"https://github.com/openai/openai-node/issues/2598\">#2598</a>) (<a href=\"https://github.com/openai/openai-node/commit/e76bb1681229731a5e46a3fee138f50431efd06c\">e76bb16</a>)</li>\n<li><strong>docs:</strong> omit absent Bedrock provider session tokens (<a href=\"https://github.com/openai/openai-node/issues/2597\">#2597</a>) (<a href=\"https://github.com/openai/openai-node/commit/41f85bde828cca667697c044004a21da5c2fe6a6\">41f85bd</a>)</li>\n<li><strong>ecosystem:</strong> preserve retry delays in parallel workers (<a href=\"https://github.com/openai/openai-node/issues/2673\">#2673</a>) (<a href=\"https://github.com/openai/openai-node/commit/6164745d25621ea98719218b6c6ad666f207dad7\">6164745</a>)</li>\n<li><strong>ecosystem:</strong> reject invalid retry counts (<a href=\"https://github.com/openai/openai-node/issues/2642\">#2642</a>) (<a href=\"https://github.com/openai/openai-node/commit/d0e2bcf021cb73d8137179cf03948ff35e745f42\">d0e2bcf</a>)</li>\n<li><strong>ecosystem:</strong> restore explicit web type-test module markers (<a href=\"https://github.com/openai/openai-node/issues/2584\">#2584</a>) (<a href=\"https://github.com/openai/openai-node/commit/3c189f4f290acfde6f3d08471ceff81fb8b6993f\">3c189f4</a>)</li>\n<li><strong>embeddings:</strong> preserve numeric output with body overrides (<a href=\"https://github.com/openai/openai-node/issues/2549\">#2549</a>) (<a href=\"https://github.com/openai/openai-node/commit/97d1ae720616f7b015ef98aa40dd8281c1a4544b\">97d1ae7</a>)</li>\n<li><strong>embeddings:</strong> preserve numeric responses after request hooks (<a href=\"https://github.com/openai/openai-node/issues/2590\">#2590</a>) (<a href=\"https://github.com/openai/openai-node/commit/5202b13c8d994aab7133f3d938666021277dbd7f\">5202b13</a>)</li>\n<li><strong>embeddings:</strong> reject incomplete float32 vectors (<a href=\"https://github.com/openai/openai-node/issues/2615\">#2615</a>) (<a href=\"https://github.com/openai/openai-node/commit/3940a2070f509ec23e0064bf2ac638cc67dcc484\">3940a20</a>)</li>\n<li><strong>embeddings:</strong> validate response collection before decoding (<a href=\"https://github.com/openai/openai-node/issues/2686\">#2686</a>) (<a href=\"https://github.com/openai/openai-node/commit/888811fa8b4157f3b6dc252b8acc4a8f2a35a474\">888811f</a>)</li>\n<li><strong>events:</strong> preserve unbound listener receivers (<a href=\"https://github.com/openai/openai-node/issues/2644\">#2644</a>) (<a href=\"https://github.com/openai/openai-node/commit/c8238e7d8b07ec09c25bfc6f52a625f09a2be106\">c8238e7</a>)</li>\n<li><strong>examples:</strong> annotate Responses WebSocket turn result (<a href=\"https://github.com/openai/openai-node/issues/2585\">#2585</a>) (<a href=\"https://github.com/openai/openai-node/commit/dde19c5c72280516fdfd4e0f4fe987fd1a3eced1\">dde19c5</a>)</li>\n<li><strong>examples:</strong> avoid extra requests for empty tool calls (<a href=\"https://github.com/openai/openai-node/issues/2672\">#2672</a>) (<a href=\"https://github.com/openai/openai-node/commit/be292d35ccdf9a1fd77168a4b935a7987b0ea379\">be292d3</a>)</li>\n<li><strong>examples:</strong> avoid unhandled WebSocket rejections (<a href=\"https://github.com/openai/openai-node/issues/2669\">#2669</a>) (<a href=\"https://github.com/openai/openai-node/commit/744b0ad77f25c13871576f878ca729797607bc8b\">744b0ad</a>)</li>\n<li><strong>examples:</strong> cancel Edge streams when requests abort (<a href=\"https://github.com/openai/openai-node/issues/2530\">#2530</a>) (<a href=\"https://github.com/openai/openai-node/commit/18100a1c48944d843ab5315a2b9fdbb7e639b05c\">18100a1</a>)</li>\n<li><strong>examples:</strong> close failed streaming responses (<a href=\"https://github.com/openai/openai-node/issues/2531\">#2531</a>) (<a href=\"https://github.com/openai/openai-node/commit/eb9b4686c06c79785b871b16d0cd8aed780ee430\">eb9b468</a>)</li>\n<li><strong>examples:</strong> close multi-agent WebSockets on terminal responses (<a href=\"https://github.com/openai/openai-node/issues/2533\">#2533</a>) (<a href=\"https://github.com/openai/openai-node/commit/51ec453ad879d51720e0af70b95133b76540d9f0\">51ec453</a>)</li>\n<li><strong>examples:</strong> drain manual conversation error output (<a href=\"https://github.com/openai/openai-node/issues/2629\">#2629</a>) (<a href=\"https://github.com/openai/openai-node/commit/e488b5303f9da64c257ecdeb0ddb761f8093ca2b\">e488b53</a>)</li>\n<li><strong>examples:</strong> find structured-output tool calls (<a href=\"https://github.com/openai/openai-node/issues/2572\">#2572</a>) (<a href=\"https://github.com/openai/openai-node/commit/84870a85c07602ae11a19508be6cb5103fa0275d\">84870a8</a>)</li>\n<li><strong>examples:</strong> keep tracking fine-tuning file validation (<a href=\"https://github.com/openai/openai-node/issues/2528\">#2528</a>) (<a href=\"https://github.com/openai/openai-node/commit/63312f23b98d2f4bff3b8e46ffeb74b9cee56022\">63312f2</a>)</li>\n<li><strong>examples:</strong> preserve background stream resume cursors (<a href=\"https://github.com/openai/openai-node/issues/2671\">#2671</a>) (<a href=\"https://github.com/openai/openai-node/commit/b7398e34ca7fbc46e562d1e28d8e323055e21566\">b7398e3</a>)</li>\n<li><strong>examples:</strong> reject early multi-agent WebSocket closure (<a href=\"https://github.com/openai/openai-node/issues/2599\">#2599</a>) (<a href=\"https://github.com/openai/openai-node/commit/c6320f0d306b3f7bcf000bd3f5961adfa73b9f2b\">c6320f0</a>)</li>\n<li><strong>examples:</strong> reject early Realtime socket closure (<a href=\"https://github.com/openai/openai-node/issues/2639\">#2639</a>) (<a href=\"https://github.com/openai/openai-node/commit/7db48ecca4999a561faa60bb5040bf145d6e5684\">7db48ec</a>)</li>\n<li><strong>examples:</strong> reject incomplete image streams (<a href=\"https://github.com/openai/openai-node/issues/2617\">#2617</a>) (<a href=\"https://github.com/openai/openai-node/commit/ef39397e33c5f39ab35d106d20c7f7fdf7299e16\">ef39397</a>)</li>\n<li><strong>examples:</strong> reject incomplete multi-agent streams (<a href=\"https://github.com/openai/openai-node/issues/2666\">#2666</a>) (<a href=\"https://github.com/openai/openai-node/commit/152b98d04aefcbecececf2caff8412c5cd0b84db\">152b98d</a>)</li>\n<li><strong>examples:</strong> reject unsuccessful background responses (<a href=\"https://github.com/openai/openai-node/issues/2600\">#2600</a>) (<a href=\"https://github.com/openai/openai-node/commit/902a931caa0ceebe8d20784dd5f0db36e13eef52\">902a931</a>)</li>\n<li><strong>examples:</strong> reject unsuccessful Responses streams (<a href=\"https://github.com/openai/openai-node/issues/2645\">#2645</a>) (<a href=\"https://github.com/openai/openai-node/commit/86acb953e27459ba73d6f930c6edb56369dfd002\">86acb95</a>)</li>\n<li><strong>examples:</strong> reject unsuccessful structured-tool responses (<a href=\"https://github.com/openai/openai-node/issues/2668\">#2668</a>) (<a href=\"https://github.com/openai/openai-node/commit/99aa303f3f8bf7bbbd53d52c57d9e2587d29aec8\">99aa303</a>)</li>\n<li><strong>examples:</strong> report audio demo failures (<a href=\"https://github.com/openai/openai-node/issues/2570\">#2570</a>) (<a href=\"https://github.com/openai/openai-node/commit/29c05728c070945243c3a1b558d16b72e420d837\">29c0572</a>)</li>\n<li><strong>examples:</strong> report image-streaming failures (<a href=\"https://github.com/openai/openai-node/issues/2563\">#2563</a>) (<a href=\"https://github.com/openai/openai-node/commit/947c555d79b33eab8e589ccdaf8af33766d66a2a\">947c555</a>)</li>\n<li><strong>examples:</strong> report multi-agent streaming failures (<a href=\"https://github.com/openai/openai-node/issues/2550\">#2550</a>) (<a href=\"https://github.com/openai/openai-node/commit/19d91512bece845ca1c53f6985df2c4506c12123\">19d9151</a>)</li>\n<li><strong>examples:</strong> report nonstreaming request failures (<a href=\"https://github.com/openai/openai-node/issues/2603\">#2603</a>) (<a href=\"https://github.com/openai/openai-node/commit/384dc26d6b16684e081139dfd1d5f301ed6ae11d\">384dc26</a>)</li>\n<li><strong>examples:</strong> report premature WebSocket closure (<a href=\"https://github.com/openai/openai-node/issues/2544\">#2544</a>) (<a href=\"https://github.com/openai/openai-node/commit/7eb5f7e8518af9fc7e923f7dbd17046a4b89e87f\">7eb5f7e</a>)</li>\n<li><strong>examples:</strong> report unsuccessful Azure Realtime responses (<a href=\"https://github.com/openai/openai-node/issues/2612\">#2612</a>) (<a href=\"https://github.com/openai/openai-node/commit/2b6220921a4e4b96e04dd6b5983ae3364378ca2f\">2b62209</a>)</li>\n<li><strong>examples:</strong> report unsuccessful fine-tuning jobs (<a href=\"https://github.com/openai/openai-node/issues/2616\">#2616</a>) (<a href=\"https://github.com/openai/openai-node/commit/e761c16d51cb6238678c5b819bc8a8b9f5ec083a\">e761c16</a>)</li>\n<li><strong>examples:</strong> report unsuccessful Realtime responses (<a href=\"https://github.com/openai/openai-node/issues/2559\">#2559</a>) (<a href=\"https://github.com/openai/openai-node/commit/5d3e584df36a6911f2e922db8fd9b8767bb6cac2\">5d3e584</a>)</li>\n<li><strong>examples:</strong> respect raw streaming proxy backpressure (<a href=\"https://github.com/openai/openai-node/issues/2663\">#2663</a>) (<a href=\"https://github.com/openai/openai-node/commit/a11bb1b6c967a3de86d8b436a561daff7cb88771\">a11bb1b</a>)</li>\n<li><strong>examples:</strong> reuse completed background responses (<a href=\"https://github.com/openai/openai-node/issues/2557\">#2557</a>) (<a href=\"https://github.com/openai/openai-node/commit/8e1977bb269b6537f445765e4d6b8a778b1eb20d\">8e1977b</a>)</li>\n<li><strong>examples:</strong> serialize missing book lookup results (<a href=\"https://github.com/openai/openai-node/issues/2573\">#2573</a>) (<a href=\"https://github.com/openai/openai-node/commit/db7e371968cfdc7e5bceb3672f349b0115c89ad7\">db7e371</a>)</li>\n<li><strong>examples:</strong> stop polling failed training files (<a href=\"https://github.com/openai/openai-node/issues/2592\">#2592</a>) (<a href=\"https://github.com/openai/openai-node/commit/1d67945c5d67ad5244a9882ffd846893c714a8ac\">1d67945</a>)</li>\n<li><strong>examples:</strong> support redirected streaming output (<a href=\"https://github.com/openai/openai-node/issues/2546\">#2546</a>) (<a href=\"https://github.com/openai/openai-node/commit/8df2e3add0146dc1af68fb0cee40811ad7c5fa4b\">8df2e3a</a>)</li>\n<li><strong>examples:</strong> use the default audio recording input (<a href=\"https://github.com/openai/openai-node/issues/2593\">#2593</a>) (<a href=\"https://github.com/openai/openai-node/commit/6153484a88c2ce97bc81fe9c773b7c51b2f11d8f\">6153484</a>)</li>\n<li><strong>format:</strong> ignore missing literal file-list paths (<a href=\"https://github.com/openai/openai-node/issues/2670\">#2670</a>) (<a href=\"https://github.com/openai/openai-node/commit/516a849043ade675ecea1a4184b1c95e2e5bdd43\">516a849</a>)</li>\n<li><strong>format:</strong> preserve file-list scope (<a href=\"https://github.com/openai/openai-node/issues/2568\">#2568</a>) (<a href=\"https://github.com/openai/openai-node/commit/7faff0e3e61c0f4f8f749e52a9f0515ed49fd2b7\">7faff0e</a>)</li>\n<li>identify modern Edge browser runtime headers (<a href=\"https://github.com/openai/openai-node/issues/2628\">#2628</a>) (<a href=\"https://github.com/openai/openai-node/commit/9cdf6f0028f7ec2d9ddab2d67196ec11eb9e068a\">9cdf6f0</a>)</li>\n<li>isolate monthly node review publication (<a href=\"https://github.com/openai/openai-node/issues/2691\">#2691</a>) (<a href=\"https://github.com/openai/openai-node/commit/3970dae4c7e5977a9bc571b8810e3c6ef81ef36d\">3970dae</a>)</li>\n<li>isolate realtime connection credentials (<a href=\"https://github.com/openai/openai-node/issues/2690\">#2690</a>) (<a href=\"https://github.com/openai/openai-node/commit/e9db49106419c094c8b2eaf3c5f0b7337160f011\">e9db491</a>)</li>\n<li>keep formatter inputs on LF across Git checkouts (<a href=\"https://github.com/openai/openai-node/issues/2515\">#2515</a>) (<a href=\"https://github.com/openai/openai-node/commit/074618fd0b82bbec3cd5cfd9a4c4be4368dce7f7\">074618f</a>)</li>\n<li><strong>lint:</strong> preserve leading-dash generated file paths (<a href=\"https://github.com/openai/openai-node/issues/2640\">#2640</a>) (<a href=\"https://github.com/openai/openai-node/commit/3b91a8301953bef1ee3644af687ac7108d9eb659\">3b91a83</a>)</li>\n<li><strong>pagination:</strong> follow next cursors through empty pages (<a href=\"https://github.com/openai/openai-node/issues/2561\">#2561</a>) (<a href=\"https://github.com/openai/openai-node/commit/9ea39ce8578e584d554640e46c5f73850600ac0c\">9ea39ce</a>)</li>\n<li>parse JSON media types case-insensitively (<a href=\"https://github.com/openai/openai-node/issues/2551\">#2551</a>) (<a href=\"https://github.com/openai/openai-node/commit/7ea7926aef3e478cf2970c3763b3be5555ed685e\">7ea7926</a>)</li>\n<li><strong>polling:</strong> honor zero custom polling intervals (<a href=\"https://github.com/openai/openai-node/issues/2518\">#2518</a>) (<a href=\"https://github.com/openai/openai-node/commit/0cd94bbb93cd0a964827d4ab8433c48dfdf5adcb\">0cd94bb</a>)</li>\n<li><strong>polling:</strong> treat a cancelled vector store file as terminal (<a href=\"https://github.com/openai/openai-node/issues/2506\">#2506</a>) (<a href=\"https://github.com/openai/openai-node/commit/43c1007e027a6b92d8e8901564a5e6a489f50078\">43c1007</a>)</li>\n<li>preserve alternate Headers inputs (<a href=\"https://github.com/openai/openai-node/issues/2560\">#2560</a>) (<a href=\"https://github.com/openai/openai-node/commit/5d36ff4e05f3b7741ce7b7b0631249bdf2c6b612\">5d36ff4</a>)</li>\n<li>preserve CommonJS constructor inheritance (<a href=\"https://github.com/openai/openai-node/issues/2547\">#2547</a>) (<a href=\"https://github.com/openai/openai-node/commit/aafb64ecbcc551535dbfe08ee2cb28e70b590aec\">aafb64e</a>)</li>\n<li>preserve cross-realm error causes (<a href=\"https://github.com/openai/openai-node/issues/2555\">#2555</a>) (<a href=\"https://github.com/openai/openai-node/commit/bfec504aa37e8b3ec08cb82fd0a948426752c3de\">bfec504</a>)</li>\n<li>preserve own Zod schema definition names (<a href=\"https://github.com/openai/openai-node/issues/2695\">#2695</a>) (<a href=\"https://github.com/openai/openai-node/commit/f65d190316d34974d4643f7d43187271d7c539f6\">f65d190</a>)</li>\n<li>preserve package selection in parallel ecosystem tests (<a href=\"https://github.com/openai/openai-node/issues/2516\">#2516</a>) (<a href=\"https://github.com/openai/openai-node/commit/fa0ce416d7e8ffa99df36f0de8e6c3af101f7f24\">fa0ce41</a>)</li>\n<li>preserve streamed API error classification (<a href=\"https://github.com/openai/openai-node/issues/2694\">#2694</a>) (<a href=\"https://github.com/openai/openai-node/commit/8e2c6ee30d50996456341173f4beccba821f398b\">8e2c6ee</a>)</li>\n<li><strong>realtime:</strong> preserve base URL routing components (<a href=\"https://github.com/openai/openai-node/issues/2567\">#2567</a>) (<a href=\"https://github.com/openai/openai-node/commit/0f2e22dabcd6bca4817d4c0f6a0bff4fd43c45e1\">0f2e22d</a>)</li>\n<li><strong>responses:</strong> omit parsed values from replayed history (<a href=\"https://github.com/openai/openai-node/issues/2634\">#2634</a>) (<a href=\"https://github.com/openai/openai-node/commit/124b6525497a93315f8563d8e4e3d552cbb0518f\">124b652</a>)</li>\n<li><strong>responses:</strong> parse namespaced function tools (<a href=\"https://github.com/openai/openai-node/issues/2574\">#2574</a>) (<a href=\"https://github.com/openai/openai-node/commit/4d86684b9b220ef4435317c65868a3ec964199ee\">4d86684</a>)</li>\n<li><strong>responses:</strong> validate indexed response collections (<a href=\"https://github.com/openai/openai-node/issues/2687\">#2687</a>) (<a href=\"https://github.com/openai/openai-node/commit/1ecbf52cffcf672236bead52f2ed4ef4e4ff4c18\">1ecbf52</a>)</li>\n<li><strong>runners:</strong> observe cancellation after completion callbacks (<a href=\"https://github.com/openai/openai-node/issues/2591\">#2591</a>) (<a href=\"https://github.com/openai/openai-node/commit/27f5c6ae3b1358c8b90e0c384462d670c2b08798\">27f5c6a</a>)</li>\n<li><strong>runners:</strong> preserve frozen input history (<a href=\"https://github.com/openai/openai-node/issues/2525\">#2525</a>) (<a href=\"https://github.com/openai/openai-node/commit/12110387d6984e8bd2e4e6a3b382bd16d3c1520a\">1211038</a>)</li>\n<li><strong>runners:</strong> reuse caller abort listeners across tool turns (<a href=\"https://github.com/openai/openai-node/issues/2594\">#2594</a>) (<a href=\"https://github.com/openai/openai-node/commit/57d0da44d060ab1ac8d6dcd0c49dd2c5aefc15bb\">57d0da4</a>)</li>\n<li><strong>runners:</strong> suppress content events for input history (<a href=\"https://github.com/openai/openai-node/issues/2520\">#2520</a>) (<a href=\"https://github.com/openai/openai-node/commit/37d6fc22b2c85029e019fedcbde7f430c8aaf02d\">37d6fc2</a>)</li>\n<li>serialize tool-call IDs once per completion (<a href=\"https://github.com/openai/openai-node/issues/2688\">#2688</a>) (<a href=\"https://github.com/openai/openai-node/commit/8afb23e0c09b0d764f25ef86c4bf874c0ff27e26\">8afb23e</a>)</li>\n<li><strong>streaming:</strong> abort before early-exit cleanup (<a href=\"https://github.com/openai/openai-node/issues/2613\">#2613</a>) (<a href=\"https://github.com/openai/openai-node/commit/03acf94b7d76551bf4d612fe7582ddb6975c8ea3\">03acf94</a>)</li>\n<li><strong>streaming:</strong> avoid duplicate terminal tool argument events (<a href=\"https://github.com/openai/openai-node/issues/2658\">#2658</a>) (<a href=\"https://github.com/openai/openai-node/commit/12e5db694bb5335684733061b60c88e4e413d438\">12e5db6</a>)</li>\n<li><strong>streaming:</strong> interrupt pending reads on cancellation (<a href=\"https://github.com/openai/openai-node/issues/2556\">#2556</a>) (<a href=\"https://github.com/openai/openai-node/commit/2d7a7671a70937917db0388045d7bb8671464501\">2d7a767</a>)</li>\n<li><strong>streaming:</strong> surface server error frames and settle streams past throwing listeners (<a href=\"https://github.com/openai/openai-node/issues/2502\">#2502</a>) (<a href=\"https://github.com/openai/openai-node/commit/17a661e350812a3fe92d6350a31e27e7bc09a49d\">17a661e</a>)</li>\n<li>support Edge Runtime without Node process (<a href=\"https://github.com/openai/openai-node/issues/2552\">#2552</a>) (<a href=\"https://github.com/openai/openai-node/commit/5dc4deb7266b7995016cee839f20f1e7124f7bb9\">5dc4deb</a>)</li>\n<li><strong>test:</strong> cancel Steady commands waiting for cache locks (<a href=\"https://github.com/openai/openai-node/issues/2636\">#2636</a>) (<a href=\"https://github.com/openai/openai-node/commit/889639579aab1c8b9b674b103c19deedbb809999\">8896395</a>)</li>\n<li><strong>test:</strong> preserve unrelated processes on mock startup failure (<a href=\"https://github.com/openai/openai-node/issues/2622\">#2622</a>) (<a href=\"https://github.com/openai/openai-node/commit/6896e668ec53e52c2bdbf4e550d0a501f616e54c\">6896e66</a>)</li>\n<li><strong>test:</strong> reap Steady commands when lease creation fails (<a href=\"https://github.com/openai/openai-node/issues/2664\">#2664</a>) (<a href=\"https://github.com/openai/openai-node/commit/518756a59fa9693c0751fb91403d017cfcd0037a\">518756a</a>)</li>\n<li><strong>test:</strong> reject HTTP errors in mock health checks (<a href=\"https://github.com/openai/openai-node/issues/2667\">#2667</a>) (<a href=\"https://github.com/openai/openai-node/commit/7b9e0b05c154fa8004d2ac49352318bb5b9ffe63\">7b9e0b0</a>)</li>\n<li><strong>test:</strong> reject unknown ecosystem project names (<a href=\"https://github.com/openai/openai-node/issues/2626\">#2626</a>) (<a href=\"https://github.com/openai/openai-node/commit/fcd12bb29cbc53cfcecbbc7bff2416c1d00bd9ea\">fcd12bb</a>)</li>\n<li><strong>test:</strong> run Bun validation with --from-npm (<a href=\"https://github.com/openai/openai-node/issues/2625\">#2625</a>) (<a href=\"https://github.com/openai/openai-node/commit/74f58a94bb20d15e41e463b82aa8ed48810cd44b\">74f58a9</a>)</li>\n<li><strong>test:</strong> use a monotonic Steady lock timeout (<a href=\"https://github.com/openai/openai-node/issues/2661\">#2661</a>) (<a href=\"https://github.com/openai/openai-node/commit/7b5d1209090f82f56b4971976147b5c2a859452e\">7b5d120</a>)</li>\n<li><strong>types:</strong> account for optional event arguments (<a href=\"https://github.com/openai/openai-node/issues/2527\">#2527</a>) (<a href=\"https://github.com/openai/openai-node/commit/548a651c0ee09bd525c7425dbed04541051a3b36\">548a651</a>)</li>\n<li><strong>types:</strong> include missing parsed response stream events (<a href=\"https://github.com/openai/openai-node/issues/2521\">#2521</a>) (<a href=\"https://github.com/openai/openai-node/commit/6a9db07b4c4e673f0faaf9c01bfa7d18cc41a13e\">6a9db07</a>)</li>\n<li><strong>types:</strong> preserve custom tool factory metadata (<a href=\"https://github.com/openai/openai-node/issues/2526\">#2526</a>) (<a href=\"https://github.com/openai/openai-node/commit/13dca7b75f9dba00ab0510be463a5eaf8a891f6e\">13dca7b</a>)</li>\n<li><strong>types:</strong> preserve runnable function tuple positions (<a href=\"https://github.com/openai/openai-node/issues/2524\">#2524</a>) (<a href=\"https://github.com/openai/openai-node/commit/e345d0f82341608bbd49c01b7b336e70fff79670\">e345d0f</a>)</li>\n<li><strong>uploads:</strong> accept cross-realm ArrayBuffers (<a href=\"https://github.com/openai/openai-node/issues/2529\">#2529</a>) (<a href=\"https://github.com/openai/openai-node/commit/69d7bda22ef5fb5d28a720c665dd7a8eef6998ea\">69d7bda</a>)</li>\n<li><strong>uploads:</strong> preserve explicit empty filenames (<a href=\"https://github.com/openai/openai-node/issues/2532\">#2532</a>) (<a href=\"https://github.com/openai/openai-node/commit/eabb487a7548b49a4fb2eedcff184ac7ae16b7f2\">eabb487</a>)</li>\n<li><strong>uploads:</strong> reject zero batch upload concurrency (<a href=\"https://github.com/openai/openai-node/issues/2519\">#2519</a>) (<a href=\"https://github.com/openai/openai-node/commit/8b9405ada44885dd7a130ac4ccbaaa4ccbdda948\">8b9405a</a>)</li>\n<li>validate partial image indices in streaming example (<a href=\"https://github.com/openai/openai-node/issues/2693\">#2693</a>) (<a href=\"https://github.com/openai/openai-node/commit/a9a4440ba775491251daa4fa27b898e9ecbd3c5e\">a9a4440</a>)</li>\n<li><strong>zod:</strong> preserve strict schema compatibility with Zod 4.5.4 (<a href=\"https://github.com/openai/openai-node/issues/2677\">#2677</a>) (<a href=\"https://github.com/openai/openai-node/commit/c11870e4b554adaeaad2d1456eeddf489074d200\">c11870e</a>)</li>\n<li><strong>zod:</strong> retain the original tool parameter schema (<a href=\"https://github.com/openai/openai-node/issues/2662\">#2662</a>) (<a href=\"https://github.com/openai/openai-node/commit/fdb038e21509264bcdf81741a40988dd694188b1\">fdb038e</a>)</li>\n</ul>\n<h3>Performance Improvements</h3>\n<ul>\n<li><strong>bedrock:</strong> avoid copying repeated query values (<a href=\"https://github.com/openai/openai-node/issues/2545\">#2545</a>) (<a href=\"https://github.com/openai/openai-node/commit/80ab9197a1166e20fe8435d2e7012f68e4f4f66a\">80ab919</a>)</li>\n</ul>\n<h3>Chores</h3>\n<ul>\n<li><strong>api:</strong> document throttling and model overload responses — SDK-235 (<a href=\"https://github.com/openai/openai-node/issues/2632\">#2632</a>) (<a href=\"https://github.com/openai/openai-node/commit/9dd05249c83c5c94cf062e5f79740d48cc187b74\">9dd0524</a>)</li>\n<li>clarify Response types and remove unused handwritten code (<a href=\"https://github.com/openai/openai-node/issues/2660\">#2660</a>) (<a href=\"https://github.com/openai/openai-node/commit/86152ab0eaa54335e092d9a07d014aa06e5a4739\">86152ab</a>)</li>\n<li><strong>deps-dev:</strong> bump @aws-sdk/credential-provider-node from 3.972.78 to 3.972.81 (<a href=\"https://github.com/openai/openai-node/issues/2681\">#2681</a>) (<a href=\"https://github.com/openai/openai-node/commit/48629a30f81731ad9f9c5e7c8be9080c28fe7c35\">48629a3</a>)</li>\n<li><strong>deps-dev:</strong> bump @cloudflare/workers-types from 5.20260816.1 to 5.20260823.1 in /ecosystem-tests/cloudflare-worker (<a href=\"https://github.com/openai/openai-node/issues/2535\">#2535</a>) (<a href=\"https://github.com/openai/openai-node/commit/dc14bf5bc82e64b662a6133292313254cb2f6f8b\">dc14bf5</a>)</li>\n<li><strong>deps-dev:</strong> bump @cloudflare/workers-types from 5.20260823.1 to 5.20260830.1 in /ecosystem-tests/cloudflare-worker (<a href=\"https://github.com/openai/openai-node/issues/2676\">#2676</a>) (<a href=\"https://github.com/openai/openai-node/commit/ae04066d06098d96da984de7b4f09364597b621d\">ae04066</a>)</li>\n<li><strong>deps-dev:</strong> bump @smithy/signature-v4 from 5.7.2 to 5.7.3 (<a href=\"https://github.com/openai/openai-node/issues/2679\">#2679</a>) (<a href=\"https://github.com/openai/openai-node/commit/41ca20db69f66aa85a214ecf6e6e9fcb4b777a4f\">41ca20d</a>)</li>\n<li><strong>deps-dev:</strong> bump @swc/core from 1.15.47 to 1.16.1 (<a href=\"https://github.com/openai/openai-node/issues/2538\">#2538</a>) (<a href=\"https://github.com/openai/openai-node/commit/5c04dc475a2a78f79164820a27dec4cdb7af01de\">5c04dc4</a>)</li>\n<li><strong>deps-dev:</strong> bump fast-uri from 3.1.5 to 3.1.7 in /ecosystem-tests/ts-browser-webpack (<a href=\"https://github.com/openai/openai-node/issues/2579\">#2579</a>) (<a href=\"https://github.com/openai/openai-node/commit/34380bfcb7bb61181db0914106c474c058ba329a\">34380bf</a>)</li>\n<li><strong>deps-dev:</strong> bump fast-uri from 3.1.5 to 3.1.7 in /ecosystem-tests/vercel-edge (<a href=\"https://github.com/openai/openai-node/issues/2577\">#2577</a>) (<a href=\"https://github.com/openai/openai-node/commit/511d1e4777adabee6af51005f6cad768e67ab167\">511d1e4</a>)</li>\n<li><strong>deps-dev:</strong> bump oxlint from 1.76.0 to 1.79.0 (<a href=\"https://github.com/openai/openai-node/issues/2542\">#2542</a>) (<a href=\"https://github.com/openai/openai-node/commit/2683c3afde5422eb5e921fe5fd5bf8a8dea2aae5\">2683c3a</a>)</li>\n<li><strong>deps-dev:</strong> bump oxlint from 1.79.0 to 1.80.0 (<a href=\"https://github.com/openai/openai-node/issues/2683\">#2683</a>) (<a href=\"https://github.com/openai/openai-node/commit/02d5fb07459740df1ebf8f456f7e9ace061b0605\">02d5fb0</a>)</li>\n<li><strong>deps-dev:</strong> bump puppeteer from 25.7.0 to 25.8.0 in /ecosystem-tests/browser-direct-import (<a href=\"https://github.com/openai/openai-node/issues/2534\">#2534</a>) (<a href=\"https://github.com/openai/openai-node/commit/f039c09113f05c89675e952eac3445ab844c681b\">f039c09</a>)</li>\n<li><strong>deps-dev:</strong> bump puppeteer from 25.7.0 to 25.8.0 in /ecosystem-tests/ts-browser-webpack (<a href=\"https://github.com/openai/openai-node/issues/2539\">#2539</a>) (<a href=\"https://github.com/openai/openai-node/commit/582881834fd44bfee295c1b634be88107d5c0746\">5828818</a>)</li>\n<li><strong>deps-dev:</strong> bump puppeteer from 25.8.0 to 25.9.0 in /ecosystem-tests/browser-direct-import (<a href=\"https://github.com/openai/openai-node/issues/2675\">#2675</a>) (<a href=\"https://github.com/openai/openai-node/commit/bebd72fe49b76d7725d30f72544d0af254ab46a1\">bebd72f</a>)</li>\n<li><strong>deps-dev:</strong> bump puppeteer from 25.8.0 to 25.9.0 in /ecosystem-tests/ts-browser-webpack (<a href=\"https://github.com/openai/openai-node/issues/2680\">#2680</a>) (<a href=\"https://github.com/openai/openai-node/commit/fe3770fba82465838d4958dd05a38891e1ec27ba\">fe3770f</a>)</li>\n<li><strong>deps-dev:</strong> bump ultracite from 7.10.0 to 7.10.5 (<a href=\"https://github.com/openai/openai-node/issues/2537\">#2537</a>) (<a href=\"https://github.com/openai/openai-node/commit/6d37b303e1048445b747ad5f4e4228a48b076ef3\">6d37b30</a>)</li>\n<li><strong>deps-dev:</strong> bump vitest from 4.1.10 to 4.1.11 (<a href=\"https://github.com/openai/openai-node/issues/2541\">#2541</a>) (<a href=\"https://github.com/openai/openai-node/commit/6ea24b32293d16e80eedd30d55651302c58ffdd3\">6ea24b3</a>)</li>\n<li><strong>deps-dev:</strong> bump webpack from 5.109.2 to 5.110.2 in /ecosystem-tests/ts-browser-webpack (<a href=\"https://github.com/openai/openai-node/issues/2682\">#2682</a>) (<a href=\"https://github.com/openai/openai-node/commit/73405d103b38b29659dc8866803ce6ec9c9ab9ce\">73405d1</a>)</li>\n<li><strong>deps-dev:</strong> bump wrangler from 4.125.0 to 4.127.1 in /ecosystem-tests/cloudflare-worker (<a href=\"https://github.com/openai/openai-node/issues/2678\">#2678</a>) (<a href=\"https://github.com/openai/openai-node/commit/0d92742d449474a365142ca78d07436e00774816\">0d92742</a>)</li>\n<li><strong>deps:</strong> bump @azure/identity from 4.13.1 to 4.13.2 (<a href=\"https://github.com/openai/openai-node/issues/2540\">#2540</a>) (<a href=\"https://github.com/openai/openai-node/commit/0318287a0751dcecbc4ba5c70dd90be1dbf72ad8\">0318287</a>)</li>\n<li><strong>deps:</strong> bump express and @types/express (<a href=\"https://github.com/openai/openai-node/issues/2684\">#2684</a>) (<a href=\"https://github.com/openai/openai-node/commit/c581c17f1edb141a9ca7838a6ecb2e970e16e924\">c581c17</a>)</li>\n<li><strong>ecosystem:</strong> remove unused proxy stub (<a href=\"https://github.com/openai/openai-node/issues/2641\">#2641</a>) (<a href=\"https://github.com/openai/openai-node/commit/ce1713ab4a34fe8ea4fe72c5007c0e76b40bd6fc\">ce1713a</a>)</li>\n<li>migrate to forked steady (<a href=\"https://github.com/openai/openai-node/issues/2587\">#2587</a>) (<a href=\"https://github.com/openai/openai-node/commit/67ce45da4becc96eb482c436f04af99af54f3b7f\">67ce45d</a>)</li>\n</ul>\n<h3>Documentation</h3>\n<ul>\n<li>correct Bun ecosystem test instructions (<a href=\"https://github.com/openai/openai-node/issues/2627\">#2627</a>) (<a href=\"https://github.com/openai/openai-node/commit/3434b427e33dcc38b6c5daa55a3b8cfdc30efc9b\">3434b42</a>)</li>\n<li>correct error handling diagnostics (<a href=\"https://github.com/openai/openai-node/issues/2630\">#2630</a>) (<a href=\"https://github.com/openai/openai-node/commit/d334d8c60d068038f9f137b3dbde2393d8aca7de\">d334d8c</a>)</li>\n<li><strong>helpers:</strong> remove undefined main call from parsing example (<a href=\"https://github.com/openai/openai-node/issues/2648\">#2648</a>) (<a href=\"https://github.com/openai/openai-node/commit/d8f6be931ce315d41fd0605b03a37cc0c990e441\">d8f6be9</a>)</li>\n<li><strong>realtime:</strong> report unsuccessful responses in the guide (<a href=\"https://github.com/openai/openai-node/issues/2647\">#2647</a>) (<a href=\"https://github.com/openai/openai-node/commit/f58b1fdced2b29c6ed6e40bcc6242e80e058d649\">f58b1fd</a>)</li>\n<li><strong>streaming:</strong> reject unsuccessful background responses (<a href=\"https://github.com/openai/openai-node/issues/2614\">#2614</a>) (<a href=\"https://github.com/openai/openai-node/commit/1025f7a2b12f2431bfd89a3e1942746c2e780e3c\">1025f7a</a>)</li>\n<li><strong>tools:</strong> support TypeScript 4.9 in the function loop (<a href=\"https://github.com/openai/openai-node/issues/2649\">#2649</a>) (<a href=\"https://github.com/openai/openai-node/commit/42e852b733afc51ea00ef4c5ea3c63ae82780309\">42e852b</a>)</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "OpenAI Node SDK Releases",
+        "source_tier": 1,
+        "title": "v7.12.0",
+        "url": "https://github.com/openai/openai-node/releases/tag/v7.12.0"
+      },
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "OpenAI Node SDK Releases",
+        "source_tier": 1,
+        "title": "v7.12.1",
+        "url": "https://github.com/openai/openai-node/releases/tag/v7.12.1"
+      }
+    ],
+    "source": "OpenAI Node SDK Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v7.11.0",
+    "url": "https://github.com/openai/openai-node/releases/tag/v7.11.0"
+  },
+  {
+    "analysis": {
+      "action": "notify",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方仓库版本更新，包含Agent护栏、MCP、沙箱等实用功能，与用户偏好Agent高度相关，但由于是增量小版本，重要性设为3。",
+      "summary_cn": "OpenAI Agents Python SDK发布v0.22.1，核心更新包括：web搜索工具支持图像结果、输出护栏消息可自定义、MCP工具支持服务器级护栏、沙箱环境隔离可配置、Docker容器标签支持、流式转录选项，并修复了工具参数为空、请求用量统计等多项问题，提升了Agent开发的灵活性与稳定性。",
+      "tags": [
+        "Agent",
+        "OpenAI",
+        "Python",
+        "MCP",
+        "Sandbox"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-08T09:18:00Z",
+    "raw_summary": "<h2>What's Changed</h2>\n<ul>\n<li>feat(core): support image results in web search tools by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4898\">#4898</a></li>\n<li>feat(core): customize output guardrail blocked messages by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4594\">#4594</a></li>\n<li>feat(mcp): add server-wide guardrails to MCP tools by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4632\">#4632</a></li>\n<li>feat(sandbox): add configurable Unix-local environment isolation by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4640\">#4640</a></li>\n<li>feat(sandbox): allow labels on Docker sandbox containers by <a class=\"user-mention notranslate\" href=\"https://github.com/seanxuu\">@seanxuu</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4564\">#4564</a></li>\n<li>feat(voice): expose streamed transcription options by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4645\">#4645</a></li>\n<li>fix(core): detach aggregated request usage entries by <a class=\"user-mention notranslate\" href=\"https://github.com/green3sf\">@green3sf</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4519\">#4519</a></li>\n<li>fix(core): fail closed on empty tool arguments by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4545\">#4545</a></li>\n<li>fix(core): strip created_by when replaying RunItems as input by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4568\">#4568</a></li>\n<li>fix(core): strict_schema error message, REPL whitespace input, debug docstrings by <a class=\"user-mention notranslate\" href=\"https://github.com/simpleqt\">@simpleqt</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4600\">#4600</a></li>\n<li>fix(core): max_turns no longer clobbers a tripped input guardrail exception in streaming by <a class=\"user-mention notranslate\" href=\"https://github.com/shoemoney\">@shoemoney</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4606\">#4606</a></li>\n<li>fix(core): preserve serialized approval resume ownership by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4613\">#4613</a></li>\n<li>fix(core): read tool args without Pydantic property shadowing by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4627\">#4627</a></li>\n<li>fix(core): accept JSON Schema type arrays of object for tool outputs by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4647\">#4647</a></li>\n<li>fix(core): honor End of File hunks when the file ends in a newline by <a class=\"user-mention notranslate\" href=\"https://github.com/lllakshit\">@lllakshit</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4661\">#4661</a></li>\n<li>fix(core): preserve tuple annotations for variadic tool arguments by <a class=\"user-mention notranslate\" href=\"https://github.com/Excelius-Wang\">@Excelius-Wang</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4655\">#4655</a></li>\n<li>fix(core): fix streamed response span losing response/input when consumer stops at completed event by <a class=\"user-mention notranslate\" href=\"https://github.com/XuQuanxin04\">@XuQuanxin04</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4692\">#4692</a></li>\n<li>fix(core): apply **kwargs value annotation to each keyword value by <a class=\"user-mention notranslate\" href=\"https://github.com/abhay-codes07\">@abhay-codes07</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4714\">#4714</a></li>\n<li>fix(core): reject **kwargs keys that collide with named tool parameters by <a class=\"user-mention notranslate\" href=\"https://github.com/rajarshidattapy\">@rajarshidattapy</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4674\">#4674</a></li>\n<li>fix(core): reject fixed-length tuple annotations for variadic tool arguments by <a class=\"user-mention notranslate\" href=\"https://github.com/subhashpolisetti\">@subhashpolisetti</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4735\">#4735</a></li>\n<li>fix(core): preserve Field constraints on variadic tool parameters by <a class=\"user-mention notranslate\" href=\"https://github.com/rioyu123\">@rioyu123</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4739\">#4739</a></li>\n<li>fix(core): close model providers created by Runner by <a class=\"user-mention notranslate\" href=\"https://github.com/Excelius-Wang\">@Excelius-Wang</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4785\">#4785</a></li>\n<li>fix(core/voice): honor OpenAI provider options over default clients by <a class=\"user-mention notranslate\" href=\"https://github.com/green3sf\">@green3sf</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4530\">#4530</a></li>\n<li>fix(chat-completions): merge a streamed turn's message into its pending tool-call message by <a class=\"user-mention notranslate\" href=\"https://github.com/mmjerge\">@mmjerge</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4728\">#4728</a></li>\n<li>fix(chat-completions): raise ModelBehaviorError on truncated empty completions by <a class=\"user-mention notranslate\" href=\"https://github.com/weike-zhang\">@weike-zhang</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4513\">#4513</a></li>\n<li>fix(chat-completions) reject unpaired function outputs in Chat Completions by <a class=\"user-mention notranslate\" href=\"https://github.com/apcha-oai\">@apcha-oai</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4699\">#4699</a></li>\n<li>fix(extensions): skip AdvancedSQLiteSession usage store when the branch has no turn by <a class=\"user-mention notranslate\" href=\"https://github.com/rioyu123\">@rioyu123</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4822\">#4822</a></li>\n<li>fix(extensions): nest extra_body on the any-llm chat path by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4544\">#4544</a></li>\n<li>fix(mcp): deep-copy cached tools before returning them by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4525\">#4525</a></li>\n<li>fix(mcp): clear active MCP servers after cleanup by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4586\">#4586</a></li>\n<li>fix(mcp): deduplicate managed servers by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4591\">#4591</a></li>\n<li>fix(realtime): advance crossed guardrail thresholds by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4590\">#4590</a></li>\n<li>fix(realtime): preserve item status on retrieved conversation items by <a class=\"user-mention notranslate\" href=\"https://github.com/shoutoutuoadi325\">@shoutoutuoadi325</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4598\">#4598</a></li>\n<li>fix(sandbox): finish dependency cleanup on cancellation by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4607\">#4607</a></li>\n<li>fix(sandbox): keep unbounded UnixLocal workspace I/O off the event loop by <a class=\"user-mention notranslate\" href=\"https://github.com/ayaangazali\">@ayaangazali</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4700\">#4700</a></li>\n<li>fix(sandbox): preserve UTF-8 boundaries in Cloudflare SSE by <a class=\"user-mention notranslate\" href=\"https://github.com/Hughhhhcoder\">@Hughhhhcoder</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4707\">#4707</a></li>\n<li>fix(sandbox): clean up PTY startup cancellation by <a class=\"user-mention notranslate\" href=\"https://github.com/Hughhhhcoder\">@Hughhhhcoder</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4750\">#4750</a></li>\n<li>fix(sandbox): settle PTY output before cleanup by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4738\">#4738</a></li>\n<li>fix(sandbox): preserve workdir for shell command lists by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4915\">#4915</a></li>\n<li>fix(sessions): recover failed resumed Session writes before model calls by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4630\">#4630</a></li>\n<li>fix(sessions): recover failed resumed Session writes on a renewed interruption by <a class=\"user-mention notranslate\" href=\"https://github.com/ayaangazali\">@ayaangazali</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4650\">#4650</a></li>\n<li>fix(sessions): persist resumed tool guardrail results by <a class=\"user-mention notranslate\" href=\"https://github.com/FU-max-boop\">@FU-max-boop</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4654\">#4654</a></li>\n<li>fix(sessions): recover resumed handoffs after session append failures by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4725\">#4725</a></li>\n<li>fix(sessions): settle conversation deletion before propagating cancellation by <a class=\"user-mention notranslate\" href=\"https://github.com/Excelius-Wang\">@Excelius-Wang</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4790\">#4790</a></li>\n<li>fix(sessions): preserve concurrent writes during compaction by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4736\">#4736</a></li>\n<li>fix(sessions): reject resuming a run whose accepted terminal output was not persisted by <a class=\"user-mention notranslate\" href=\"https://github.com/Ayushraj06-bit\">@Ayushraj06-bit</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4698\">#4698</a></li>\n<li>fix(sessions): preserve Session transformations during generation tracking by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4917\">#4917</a></li>\n<li>fix(tracing): flush buffered data after tracing is disabled by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4528\">#4528</a></li>\n<li>fix(tracing): preserve response IDs in redacted traces by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4641\">#4641</a></li>\n<li>fix(tracing): record the tool output on approval-gated function spans by <a class=\"user-mention notranslate\" href=\"https://github.com/dfedoryshchev\">@dfedoryshchev</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4866\">#4866</a></li>\n<li>fix(voice): support custom OpenAI TTS voice IDs by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4541\">#4541</a></li>\n<li>fix(voice): forward streamed STT language and prompt by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4574\">#4574</a></li>\n<li>fix(voice): honor client config for streamed STT by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4575\">#4575</a></li>\n<li>fix(voice) reject ignored explicit-client options by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4527\">#4527</a></li>\n<li>fix(voice): include current OpenAI TTS voices by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4535\">#4535</a></li>\n<li>fix(voice): use monotonic STT event deadlines by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4593\">#4593</a></li>\n<li>fix(voice): support context in single-agent workflow by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4636\">#4636</a></li>\n<li>fix(voice): enforce public Voice class state coverage by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4644\">#4644</a></li>\n<li>fix(voice): redact STT prompts from traces by <a class=\"user-mention notranslate\" href=\"https://github.com/hsusul\">@hsusul</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4663\">#4663</a></li>\n<li>fix(voice): redact TTS instructions from speech spans by <a class=\"user-mention notranslate\" href=\"https://github.com/ayaangazali\">@ayaangazali</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4676\">#4676</a></li>\n<li>fix(voice): accept every NumPy spelling of a supported TTS dtype by <a class=\"user-mention notranslate\" href=\"https://github.com/Nikhils-G\">@Nikhils-G</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4778\">#4778</a></li>\n<li>fix(voice): wake stream when producer is cancelled by <a class=\"user-mention notranslate\" href=\"https://github.com/Hughhhhcoder\">@Hughhhhcoder</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4825\">#4825</a></li>\n<li>fix(visualization): preserve nodes with duplicate names by <a class=\"user-mention notranslate\" href=\"https://github.com/tandede\">@tandede</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4512\">#4512</a></li>\n<li>refactor: extract RunState agent graph identity by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4876\">#4876</a></li>\n<li>refactor: share provider generation-span population by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4877\">#4877</a></li>\n</ul>\n<h3>Documentation &amp; Other Changes</h3>\n<ul>\n<li>docs: document v0.22.0 behavior changes by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4522\">#4522</a></li>\n<li>docs: fix wording in handoff example prompts by <a class=\"user-mention notranslate\" href=\"https://github.com/Chair403\">@Chair403</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4520\">#4520</a></li>\n<li>docs: preserve English heading anchors in translated pages by <a class=\"user-mention notranslate\" href=\"https://github.com/saime428\">@saime428</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4580\">#4580</a></li>\n<li>docs: refresh tracing integration links by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4634\">#4634</a></li>\n<li>docs: clarify capability visibility and authorization by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4642\">#4642</a></li>\n<li>docs: clarify database driver installation for SQLAlchemy sessions by <a class=\"user-mention notranslate\" href=\"https://github.com/rioyu123\">@rioyu123</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4743\">#4743</a></li>\n<li>docs: skip reference pages on Windows by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4761\">#4761</a></li>\n<li>docs: clarify requested state consistency guarantees by <a class=\"user-mention notranslate\" href=\"https://github.com/rksharma-owg\">@rksharma-owg</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4903\">#4903</a></li>\n<li>docs: make the encrypted session quick start self-contained by <a class=\"user-mention notranslate\" href=\"https://github.com/rioyu123\">@rioyu123</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4909\">#4909</a></li>\n<li>fix: freeze the public voice API contract by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4578\">#4578</a></li>\n<li>fix: enforce public type alias contract coverage by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4595\">#4595</a></li>\n<li>fix: route verification changes and require confirmed docs-only pushes by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4880\">#4880</a></li>\n<li>fix: propagate the serial test runner's exit code on Windows by <a class=\"user-mention notranslate\" href=\"https://github.com/MohammedAlkindi\">@MohammedAlkindi</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4771\">#4771</a></li>\n<li>fix: harden PyPI publishing and require manual release tags by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4726\">#4726</a></li>\n<li>fix: require complete policy for new public TypedDicts by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4900\">#4900</a></li>\n<li>fix: simplify verification and stabilize sandbox tests by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4916\">#4916</a></li>\n<li>fix: consolidate Docker-backed integration tests by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4667\">#4667</a></li>\n<li>chore(deps): bump actions/download-artifact from 4.3.0 to 8.0.1 by <a class=\"user-mention notranslate\" href=\"https://github.com/dependabot\">@dependabot</a>[bot] in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4802\">#4802</a></li>\n<li>chore(deps): bump actions/upload-artifact from 4.6.2 to 7.0.1 by <a class=\"user-mention notranslate\" href=\"https://github.com/dependabot\">@dependabot</a>[bot] in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4803\">#4803</a></li>\n<li>chore: run repository skill tests in dedicated CI by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4881\">#4881</a></li>\n<li>refactor: separate release contract verification responsibilities by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4878\">#4878</a></li>\n<li>perf: reduce async stability command startup overhead by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4874\">#4874</a></li>\n<li>test: make async progress and trace-worker tests deterministic by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4875\">#4875</a></li>\n<li>test: organize Realtime session tests by responsibility by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4879\">#4879</a></li>\n<li>test(sandbox): skip unavailable Windows symlinks by <a class=\"user-mention notranslate\" href=\"https://github.com/sylvesterkaczmarek\">@sylvesterkaczmarek</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4853\">#4853</a></li>\n<li>release: 0.22.1 by <a class=\"user-mention notranslate\" href=\"https://github.com/seratch\">@seratch</a> in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4576\">#4576</a></li>\n</ul>\n<h2>New Contributors</h2>\n<ul>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Chair403\">@Chair403</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4520\">#4520</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/green3sf\">@green3sf</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4519\">#4519</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/tandede\">@tandede</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4512\">#4512</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/seanxuu\">@seanxuu</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4564\">#4564</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/simpleqt\">@simpleqt</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4600\">#4600</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/shoemoney\">@shoemoney</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4606\">#4606</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/shoutoutuoadi325\">@shoutoutuoadi325</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4598\">#4598</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/ayaangazali\">@ayaangazali</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4650\">#4650</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/lllakshit\">@lllakshit</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4661\">#4661</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Excelius-Wang\">@Excelius-Wang</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4655\">#4655</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/XuQuanxin04\">@XuQuanxin04</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4692\">#4692</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Hughhhhcoder\">@Hughhhhcoder</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4707\">#4707</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/rajarshidattapy\">@rajarshidattapy</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4674\">#4674</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/mmjerge\">@mmjerge</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4728\">#4728</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/subhashpolisetti\">@subhashpolisetti</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4735\">#4735</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/rioyu123\">@rioyu123</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4822\">#4822</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Nikhils-G\">@Nikhils-G</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4778\">#4778</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/MohammedAlkindi\">@MohammedAlkindi</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4771\">#4771</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/Ayushraj06-bit\">@Ayushraj06-bit</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4698\">#4698</a></li>\n<li><a class=\"user-mention notranslate\" href=\"https://github.com/rksharma-owg\">@rksharma-owg</a> made their first contribution in <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/4903\">#4903</a></li>\n</ul>\n<p><strong>Full Changelog</strong>: <a class=\"commit-link\" href=\"https://github.com/openai/openai-agents-python/compare/v0.22.0...v0.22.1\"><tt>v0.22.0...v0.22.1</tt></a></p>",
+    "related_items": [],
+    "source": "OpenAI Agents Python Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v0.22.1",
+    "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.22.1"
+  },
+  {
+    "analysis": {
+      "action": "monitor",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "属于开发者平台定价更新，非核心AI技术进展，与用户偏好Agent/Coding等关联度低，但作为基础设施动态可适度关注。官方博客来源，可信度高。",
+      "summary_cn": "Vercel 宣布为 Pro 团队推出 CDN 固定费率计费方案，提供可预测的月度账单，内置峰值流量保护，无超额费用，包含请求、数据传输等资源，并可选更高服务等级，以应对流量爆发场景。",
+      "tags": [
+        "Vercel",
+        "CDN",
+        "定价",
+        "Web开发",
+        "基础设施"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-08T04:00:00Z",
+    "raw_summary": "<p>Over the past year, we have improved Vercel’s Pro pricing to better reflect how teams build, with <a href=\"https://vercel.com/changelog/free-viewer-seats-now-available-on-pro\">expanded user roles</a>, <a href=\"https://vercel.com/blog/new-pro-pricing-plan\">flexible credits</a>, access to <a href=\"https://vercel.com/changelog/saml-sso-is-now-available-to-pro-teams\">enterprise features</a>, and more. But one area our customers continued to give us feedback on was CDN pricing.</p><p>CDN costs should be predictable, but viral launches, traffic bursts, or misconfigured routes sometimes turned an otherwise normal month into an unexpected bill. For teams building on Vercel, that uncertainty made growth feel like a problem at exactly the moment it should feel exciting.</p><p>Today, we are introducing <a href=\"https://vercel.com/changelog/flat-rate-cdn-is-now-ga-for-pro-teams\">Flat Rate CDN for Pro teams</a>: a new way to pay for CDN usage with a predictable monthly bill, built-in spike protection, and service tiers designed for different traffic profiles.</p><div></div><h2>What is Flat Rate CDN?</h2><p>Flat Rate CDN is an alternative to usage-based CDN billing that provides you with a predictable monthly bill.</p><p>The model is designed around a simple idea: teams should be able to choose the CDN capacity that corresponds to their typical usage profile, pay a known amount monthly, and avoid surprise overages from temporary spikes.</p><div></div><p>Flat Rate CDN has several advantages over usage-based billing:</p><ul><li><p><b>Fixed monthly price</b>: Pay a fixed amount for Vercel CDN each month.</p></li><li><p><b>Covers traffic spikes</b>: CDN Requests, Fast Data Transfer, and other resources are no longer billed directly, so spikes don't result in surprise bills.</p></li><li><p><b>No overages</b>: Your bill will never increase because of temporary usage spikes.</p></li></ul><p>Importantly, predictable pricing does not mean lower-quality bandwidth. Every request still runs on Vercel’s premium network, including private fiber that routes around congestion on the public internet, which can improve performance by up to 60%. Comparable routing is often sold as a premium add-on, but Vercel includes it by default for Pro teams, and performance isn't degraded during traffic spikes. </p><h2>How it works</h2><p>All new Pro teams have Flat Rate CDN enabled by default, and existing Pro teams can opt in. Usage is tracked at the team level and covers all projects, so you no longer need to manage capacity for them individually. </p><h3>What’s included</h3><p>On Flat Rate CDN, one fixed monthly fee covers:</p><ul><li><p>CDN Requests</p></li><li><p>Fast Data Transfer</p></li><li><p>Blob Data Transfer</p></li><li><p>Observability events generated by CDN requests</p></li></ul><p>The default tier is included with Pro. You can upgrade to a higher tier for increased request and data transfer capacity.</p><div></div><p>Your tier is fixed throughout any given billing period, so you never have to worry about charges from temporary traffic spikes.</p><h3>What happens during a spike</h3><p>The following team had a relatively normal usage profile that would fit comfortably in our $20/month Flat Rate CDN tier:</p><div></div><p>Only days after the above period, they experienced a viral product launch that generated a significant surge in traffic:</p><div></div><p>If the team had been on usage-based pricing, their CDN bill would have reached tens of thousands of dollars. On Flat Rate CDN, it stayed at $20 for the month.</p><h3>No caps and no performance hit</h3><p>Flat rate pricing from other infrastructure providers often places caps on usage when you reach your capacity, resulting in rapid performance degradation and request rejection. Flat Rate CDN is different in two ways:</p><ol><li><p>We recognize usage spikes and remove them when evaluating your CDN usage against capacity.</p></li><li><p>We rightsize your Flat Rate CDN tier every month based on sustained usage.</p></li></ol><p>This means we’ll never bring down your site when you’re going viral,  and you don’t have to actively manage your tier when you’re growing quickly.</p><p>You can still monitor every covered resource on the Usage page or in the CLI, including traffic spikes absorbed by Vercel:</p><div></div><h2>What we heard from customers during beta</h2><p>Even though surprise bills are rare across our entire customer base, we’ve seen numerous stories from Pro customers about unexpected bills, many of which famously blew up on X. One team we interviewed was running hundreds of client sites and told us that CDN costs were “by far our largest line item, and the hardest to forecast,” especially when traffic spiked “from a client’s listing going viral, seasonal traffic, or bot traffic.”</p><p>In May, we released Flat Rate CDN to a small set of teams in <a href=\"https://vercel.com/changelog/flat-rate-cdn-in-limited-beta\">limited beta</a>. Over the last several months, it has changed how they operate on Vercel.</p><p>They worried less:</p><blockquote><p>Flat Rate CDN eased our billing anxiety. With the recent increase in AI crawler traffic, we used to frequently check bot activity through Observability and monitor which bots were generating traffic. We now spend much less time doing that.</p></blockquote><p>They built more:</p><blockquote><p>Knowing that CDN usage is predictable makes us more willing to adopt caching-oriented approaches. We're now considering broader use of Cache Components and other caching strategies in our Next.js architecture, whereas previously we had to think more carefully about the potential cost impact of additional cache traffic.</p></blockquote><p>This is exactly what we built Flat Rate CDN to do. No surprise bills, predictable pricing, and peace of mind to ship the next project.</p><h2>Get started</h2><p>All new Pro teams have Flat Rate CDN enabled by default. Existing Pro teams can opt in to the new plan:</p><ol><li><p>Select <a href=\"https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings%2Fbilling%23flat-rate-cdn&amp;title=\">Billing</a> in the navigation.</p></li><li><p>Browse to <b>Flat Rate CDN</b> and toggle the setting to on. </p></li><li><p>Choose a capacity tier that corresponds to your typical usage.</p></li><li><p>Review your selection, which will show subscription costs if you chose a paid Flat Rate CDN tier.</p></li><li><p>Select <b>Enable</b> to apply.</p></li></ol><p>Learn more about Flat Rate CDN pricing in the <a href=\"https://vercel.com/docs/pricing/flat-rate-cdn\">documentation</a>.</p><h2>FAQ</h2><div></div><p></p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/blog/introducing-flat-rate-cdn\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Introducing Flat Rate CDN",
+    "url": "https://vercel.com/blog/introducing-flat-rate-cdn"
+  },
+  {
+    "analysis": {
+      "action": "watch",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方 GitHub 发布，可信度高；包含异步工具支持等功能增强，对 Agent 开发有参考价值，但整体变化较小，非重大更新，故重要性中等。",
+      "summary_cn": "LangChain OpenAI 集成发布 1.6.1 版本，修复缓存断点测试、支持 Azure AD 认证与 OpenAI 3.8、新增异步工具和 configuration_update 功能，并更新模型配置数据，优化 gpt-5 系列推理参数路由。",
+      "tags": [
+        "LangChain",
+        "OpenAI",
+        "Release",
+        "Agent"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 6,
+    "published_at": "2026-09-08T14:20:42Z",
+    "raw_summary": "<p>Changes since langchain-openai==1.6.0</p>\n<p>fix(openai): bump <code>max_completion_tokens</code> in cache breakpoint integration test (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/40284\">#40284</a>)<br />\nrelease(openai): 1.6.1 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/40268\">#40268</a>)<br />\nchore(model-profiles): refresh model profile data (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/40217\">#40217</a>)<br />\nfix(openai): support Azure AD auth with OpenAI 3.8 (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/40190\">#40190</a>)<br />\nfeat(openai): support async tools (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/40208\">#40208</a>)<br />\nfeat(openai): support <code>configuration_update</code> (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/40201\">#40201</a>)<br />\nchore(model-profiles): refresh model profile data (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/40171\">#40171</a>)<br />\nfix(openai): route <code>gpt-5.6-sol</code> to responses API (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/40133\">#40133</a>)<br />\nchore(openai): fix tests (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39972\">#39972</a>)<br />\nfix(openai): correct <code>reasoning_effort_levels</code> for gpt-5 and gpt-5.1 profiles (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39936\">#39936</a>)<br />\nchore(model-profiles): refresh model profile data (<a class=\"issue-link js-issue-link\" href=\"https://github.com/langchain-ai/langchain/pull/39954\">#39954</a>)</p>",
+    "related_items": [],
+    "source": "LangChain Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "langchain-openai==1.6.1",
+    "url": "https://github.com/langchain-ai/langchain/releases/tag/langchain-openai%3D%3D1.6.1"
+  },
+  {
+    "analysis": {
+      "action": "monitor",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "新图像模型的后端支持，但用户偏好是 Agent、Coding、RAG、Eval、Reasoning，图像生成相关性低。官方来源可信度高，但非高优先级持续跟踪。",
+      "summary_cn": "OpenAI 的 GPT Image 2.5 Flare 和 Sunburst 图像生成模型现已登陆 Vercel AI Gateway。Flare 侧重生成速度，Sunburst 提供更精细的控制，两者均支持自然光照纹理、复杂指令执行以及基于参考图像的定向编辑。AI Gateway 提供统一 API、无加价推理和自带密钥支持，便于集成和成本管理。",
+      "tags": [
+        "GPT Image",
+        "OpenAI",
+        "Vercel AI Gateway",
+        "图像生成",
+        "AI Gateway"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-09-08T00:00:00Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/ai-gateway/models/gpt-image-2.5-flare\">GPT Image 2.5 Flare</a> and <a href=\"https://vercel.com/ai-gateway/models/gpt-image-2.5-sunburst\">GPT Image 2.5 Sunburst</a> from OpenAI are now available on AI Gateway as <code>openai/gpt-image-2.5-flare</code> and <code>openai/gpt-image-2.5-sunburst</code>.</p><p>Both models generate and edit images with more natural lighting and textures, follow complex visual instructions, and handle detailed layouts and transparent backgrounds. They accept reference images for targeted edits while preserving surrounding elements. Flare is optimized for faster generation and iteration. Sunburst takes longer to generate and offers tighter control for detailed creative work.</p><p>Use <code>openai/gpt-image-2.5-flare</code> as the model name for faster generation:</p><div></div><p>Change the model name to <code>openai/gpt-image-2.5-sunburst</code> when the result needs more precise control over composition and detail.</p><p>For targeted editing, pass an image alongside the instruction. This example uses Sunburst:</p><div></div><p>Try <a href=\"https://vercel.com/ai-gateway/models/gpt-image-2.5-flare\">Flare</a> or <a href=\"https://vercel.com/ai-gateway/models/gpt-image-2.5-sunburst\">Sunburst</a> in the model playground.</p><p>AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in <a href=\"https://vercel.com/changelog/custom-reporting-ai-gateway\">custom reporting</a>, <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys\">budgets for API keys</a>, <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/routing-rules\">routing rules</a>, and more.</p><p>AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">Bring Your Own Key</a> (BYOK) requests.</p><p>You can view <a href=\"https://vercel.com/ai-gateway/models?type=image\">all image models</a> available on AI Gateway.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/gpt-image-2-5-flare-and-sunburst-now-available-on-ai-gateway\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "GPT Image 2.5 Flare and Sunburst now available on AI Gateway",
+    "url": "https://vercel.com/changelog/gpt-image-2-5-flare-and-sunburst-now-available-on-ai-gateway"
+  },
+  {
+    "analysis": {
+      "action": "打开原文快速判断是否需要深入跟进。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "未调用 LLM，使用来源可信度和标题关键词做保守判断。；已合并同事件来源：OpenAI Python SDK Releases。",
+      "summary_cn": "3.10.0 (2026-09-08)\nFeatures\n\napi: add GPT Image 2.5 models and image options (#3824) (5b39c45)\napi: add service-account API key expiration fields (#3",
+      "tags": [
+        "AI",
+        "github",
+        "待复查"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-09T00:17:39Z",
+    "raw_summary": "<h2><a href=\"https://github.com/openai/openai-python/compare/v3.9.0...v3.10.0\">3.10.0</a> (2026-09-08)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>api:</strong> add GPT Image 2.5 models and image options (<a href=\"https://github.com/openai/openai-python/issues/3824\">#3824</a>) (<a href=\"https://github.com/openai/openai-python/commit/5b39c453ee5ee8f46fba0bd9cb4ae47fa5ee6d51\">5b39c45</a>)</li>\n<li><strong>api:</strong> add service-account API key expiration fields (<a href=\"https://github.com/openai/openai-python/issues/3802\">#3802</a>) (<a href=\"https://github.com/openai/openai-python/commit/f1cd7f020210ec3fc71699fc46d90320ddbb411c\">f1cd7f0</a>)</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "OpenAI Python SDK Releases",
+        "source_tier": 1,
+        "title": "v3.9.0",
+        "url": "https://github.com/openai/openai-python/releases/tag/v3.9.0"
+      }
+    ],
+    "source": "OpenAI Python SDK Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v3.10.0",
+    "url": "https://github.com/openai/openai-python/releases/tag/v3.10.0"
+  },
+  {
+    "analysis": {
+      "action": "打开原文快速判断是否需要深入跟进。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "未调用 LLM，使用来源可信度和标题关键词做保守判断。",
+      "summary_cn": "Explore how more capable, affordable AI can expand the work people and businesses can accomplish—and make growth more economical.",
+      "tags": [
+        "AI",
+        "official",
+        "待复查"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-08T13:00:00Z",
+    "raw_summary": "Explore how more capable, affordable AI can expand the work people and businesses can accomplish—and make growth more economical.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "The Work Now Within Reach",
+    "url": "https://openai.com/index/the-work-now-within-reach"
+  },
+  {
+    "analysis": {
+      "action": "打开原文快速判断是否需要深入跟进。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "未调用 LLM，使用来源可信度和标题关键词做保守判断。",
+      "summary_cn": "Apply now for OpenAI’s $5 million grant program supporting independent research on how generative AI affects teen development, well-being, and safety.",
+      "tags": [
+        "AI",
+        "official",
+        "待复查"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-08T09:00:00Z",
+    "raw_summary": "Apply now for OpenAI’s $5 million grant program supporting independent research on how generative AI affects teen development, well-being, and safety.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "Funding grants for new research into AI and teen development",
+    "url": "https://openai.com/index/teen-development-research-grants"
+  },
+  {
+    "analysis": {
+      "action": "打开原文快速判断是否需要深入跟进。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "未调用 LLM，使用来源可信度和标题关键词做保守判断。",
+      "summary_cn": "OpenAI is expanding support for journalism with tools, training, and partnerships for students, educators, journalists, and news organizations.",
+      "tags": [
+        "AI",
+        "official",
+        "待复查"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-08T00:00:00Z",
+    "raw_summary": "OpenAI is expanding support for journalism with tools, training, and partnerships for students, educators, journalists, and news organizations.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "OpenAI expands initiatives to support journalism from classrooms to newsrooms",
+    "url": "https://openai.com/index/supporting-journalism-from-classrooms-to-newsrooms"
+  },
+  {
+    "analysis": {
+      "action": "打开原文快速判断是否需要深入跟进。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "未调用 LLM，使用来源可信度和标题关键词做保守判断。",
+      "summary_cn": "Flat Rate CDN is now generally available for Pro teams. Flat Rate CDN is an alternative to usage-based CDN billing that provides you with a fixed mont",
+      "tags": [
+        "AI",
+        "official",
+        "待复查"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-08T00:00:00Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/docs/manage-cdn-usage#flat-rate-cdn\">Flat Rate CDN</a> is now generally available for Pro teams. Flat Rate CDN is an alternative to usage-based CDN billing that provides you with a fixed monthly bill.</p><p>Monthly Flat Rate CDN capacity includes: </p><ul><li><p>Fast Data Transfer</p></li><li><p>Blob Data Transfer</p></li><li><p>CDN Requests</p></li><li><p>Observability events generated by CDN requests</p></li></ul><p>Capacity is set at the team level, not the project level, so a spike on a single project draws on the team-level allowance.</p><p>Spike protection is on by default. With spike protection, traffic above your tier's capacity is served normally, without degraded performance, and isn't billed (subject to the <a href=\"https://vercel.com/docs/limits/fair-use-guidelines\">fair use guidelines</a>).</p><p>1M requests and 1 TB of data transfer are included with Pro. Additional monthly capacity can be purchased by upgrading to a higher Flat Rate CDN tier. </p><div></div><h2>Get started</h2><p>New Pro teams have Flat Rate CDN on by default, and existing teams can switch over in <a href=\"https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fsettings%2Fbilling%23flat-rate-cdn&amp;title=\">Billing settings</a>. </p><p>Read the Flat Rate CDN <a href=\"https://vercel.com/blog/introducing-flat-rate-cdn\">announcement</a> and learn more about pricing in the <a href=\"https://vercel.com/docs/pricing/flat-rate-cdn\">documentation</a>. </p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/flat-rate-cdn-is-now-ga-for-pro-teams\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Flat Rate CDN is now GA for Pro teams",
+    "url": "https://vercel.com/changelog/flat-rate-cdn-is-now-ga-for-pro-teams"
+  },
+  {
+    "analysis": {
+      "action": "打开原文快速判断是否需要深入跟进。",
+      "confidence": 3,
+      "importance": 3,
+      "reason": "未调用 LLM，使用来源可信度和标题关键词做保守判断。",
+      "summary_cn": "I wrote recently about how the collection of good, fruitful open problems is now being mined in a non-renewable fashion, leading to the potential scen",
+      "tags": [
+        "AI",
+        "blog",
+        "待复查"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-09T00:20:17Z",
+    "raw_summary": "<blockquote cite=\"https://mathstodon.xyz/@tao/117237320796901560\"><p>I wrote recently about how the collection of good, fruitful open problems is now being mined in a non-renewable fashion, leading to the potential scenario of these problems becoming scarce. [...]</p>\n<p>We have now seen that even the rumor of someone working on a problem can trigger a massive amount of AI-powered effort to flatten it before the original research project has time to reach its full potential.  The incentives may now be pointing in the direction of no longer sharing any promising research directions with the broader community, which would reverse centuries of traditions of open science and do serious long-term damage to the future of the field.</p></blockquote>\n<p class=\"cite\">&mdash; <a href=\"https://mathstodon.xyz/@tao/117237320796901560\">Terence Tao</a></p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/ai-ethics\">ai-ethics</a>, <a href=\"https://simonwillison.net/tags/mathematics\">mathematics</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Quoting Terence Tao",
+    "url": "https://simonwillison.net/2026/Sep/9/terence-tao"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方公告，可信度高。但对 Agent/Coding/RAG 等用户偏好领域影响较小，主要属于基础设施优化，故重要性适中。",
+      "summary_cn": "Vercel Sandbox 的公共域名路由性能全球提升 18 倍。域名解析从单一中心存储改为就近区域副本，请求延迟大幅降低，中位数从 62ms 降至 3.4ms。悉尼和开普敦等远端区域的 p99 延迟分别提升至 146 倍和 112 倍。该优化自动生效，无价格变动。",
+      "tags": [
+        "Vercel",
+        "Sandbox",
+        "性能优化",
+        "路由",
+        "边缘计算"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-09-08T20:00:00Z",
+    "raw_summary": "<p>Requests to <a href=\"https://vercel.com/docs/sandbox\">Vercel Sandbox</a> public domains are now routed 18x faster.</p><p>Domains created with the <code>sandbox.domain()</code> SDK call are now resolved from the nearest regional replica, instead of a single centralized store. Incoming requests reach the process running in the sandbox with less latency.</p><p>Median domain lookup latency dropped from 62ms to 3.4ms (18x faster). The improvement is largest in regions farthest from the previous store: lookups are now up to 112x faster in Sydney (syd1) and up to 146x faster in Cape Town (cpt1), at p99.</p><p>This applies automatically to every request to a sandbox domain. There are no pricing changes.</p><p>Learn more about <a href=\"https://vercel.com/docs/sandbox\">Vercel Sandbox</a> in our documentation.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/vercel-sandbox-routing-is-now-18x-faster-globally\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Vercel Sandbox routing is now 18x faster globally",
+    "url": "https://vercel.com/changelog/vercel-sandbox-routing-is-now-18x-faster-globally"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "未调用 LLM，使用来源可信度和标题关键词做保守判断。；常规版本/依赖更新降噪。",
+      "summary_cn": "Patch Changes\n\nai@6.0.278\n",
+      "tags": [
+        "AI",
+        "github",
+        "待复查"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-08T20:39:42Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@6.0.278</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/vue@3.0.278",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fvue%403.0.278"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "未调用 LLM，使用来源可信度和标题关键词做保守判断。；常规版本/依赖更新降噪。",
+      "summary_cn": "Patch Changes\n\nUpdated dependencies [c04ded8]\n\n@ai-sdk/harness@1.0.104\n\n\n",
+      "tags": [
+        "AI",
+        "github",
+        "待复查"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-08T20:20:48Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/c04ded82a1b253ea7241a33510891e1e7f08680c\"><tt>c04ded8</tt></a>]\n<ul>\n<li>@ai-sdk/harness@1.0.104</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow-harness@1.0.104",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow-harness%401.0.104"
+  }
+]
