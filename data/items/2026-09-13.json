@@ -1,0 +1,240 @@
+[
+  {
+    "analysis": {
+      "action": "建议阅读",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来自 GitHub 官方 Release，可信度高；新增 plugin eval 直接契合 Eval 与 Coding 偏好，插件评测与并发 Agent 提升对 Agent 工作流有实际价值，多项缓存与会话修复也影响生产使用，故重要性 4。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Claude Code 发布 v2.1.269，新增 `claude plugin eval` 可对插件跑评测套件并输出可复现的 JSON/HTML 评分报告，还支持 /output-style 切换输出风格、Bash 编辑文件差异回显、OpenTelemetry 仓库标签、Workflow 并发 Agent 上限提升至 256 等；同时修复大量提示缓存失效、会话恢复与终端兼容性问题，属 Agent 编码工具链的重要版本更新。",
+      "tags": [
+        "Claude Code",
+        "Agent",
+        "Eval",
+        "Coding",
+        "工具更新"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-11T19:17:55Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Added <code>claude plugin eval</code>: run a plugin's eval suite against Claude Code and get scored, reproducible results (JSON + HTML report); see <code>claude plugin eval --help</code></li>\n<li>Added <code>/output-style [name]</code> to list and switch output styles, including over Remote Control and in cloud and other headless sessions</li>\n<li>Added a diff of the files a Bash command changed to the Bash tool result when the Bash tool handles file edits (setting <code>bashEditDiffEnabled</code>)</li>\n<li>Added <code>OTEL_METRICS_INCLUDE_REPOSITORY</code> to tag OpenTelemetry metrics and events with <code>vcs.*</code> repository attributes; commit events get <code>vcs.ref.head.*</code> with <code>OTEL_LOG_TOOL_DETAILS</code></li>\n<li>Added <code>CLAUDE_CODE_GATEWAY_MODEL_DISCOVERY_TIMEOUT_MS</code> to extend the LLM gateway <code>/v1/models</code> discovery timeout (default 3s)</li>\n<li>Added a spinner tip suggesting <code>/focus</code> for a view with just your prompt, a one-line work summary, and the response</li>\n<li>Added <code>CLAUDE_CODE_WORKFLOW_MAX_CONCURRENT_AGENTS</code> (1–256) to raise the Workflow tool's per-run concurrent agent limit for inference-bound fan-outs</li>\n<li>Fixed the prompt cache being partially invalidated on the turn after a response was cut off at the output-token limit and automatically resumed</li>\n<li>Fixed a case where resuming a session after interrupting Claude mid-thought could change how earlier context was re-sent, hurting prompt-cache reuse</li>\n<li>Fixed F1/F2/F4 not working in kitty-protocol terminals and Delete in st, Alt+arrows acting as Escape in rxvt-unicode, and Shift+punctuation typing the unshifted key in WezTerm (regression in 2.1.247)</li>\n<li>Fixed remote and headless sessions reporting \"waiting for your input\" while background agents were still running (set <code>CLAUDE_CODE_BG_TASKS_REPORT_RUNNING=0</code> to restore the old behavior)</li>\n<li>Fixed the terminal's replies to capability queries (<code>^[[?1;2c</code>) appearing as stray text at startup in some terminals</li>\n<li>Fixed rows at the top or bottom of the transcript going blank in fullscreen after resizing the terminal</li>\n<li>Fixed a deny or ask permission rule starting with <code>!</code> applying beyond the settings source that wrote it; such a rule now applies only within its own source, and a bare <code>!</code> negation is ignored</li>\n<li>Fixed the git status Claude is told after a compaction: it is now the current status, not the one from the start of the session</li>\n<li>Fixed synced plugin MCP servers not connecting when a remote session resumes</li>\n<li>Fixed resumed headless sessions losing a turn's replies when the model was switched or a request was retried mid-turn</li>\n<li>Fixed terminal escape codes, line breaks and oversized text from a background task's on-disk record reaching the task list and task notifications when work is resumed</li>\n<li>Fixed CMYK JPEG images failing to attach with \"cannot decode\"; they are now converted and resized like other JPEGs</li>\n<li>Fixed the managed settings approval dialog not naming the collector for a gRPC telemetry endpoint set without a scheme</li>\n<li>Fixed plugin <code>headersHelper</code> consent prompts showing a URL path that could be misread as a different host</li>\n<li>Fixed plugin errors showing <code>[redacted URL]</code> in place of a relative Windows path with a folder name that starts with <code>@</code></li>\n<li>Fixed missing cursor in the permission-rule, auto-mode-rule, add-directory, session-rename and feedback-review text fields when the terminal's native cursor is enabled</li>\n<li>Fixed repeated clicks on a <code>/fork</code> receipt, each under a second apart, never backgrounding the session right away while it waited for the current tool to finish</li>\n<li>Fixed plugin LSP servers that reject <code>shutdown</code> params (e.g. rust-analyzer) being left running at session end; <code>exit</code> is now sent even if <code>shutdown</code> fails</li>\n<li>Fixed the attribution reminder overriding a CLAUDE.md or memory rule against commit and pull request attribution; lines set by managed settings still apply</li>\n<li>Fixed prompt suggestions being dropped for text in Japanese, Chinese, Thai and other languages written without spaces between words</li>\n<li>Fixed synchronized output being assumed from the terminal's name in GNOME Terminal and Konsole versions that do not support it</li>\n<li>Fixed <code>permission_denials</code> in <code>--output-format stream-json</code> results omitting Read, Edit and Write calls blocked by a path-scoped deny rule</li>\n<li>Fixed sessions run through the SDK or the desktop app showing an unknown status in other sessions' agent list</li>\n<li>Fixed <code>/insights</code> failing on Bedrock, Vertex, Foundry, and gateway deployments whose account can't reach the default Opus model by using the session model there instead</li>\n<li>Fixed organization policy limits not loading for the session when another Claude Code process refreshed the login at the same moment</li>\n<li>Fixed Claude Desktop sessions using Bedrock, Vertex, or a gateway not getting the contextual \"what Claude needs\" turn-end notification text</li>\n<li>Fixed MCP servers reconnecting when an updated config only changed the order of the server URL's query parameters</li>\n<li>Fixed the prompt box's top border splitting into extra lines when viewing a background agent whose name or description has line breaks or is wider than the terminal</li>\n<li>Fixed sessions getting permanently stuck on \"Prompt is too long\" when auto-compaction had no complete earlier exchange to summarize (mostly Agent SDK sessions with very large prompts)</li>\n<li>Fixed <code>/goal</code> runs silently stalling after API errors, network drops, or token limits: the goal now retries with backoff, or pauses and says why, including until a usage limit resets</li>\n<li>Fixed prompt cache misses in cloud sessions by waiting briefly for server configuration before the first request</li>\n<li>Fixed <code>/btw</code> answers that contained made-up tool calls and output: the side question is now told not to write them, and any that appear are flagged as not executed</li>\n<li>Fixed <code>CLAUDE_CODE_RESUME_INTERRUPTED_TURN</code> re-running a turn that had failed with an API error over 6 hours earlier, or longer ago than <code>CLAUDE_CODE_RESUME_INTERRUPTED_TURN_MAX_AGE_MS</code> when set</li>\n<li>Fixed organization plugins enabled through managed settings not loading in headless sessions and on Claude Desktop (once Desktop bundles this CLI version); they load from the next session</li>\n<li>Fixed plugin archives extracted for a session being readable by other local users, extracted files keeping world-writable bits from the archive, and stale files surviving re-extraction</li>\n<li>Fixed <code>Edit()</code> deny rules and the write-path check not applying to the file a Bash <code>tee</code> command writes; a <code>Bash(tee:*)</code> allow rule no longer covers destinations outside the working directories</li>\n<li>Fixed stray characters like <code>22c</code>, or a terminal's color or version reply, being typed into the prompt at startup over slow connections (ssh, browser terminals)</li>\n<li>Fixed the terminal's block cursor showing under the interface in rxvt-unicode after leaving or re-entering fullscreen</li>\n<li>Fixed the cursor block staying visible after returning from an external editor in fullscreen mode on rxvt-unicode</li>\n<li>Fixed the interface being drawn twice after returning from an external editor (Ctrl+G) outside fullscreen mode</li>\n<li>Fixed the interface being drawn twice in Konsole after returning from an external editor</li>\n<li>Windows: Fixed PowerShell tool commands sent to the background stopping when Claude Code exits</li>\n<li>Improved the <code>/diff</code> panel to open fully rendered in one step instead of showing a loading state first</li>\n<li>Improved prompt suggestion filtering for Japanese, Chinese and Korean text: mixed-script and single-word suggestions are kept, and meta or evaluative text is dropped as it is for English</li>\n<li>Improved the Skill tool's \"Unknown skill\" error to name the plugin skill's full name when a bare name matches exactly one plugin skill</li>\n<li>Improved keyboard support over SSH and in unrecognized terminals: terminals that answer the kitty keyboard query (such as foot and Alacritty 0.16+) now get Shift+Enter and Ctrl+Shift shortcuts</li>\n<li>Improved responsiveness in long sessions: transcript updates no longer re-process the whole conversation to build the collapsed tool-use summaries</li>\n<li>Improved first-party sessions with telemetry disabled: an <code>alwaysLoad</code> MCP server that finishes connecting mid-conversation is usable on the next turn without a tool-search round trip</li>\n<li>Changed <code>/ultrareview --post</code> to post the PR comment directly when the findings arrive and print the comment link, instead of starting a second cloud session to post it</li>\n<li>Changed artifact database reads that save into the session scratchpad so they no longer stop for working-folder approval</li>\n<li>Changed skills synced from claude.ai in cloud sessions to be named <code>anthropic-skills:&lt;name&gt;</code>, matching Claude Desktop; the bare name still works when nothing else uses it</li>\n<li>[VSCode] Added an agent map: an \"N agents\" footer pill opens a map of the session's sub-agents with per-agent cards, Stop agent, and read-only transcripts</li>\n<li>[VSCode] Added a Hooks dialog to the command menu for viewing hooks and adding, editing, or removing them in user, project, and local settings; managed, plugin, and session hooks stay read-only</li>\n<li>[VSCode] Added live progress rows for running subagents under the tool-call groups in Focus view</li>\n<li>[VSCode] Added a Permission rules dialog that lists permission rules and adds or removes them in user, project, and local settings; startup-option, session-only, and managed rules stay read-only</li>\n<li>[VSCode] Added a Cancel button to the Switch account screen that returns to your session as the current account</li>\n<li>[VSCode] Fixed Focus view showing a turn started by a delivered plain-text prompt, such as a scheduled task's, as part of the previous turn</li>\n<li>[VSCode] Fixed the footer's prompt cache clock hiding its minutes when the panel is narrow</li>\n<li>[VSCode] Fixed the session list keeping sessions from the default folder when <code>CLAUDE_CONFIG_DIR</code> is set in a settings file or the <code>environmentVariables</code> setting</li>\n<li>[VSCode] Fixed a plan preview that finished loading late sometimes hiding its comment box or showing an older plan</li>\n<li>[VSCode] Fixed a plan preview accepting comments that went nowhere after its Claude tab closed</li>\n<li>[VSCode] Fixed the prompt cache clock and reopen notice for a session compacted after its last reply and then closed, which now reads as cold when reopened</li>\n<li>[VSCode] Fixed a session renamed in the extension while Remote Control is on keeping its old name on claude.ai/code</li>\n<li>[VSCode] Fixed the \"Enable Remote Control for all sessions\" toggle keeping its last position after the setting was reset to default from a terminal</li>\n<li>[VSCode] Fixed restored Claude tabs not counting as open in the session list after a window reload until clicked, and their row opening a second tab</li>\n<li>[VSCode] Fixed Switch account making a tab forget its dismissed usage-limit warnings when you sign back in as the same account</li>\n<li>[VSCode] Fixed a session rename being replaced by the generated name after a window reload when the session was renamed during a long turn</li>\n<li>[VSCode] Fixed the sidebar usage meter keeping a stale per-model weekly limit row after the account loses that limit</li>\n<li>[VSCode] Fixed a rare case where an @-mention sent with the keyboard shortcut while a new chat view was still starting could be inserted into the input long after the keystroke</li>\n<li>[VSCode] Fixed the session list jumping down when the Account &amp; usage header appeared a moment after opening the Claude side bar</li>\n<li>[VSCode] Improved documents and messages written for someone other than the user: Claude now writes them for that audience and names it at the top of its reply</li>\n<li>[VSCode] Improved screen reader and keyboard accessibility in the slash-command menu, @-mention menu, output-style picker, Send/Stop button, permission and question cards, and onboarding checklist</li>\n<li>[VSCode] Changed the current-file chip in the message box: an X now removes it, replacing the Hide toggle</li>\n<li>[VSCode] Removed the Claude Code items from a session tab's right-click menu and the editor title bar's \"...\" menu; they could not act on the tab the menu was opened on</li>\n<li>[Claude Code on the web] Added taking back a queued message in a cloud session before Claude reads it: remove it from the queue, or press Esc or Up, and the text returns to the message box</li>\n<li>[Claude Code on the web] Fixed <code>/model default</code> in a cloud session leaving every later message failing in organizations that restrict which models Claude Code can use</li>\n<li>[Claude Code on the web] Fixed one-off scheduled routines occasionally running a second time after a transient server error</li>\n<li>[Claude Code on the web] Fixed routine runs that use subagents sometimes being treated as finished too early, which could skip the retry after a real failure or start a duplicate run</li>\n<li>[Claude Code on the web] Fixed file links in cloud session transcripts opening a GitHub 404 when Claude was working from a subfolder of the repository</li>\n<li>[Claude Code on the web] Changed the Cloud environments admin page to list every environment instead of capping each table at five rows behind a Show more control that could be unreachable</li>\n<li>[Claude Code on the web] Changed claude.ai/code for Free-plan users to open the plans page with a path to upgrade, instead of a \"Disabled by org admin\" page with no way forward</li>\n<li>[Claude Tag] Added a confirmation dialog before Connect all or Disconnect on a GitHub installation in admin settings, to guard against accidental organization-wide changes</li>\n<li>[Claude Tag] Fixed threads occasionally going silent after a failed turn because the failure notice was dropped when Slack briefly rate-limited it; the notice is now retried</li>\n<li>[Claude Tag] Fixed Claude accepting a switch to a model your organization hasn't enabled and then quietly answering with a fallback model; it now declines and says an admin can enable it</li>\n<li>[Claude Tag] Fixed a table posting as raw pipe text when Claude attached files to the same message; the table now posts as a normal reply and the files follow with a plain caption</li>\n<li>[Claude Tag] Fixed <code>@Claude !restart</code> at the top level of a channel where Claude isn't active starting an unrelated conversation; it now privately says there is nothing to restart</li>\n<li>[Claude Tag] Fixed plugin rows in Slack access settings showing an unlabeled raw ID with no way to turn the plugin off; they now show its name and link to the bundle that manages it</li>\n<li>[Claude Tag] Fixed the shared-session banner and Share dialog on sessions started from Slack claiming the whole organization could open the link; they now name the Slack channel's audience</li>\n<li>[Claude Tag] Improved load time of the admin settings page and its Slack channel picker, most noticeably for organizations with many channels or several connected workspaces</li>\n<li>[Claude Tag] Improved scheduled routines in Slack channels: a routine run can now reply in an existing thread instead of always posting a new top-level channel message</li>\n<li>[Claude Tag] Improved the timestamp on Claude's live progress checklists to show each reader's local time and how long ago it was updated, instead of a fixed UTC time</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.270",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.270"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.269",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.269"
+  },
+  {
+    "analysis": {
+      "action": "等待官方技术报告与权重发布后深入评估，先收录并关注后续基准测试",
+      "confidence": 3,
+      "importance": 4,
+      "reason": "编码器-解码器因果新架构加大参数规模与视觉能力，对 LLM 架构与多模态方向有潜在影响，且来源属可信行业博客；但当前无官方原始链接与实测数据，且与用户偏好的 Agent/Coding/RAG/Eval/Reasoning 相关性间接，故重要度给 4、可信度限 3。",
+      "summary_cn": "Latent Space 报道 DeepSeek 发布 v4.1-Flash，采用 763B 总参数、P8B 激活、D16B 的因果编码器-解码器新架构，并首次引入视觉能力，被作者称为'鲸鱼归来'。文中引用观点认为该模型规格本应命名为 DeepSeek v5。目前仅有博客转述，缺少官方技术报告与开源权重链接，具体评测与基准数据尚未披露。",
+      "tags": [
+        "DeepSeek",
+        "模型发布",
+        "Encoder-Decoder",
+        "多模态",
+        "架构创新"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-09-12T05:56:05Z",
+    "raw_summary": "We agree with Sebastian: this should have been DeepSeek v5",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] DeepSeek v4.1-Flash: 763B-P8B-D16B novel causal Encoder–Decoder architecture with vision marks the Return of the Whale",
+    "url": "https://www.latent.space/p/ainews-deepseek-v41-flash-763b-p8b"
+  },
+  {
+    "analysis": {
+      "action": "推荐阅读",
+      "confidence": 4,
+      "importance": 3,
+      "reason": "展示了长时程 Agent 工具编排的真实案例（地理数据+可视化+文件导出），并指出线程压缩导致执行细节不可追溯的透明度问题，对 Agent 可观测性设计有参考价值；来源为知名从业者博客但缺官方原始文档，故重要性中等。",
+      "summary_cn": "Simon Willison 用 GPT-6 Astra 配合 ChatGPT Work，通过 Nominatim 定位地址、Overpass 拉取本地 OpenStreetMap 路网，自动规划出 5K/10K 环线跑步路线，耗时 27 分钟，输出可视化地图与 GPX/GeoJSON 文件。他批评 ChatGPT UI 隐藏了实际执行代码，且线程压缩后无法回溯原始 Python 代码，建议 LLM 系统保留压缩前文本并通过工具调用暴露。",
+      "tags": [
+        "Agent",
+        "Tool Use",
+        "ChatGPT",
+        "OpenStreetMap",
+        "可观测性"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-12T23:56:42Z",
+    "raw_summary": "<p>Here's a neat thing I had <a href=\"https://simonwillison.net/2026/Aug/30/understanding-chatgpt-work/\">ChatGPT Work</a> with GPT-6 Astra (Max) do this morning:</p>\n<blockquote>\n<p><code>I live at &lt;my address&gt;. Figure out 5K and 10K running routes from me that loop from my house. Use OSM data.</code></p>\n</blockquote>\n<p>It worked for 27 minutes and produced exactly what I'd asked for, as both an embedded visualization and downloadable GPX file and GeoJSON files. Here's that 5K route:</p>\n<p><img alt=\"Map screenshot showing a blue route line over a light grey street map. Text: El Granada harbor loop 5.1 km. N ↑ (top right). Street labels along the route: Carmel Avenue, Paloma Avenue, San Carlos Avenue, Avenue Granada, Capistrano Road, Francisco Street, Coastal Trail. The loop runs from the harbor at the bottom left, north along Avenue Granada and Paloma Avenue to a northern point near Carmel Avenue, then east along San Carlos Avenue and south down Francisco Street to the far right, before returning west along the Coastal Trail beside the coastline. Footer: Map data © OpenStreetMap contributors. Give feedback.\" src=\"https://static.simonwillison.net/static/2026/5k-route.webp\" /></p>\n<p>When I asked it how it had created the route, it replied:</p>\n<blockquote>\n<p>I used <strong>Nominatim to locate the address</strong> and <strong>Overpass to download local OpenStreetMap roads and trails</strong>, then calculated the loops locally.</p>\n</blockquote>\n<p>Frustratingly, the actual code it ran and exact details of what it did weren't visible to me in the ChatGPT UI. I see this lack of transparency is an anti-feature.</p>\n<p>By the time I thought to ask for a copy of the Python code it had used, ChatGPT was unable to provide it. This appears to be because the thread had been compacted. I think any LLM system that uses compaction needs to both preserve the pre-compacted text and make that text available via agent tool calls, to protect against this kind of problem.</p>\n<p>As for displaying the map to me, that used the <a href=\"https://codex-tool-reference.simonw.chatgpt.site/skills/visualize\">visualize skill</a>. It created a file called <code>/workspace/el-granada-5k-share.html</code> to embed directly into the ChatGPT UI.</p>\n<p>Here's <a href=\"https://gist.github.com/simonw/ea652573c8ff5378b218cb10c8c5a480\">a copy of that HTML</a>, which starts like this:</p>\n<div class=\"highlight highlight-text-html-basic\"><pre><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">eg-share-loop</span>\"<span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">class</span>=\"<span class=\"pl-s\">viz-row</span>\"<span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">h3</span><span class=\"pl-kos\">&gt;</span>El Granada harbor loop<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">h3</span><span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">span</span> <span class=\"pl-c1\">class</span>=\"<span class=\"pl-s\">text-small</span>\"<span class=\"pl-kos\">&gt;</span>5.1 km<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">span</span><span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">eg-share-stage</span>\"<span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">div</span> <span class=\"pl-c1\">class</span>=\"<span class=\"pl-s\">text-small text-muted</span>\"<span class=\"pl-kos\">&gt;</span>Map data © <span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">a</span> <span class=\"pl-c1\">href</span>=\"<span class=\"pl-s\">https://www.openstreetmap.org/copyright</span>\" <span class=\"pl-c1\">target</span>=\"<span class=\"pl-s\">_blank</span>\" <span class=\"pl-c1\">rel</span>=\"<span class=\"pl-s\">noopener</span>\"<span class=\"pl-kos\">&gt;</span>OpenStreetMap contributors<span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">a</span><span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">div</span><span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">style</span><span class=\"pl-kos\">&gt;</span>\n    <span class=\"pl-kos\">#</span><span class=\"pl-c1\">eg-share-loop</span> { <span class=\"pl-c1\">width</span><span class=\"pl-kos\">:</span><span class=\"pl-c1\">100<span class=\"pl-smi\">%</span></span>; }\n    <span class=\"pl-kos\">#</span><span class=\"pl-c1\">eg-share-loop</span> <span class=\"pl-kos\">#</span><span class=\"pl-c1\">eg-share-stage</span> { <span class=\"pl-c1\">width</span><span class=\"pl-kos\">:</span><span class=\"pl-c1\">100<span class=\"pl-smi\">%</span></span>; <span class=\"pl-c1\">margin</span><span class=\"pl-kos\">:</span><span class=\"pl-c1\">8<span class=\"pl-smi\">px</span></span> <span class=\"pl-c1\">0</span>; }\n    <span class=\"pl-kos\">#</span><span class=\"pl-c1\">eg-share-loop</span> .<span class=\"pl-c1\">eg-share-map</span> { <span class=\"pl-c1\">display</span><span class=\"pl-kos\">:</span>block; <span class=\"pl-c1\">width</span><span class=\"pl-kos\">:</span><span class=\"pl-c1\">100<span class=\"pl-smi\">%</span></span>; <span class=\"pl-c1\">touch-action</span><span class=\"pl-kos\">:</span>none; }\n    <span class=\"pl-kos\">#</span><span class=\"pl-c1\">eg-share-loop</span> .<span class=\"pl-c1\">eg-share-map</span> <span class=\"pl-ent\">text</span> { <span class=\"pl-c1\">fill</span><span class=\"pl-kos\">:</span><span class=\"pl-en\">var</span>(<span class=\"pl-s1\">--foreground</span>); <span class=\"pl-c1\">font-size</span><span class=\"pl-kos\">:</span><span class=\"pl-c1\">12<span class=\"pl-smi\">px</span></span>; <span class=\"pl-c1\">font-weight</span><span class=\"pl-kos\">:</span><span class=\"pl-c1\">400</span>; }\n    <span class=\"pl-kos\">#</span><span class=\"pl-c1\">eg-share-loop</span> .<span class=\"pl-c1\">eg-share-label</span> { <span class=\"pl-c1\">paint-order</span><span class=\"pl-kos\">:</span>stroke; <span class=\"pl-c1\">stroke</span><span class=\"pl-kos\">:</span><span class=\"pl-en\">var</span>(<span class=\"pl-s1\">--background</span>); <span class=\"pl-c1\">stroke-width</span><span class=\"pl-kos\">:</span><span class=\"pl-c1\">3<span class=\"pl-smi\">px</span></span>; <span class=\"pl-c1\">stroke-linejoin</span><span class=\"pl-kos\">:</span>round; }\n  <span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">style</span><span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">script</span> <span class=\"pl-c1\">type</span>=\"<span class=\"pl-s\">application/json</span>\" <span class=\"pl-c1\">id</span>=\"<span class=\"pl-s\">eg-share-data</span>\"<span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">{</span><span class=\"pl-s\">\"route\"</span>:<span class=\"pl-kos\">{</span><span class=\"pl-s\">\"type\"</span>:<span class=\"pl-s\">\"LineString\"</span><span class=\"pl-kos\">,</span><span class=\"pl-s\">\"coordinates\"</span>:<span class=\"pl-kos\">[</span><span class=\"pl-kos\">[</span><span class=\"pl-c1\">-</span><span class=\"pl-c1\">122.467425</span><span class=\"pl-kos\">,</span><span class=\"pl-c1\">37.4997753</span><span class=\"pl-kos\">]</span> <span class=\"pl-kos\">.</span><span class=\"pl-kos\">.</span><span class=\"pl-kos\">.</span><span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">script</span> <span class=\"pl-c1\">src</span>=\"<span class=\"pl-s\">https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js</span>\"<span class=\"pl-kos\">&gt;</span><span class=\"pl-kos\">&lt;/</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span>\n  <span class=\"pl-kos\">&lt;</span><span class=\"pl-ent\">script</span><span class=\"pl-kos\">&gt;</span>\n  (() =&gt; {\n    const root=document.getElementById('eg-share-loop');</pre></div>\n\n<p>The <code>&lt;script type=\"application/json\"&gt;</code> element contains the full geometry needed to render both the running route and the map itself, using D3, which is loaded from an allow-listed CDN location described in this section of <a href=\"https://codex-tool-reference.simonw.chatgpt.site/skills/visualize\">the visualize skill</a>:</p>\n<blockquote>\n<h3 id=\"external-resources\">External resources</h3>\n<ul>\n<li>The CSP allows only <code>cdnjs.cloudflare.com</code>, <code>esm.sh</code>, <code>cdn.jsdelivr.net</code>, <code>unpkg.com</code>, <code>fonts.googleapis.com</code>, <code>fonts.gstatic.com</code>, and <code>fonts.bunny.net</code>. Other origins are blocked and fail silently.</li>\n</ul>\n</blockquote>\n    \n        <p>Tags: <a href=\"https://simonwillison.net/tags/geospatial\">geospatial</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/d3\">d3</a>, <a href=\"https://simonwillison.net/tags/openai\">openai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/chatgpt\">chatgpt</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/skills\">skills</a>, <a href=\"https://simonwillison.net/tags/gpt-6-astra\">gpt-6-astra</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Generating running routes with GPT-6 Astra and ChatGPT Work",
+    "url": "https://simonwillison.net/2026/Sep/12/astra-running-routes"
+  },
+  {
+    "analysis": {
+      "action": "存档并简评",
+      "confidence": 4,
+      "importance": 3,
+      "reason": "属于对 AI 与软件开发关系的行业评论，涉及 Coding 偏好话题，观点有启发性但非技术突破或一手研究；来源为 Simon Willison 博客引述 NYT 评论，可信度中等偏上，无原始技术链接，故重要性定为中等，适合归档参考而非优先跟进。",
+      "summary_cn": "Simon Willison 引用 Paul Ford 在《纽约时报》的观点：AI 曾让人担心开发者岗位消失，但业界逐渐意识到打造真正前沿的软件仍需人类协作与专业技艺。AI 能写出不错的代码，却也让人们轻易把别人的活干砸，这正是众多项目失败的原因之一。当人人都能编码后，反而更清楚为何许多人不该去编码。",
+      "tags": [
+        "AI Coding",
+        "开发者角色",
+        "软件工程",
+        "行业观点",
+        "LLM"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-12T18:00:21Z",
+    "raw_summary": "<blockquote cite=\"https://www.nytimes.com/2026/09/12/opinion/ai-software-coding-apps.html\"><p>For a while, I must admit, it looked as if software developer roles like mine were done for. How could we fight against tireless robots? But our industry is slowly realizing that making truly cutting-edge software still requires humans to think and work together, to maximize their skill sets and to practice their respective crafts. A.I. can write very good software, but it also makes it easy to do someone else’s job badly, which is part of why all those projects fail. Now that everyone can code, it’s become clearer why many shouldn’t.</p></blockquote>\n<p class=\"cite\">&mdash; <a href=\"https://www.nytimes.com/2026/09/12/opinion/ai-software-coding-apps.html\">Paul Ford</a>, A.I. Was Supposed to Give Us New Killer Apps. What Happened?</p>\n\n    <p>Tags: <a href=\"https://simonwillison.net/tags/paul-ford\">paul-ford</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/generative-ai\">generative-ai</a>, <a href=\"https://simonwillison.net/tags/llms\">llms</a>, <a href=\"https://simonwillison.net/tags/deep-blue\">deep-blue</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Quoting Paul Ford",
+    "url": "https://simonwillison.net/2026/Sep/12/paul-ford"
+  },
+  {
+    "analysis": {
+      "action": "可略读",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "来源为 OpenAI 官方博客，可信度高，但内容聚焦后端存储与分布式系统工程，与用户关注的 Agent、Coding、RAG、Eval、Reasoning 等方向关联较弱，属基础设施科普，对模型/应用层决策参考价值有限，故重要性偏低。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI 官方博客披露其为 ChatGPT 构建的在线存储系统 Habitat 的演进历程：从最初的 Python 库发展为全球分布式存储平台，支撑超 10 亿 ChatGPT 用户、峰值每秒 2200 万次请求。文章属架构工程系列第一篇，重点讲述大规模存储的扩展策略与工程决策，未涉及模型或 Agent 能力本身。",
+      "tags": [
+        "OpenAI",
+        "基础设施",
+        "存储架构",
+        "分布式系统",
+        "工程实践"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-11T10:00:00Z",
+    "raw_summary": "Learn how OpenAI evolved Habitat from a Python library into a globally distributed storage platform serving 1 billion ChatGPT users and 22M requests per second.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "Rapidly scaling online storage to serve over 1 billion ChatGPT users",
+    "url": "https://openai.com/index/scaling-storage-one-billion-users-part-one"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 1,
+      "reason": "来源为 GitHub 官方发布，可信度高，但内容仅是依赖版本同步的例行补丁，无功能、修复或 API 变更信息，缺乏研究价值，且与 Agent、Coding、RAG、Eval、Reasoning 等关注方向无实质关联。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/vue 3.0.282 补丁版本，核心变更仅为同步上游 ai@6.0.282 依赖。除版本号对齐外无新功能、修复说明或 API 变动，属于常规例行发布，对应用开发者无实际迁移或升级价值。",
+      "tags": [
+        "Vercel AI SDK",
+        "发布",
+        "Vue",
+        "补丁版本"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-12T01:43:14Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@6.0.282</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/vue@3.0.282",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fvue%403.0.282"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 1,
+      "reason": "官方 GitHub 发布，可信度高，但内容仅为依赖版本同步的补丁变更，无新功能、API 或行为调整，对 Agent/Coding/RAG/Reasoning 等方向无实质信息增量，不具备跟进价值。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/svelte 4.0.282 补丁版本，仅同步 ai@6.0.282 的依赖变更，无新增功能或 API 调整。该包为 Svelte 框架提供 AI SDK 集成能力，方便在 Svelte 应用中接入流式对话与工具调用。属常规版本维护，对开发者实际使用影响极小。",
+      "tags": [
+        "Vercel AI SDK",
+        "Svelte",
+        "版本发布",
+        "补丁更新"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-12T01:43:13Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>ai@6.0.282</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/svelte@4.0.282",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fsvelte%404.0.282"
+  }
+]
