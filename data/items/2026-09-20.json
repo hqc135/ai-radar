@@ -1,0 +1,244 @@
+[
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来源为 LangChain 官方博客，可信度高且有原始链接；主题聚焦 Agent 评估（Eval）与 LLM-as-Judge 对比，正好命中用户对 Agent、Eval 的偏好，官方团队实测数据对评估方案选型有直接参考价值，故建议阅读。",
+      "summary_cn": "LangChain 官方博客探讨用 Jev-as-a-Judge 替代 LLM 评委进行 Agent 评估，在准确率、可重复性、延迟和成本四个维度与 LLM 评判方式做对比，验证 System One 类模型能否为 Agent 评估提供新思路。属于评估方法论的实践性探索，对关注 Eval 与 Agent 的团队有参考价值。",
+      "tags": [
+        "Agent",
+        "Eval",
+        "LLM-as-Judge",
+        "LangChain",
+        "评测框架"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-20T00:43:49Z",
+    "raw_summary": "We tested using Jev-as-a-Judge against LLM judges on accuracy, repeatability, latency, and cost to see whether System One models could offer a new approach to agent evaluation.",
+    "related_items": [],
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Can Jev Be a Better Agent Evaluator?",
+    "url": "https://www.langchain.com/blog/jev-agent-evals-langsmith"
+  },
+  {
+    "analysis": {
+      "action": "可关注 AGENTS.md 支持这一跨工具约定的信号，其余为维护性修复，无需专门跟进。",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来源为 Anthropic 官方 GitHub Release，可信度高；内容以 bug 修复和配置项为主，其中 AGENTS.md 支持与用户关心的 Agent/Coding 方向相关，具有一定生态信号意义，但整体非重大能力升级，故重要性中等。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Claude Code 发布 v2.1.277 更新：项目无 CLAUDE.md 时改为读取 AGENTS.md（Bedrock/Vertex/Foundry 暂不支持），新增网关出口代理环境变量与上游静态 headers 配置；修复 claude -p 与 Agent SDK 内部错误后挂起无结果（现报错退出码 1）、空文本块导致的请求失败、多版本共存被登出、更新检查报错及插件重装损坏等问题。",
+      "tags": [
+        "Claude Code",
+        "Agent",
+        "Coding",
+        "AGENTS.md",
+        "工具链更新"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-18T18:06:32Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Added AGENTS.md support: in a project with no CLAUDE.md, Claude Code reads AGENTS.md instead; change it under \"Project instructions\" in <code>/config</code> (not yet on Bedrock, Vertex or Foundry)</li>\n<li>Added <code>CLAUDE_GATEWAY_PROXY_IS_EGRESS_BOUNDARY=1</code> for Claude apps gateways whose only egress is a forward proxy: every outbound request hands the proxy the hostname instead of resolving it locally</li>\n<li>Added an optional <code>headers:</code> map on Claude apps gateway upstreams, to send static headers to a proxy you run in front of a provider</li>\n<li>Added a line saying a background task's update is waiting when it finishes while a panel such as <code>/tasks</code> is open</li>\n<li>Fixed <code>claude -p</code> and Agent SDK sessions that could hang with no result after an internal error; they now report the error and exit with code 1</li>\n<li>Fixed conversations failing every request with \"text content blocks must be non-empty\" when an earlier assistant turn held an empty text block beside other content, including after <code>--resume</code></li>\n<li>Fixed being unexpectedly logged out when an older Claude Code build (for example an IDE extension's bundled CLI) runs on the same machine as the current one</li>\n<li>Fixed interactive start-up hanging or showing an error for <code>ANTHROPIC_API_KEY</code> users when <code>~/.claude.json</code> holds a malformed <code>customApiKeyResponses</code> value</li>\n<li>Fixed update checks erroring every 30 minutes, and <code>claude update</code> hanging when a minimum or maximum version is set, if a proxy returns an invalid version; a malformed <code>minimumVersion</code> is now ignored</li>\n<li>Fixed <code>claude update</code> on winget- or apk-managed installs reporting \"up to date\" when the version lookup failed</li>\n<li>Fixed <code>claude plugin install</code> sometimes failing and breaking the installed copy when reinstalling a plugin version that a session or another program was using; an unchanged copy is now left alone</li>\n<li>Fixed Grep and Glob reporting no matches when the search could not start because the system was out of processes, memory or file handles; they now return an error saying so</li>\n<li>Fixed the Write tool silently ending the turn as a declined permission when the target path is an existing directory; it now reports a clear error</li>\n<li>Fixed the Edit tool treating an escaped backslash followed by <code>uXXXX</code> text as a <code>\\uXXXX</code> escape, which could make an edit of a non-ASCII character rewrite an escaped backslash sequence instead</li>\n<li>Fixed the Edit tool reporting \"Invalid regular expression: regular expression too large\" instead of \"String not found in file\" when a very large edit containing non-ASCII text did not match the file</li>\n<li>Fixed a turn ending early with \"Path contains null bytes\" when a tool call's file path contained <code>\\u0000</code> written as an escape sequence; escaped control characters now stay as literal text</li>\n<li>Fixed background sessions (<code>claude --bg</code>) exiting when a plugin's LSP server exited or closed its stdin</li>\n<li>Fixed a crash (\"Type error\") when opening <code>/mcp</code> or <code>/plugin manage</code> with a malformed <code>claudeAiMcpEverConnected</code> value in <code>~/.claude.json</code></li>\n<li>Fixed a crash at launch when <code>~/.claude.json</code> holds a malformed <code>theme</code> value</li>\n<li>Fixed a crash (\"unrecoverable interface error\") when the prompt held text containing terminal color codes, for example a prompt recalled from history or text loaded from the external editor</li>\n<li>Fixed a crash when resuming a session whose saved history holds an assistant message stored as a plain string</li>\n<li>Fixed sessions on slow or heavily loaded machines sometimes exiting with \"Claude Code exited after an unrecoverable interface error\" when the first spinner appeared</li>\n<li>Fixed a rare case where the screen could stop updating for the rest of the session after an internal rendering error</li>\n<li>Fixed a rare case on Windows where a turn could stop with an error such as \"Out of memory\" right after Claude replied, so that reply's tool calls never ran</li>\n<li>Fixed sessions continued after <code>/clear</code> (restart, <code>--continue</code>, <code>--resume</code>) missing part of their first message when a SessionStart hook printed output, causing a full prompt-cache miss</li>\n<li>Fixed messages from other agents (such as a subagent's SendMessage) that arrived mid-turn showing up below the \"Ran N shell commands\" row instead of where they arrived</li>\n<li>Fixed the \"copied\" notice not appearing after drag-selecting text in the fullscreen <code>/resume</code> picker and other panels that cover the prompt area</li>\n<li>Fixed <code>$TMPDIR</code> expanding empty in Bash commands that run outside the sandbox while sandboxing is enabled</li>\n<li>Fixed WebFetch and WebSearch in Cowork cloud sessions not telling Claude why a request was refused, such as a used-up fetch budget or an admin policy</li>\n<li>Fixed the Claude apps gateway's telemetry relay ignoring a collector hostname or domain listed in <code>NO_PROXY</code> when a proxy is set</li>\n<li>Fixed one malformed <code>strictKnownMarketplaces</code> or <code>blockedMarketplaces</code> entry silently disabling the whole enterprise marketplace policy</li>\n<li>Fixed failed auto-updates leaving large staged downloads behind in <code>~/.cache/claude/staging</code></li>\n<li>Fixed <code>/plugin</code> not stripping terminal control characters from messages on the Installed tab, such as the error of a failed plugin update</li>\n<li>Fixed <code>/plugin</code> → Installed and <code>/skills</code> crashing when a skill or legacy command is named like a built-in Object property such as <code>constructor</code> or <code>toString</code></li>\n<li>Fixed <code>/plugin</code> closing with no message when every install in a multi-select failed</li>\n<li>Fixed uninstalled plugins reappearing as \"failed to load\" rows in <code>/plugin</code> Installed, and Remove not clearing such a row</li>\n<li>Fixed plugins from the official marketplace being recorded without their commit in <code>installed_plugins.json</code>, and <code>installed_plugins.json</code> keeping the old commit after updating a pinned-commit plugin</li>\n<li>Fixed plugin reload previews keeping every previewed copy of a plugin archive unpacked until exit, and overwriting the cached <code>--plugin-url</code> archive a reload falls back to when its download fails</li>\n<li>Fixed Remote Control session bookkeeping failing when <code>~/.claude.json</code> holds a malformed placeholder record</li>\n<li>Fixed the error after a revoked claude.ai login blaming an expired Anthropic profile; it now leads with <code>/login</code></li>\n<li>Fixed typed or pasted text occasionally coming out scrambled in the <code>claude agents</code> dispatch input during key repeat or very fast input</li>\n<li>Fixed a crash (\"unrecoverable interface error\") when resuming a session whose saved transcript contains a stop hook summary without a well-formed hook list</li>\n<li>Fixed Enter on a selected agent panel row doing nothing when <code>keybindings.json</code> rebinds Enter in the Chat context, for example to <code>chat:queueSubmit</code></li>\n<li>Fixed PDF page reads on Windows failing when the working folder's path is long (about 120 characters or more)</li>\n<li>Fixed a headless resume (<code>claude -p --resume</code>, the SDK, a VS Code extension window reload) starting the session's cost and usage totals at zero; headless sessions now save their totals at exit</li>\n<li>Fixed project skills from the main repository not loading in <code>--worktree</code> sessions when <code>.claude/skills</code> is untracked</li>\n<li>Fixed a <code>sandbox.excludedCommands</code> glob exempting an entire compound Bash command from the sandbox when only one part matched; every part must now match</li>\n<li>Fixed resumed subagents and teammates re-rendering the MCP tool definitions they had loaded, which broke prompt caching for that agent</li>\n<li>Fixed rate-limited artifact publishes telling Claude to stop retrying; Claude is now told nothing was published and when to send the same publish again</li>\n<li>Fixed attachments recorded earlier in a conversation being re-rendered after a resume or relaunch, which dropped extended thinking and missed the prompt cache</li>\n<li>Fixed Console sign-in showing only \"Request failed with status code 400\" when the server refuses to create an API key; it now shows the server's message</li>\n<li>Fixed messages typed while Claude is still working sometimes being ignored by the model</li>\n<li>Improved session start-up for SDK and headless (<code>-p</code>) use: the first turn no longer waits on the per-directory CLAUDE.md lookup</li>\n<li>Improved the Claude apps gateway's loopback error messages to name <code>CLAUDE_GATEWAY_ALLOW_LOOPBACK</code></li>\n<li>Improved <code>/plugin</code> Installed: an MCP server listed apart from its plugin now shows which plugin it belongs to</li>\n<li>Improved <code>claude plugin install</code> on an already-installed plugin: it now says when the marketplace offers a newer version and names the <code>claude plugin update</code> command</li>\n<li>Improved the startup notice overflow line under the logo: it now reads \"N more notices hidden\" instead of \"+N more · /status\"</li>\n<li>Improved prompt handling: invisible Unicode formatting and tag characters in a prompt are removed and the cleaned prompt is shown for review before it is sent</li>\n<li>Improved <code>/ultrareview</code> when there's nothing to review: messages say which case you're in, offer a command that reviews your latest commit, and a new repository's first commit is reviewed in full</li>\n<li>Improved artifact link handling so Claude reads claude.ai artifact links with the Artifact tool instead of WebFetch when that tool is available</li>\n<li>Improved the dangerous-rm permission prompt to name the flagged rm command and suggest a <code>${VAR:?}</code> guard, so headless runs can recover</li>\n<li>Improved the Artifact tool's permission prompts: shorter sentences, pages and artifacts named by title or file name, and links listed after the text</li>\n<li>Changed Fable to always appear in <code>/model</code> on the Anthropic API; it is greyed out only when your organization's settings disable it</li>\n<li>Changed the Bash sandbox instructions on Bedrock, Vertex and Foundry to the first-party wording, which frames the sandbox as the boundary of what the task was given</li>\n<li>Changed <code>/ultrareview</code> in non-interactive sessions to refuse when the repository has no base branch or shared history</li>\n<li>Changed subagent results to reach the main agent under a header marking them as subagent output, with the result indented, so text in a subagent's result cannot pass as the session's own instructions</li>\n<li>Changed workflow scripts' computed <code>agent()</code> prompts on Bedrock, Vertex and Foundry to reach the subagent framed as script-authored text, so the safety classifier does not read them as the user</li>\n<li>Removed the background Haiku auto-title request from <code>claude -p</code> runs launched outside an SDK or IDE</li>\n<li>Removed the deprecated TaskOutput tool; Claude reads a background task's output file with Read instead, and the <code>taskOutputMaxChars</code> setting and <code>TASK_MAX_OUTPUT_LENGTH</code> no longer have any effect</li>\n<li>[VSCode] Added a Sign out row to the panel menu, with <code>/logout</code> in the typed command menu</li>\n<li>[VSCode] Added background shells and other running tasks to the agent map, each with a Stop, and a typed <code>/tasks</code> that opens it</li>\n<li>[VSCode] Added a Copy response button on responses and a typed <code>/copy</code></li>\n<li>[VSCode] Added a one-time notice when inactive sessions are archived automatically, and an \"Unarchive all\" action on the Archived sessions group</li>\n<li>[VSCode] Added the session's cost and token usage to the Account &amp; usage dialog and the session manager where plan limits do not apply (Vertex, Bedrock, Foundry, API key)</li>\n<li>[VSCode] Fixed the \"General config\" menu row showing <code>/config</code> usage text instead of opening settings, and made typed <code>/mcp</code>, <code>/hooks</code>, <code>/memory</code>, <code>/rewind</code> and similar commands open their dialogs</li>\n<li>[VSCode] Fixed the effort slider's level not persisting into later sessions on a model that already had a level saved with <code>/effort</code></li>\n<li>[VSCode] Fixed Auto missing from the mode picker for conversations opened in an already-used panel when the saved model setting is a differently-cased alias such as \"Sonnet\"</li>\n<li>[VSCode] Fixed <code>/fast</code> not saving fast mode as the default, so it was lost when the extension relaunched Claude Code</li>\n<li>[Claude Code on the web] Added Personal and Organization sections to the environment picker on Team and Enterprise plans, and admins can now share a personal environment with the organization</li>\n<li>[Claude Code on the web] Changed organization environments to open as a read-only summary from the Code tab on Team and Enterprise plans, with editing under Admin settings → Cloud environments</li>\n<li>[Claude Code on the web] Fixed a cloud environment saved with Custom network access and no domains silently reverting to Trusted; the dialog now asks for at least one domain</li>\n<li>[Claude Code on the web] Changed the admin Claude Code setting labeled \"Web\" to \"Cloud sessions\" and removed the redundant read-only Mobile row beneath it</li>\n<li>[Claude Tag] Fixed routines created in a Slack channel on an Enterprise Grid org-wide install failing to read other public channels in their workspace when they ran</li>\n<li>[Claude Tag] Fixed the \"Learn more\" links on credential presets in Claude Tag access bundles to open each vendor's credential-setup page instead of a generic API reference</li>\n<li>[Claude Tag] Changed the Pylon credential preset in Claude Tag access bundles so admins can point it at Pylon's EU host</li>\n<li>[Claude Tag] Fixed Google Cloud credential forms in Claude Tag access bundles: a refused key file now says why, the website and scopes stay locked, and a rejected rotation keeps the pasted key</li>\n<li>[Claude Tag] Fixed the network events log in Claude Tag admin settings showing no response status for requests through connections that use AWS signing, client certificates or a custom CA</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.275",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.275"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.277",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.277"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来源为 LangChain 官方博客，可信度高；内容涉及 Agent loop 与结构化决策，契合 Agent 偏好领域。但属产品介绍性文章，未涉及新模型突破或开源代码，重要性中等，建议阅读以了解 Jev 在 Agent harness 中的集成方式。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "LangChain 官方博客介绍 TypeSafe AI 的 System One 模型 Jev，该模型用于在 agent loop 中做快速、结构化的决策。文章解释其定位与用途，并演示如何在 LangChain 中集成 Jev 构建 agent harness，属于官方产品级技术说明，对 Agent 架构设计有参考价值。",
+      "tags": [
+        "Agent",
+        "LangChain",
+        "Jev",
+        "TypeSafe AI",
+        "System One",
+        "Agent Loop",
+        "工具调用"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-19T02:12:03Z",
+    "raw_summary": "What is Jev? Learn how TypeSafe AI’s System One model makes fast, structured decisions, where it fits in the agent loop, and how to use Jev with LangChain",
+    "related_items": [],
+    "source": "LangChain Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "What Is Jev? A Guide to TypeSafe AI’s System One Model",
+    "url": "https://www.langchain.com/blog/building-a-harness-with-jev"
+  },
+  {
+    "analysis": {
+      "action": "关注并在升级时检查 MCP connector_id 废弃带来的兼容性改动",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来源为官方 GitHub Release，可信度高；涉及 webhook 管理与 MCP 接口变更，与 Agent 工具集成及偏好领域相关，但属常规版本迭代，非重大架构更新，故重要性中等。",
+      "summary_cn": "OpenAI Python SDK 发布 v3.16.0，新增 webhook 端点管理 API，用于程序化注册与配置 webhook；同时废弃 MCP connector_id 字段，标志 MCP 集成接口调整。属常规 SDK 迭代，对使用官方 SDK 构建 Agent、工具调用与事件回调的开发者有直接影响，需关注 MCP 相关代码的兼容性升级。",
+      "tags": [
+        "OpenAI",
+        "SDK",
+        "MCP",
+        "Agent",
+        "Webhook",
+        "工具集成"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-18T14:52:49Z",
+    "raw_summary": "<h2><a href=\"https://github.com/openai/openai-python/compare/v3.15.0...v3.16.0\">3.16.0</a> (2026-09-18)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>api:</strong> add webhook endpoint management (<a href=\"https://github.com/openai/openai-python/issues/3892\">#3892</a>) (<a href=\"https://github.com/openai/openai-python/commit/9a11f6e874292230633073fb64ea6202ad22a1df\">9a11f6e</a>)</li>\n</ul>\n<h3>Chores</h3>\n<ul>\n<li><strong>api:</strong> deprecate MCP connector_id (<a href=\"https://github.com/openai/openai-python/issues/3894\">#3894</a>) (<a href=\"https://github.com/openai/openai-python/commit/1ccaf07fb9a4d1a2be9d97c77604ce75214a9940\">1ccaf07</a>)</li>\n</ul>",
+    "related_items": [],
+    "source": "OpenAI Python SDK Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v3.16.0",
+    "url": "https://github.com/openai/openai-python/releases/tag/v3.16.0"
+  },
+  {
+    "analysis": {
+      "action": "记录归档",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "来源为官方 GitHub Release，可信度高，但属于 SDK 小版本例行功能与修复更新，未涉及 Agent、Coding、RAG、Eval、Reasoning 等核心能力突破，对行业影响有限，仅需归档跟踪。",
+      "summary_cn": "OpenAI 官方 Node SDK 发布 v7.20.0，新增环境变量金库凭证、外部存储配置管理、安全用例检索、安全警告与停用 webhook 事件，以及来电事件的 SIP 媒体安全支持；同时修复旧版 GET 调用丢失请求选项的问题，属于常规 API 能力扩展与修复更新。",
+      "tags": [
+        "OpenAI",
+        "SDK",
+        "Node.js",
+        "API更新",
+        "安全"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-09-19T18:24:46Z",
+    "raw_summary": "<h2><a href=\"https://github.com/openai/openai-node/compare/v7.19.0...v7.20.0\">7.20.0</a> (2026-09-19)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>api:</strong> add environment-variable vault credentials (<a href=\"https://github.com/openai/openai-node/issues/2768\">#2768</a>) (<a href=\"https://github.com/openai/openai-node/commit/fbccf120361a4fd61be8b7e491d9b1cdb920fb45\">fbccf12</a>)</li>\n<li><strong>api:</strong> add external storage configuration management (<a href=\"https://github.com/openai/openai-node/issues/2773\">#2773</a>) (<a href=\"https://github.com/openai/openai-node/commit/7e89b629067e22901a1ad3da4c134442f118da7f\">7e89b62</a>)</li>\n<li><strong>api:</strong> add safety case retrieval (<a href=\"https://github.com/openai/openai-node/issues/2774\">#2774</a>) (<a href=\"https://github.com/openai/openai-node/commit/d357e647e79e82a871417cab8d6529287e3b4a76\">d357e64</a>)</li>\n<li><strong>api:</strong> add safety warning and deactivation webhook events (<a href=\"https://github.com/openai/openai-node/issues/2772\">#2772</a>) (<a href=\"https://github.com/openai/openai-node/commit/91c7fb534132fce3a9c8ca3650e31401629be7c0\">91c7fb5</a>)</li>\n<li><strong>api:</strong> add SIP media security to incoming call events (<a href=\"https://github.com/openai/openai-node/issues/2770\">#2770</a>) (<a href=\"https://github.com/openai/openai-node/commit/db9a57bd901a9a0f50002fbe5ee5b79e7b220c73\">db9a57b</a>)</li>\n</ul>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>api:</strong> Preserve request options in legacy GET calls (<a href=\"https://github.com/openai/openai-node/issues/2771\">#2771</a>) (<a href=\"https://github.com/openai/openai-node/commit/541eee3536eb39c24b324a68dc451752c710c2ee\">541eee3</a>)</li>\n</ul>",
+    "related_items": [],
+    "source": "OpenAI Node SDK Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v7.20.0",
+    "url": "https://github.com/openai/openai-node/releases/tag/v7.20.0"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 1,
+      "reason": "仅依赖升级的补丁版本，无功能变更或技术价值，来源虽为官方 GitHub 但内容为例行维护，不涉及 Agent/Coding/RAG/Eval/Reasoning 等用户关注方向。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/xai 5.0.4 补丁版本，仅包含依赖项更新，未引入新功能或修复。涉及 provider-utils 升级至 5.0.45，属于例行维护性发布，对使用 xAI 提供商的开发者影响有限。",
+      "tags": [
+        "Vercel AI SDK",
+        "xAI",
+        "依赖更新",
+        "版本发布"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-18T22:37:15Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/2973485c4cd769857758a495cabcdd8ac56f1361\"><tt>2973485</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/a4db5ea39aa659fb9ec1749ddb965cbed32a1f3b\"><tt>a4db5ea</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/2937ea2a3088fd6cf09edbfb8b0c036d1b2755c6\"><tt>2937ea2</tt></a>]\n<ul>\n<li>@ai-sdk/provider-utils@5.0.45</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/xai@5.0.4",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%405.0.4"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 1,
+      "reason": "来自 GitHub 官方发布，可信度满级，但内容仅为依赖版本号的补丁同步，无功能变更、无技术细节，缺乏对 Agent/Coding/RAG 等方向的实质信息增量，属噪声级更新，无需跟进。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/workflow-harness 1.0.117 补丁版本，仅同步升级依赖 @ai-sdk/harness 至 1.0.117，无新增功能、API 变更或修复说明。属于常规版本迭代记录，对 Agent 与工作流开发者的实际使用影响极小，可忽略。",
+      "tags": [
+        "Vercel AI SDK",
+        "workflow-harness",
+        "版本发布",
+        "补丁更新",
+        "Agent"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-09-18T22:37:14Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>@ai-sdk/harness@1.0.117</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow-harness@1.0.117",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow-harness%401.0.117"
+  }
+]
