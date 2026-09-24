@@ -1,7 +1,7 @@
 {
   "last_quality": {
     "content_health": "ok",
-    "date": "2026-09-23",
+    "date": "2026-09-24",
     "needs_review": false,
     "reasons": [
       "信息源抓取异常：失败 0 个，警告 1 个。"
@@ -13,15 +13,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -132,6 +123,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -150,15 +150,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-09-10",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 1,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-09-11",
           "effective_items": 1,
           "failed": 0,
@@ -268,6 +259,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 1,
           "failed": 0,
           "must_read_items": 1,
@@ -285,15 +285,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-09-11",
           "effective_items": 0,
           "failed": 0,
@@ -403,6 +394,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -420,15 +420,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-09-11",
           "effective_items": 0,
           "failed": 0,
@@ -544,6 +535,15 @@
           "noise_items": 1,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 2,
@@ -551,18 +551,9 @@
       "output_items_7d": 2
     },
     "Cursor Changelog": {
-      "effective_items_7d": 0,
+      "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 1,
@@ -679,25 +670,25 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 0
+      "output_items_7d": 1
     },
     "GitHub Trending Python via RSSHub": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -808,6 +799,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -825,15 +825,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-09-11",
           "effective_items": 0,
           "failed": 0,
@@ -949,6 +940,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -956,18 +956,9 @@
       "output_items_7d": 0
     },
     "Google AI Blog": {
-      "effective_items_7d": 1,
+      "effective_items_7d": 2,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 2,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 2,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 1,
@@ -1084,26 +1075,26 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 3
+      "output_items_7d": 4
     },
     "Google Cloud AI and Machine Learning Blog": {
       "current_adjusted_daily_limit": 6,
-      "effective_items_7d": 3,
+      "effective_items_7d": 1,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 2,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -1220,25 +1211,25 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
-        }
-      ],
-      "noise_items_7d": 0,
-      "noise_ratio_7d": 0.0,
-      "output_items_7d": 3
-    },
-    "Google DeepMind Blog": {
-      "effective_items_7d": 0,
-      "failures_7d": 0,
-      "history": [
+        },
         {
-          "date": "2026-09-10",
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
-        },
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 1
+    },
+    "Google DeepMind Blog": {
+      "effective_items_7d": 2,
+      "failures_7d": 0,
+      "history": [
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -1355,25 +1346,25 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 0
+      "output_items_7d": 2
     },
     "Google Research Blog": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -1484,6 +1475,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -1502,15 +1502,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-09-10",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
-        {
           "date": "2026-09-11",
           "effective_items": 0,
           "failed": 0,
@@ -1626,6 +1617,15 @@
           "noise_items": 0,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1637,15 +1637,6 @@
       "effective_items_7d": 7,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 1,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 1,
@@ -1762,6 +1753,15 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -1772,15 +1772,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 1
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -1897,6 +1888,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 1
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 1
         }
       ],
       "noise_items_7d": 0,
@@ -1905,18 +1905,9 @@
     },
     "LangChain Releases": {
       "current_adjusted_daily_limit": 2,
-      "effective_items_7d": 4,
+      "effective_items_7d": 3,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 1,
@@ -2033,26 +2024,26 @@
           "noise_items": 1,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 2,
+          "output_items": 2,
+          "warning": 0
         }
       ],
-      "noise_items_7d": 5,
-      "noise_ratio_7d": 0.556,
-      "output_items_7d": 9
+      "noise_items_7d": 7,
+      "noise_ratio_7d": 0.7,
+      "output_items_7d": 10
     },
     "Latent Space": {
       "current_adjusted_daily_limit": 5,
       "effective_items_7d": 7,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -2163,6 +2154,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 2,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 2,
           "failed": 0,
           "must_read_items": 0,
@@ -2180,15 +2180,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-09-11",
           "effective_items": 0,
           "failed": 0,
@@ -2298,6 +2289,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2315,15 +2315,6 @@
       "failures_7d": 0,
       "history": [
         {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
-        {
           "date": "2026-09-11",
           "effective_items": 0,
           "failed": 0,
@@ -2439,6 +2430,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 1,
@@ -2446,18 +2446,9 @@
       "output_items_7d": 1
     },
     "Microsoft Research": {
-      "effective_items_7d": 1,
+      "effective_items_7d": 2,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -2574,25 +2565,25 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 1
+      "output_items_7d": 2
     },
     "OpenAI Agents Python Releases": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 1,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -2703,6 +2694,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -2717,18 +2717,9 @@
     },
     "OpenAI News": {
       "current_adjusted_daily_limit": 9,
-      "effective_items_7d": 16,
+      "effective_items_7d": 20,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 3,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 3,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 6,
@@ -2845,26 +2836,26 @@
           "noise_items": 0,
           "output_items": 4,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 9,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 9,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 17
+      "output_items_7d": 21
     },
     "OpenAI Node SDK Releases": {
       "current_adjusted_daily_limit": 2,
       "effective_items_7d": 4,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 1,
@@ -2975,6 +2966,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 1,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 1,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 1,
           "failed": 0,
           "must_read_items": 0,
@@ -2989,18 +2989,9 @@
     },
     "OpenAI Python SDK Releases": {
       "current_adjusted_daily_limit": 2,
-      "effective_items_7d": 3,
+      "effective_items_7d": 4,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 1,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 1,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 1,
@@ -3117,26 +3108,26 @@
           "noise_items": 0,
           "output_items": 1,
           "warning": 0
-        }
-      ],
-      "noise_items_7d": 2,
-      "noise_ratio_7d": 0.4,
-      "output_items_7d": 5
-    },
-    "Simon Willison AI": {
-      "current_adjusted_daily_limit": 5,
-      "effective_items_7d": 11,
-      "failures_7d": 0,
-      "history": [
+        },
         {
-          "date": "2026-09-10",
-          "effective_items": 2,
+          "date": "2026-09-24",
+          "effective_items": 1,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
-          "output_items": 2,
+          "output_items": 1,
           "warning": 0
-        },
+        }
+      ],
+      "noise_items_7d": 2,
+      "noise_ratio_7d": 0.333,
+      "output_items_7d": 6
+    },
+    "Simon Willison AI": {
+      "current_adjusted_daily_limit": 5,
+      "effective_items_7d": 9,
+      "failures_7d": 0,
+      "history": [
         {
           "date": "2026-09-11",
           "effective_items": 2,
@@ -3253,25 +3244,25 @@
           "noise_items": 0,
           "output_items": 3,
           "warning": 0
-        }
-      ],
-      "noise_items_7d": 0,
-      "noise_ratio_7d": 0.0,
-      "output_items_7d": 12
-    },
-    "The Gradient": {
-      "effective_items_7d": 0,
-      "failures_7d": 0,
-      "history": [
+        },
         {
-          "date": "2026-09-10",
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
-        },
+        }
+      ],
+      "noise_items_7d": 0,
+      "noise_ratio_7d": 0.0,
+      "output_items_7d": 10
+    },
+    "The Gradient": {
+      "effective_items_7d": 0,
+      "failures_7d": 0,
+      "history": [
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -3388,6 +3379,15 @@
           "noise_items": 0,
           "output_items": 0,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -3396,18 +3396,9 @@
     },
     "Vercel AI SDK Releases": {
       "current_adjusted_daily_limit": 2,
-      "effective_items_7d": 1,
+      "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 2,
-          "output_items": 2,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -3524,10 +3515,19 @@
           "noise_items": 2,
           "output_items": 2,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 1,
+          "output_items": 1,
+          "warning": 0
         }
       ],
-      "noise_items_7d": 12,
-      "noise_ratio_7d": 0.923,
+      "noise_items_7d": 13,
+      "noise_ratio_7d": 1.0,
       "output_items_7d": 13
     },
     "Vercel Changelog": {
@@ -3535,15 +3535,6 @@
       "effective_items_7d": 21,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 1,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 6,
@@ -3660,25 +3651,25 @@
           "noise_items": 0,
           "output_items": 3,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 2,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 3,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
       "noise_ratio_7d": 0.0,
-      "output_items_7d": 24
+      "output_items_7d": 23
     },
     "Windsurf Changelog": {
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -3789,6 +3780,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
@@ -3806,15 +3806,6 @@
       "effective_items_7d": 30,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 5,
-          "failed": 0,
-          "must_read_items": 3,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 6,
@@ -3931,6 +3922,15 @@
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 6,
+          "failed": 0,
+          "must_read_items": 5,
+          "noise_items": 0,
+          "output_items": 6,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -3942,15 +3942,6 @@
       "effective_items_7d": 27,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 6,
-          "failed": 0,
-          "must_read_items": 4,
-          "noise_items": 0,
-          "output_items": 6,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 5,
@@ -4067,6 +4058,15 @@
           "noise_items": 0,
           "output_items": 6,
           "warning": 0
+        },
+        {
+          "date": "2026-09-24",
+          "effective_items": 6,
+          "failed": 0,
+          "must_read_items": 1,
+          "noise_items": 0,
+          "output_items": 6,
+          "warning": 0
         }
       ],
       "noise_items_7d": 0,
@@ -4078,15 +4078,6 @@
       "effective_items_7d": 0,
       "failures_7d": 0,
       "history": [
-        {
-          "date": "2026-09-10",
-          "effective_items": 0,
-          "failed": 0,
-          "must_read_items": 0,
-          "noise_items": 0,
-          "output_items": 0,
-          "warning": 0
-        },
         {
           "date": "2026-09-11",
           "effective_items": 0,
@@ -4197,6 +4188,15 @@
         },
         {
           "date": "2026-09-23",
+          "effective_items": 0,
+          "failed": 0,
+          "must_read_items": 0,
+          "noise_items": 0,
+          "output_items": 0,
+          "warning": 0
+        },
+        {
+          "date": "2026-09-24",
           "effective_items": 0,
           "failed": 0,
           "must_read_items": 0,
