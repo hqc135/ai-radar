@@ -1,0 +1,238 @@
+[
+  {
+    "analysis": {
+      "action": "关注并升级至最新版本，重点核查权限规则绕过修复与 agent.spawn 新能力",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub Release，一手来源可信度高；属 Coding Agent 工具链核心更新，修复多项沙箱权限绕过安全隐患，并新增多 agent 协作接口，对 Agent/Coding 方向开发者有直接参考价值。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic 发布 Claude Code v2.1.289，主要修复插件系统与权限规则问题：包括 Bash 拒绝/询问规则在沙箱自动放行下的绕过风险、符号链接文件读取权限失效、复合命令嵌套规则失效等安全相关缺陷，并修复插件热重载、终端冻结、VSCode 登录状态等问题。新增 agent.spawn 及插件 agent 空闲/等待状态。",
+      "tags": [
+        "Claude Code",
+        "AI Coding",
+        "Agent",
+        "权限控制",
+        "插件系统",
+        "发布日志"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-03T23:07:17Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Fixed a deny or ask rule on a nested part of a compound shell command not holding over a user-installed mod's approval on managed machines</li>\n<li>Fixed the terminal freezing on short code blocks with many unclosed <code>&lt;script&gt;</code> tags or deeply nested <code>${</code> substitutions</li>\n<li>Fixed <code>Read</code> deny rules not applying to files @-mentioned, changed, or selected in the IDE through a symlink</li>\n<li>[VSCode] Reverted a 2.1.288 change to <code>claude auth status</code> that may have made sign-outs more frequent</li>\n<li>Improved how quickly large files open in a plugin code pane by laying the highlighted view out once at its final width</li>\n<li>Fixed <code>plugin list</code>, <code>plugin eval</code> and <code>plugin update</code> showing a stale copy of a plugin installed from a local folder marketplace, and hot reload for a symlinked <code>--plugin-dir</code></li>\n<li>Fixed installed mods not loading in the first session after an upgrade</li>\n<li>Fixed a plugin's rows above the prompt showing a stale row while the Background tasks dialog was open in fullscreen</li>\n<li>Fixed plugin panes drawing nothing when a link used a localhost address, an <code>@</code> in its path, an uppercase host or a <code>file:</code> path</li>\n<li>Fixed a user-installed plugin being able to rewrite the descriptions of an organization-managed MCP server's sign-in tools</li>\n<li>Fixed a freeze or forced quit at launch when a plugin drew a Box with a border style the terminal does not know</li>\n<li>Fixed supervised and background sessions ending when a plugin's on-screen handler threw asynchronously</li>\n<li>Fixed sessions ending with an interface error when a plugin region with no height kept growing</li>\n<li>Fixed Bash deny and ask rules missing a command behind an environment variable prefix with an expanded value (e.g. <code>TZ=\"$HOME\" rm -rf build</code>) when the sandbox auto-allows commands</li>\n<li>Fixed a Bash deny or ask rule being skipped under sandbox auto-allow when a bare variable assignment came before the command</li>\n<li>Fixed <code>claude plugin validate</code> skipping the plugin when the folder also holds a marketplace manifest</li>\n<li>Added <code>agent.spawn</code> for teammates, one agent id across plugin hook events, and idle and waiting states in <code>$.agent.list()</code></li>\n<li>Fixed sessions ending with \"unrecoverable interface error\" when a value a mod's <code>ui.render</code> hook wrote made a row throw while drawn; the engine now draws its own row instead</li>\n<li>Fixed text with a tab, a stray escape and a C1 control, or a short text with a tab and CRLF line endings, drawing over the rows below it</li>\n<li>Fixed right-aligned content in a mod's pane or band drawing under the close mark or <code>[-]</code>, which now also keep one column in from the terminal's edge</li>\n<li>Fixed a mod's <code>Client</code> that fails while drawn taking down everything the mod drew around it; it now fails alone and raises <code>ui.fault</code></li>\n<li>Fixed <code>claude plugin validate</code> failing an Anthropic marketplace's own plugin and listing a clean <code>plugin.json</code> in <code>--json</code></li>\n<li>Fixed a mod's band that fails to draw briefly telling the cards under it to step aside</li>\n<li>Fixed a failed plugin component showing <code>Error</code> or nothing as its reason when the failure carried no message</li>\n<li>Improved the line a mod's author sees when its band or pane fails to draw: it names the mod and says nothing was drawn</li>\n<li>Fixed published artifact pages freezing or crashing the reader's browser tab on short code blocks with many unclosed <code>&lt;script&gt;</code> tags</li>\n<li>Fixed a mod's Client region staying failed for the whole session after the terminal threw while drawing it</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.288",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.288"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.289",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.289"
+  },
+  {
+    "analysis": {
+      "action": "关注并在产品/Agent 部署中落实默认硬预算上限机制，跟踪 AWS 与 GCP 该功能的正式发布。",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "来源为 Simon Willison 官方博客，可信度高；主题贴合 Agent 与 Coding 场景的实际成本风险，具前瞻性与落地价值，属官方博客中可靠信号。",
+      "summary_cn": "Simon Willison 呼吁按量付费 API 与服务应默认设置“硬性预算上限”，即花费达阈值后直接报错停机，而非仅发警告邮件。他认为编码与个人 Agent 降低了生成付费服务的门槛，容易导致失控账单；AWS 与 Google Cloud 已于近期推出类似支出上限功能，但仍在逐步开放，建议将其设为默认并允许用户显式选择关闭。",
+      "tags": [
+        "Agent",
+        "成本控制",
+        "算力预算",
+        "云服务",
+        "产品设计"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "tool",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-03T23:34:02Z",
+    "raw_summary": "<p>Here's a product feature which the world is going to need a whole lot more of over the coming months and years: <strong>default hard budget caps</strong>. I'm talking about the feature of pay-by-usage services and APIs that lets you say \"after $X/month, cut this thing off and return errors\". These need to be <strong>hard</strong> limits. Soft caps, \"after $X/month, send me a warning email\", will not cut it.</p>\n<p>Coding agents, and personal agents (coding agents wrapped in a less threatening UI), greatly reduce the friction of spinning up code that can do useful things. Sometimes those things cost money - calls to paid APIs, or hosted web applications, or systems that can bill for additional storage and compute.</p>\n<p>Nobody wants to wake up to an email sent at midnight warning about a budget limit and find that, while they slept, their rogue service had consumed several hundred (or several thousand) more dollars of usage.</p>\n<p>An argument against this is that businesses don't want their hosted applications to start throwing errors because some budget was exceeded. I expect that most businesses and individuals would prefer errors to a surprise $10,000+ bill.</p>\n<p>I think hard budget caps need to be the default. If someone wants to live dangerously they should be able to do that, but it needs to be on an opt-in basis. Have a nice, clear checkbox somewhere prominent:</p>\n<blockquote>\n<p><input disabled=\"disabled\" type=\"checkbox\" /> Remove the budget cap. My application will not be shut down if I exceed the configured budget limit, and I will be responsible for subsequent charges.</p>\n</blockquote>\n<p>The service I most want to see this from is AWS. I've heard plenty of stories from people who refuse to use AWS for personal projects out of (justified) fear that a runaway service might bankrupt them. I've also heard stories from people who <em>didn't</em> anticipate this and ended up seriously burned.</p>\n<p>... and it turns out AWS finally launched spending limits a few weeks ago! From their announcement <a href=\"https://aws.amazon.com/about-aws/whats-new/2026/09/New-AWS-Builder-Experience/\">New AWS experience helps builders get started and ship faster</a> on 16th September:</p>\n<blockquote>\n<p>When you're ready to upgrade to a paid plan, you can set a monthly spend limit for your project based on your usage patterns so that you stay within your budget. If a project's usage reaches its spend limit, your project is paused for that month.</p>\n</blockquote>\n<p>See also <a href=\"https://docs.aws.amazon.com/accounts/latest/reference/create-spend-limit.html\">Create a spend limit in AWS Settings</a>, though that page warns that \"We're currently releasing our new experience to a limited number of customers.\" Here's hoping that hits general availability for existing accounts soon.</p>\n<p>Google Cloud <a href=\"https://cloud.google.com/blog/topics/cost-management/new-early-anomalies-and-spend-caps-on-google-cloud-budgets\">launched a similar feature</a> in July, called Spend Caps, which lets you \"set a monthly financial cap on specific services within a project\". Looks like this is becoming a trend!</p>\n<p>In an ideal world, our agents could help with this. It would be great if agents started biasing towards recommending providers with hard budget caps, and warning new and inexperienced builders against deploying applications using uncapped services that might get them into trouble.</p>\n    \n        <p>Tags: <a href=\"https://simonwillison.net/tags/amazon-web-services\">amazon-web-services</a>, <a href=\"https://simonwillison.net/tags/ai\">ai</a>, <a href=\"https://simonwillison.net/tags/coding-agents\">coding-agents</a></p>",
+    "related_items": [],
+    "source": "Simon Willison AI",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "We're going to need default hard budget caps on pretty much everything",
+    "url": "https://simonwillison.net/2026/Oct/3/default-hard-budget-caps"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 4,
+      "importance": 4,
+      "reason": "来源为Hugging Face官方博客（tier 2，可信度较高），主题为Agent执行结果验证与Eval，命中用户偏好；涉及Agent可靠性与可观测性这一核心工程问题，值得深入阅读。",
+      "summary_cn": "Hugging Face官方博客转载微软文章，讨论AI Agent声称任务已完成、但底层数据库实际未变更的可靠性问题。文章指出Agent的自我报告与真实系统状态之间存在鸿沟，需引入外部验证与可观测手段来校验执行结果，对Agent工程化与Eval评测具有参考价值。",
+      "tags": [
+        "Agent",
+        "Eval",
+        "Reliability",
+        "Observability"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-03T22:56:48Z",
+    "raw_summary": "",
+    "related_items": [],
+    "source": "Hugging Face Blog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "The Agent Said It Was Done. The Database Disagreed.",
+    "url": "https://huggingface.co/blog/microsoft/thinkingbox"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub Release，可信度高，但仅为补丁级依赖升级，无功能或行为变更，对 Agent、Coding、RAG、Eval、Reasoning 等用户关注方向无实质影响，不具备跟踪或报道价值。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/vue 4.0.127 补丁版本，仅包含依赖更新，将底层 ai 包同步至 7.0.127。无新增 API 或功能变更，属常规维护性发版，对使用 Vue 集成 AI SDK 的开发者无破坏性影响。",
+      "tags": [
+        "Vercel AI SDK",
+        "Vue",
+        "版本发布",
+        "依赖更新"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-10-01T19:11:02Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/158a718734dc18686b04bc9c8337fd279c36eb70\"><tt>158a718</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/bb8d33e0f72fa6f903cd62c1b96aa29d904a13c2\"><tt>bb8d33e</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/284dc11c56f2db50b32be6784df36b19d5421d83\"><tt>284dc11</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/ba8afe9eedd6ecf6118487ae4b11ca97e07b8cb8\"><tt>ba8afe9</tt></a>]\n<ul>\n<li>ai@7.0.127</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/vue@4.0.127",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fvue%404.0.127"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 1,
+      "reason": "官方 GitHub Release，可信度高，但内容仅为依赖版本同步的例行补丁，无功能、API 或行为变化，对 Agent/Coding/RAG 等方向无实质技术价值，不值得关注。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/tui 1.0.128 补丁版本，仅更新了若干依赖项，同步升级 ai 包至 7.0.127，无新增功能或行为变更。属于例行维护性发布，对使用该 SDK 构建终端 UI（TUI）Agent 应用的开发者影响有限，通常无需立即行动。",
+      "tags": [
+        "Vercel AI SDK",
+        "TypeScript",
+        "依赖更新",
+        "补丁发布"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-10-01T19:10:59Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/158a718734dc18686b04bc9c8337fd279c36eb70\"><tt>158a718</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/bb8d33e0f72fa6f903cd62c1b96aa29d904a13c2\"><tt>bb8d33e</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/284dc11c56f2db50b32be6784df36b19d5421d83\"><tt>284dc11</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/ba8afe9eedd6ecf6118487ae4b11ca97e07b8cb8\"><tt>ba8afe9</tt></a>]\n<ul>\n<li>ai@7.0.127</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/tui@1.0.128",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Ftui%401.0.128"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 1,
+      "reason": "来源为 Vercel 官方 changelog，可信度高，但内容仅为前端性能监控指标的弃用通知，与 Agent、Coding、RAG、Eval、Reasoning 等用户关注方向无关，属常规产品维护信息，价值较低。",
+      "summary_cn": "Vercel Speed Insights 宣布将于 11 月 1 日起停止记录 First Input Delay（FID）指标，全面转向已替代 FID 的 Core Web Vital 指标 Interaction to Next Paint（INP）作为响应性度量。该变更无需开发者做任何适配，不影响 Real Experience Score 评分，历史 FID 数据仍可查看。",
+      "tags": [
+        "Vercel",
+        "Web性能",
+        "Core Web Vitals",
+        "前端"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-10-01T12:39:14Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/docs/speed-insights\">Speed Insights</a> is deprecating First Input Delay (FID) and will stop recording new measurements on November 1st.</p><p>Speed Insights already uses <a href=\"https://web.dev/blog/inp-cwv-launch\">Interaction to Next Paint (INP)</a>, the Core Web Vital that replaced FID, as the responsiveness metric in your <a href=\"https://vercel.com/docs/speed-insights/metrics#real-experience-score-res\">Real Experience Score</a>. The deprecation won’t require changes on your side, affect your score, or prevent you from viewing existing FID data.</p><p>Learn more in the <a href=\"https://vercel.com/docs/speed-insights/metrics\">Speed Insights metrics documentation</a>.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/speed-insights-deprecates-first-input-delay-on-november-first\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Speed Insights deprecates First Input Delay on November 1st",
+    "url": "https://vercel.com/changelog/speed-insights-deprecates-first-input-delay-on-november-first"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 3,
+      "importance": 1,
+      "reason": "该条目为当天无重大新闻的例行播报，raw_summary 仅一句 a quiet day，无任何实质技术或产品信息，也无原始链接支撑，属于信息量为零的噪声，故判定为低重要性、忽略处理。",
+      "summary_cn": "Latent Space 发布的 AINews 栏目当日为「安静的一天」，未提供任何具体 AI 动态、产品发布或技术细节，raw_summary 仅注明 a quiet day。内容缺乏可验证信息与原始链接，属于日常播报类空条目，对 Agent、Coding、RAG、Eval、Reasoning 等方向无参考价值，不建议纳入情报池。",
+      "tags": [
+        "AINews",
+        "Latent Space",
+        "行业动态",
+        "无实质内容"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-10-03T08:45:15Z",
+    "raw_summary": "a quiet day.",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] not much happened today",
+    "url": "https://www.latent.space/p/ainews-not-much-happened-today-cee"
+  }
+]
