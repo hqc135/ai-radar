@@ -1,0 +1,259 @@
+[
+  {
+    "analysis": {
+      "action": "值得跟进",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来源为 Vercel 官方 changelog，可信度高；内容直接涉及用户偏好的 Coding、Agent、Reasoning 与图像理解能力提升，并给出可用的模型名与接入方式，对开发者选型和 Agent 工作流有实际参考价值。但属小版本更新且缺少基准测试数据，故未给满分。",
+      "summary_cn": "Vercel 官方更新日志宣布 DeepSeek V4.1 Flash 1017 已在 AI Gateway 上线，这是 V4.1 Flash 的小版本更新，重点提升推理、编码、Agent 任务和图像理解能力。编码提升体现在终端操作与整仓库构建和编辑，Agent 能力体现在多步自动化；模型能调用工具读取图表并提高视觉推理准确性，且完成任务更快、输出更短，减少 Agent 运行时间与输出 token 消耗。",
+      "tags": [
+        "DeepSeek",
+        "AI Gateway",
+        "Coding",
+        "Agent",
+        "Reasoning",
+        "多模态"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-17T00:00:00Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/ai-gateway/models/deepseek-v4.1-flash-1017\">DeepSeek V4.1 Flash 1017</a> is now available on <a href=\"https://vercel.com/ai-gateway\">AI Gateway</a>.</p><p>DeepSeek V4.1 Flash 1017 is a minor update to <a href=\"https://vercel.com/ai-gateway/models/deepseek-v4.1-flash\">DeepSeek V4.1 Flash</a> that improves reasoning, coding, agentic tasks, and image understanding.</p><p>The coding gains show up in terminal work and in building and editing whole repositories, and the agentic gains in multi-step automation. With images, the model reads charts and handles visual reasoning more accurately when it can call tools.</p><p>DeepSeek V4.1 Flash 1017 also finishes tasks faster and with shorter outputs than the previous snapshot, so agent runs tend to take less time and use fewer output tokens.</p><p>Use <code>deepseek/deepseek-v4.1-flash-1017</code> as the model name:</p><div></div><p>To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup:</p><div></div><p>Try DeepSeek V4.1 Flash 1017 in the <a href=\"https://vercel.com/ai-gateway/models/deepseek-v4.1-flash-1017\">model playground</a>.</p><p>AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in <a href=\"https://vercel.com/changelog/custom-reporting-ai-gateway\">custom reporting</a>, <a href=\"https://vercel.com/blog/zdr-on-ai-gateway\">Zero Data Retention support</a>, <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys\">budgets for API keys</a>, <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/routing-rules\">routing rules</a>, and more.</p><p>AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">Bring Your Own Key</a> (BYOK) requests.</p><p>You can view <a href=\"https://vercel.com/ai-gateway/models?type=text\">all language models</a> available on AI Gateway.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/deepseek-v4-1-flash-1017-now-available-on-ai-gateway\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "DeepSeek V4.1 Flash 1017 now available on AI Gateway",
+    "url": "https://vercel.com/changelog/deepseek-v4-1-flash-1017-now-available-on-ai-gateway"
+  },
+  {
+    "analysis": {
+      "action": "watch",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来源为官方 GitHub Release，可信度高。其中 Agents 的 ultrafast 服务层级对 Agent 应用延迟优化有实际意义，与用户偏好相关，但属于增量式 SDK 版本更新，无模型或架构层面突破，故重要性中等，建议观察后续文档与实测表现。；已合并同事件来源：OpenAI Python SDK Releases。",
+      "summary_cn": "OpenAI Python SDK 发布 v3.35.0。新增两类 API 能力：一是 Live 边带事件（sideband events）提供类型化定义，便于实时会话中处理带外事件；二是为 Agents 增加 ultrafast 服务层级，降低智能体调用延迟。同时修复 realtime 模块在 websockets 13 下字节接收丢失的问题。属于官方 SDK 功能性更新。",
+      "tags": [
+        "OpenAI",
+        "Python SDK",
+        "Agent",
+        "Realtime",
+        "API 更新"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-17T23:13:52Z",
+    "raw_summary": "<h2><a href=\"https://github.com/openai/openai-python/compare/v3.34.0...v3.35.0\">3.35.0</a> (2026-10-17)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>api:</strong> add typed Live sideband events (<a href=\"https://github.com/openai/openai-python/issues/4099\">#4099</a>) (<a href=\"https://github.com/openai/openai-python/commit/8d5cbf07916b8f2409d940156135ce3c11ac1552\">8d5cbf0</a>)</li>\n<li><strong>api:</strong> add ultrafast service tier for Agents (<a href=\"https://github.com/openai/openai-python/issues/4101\">#4101</a>) (<a href=\"https://github.com/openai/openai-python/commit/100bf8f7ab8409594258572fbf64bbde140c1c5f\">100bf8f</a>)</li>\n</ul>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>realtime:</strong> preserve byte receives with websockets 13 (<a href=\"https://github.com/openai/openai-python/issues/4098\">#4098</a>) (<a href=\"https://github.com/openai/openai-python/commit/309916eb877132359ca2e37b0340a060580e39ee\">309916e</a>)</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "OpenAI Python SDK Releases",
+        "source_tier": 1,
+        "title": "v3.34.0",
+        "url": "https://github.com/openai/openai-python/releases/tag/v3.34.0"
+      },
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "OpenAI Python SDK Releases",
+        "source_tier": 1,
+        "title": "v3.35.1",
+        "url": "https://github.com/openai/openai-python/releases/tag/v3.35.1"
+      }
+    ],
+    "source": "OpenAI Python SDK Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v3.35.0",
+    "url": "https://github.com/openai/openai-python/releases/tag/v3.35.0"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方 Changelog，来源可信度高；内容属编码代理基础设施与可观测性改进，贴合用户对 Agent/Coding 的偏好，对使用 Gateway 多供应商路由与成本缓存优化有实际参考价值，但不涉及模型或推理能力本身，故重要性中等。",
+      "summary_cn": "Vercel AI Gateway 日志新增 Sessions 视图，按会话聚合请求并展示会话粘性（session affinity）的路由情况。每行显示运行该会话的编码代理或应用（如 Claude Code、Codex、Cursor），以及成本、模型、供应商和跨轮次的缓存命中比例；打开会话可见缓存命中率、时长与逐轮路径。会话粘性默认用于文本与对话请求，将每一轮发往上一轮的供应商以复用提示缓存。",
+      "tags": [
+        "Vercel",
+        "AI Gateway",
+        "Session Affinity",
+        "缓存",
+        "可观测性",
+        "Coding Agent"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-17T20:03:00Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/docs/ai-gateway/observability-and-spend/logs\">AI Gateway logs</a> now have a <a href=\"https://vercel.com/d?to=%2F%5Bteam%5D%2F%7E%2Fai-gateway%2Flogs%3FgroupBy%3Dsessions&amp;title=AI+Gateway+Sessions\">Sessions view</a> that groups requests into sessions and shows how session affinity routed each one. Each row shows the <a href=\"https://vercel.com/docs/ai-gateway/coding-agents\">coding agent</a> or app that ran the session, such as Claude Code, Codex, or Cursor, along with its cost, models, providers, and how much of its input was cached across every turn.</p><div></div><p>Open a session to see its cache hit rate, duration, and path. The path lists each turn with its model and timing, and names the provider serving the session along with any earlier ones. <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/session-affinity\">Session affinity</a> sends each turn to the provider that served the one before it, so the provider already has most of the prompt in cache. A session that stays on one provider reads more of each prompt from <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/automatic-caching\">cache</a>.</p><p>Filter sessions by turns, client, model, provider, authentication, or cost. Single-turn sessions are hidden until you clear the minimum turns filter.</p><div></div><p>Session affinity runs by default on text and chat requests. To group requests yourself, send the same <code>sessionId</code> in <code>providerOptions.gateway</code>, or the same <code>x-session-id</code> header, on every request in a conversation. Requests without one are grouped by a fingerprint of the conversation's opening and appear as fingerprinted sessions.</p><p>Read the <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/session-affinity\">session affinity documentation</a> for more information on how AI Gateway identifies sessions.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/ai-gateway-logs-now-show-session-affinity\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "AI Gateway logs now show session affinity",
+    "url": "https://vercel.com/changelog/ai-gateway-logs-now-show-session-affinity"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub Release，来源可信，但内容仅为 SDK 小版本功能与维护性改动，无 Agent/Coding/RAG/Eval/Reasoning 相关新能力；仅 GPT-4 别名下线通知对少数存量用户有迁移提示意义，整体信息价值低，不纳入重点跟踪。；已合并同事件来源：OpenAI Node SDK Releases。",
+      "summary_cn": "OpenAI Node SDK 发布 v7.37.0，主要变更为：API 新增外部存储降级状态字段，便于调用方感知存储异常；为 GPT-4 系列模型别名添加下线通知；Realtime 模块改用自动生成的 Translation 类型绑定。整体为常规小版本迭代，无重大新能力，但 GPT-4 别名下线提示对仍在用旧模型名的应用有迁移提醒价值。",
+      "tags": [
+        "OpenAI",
+        "SDK",
+        "Node.js",
+        "模型下线",
+        "Realtime"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-17T20:34:08Z",
+    "raw_summary": "<h2><a href=\"https://github.com/openai/openai-node/compare/v7.36.0...v7.37.0\">7.37.0</a> (2026-10-17)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>api:</strong> add degraded external storage status (<a href=\"https://github.com/openai/openai-node/issues/2963\">#2963</a>) (<a href=\"https://github.com/openai/openai-node/commit/e0fe092414395b9b4643a88b354fdda1be9b25f5\">e0fe092</a>)</li>\n</ul>\n<h3>Chores</h3>\n<ul>\n<li><strong>api:</strong> add shutdown notices for GPT-4 model aliases (<a href=\"https://github.com/openai/openai-node/issues/2959\">#2959</a>) (<a href=\"https://github.com/openai/openai-node/commit/648cd0a410e91834e5b5d60d19d6290504fe5d64\">648cd0a</a>)</li>\n</ul>\n<h3>Refactors</h3>\n<ul>\n<li><strong>realtime:</strong> use generated Translation bindings (<a href=\"https://github.com/openai/openai-node/issues/2961\">#2961</a>) (<a href=\"https://github.com/openai/openai-node/commit/bb024d41522d0b5a6b6c64055471111068811ccd\">bb024d4</a>)</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "OpenAI Node SDK Releases",
+        "source_tier": 1,
+        "title": "v7.38.0",
+        "url": "https://github.com/openai/openai-node/releases/tag/v7.38.0"
+      }
+    ],
+    "source": "OpenAI Node SDK Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v7.37.0",
+    "url": "https://github.com/openai/openai-node/releases/tag/v7.37.0"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 3,
+      "importance": 2,
+      "reason": "仅为新节目试播的预告，raw_summary 只有一句描述，没有涉及 Agent、Coding、RAG、Eval、Reasoning 的任何实质内容或技术细节；来源为中等可信度的行业博客，缺乏一手材料，无法支撑有价值的评估，故不进入高优先级，建议忽略。",
+      "summary_cn": "Latent Space 推出新节目《High Taste Testers》第一集，趁 AI 新闻淡日试播。该节目名称暗示以从业者品味为抓手，评点模型与产品，但目前仅有一句摘要，无具体评测对象、方法或结论，信息量极低，属栏目预告性质。",
+      "tags": [
+        "播客栏目",
+        "Latent Space",
+        "媒体动态"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 4,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-10-17T07:47:38Z",
+    "raw_summary": "a quiet day lets us pilot a new show",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "[AINews] High Taste Testers Ep. 1",
+    "url": "https://www.latent.space/p/ainews-high-taste-testers-ep-1"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 1,
+      "reason": "官方 GitHub Release 来源可信度高，但内容仅为依赖包版本同步的补丁变更，无任何功能、接口或行为变化，也不涉及 Agent/Coding/RAG/Eval/Reasoning 的实质进展，对行业研究和工程选型无参考价值，无需跟踪。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/workflow-harness 1.0.154 补丁版本，本次更新仅为依赖同步：将内部 @ai-sdk/harness 升级至 1.0.154，属于自动化发布流程产生的例行版本号变更。未包含新功能、API 调整、性能优化或缺陷修复说明，也未涉及 Agent 编排、工具调用或工作流语义层面的变化。对使用该包的下游项目而言，除依赖版本对齐外基本无实质影响。",
+      "tags": [
+        "AI SDK",
+        "Vercel",
+        "版本发布",
+        "Workflow",
+        "Agent 工具链"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-10-16T20:15:54Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>@ai-sdk/harness@1.0.154</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow-harness@1.0.154",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow-harness%401.0.154"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 1,
+      "reason": "官方 GitHub Release 来源可信度高，但只是纯依赖 bump 的补丁版本，无功能、性能或行为变化，对 Agent/Coding/RAG 实践没有实质影响，信息增量极低，不值得跟踪。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/workflow 2.0.75 补丁版本，内容仅为依赖更新，将 ai 升至 7.0.143，并同步更新 @ai-sdk/provider 至 4.0.29、@ai-sdk/provider-utils 至 5.0.62，无新增功能或 API 变更，属于常规维护性发布。",
+      "tags": [
+        "Vercel AI SDK",
+        "workflow",
+        "依赖更新",
+        "版本发布",
+        "Agent 工具链"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-10-16T20:15:53Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/8a5233b15b1e69573d63faee6cd0014559252ee4\"><tt>8a5233b</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/894e130b03a317af5f52430e4bbee9a6f15a8c57\"><tt>894e130</tt></a>]</li>\n<li>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/0957554539fd414ef82d779c173453a314ba9bb8\"><tt>0957554</tt></a>]\n<ul>\n<li>ai@7.0.143</li>\n<li>@ai-sdk/provider@4.0.29</li>\n<li>@ai-sdk/provider-utils@5.0.62</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow@2.0.75",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%402.0.75"
+  }
+]

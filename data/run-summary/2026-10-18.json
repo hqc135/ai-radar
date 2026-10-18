@@ -1,0 +1,60 @@
+{
+  "archive_path": "data/items/2026-10-18.json",
+  "backfill_items": 0,
+  "candidates_new": 16,
+  "candidates_selected": 10,
+  "candidates_total": 27,
+  "content_health": "low",
+  "estimated_llm_tokens": 10000,
+  "fallback_items": 0,
+  "fallback_lookback_used": false,
+  "health_reasons": [
+    "主列表条目数 7 低于阈值 8。",
+    "低质量 release 占比 43% 偏高，下一轮会压低噪音源限额。",
+    "信息源抓取异常：失败 0 个，警告 1 个。"
+  ],
+  "llm_failed": 0,
+  "llm_planned": 10,
+  "llm_succeeded": 10,
+  "lookback_hours": 36,
+  "low_quality_release_items": 3,
+  "low_quality_release_ratio": 0.429,
+  "manual_items": 0,
+  "must_read_items": 1,
+  "output_items": 7,
+  "output_path": "notes/daily/2026-10-18.md",
+  "quality_needs_review": false,
+  "quality_score": 78,
+  "quality_signals": {
+    "backfill_items": 0,
+    "fallback_lookback_used": false,
+    "low_quality_release_items": 3,
+    "low_quality_release_ratio": 0.429,
+    "min_daily_items": 8,
+    "must_read_items": 1,
+    "output_items": 7,
+    "source_warnings": 1,
+    "sources_failed": 0
+  },
+  "rss_items": 27,
+  "source_adjustments": {
+    "Google Cloud AI and Machine Learning Blog": 6,
+    "Hugging Face Blog": 6,
+    "LangChain Blog": 6,
+    "Latent Space": 5,
+    "OpenAI News": 9,
+    "Simon Willison AI": 5,
+    "Vercel AI SDK Releases": 2,
+    "Vercel Changelog": 6,
+    "arXiv cs.AI": 6,
+    "arXiv cs.CL": 6
+  },
+  "source_failures": [],
+  "source_warning_names": [
+    "LangChain Changelog"
+  ],
+  "source_warnings": 1,
+  "sources_failed": 0,
+  "sources_success": 26,
+  "sources_total": 26
+}
