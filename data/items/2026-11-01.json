@@ -1,0 +1,243 @@
+[
+  {
+    "analysis": {
+      "action": "可关注并评估升级；Agent 上下文压缩与会话审查能力对构建 Agent 应用有直接价值",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub Release 属一手来源，可信度高；内容聚焦 Agent 上下文压缩、会话审查、时间感知等 Agent 工程能力，契合用户对 Agent 方向的偏好，对使用 SDK 构建 Agent 的开发者有实际参考价值。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI Python SDK 发布 v3.42.0，新增多项 Agent 相关 API 能力：Agent 上下文压缩设置、会话审查与工具配置、实验性时间感知，以及 WebSocket 恢复与预热改进、响应格式与本地输出类型支持等，并修复 WebSocket 助手中拒绝输出与鉴权保留的问题。",
+      "tags": [
+        "OpenAI",
+        "Python SDK",
+        "Agent",
+        "API",
+        "Release"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-31T00:26:41Z",
+    "raw_summary": "<h2><a href=\"https://github.com/openai/openai-python/compare/v3.41.0...v3.42.0\">3.42.0</a> (2026-10-31)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>api:</strong> add agent context compaction settings (<a href=\"https://github.com/openai/openai-python/issues/4209\">#4209</a>) (<a href=\"https://github.com/openai/openai-python/commit/f552fcffcf774520e946121704b5fbbf7ba986e8\">f552fcf</a>)</li>\n<li><strong>api:</strong> add agent session review and tool settings (<a href=\"https://github.com/openai/openai-python/issues/4217\">#4217</a>) (<a href=\"https://github.com/openai/openai-python/commit/a63c4cdb1c758af3a2ca8edace3b5291f8b0318a\">a63c4cd</a>)</li>\n<li><strong>api:</strong> add experimental agent time awareness (<a href=\"https://github.com/openai/openai-python/issues/4211\">#4211</a>) (<a href=\"https://github.com/openai/openai-python/commit/10f9dd012363229a6c6f3fddb73403427fcd5eef\">10f9dd0</a>)</li>\n<li><strong>api:</strong> add image edit markup overlays (<a href=\"https://github.com/openai/openai-python/issues/4210\">#4210</a>) (<a href=\"https://github.com/openai/openai-python/commit/72c656df672989eed60c85bfafeb57f578fcc2ef\">72c656d</a>)</li>\n<li><strong>api:</strong> add organization external key management (<a href=\"https://github.com/openai/openai-python/issues/4205\">#4205</a>) (<a href=\"https://github.com/openai/openai-python/commit/3ee373e038dd0756eba7d748605e5209bc5b726c\">3ee373e</a>)</li>\n<li><strong>api:</strong> add SIP DTMF commands and delivery events (<a href=\"https://github.com/openai/openai-python/issues/4208\">#4208</a>) (<a href=\"https://github.com/openai/openai-python/commit/f9f3f76cf3af2c12675574a16804f3592a4f718a\">f9f3f76</a>)</li>\n<li><strong>api:</strong> improve WebSocket recovery and delivery reporting (<a href=\"https://github.com/openai/openai-python/issues/4213\">#4213</a>) (<a href=\"https://github.com/openai/openai-python/commit/68b962c7368c2c955771c731a769e5ef15e8f781\">68b962c</a>)</li>\n<li><strong>api:</strong> keep callable API keys scoped to each request (<a href=\"https://github.com/openai/openai-python/issues/4216\">#4216</a>) (<a href=\"https://github.com/openai/openai-python/commit/85bb536ad1ec5664d669544ca56b5e41701b1cdd\">85bb536</a>)</li>\n<li><strong>api:</strong> support response format updates and local output types (<a href=\"https://github.com/openai/openai-python/issues/4212\">#4212</a>) (<a href=\"https://github.com/openai/openai-python/commit/bd61e84ca80c3579f1336a2d55c79bc5dca57a57\">bd61e84</a>)</li>\n<li><strong>api:</strong> support WebSocket warmup and preserve cleanup cancellation (<a href=\"https://github.com/openai/openai-python/issues/4215\">#4215</a>) (<a href=\"https://github.com/openai/openai-python/commit/9abd656973e0c485419db159815de17d29c2b7a3\">9abd656</a>)</li>\n</ul>\n<h3>Bug Fixes</h3>\n<ul>\n<li>preserve refusal output and authentication in WebSocket helpers (<a href=\"https://github.com/openai/openai-python/issues/4214\">#4214</a>) (<a href=\"https://github.com/openai/openai-python/commit/05992039b9f7b78a48cf1e5a35727ba27d96db6e\">0599203</a>)</li>\n</ul>",
+    "related_items": [],
+    "source": "OpenAI Python SDK Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v3.42.0",
+    "url": "https://github.com/openai/openai-python/releases/tag/v3.42.0"
+  },
+  {
+    "analysis": {
+      "action": "建议关注并升级：权限隔离与空闲压缩对 Coding Agent 使用体验有实际提升，网关审计能力对团队部署有价值。",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来源为官方 GitHub Release，可信度最高；内容涉及 Coding Agent 权限、上下文压缩与网关治理，贴合用户对 Agent/Coding 的偏好；虽为版本更新而非架构级突破，但包含安全和可用性实质改动，重要性偏高。；今日新内容偏少，从近期缓存中补入供回看。；已合并同事件来源：Anthropic Claude Code Releases。",
+      "summary_cn": "Anthropic Claude Code 发布 v2.1.314 版本，新增 permissions.blockWritesOutsideWorkingDirectories 权限控制，禁止向工作目录外写入；为 Claude 应用网关上游添加按 IdP 组路由与 Bedrock guardrail_trace 审计日志；VS Code 与 Claude Desktop 增加空闲会话压缩。另修复努力等级上限、Bedrock 多图超长、网关 tool_reference 兼容、TLS 证书链及 MCP 登录等多项问题。",
+      "tags": [
+        "Claude Code",
+        "Anthropic",
+        "Coding Agent",
+        "权限控制",
+        "MCP",
+        "工具链更新"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-30T01:06:26Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Added <code>permissions.blockWritesOutsideWorkingDirectories</code>: Write, Edit and NotebookEdit refuse paths outside the working directories in every permission mode</li>\n<li>Added an optional <code>groups</code> list to Claude apps gateway upstreams: only developers in the listed IdP groups are sent to that upstream, on failover too</li>\n<li>Added <code>guardrail_trace</code> to Claude apps gateway Bedrock upstreams, to log which Amazon Bedrock guardrail filter fired on a request, without the matched text</li>\n<li>Added idle compaction to VS Code and Claude Desktop's Code tab: a 200K+ token conversation left idle is summarized, and the summary is used on your next message if the prompt cache has expired</li>\n<li>Fixed sessions failing turn after turn with \"Invalid effort level\" when an organization's admin caps a model's effort: Claude Code now lowers the effort, retries, and says which level it uses</li>\n<li>Fixed <code>claude -p</code> exiting with code 0 and no output when startup failed; it now prints the error and exits 1</li>\n<li>Fixed Bedrock sessions with many images failing every turn and <code>/compact</code> with \"400 Input is too long.\" instead of removing older images and compacting</li>\n<li>Fixed Microsoft Foundry sessions failing when the resource has no deployment for the default Sonnet, Opus or Haiku model: Claude Code now falls back to an older model of that family</li>\n<li>Fixed repeated refused requests behind a gateway that doesn't accept tool search's <code>tool_reference</code> blocks: the request is sent again once without tool search, and the session remembers</li>\n<li>Fixed TLS connections failing with <code>UNABLE_TO_GET_ISSUER_CERT</code> when the system certificate store holds a renewed root certificate that is cross-signed with its predecessor</li>\n<li>Fixed MCP servers that also work without sign-in showing \"needs authentication\" after their stored sign-in stopped working; they are now used signed out</li>\n<li>Fixed <code>claude mcp logout</code> reporting success when the MCP sign-in was not removed, for example while the macOS keychain is locked over SSH</li>\n<li>Fixed extra sign-in renewals when several sessions share an Anthropic profile login and the credentials lock is busy</li>\n<li>Fixed <code>claude ultrareview</code> and <code>claude remote-control</code> asking the workspace trust question in a CI job that has a terminal; with <code>CI</code> set they now refuse an untrusted folder at once</li>\n<li>Fixed an administrator's TLS trust settings in managed settings not being applied in Claude Desktop sessions</li>\n<li>Fixed model switching being refused on machines with managed plugin settings when one of your own <code>--plugin-dir</code> or <code>--plugin-url</code> plugins had a broken manifest or failed to download</li>\n<li>Fixed the Bedrock and Vertex model upgrade offer coming back at every start when managed settings pin the model</li>\n<li>Fixed <code>forceRemoteSettingsRefresh</code> set only in remote managed settings no longer applying once the stored copy had expired, which let sessions start without policy when the server could not be reached</li>\n<li>Fixed \"Continue automatically at usage limit\" continuing more than three times without a prompt from you when a task restarted itself between waits (a /goal check-in, a background or scheduled task)</li>\n<li>Fixed background and cloud sessions started with Ultracode turning it back on at their next start after it had been switched off</li>\n<li>Fixed the last broken reply and its retry prompts staying in the conversation after Claude gave up on a tool call that could not be parsed</li>\n<li>Fixed a PreCompact hook with very large output making compaction fail or repeat; each hook's output is now cut at 10,000 characters</li>\n<li>Fixed background diff refreshes briefly taking the repository's index lock, which could make a git command run at the same moment fail with \"Unable to create '.git/index.lock': File exists\"</li>\n<li>Fixed markdown tables jumping between grid and stacked layouts on half-typed rows while streaming, and long tables falling back to raw pipes</li>\n<li>Fixed the /resume picker showing the text of CLAUDE.md or CLAUDE.local.md as a session's title when the session only ran slash commands</li>\n<li>Fixed <code>/btw</code> answering from the main conversation when asked from a subagent's open transcript</li>\n<li>Fixed pasting an image over SSH to a Linux machine doing nothing silently; the prompt now says to copy the file over and paste its path</li>\n<li>Fixed <code>claude remote-control</code> sessions that failed to start when the session service was slow for a moment: the worker's registration is now retried with growing waits</li>\n<li>Fixed model switches over Remote Control that take over 8 seconds getting a \"still pending\" error instead of the final result</li>\n<li>Fixed the <code>sandbox.excludedCommands</code> setting description saying listed commands always run outside the sandbox; it now says every command in a call must match an entry</li>\n<li>Fixed shell and MCP calls that auto mode, a deny rule or a PreToolUse hook blocked, or that otherwise did not run, reading as if they ran in a collapsed tool group</li>\n<li>Fixed sandbox protections not applying to a worktree entered by <code>claude -p --resume</code> or <code>--continue</code></li>\n<li>Fixed hooks matching Bash not running on shell commands started by the Monitor tool; such hooks can block or ask, but not approve or rewrite those commands</li>\n<li>Fixed a settings file excluded with <code>--setting-sources</code> still supplying some settings, such as auto mode rules and saved permission consents</li>\n<li>Fixed auto mode reporting a call as blocked, and listing it in <code>/permissions</code>, when its safety check gave no verdict</li>\n<li>Fixed a Claude apps gateway Vertex upstream hanging for minutes when a Google token endpoint accepts the connection and never answers</li>\n<li>Fixed the Claude apps gateway's start-up warning for a deprecated Claude Desktop key that it still serves as written saying \"stops being accepted\" after the key's end date</li>\n<li>Fixed <code>/upgrade</code> opening the browser and starting a new login for plans billed through the App Store or Google Play; it now says where to change the plan</li>\n<li>Fixed <code>--resume</code>, and rewinding past a switch to another model after a refusal, moving a session on a model name Claude Code doesn't recognize to a different model</li>\n<li>Fixed requests failing when a gateway or cloud provider refuses one of Claude Code's beta headers by name: the request is sent again without it</li>\n<li>Fixed model IDs spelled with a dot behind an LLM gateway, such as <code>claude-opus-4.8</code>, being treated as an older model with the wrong context window, output limit, effort, thinking mode and cost</li>\n<li>Fixed Remote Control clients showing a stray \"Compacted (ctrl+o to see full summary)\" row after /compact</li>\n<li>Fixed the cloud sessions tip and the Remote Control idle notice showing when an organization's policy turns those features off</li>\n<li>Fixed a resumed claude.ai cloud session making a model call nobody asked for when the previous worker stopped just after receiving a new chat's files</li>\n<li>Fixed WebFetch in Cowork cloud sessions silently dropping a PDF's text past 100,000 characters; it now says how much was unread and where to read on</li>\n<li>Fixed Claude being told only that a command was declined after you stopped it with Esc or Stop in a cloud session or the IDE; it now also hears that the command may have run</li>\n<li>Fixed blank lines at the top of a code block disappearing when the code block opens a quote</li>\n<li>Fixed a blank line appearing above some <code>⎿</code> rows in the transcript view (Ctrl+O)</li>\n<li>Fixed vim mode <code>dw</code>, <code>dW</code>, <code>yw</code> and <code>yW</code> carrying on past the end of the line, and made <code>w</code> and <code>W</code> stop on empty lines</li>\n<li>Fixed x and Enter in the agent panel sometimes acting on the wrong agent when another agent started or finished</li>\n<li>Fixed pasted text and dragged-in files being lost in Claude's question dialog unless the \"Other\" row had focus</li>\n<li>Fixed pasted text being lost when a row in the prompt footer was selected</li>\n<li>Fixed vim mode <code>p</code> over a character selection ignoring whether the yanked text was whole lines</li>\n<li>Fixed vim mode <code>aw</code> and <code>iw</code> taking the line break at the end of a line</li>\n<li>Fixed ↓ selecting footer items hidden by the ? help menu, the command list or a paste hint</li>\n<li>Fixed Esc on a command's panel, such as <code>/btw</code>, also interrupting the subagent whose transcript is open</li>\n<li>Fixed the welcome header in fullscreen mode showing the session's model while viewing a subagent or teammate that runs on a different model</li>\n<li>Fixed the fullscreen transcript being left mid-conversation after \"Restore conversation\" in the rewind menu while scrolled up</li>\n<li>Fixed a rare case where a deleted session could reappear in the resume list as an almost empty entry</li>\n<li>Fixed prompts containing tags such as <code>&lt;bash-stdout&gt;</code> or <code>&lt;local-command-stdout&gt;</code> not being acknowledged to a local stream-json host</li>\n<li>Fixed sessions staying untitled when the first prompt failed (for example on a usage limit) and the conversation continued afterward</li>\n<li>Fixed the skill file watcher checking every removed skill kept in <code>~/.claude/skills/.trash</code>, which added file system load that grew with each removal</li>\n<li>Fixed the session name from /rename disappearing while Claude asks for permission or a plan decision, so side-by-side sessions stay identifiable</li>\n<li>Fixed background sessions that fail to start being reported as a deleted daemon binary when the binary is still on disk</li>\n<li>Fixed the tip and idle reminder about push notifications appearing when the push settings in <code>/config</code> are hidden or your organization has turned off Remote Control</li>\n<li>Fixed <code>~/.claude/skills/.trash</code> and <code>~/.claude/plugins/.trash</code> growing without limit: each now holds about 1024 entries, whatever <code>cleanupPeriodDays</code> says</li>\n<li>Fixed the Bash edit diff listing a whole file as changed when a CRLF file under git's line-ending conversion was re-saved unchanged or had one line edited</li>\n<li>Self-hosted runner: Fixed an idle session moving to another runner instead of pausing when the runner's request to pause it lost its connection before Anthropic answered</li>\n<li>Improved memory use in long headless and SDK turns that run many subagents: the parent session no longer keeps each subagent's tool results until the turn ends</li>\n<li>Improved prompt history: Ctrl+R now matches text inside collapsed <code>[Pasted text]</code> pills</li>\n<li>Improved the <code>/design-sync</code> upload prompt to show the folder, the project and the files it will upload or delete</li>\n<li>Improved <code>/permissions</code> review tab, now called Recently blocked: the footer says what Esc will do with marked rows</li>\n<li>Improved auto mode's blocked calls: messages name the command, say Claude may retry and auto mode checks again, and point to <code>/permissions</code> to review</li>\n<li>Improved permission prompts: a long reason takes fewer rows, so it pushes the command being approved off the screen on fewer terminals</li>\n<li>Improved the cloud session error shown while a request refused for your claude.ai login is still being retried: it now also suggests <code>claude auth login</code></li>\n<li>Improved the behavior of stored claude.ai, Team, and Enterprise logins when MDM and remote settings differ on base URL or <code>apiKeyHelper</code></li>\n<li>Improved <code>/config</code> in agent view to say how to stop agent view opening by default</li>\n<li>Improved session auto-titles: a session that starts with a skill or a prompt-based command such as <code>/security-review</code> now gets a title from it instead of staying untitled</li>\n<li>Improved <code>--resume</code> speed and memory use on damaged transcripts</li>\n<li>Improved <code>/context</code> speed in sessions with ten thousand or more MCP tools</li>\n<li>Self-hosted runner: Improved the error shown when a session's branch isn't on the git remote: it now covers a never-pushed branch, says how to fix each case, and no longer suggests retrying</li>\n<li>Updated the <code>/claude-api</code> skill: its Datadog setup for API tracing now sends the <code>dd-llmobs-enabled: true</code> header, as the Console does, and its <code>ant</code> install instructions drop the outdated macOS <code>xattr</code> step</li>\n<li>Updated the bundled dataviz skill to advise printing y-axis tick labels in full under 10,000, and horizontal ones in full under a million where they fit</li>\n<li>Updated the bundled dataviz skill to answer donut and pie chart requests with ranked bars or a segmented bar that prints its values</li>\n<li>Changed Claude's file tools to ask before editing the local copy of your organization's server-managed settings, as they do for your settings files</li>\n<li>Changed <code>/ultrareview</code> to check workspace trust before it runs git, as <code>claude ultrareview</code> does</li>\n<li>Changed the Bash tool's shell to clear any inherited <code>which</code> alias or function and to stop passing exported <code>which</code>/<code>unsetenv</code> functions to commands, so <code>which</code> is the system command or zsh builtin</li>\n<li>Changed <code>/permissions</code> Recently blocked to refuse approving a call you can't read in full, including one the terminal is too short to show</li>\n<li>Changed auto mode in Cowork cloud sessions: a hook's allow of an MCP tool call now counts as no answer, so the classifier or a permission prompt decides</li>\n<li>Changed hook <code>if</code> conditions such as <code>Monitor(tail *)</code> to match the Monitor tool's shell commands as <code>Bash(tail *)</code> matches Bash's</li>\n<li>Changed the <code>claude-api</code> skill to ask to read a Managed Agents workflow run's workflow before changing the agent to improve that run</li>\n<li>Changed flagged requests to retry on another model, not end in a refusal, when <code>ANTHROPIC_DEFAULT_OPUS_MODEL</code>, <code>availableModels</code> or <code>deniedModels</code> leaves only an older Opus model, or none</li>\n<li>Changed idle compaction to also run for subscribers with telemetry turned off, and on Bedrock, Vertex, Foundry and LLM gateways once the one-hour prompt cache is on</li>\n<li>Changed <code>FORCE_HYPERLINK=false</code> (also <code>no</code> and <code>off</code>) to turn hyperlinks off instead of on</li>\n<li>macOS: Changed <code>git grep</code> in most commands that Claude runs to use the C locale, to avoid a reported memory leak in macOS's regex library on files that aren't valid UTF-8</li>\n<li>[VSCode] Fixed \"Clear authentication\" for MCP servers reporting success when the saved sign-in could not be removed</li>\n<li>[VSCode] Fixed missing spinner and Stop button while a queued message's hooks run</li>\n<li>[VSCode] Fixed session group changes that cannot be saved, such as a delete, failing silently; an error notification now appears</li>\n<li>[VSCode] Fixed Cmd+F / Ctrl+F not opening the find widget in the plan preview tab</li>\n<li>[VSCode] Fixed the voice dictation shortcut (Ctrl+D) doing nothing under non-Latin keyboard layouts such as Russian, Greek or Hebrew</li>\n<li>[VSCode] Fixed missed one-time saved scheduled tasks being deleted without asking when the extension opened without a chat</li>\n<li>[VSCode] Changed <code>CLAUDE_CODE_DISABLE_CFC_PROMPT</code> to also stop the extension adding the Claude in Chrome instructions to a session's messages; the browser tools stay available</li>\n<li>[Cloud sessions] Added an Include completed button to the Scheduled tasks page when finished one-off tasks are the only ones hidden, so you can show them without opening the Sort menu</li>\n<li>[Cloud sessions] Fixed recently used self-hosted environments never appearing among the recent environments on the new session card</li>\n<li>[Cloud sessions] Fixed cloud sessions reporting uncommitted changes every turn after Claude moved a branch to a commit it had pushed from another worktree</li>\n<li>[Cloud sessions] Fixed the self-hosted environment details dialog in admin settings squeezing its content out of view in very short windows or at high zoom; the dialog now scrolls</li>\n<li>[Cloud sessions] Fixed the permission mode picker staying on Auto after a running cloud or Remote Control session refused the switch; it now shows the mode in use and tells you</li>\n<li>[Cloud sessions] Improved scheduled tasks: runs in Anthropic's cloud now load the plugins enabled on your claude.ai account</li>\n<li>[Cloud sessions] Improved Test connection for GitHub Enterprise in admin settings to also connect the way cloud sessions do, and to warn you when that second test fails</li>\n<li>[Cloud sessions] Improved cloud session transcripts: a rename row now names the new title, and repository and environment lists show as a table instead of one line of JSON</li>\n<li>[Cloud sessions] Changed cloud sessions from the web, desktop and mobile apps to start even when a setup script exits with an error, instead of failing to start</li>\n<li>[Remote Control] Fixed the permission mode button in Remote Control sessions showing the wrong mode until you typed; while your computer is online it now shows the real mode on open</li>\n<li>[Claude Tag] Added a dismissible link to the Claude Tag API docs on the Bundles and Channels tabs in admin settings, for Enterprise organizations with Slack connected</li>\n<li>[Claude Tag] Fixed <code>@Claude !restart</code> giving up after one failed workspace check in channels shared across Enterprise Grid workspaces; it now retries, then asks you to run it again</li>\n<li>[Claude Tag] Fixed a second confirmation DM and channel note when you connect your Claude account from Slack twice from the same link within a few minutes</li>\n<li>[Claude Tag] Fixed follow-up messages in Slack showing no sign of progress while Claude's session waits for a self-hosted runner; Claude now posts a wait notice in the thread</li>\n<li>[Claude Tag] Fixed Claude sometimes not answering a tag in its own thread in Slack Connect channels where both organizations have installed Claude</li>\n<li>[Claude Tag] Fixed Retry on plugin and skill pages in Claude Tag admin settings discarding unsaved access changes after a failed load; your edits now stay in place</li>\n<li>[Claude Tag] Fixed the repositories control in Claude Tag admin settings showing the same action twice; its menu now lists only what the button doesn't already do</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 3,
+        "source": "Anthropic Claude Code Releases",
+        "source_tier": 1,
+        "title": "v2.1.316",
+        "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.316"
+      }
+    ],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.314",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.314"
+  },
+  {
+    "analysis": {
+      "action": "精读并归档，将分层监控思路纳入 Agent 安全与评估方案设计参考",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "来源为 OpenAI 官方博客，属一手权威信息，可信度高；主题直接涉及 Agent 未授权行为监控与前沿模型对齐检测，与用户对 Agent、Eval、Reasoning 的偏好高度相关，对构建 Agent 安全防护与评估体系有实际指导价值，故给予较高重要性。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI 官方博客介绍其如何通过分层监控机制检测前沿模型的错位风险与未授权 Agent 行为，目标是让响应者在事件升级前介入。内容涉及模型对齐、Agent 行为监控与安全响应流程，属官方一手信息，可作为 Agent 安全与 Eval 体系建设的重要参考。",
+      "tags": [
+        "Agent安全",
+        "模型对齐",
+        "监控",
+        "OpenAI",
+        "Eval"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-29T09:00:00Z",
+    "raw_summary": "OpenAI uses layered monitoring to detect frontier model misalignment and unauthorized agent behavior so responders can intervene before incidents escalate.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "How we detect frontier model misalignment",
+    "url": "https://openai.com/index/how-we-detect-frontier-model-misalignment"
+  },
+  {
+    "analysis": {
+      "action": "收藏并查阅 release notes，重点评估 Context Compaction 与 session 过滤能力",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "来源为官方 GitHub 仓库，可信度高；内容为 Agent 上下文压缩与会话管理等实质新接口，契合用户对 Agent 方向的偏好，但属常规版本迭代未涉及模型能力突破，故重要性中等。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI Node SDK 发布 v7.46.0，主要新增多项 Agent 相关 API：上下文压缩（compaction）配置、会话审查与工具设置、实验性时间感知、按元数据过滤会话，以及托管工具用量回传、Realtime WebSocket 会话目标与类型化引用改进；另修正 WebSocket 会话选择。属 SDK 接口层面更新，对构建 Agent 应用的开发者有直接参考价值。",
+      "tags": [
+        "OpenAI",
+        "Node SDK",
+        "Agent",
+        "API 更新",
+        "Realtime"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-31T00:27:06Z",
+    "raw_summary": "<h2><a href=\"https://github.com/openai/openai-node/compare/v7.45.1...v7.46.0\">7.46.0</a> (2026-10-31)</h2>\n<h3>Features</h3>\n<ul>\n<li><strong>api:</strong> add agent context compaction settings (<a href=\"https://github.com/openai/openai-node/issues/3075\">#3075</a>) (<a href=\"https://github.com/openai/openai-node/commit/3e3918d12d726ca33ddf91a4e6ee676cf7efbf3a\">3e3918d</a>)</li>\n<li><strong>api:</strong> add agent session review and tool settings (<a href=\"https://github.com/openai/openai-node/issues/3083\">#3083</a>) (<a href=\"https://github.com/openai/openai-node/commit/fb9c10058740c2fca39096bb5152e85c3fea23da\">fb9c100</a>)</li>\n<li><strong>api:</strong> add experimental agent time awareness (<a href=\"https://github.com/openai/openai-node/issues/3078\">#3078</a>) (<a href=\"https://github.com/openai/openai-node/commit/2ac178e958fce3d4bc3ae7c5ebcb4cad7244bdf7\">2ac178e</a>)</li>\n<li><strong>api:</strong> add image edit markup overlays (<a href=\"https://github.com/openai/openai-node/issues/3076\">#3076</a>) (<a href=\"https://github.com/openai/openai-node/commit/4bfed1f69fc0e86e7da0657df8d54b6e99118c02\">4bfed1f</a>)</li>\n<li><strong>api:</strong> add organization external key management (<a href=\"https://github.com/openai/openai-node/issues/3073\">#3073</a>) (<a href=\"https://github.com/openai/openai-node/commit/db2dcb267f692e99309249f292a1c4ed9d4be877\">db2dcb2</a>)</li>\n<li><strong>api:</strong> add SIP DTMF commands and delivery events (<a href=\"https://github.com/openai/openai-node/issues/3074\">#3074</a>) (<a href=\"https://github.com/openai/openai-node/commit/ae256927c87b0c7c76cb3a3141734b5dd78f8b39\">ae25692</a>)</li>\n<li><strong>api:</strong> add typed Realtime references and improve WebSocket delivery (<a href=\"https://github.com/openai/openai-node/issues/3081\">#3081</a>) (<a href=\"https://github.com/openai/openai-node/commit/a35bc8ee72b23ecb33789c2a43e7de96946c9e8f\">a35bc8e</a>)</li>\n<li><strong>api:</strong> expose hosted tool usage in responses (<a href=\"https://github.com/openai/openai-node/issues/3071\">#3071</a>) (<a href=\"https://github.com/openai/openai-node/commit/4dc3ec4adf392b396f44238050318c7bb211896b\">4dc3ec4</a>)</li>\n<li><strong>api:</strong> filter agent sessions by metadata (<a href=\"https://github.com/openai/openai-node/issues/3070\">#3070</a>) (<a href=\"https://github.com/openai/openai-node/commit/e397a1d99d1908ca5eaa228b6637cb6688b2aa8b\">e397a1d</a>)</li>\n<li><strong>api:</strong> parse Responses using the latest text format update (<a href=\"https://github.com/openai/openai-node/issues/3079\">#3079</a>) (<a href=\"https://github.com/openai/openai-node/commit/5982f920dd6c12b74e9f5ccfdb8902b5915c4e3d\">5982f92</a>)</li>\n</ul>\n<h3>Bug Fixes</h3>\n<ul>\n<li><strong>realtime:</strong> honor the selected WebSocket session target (<a href=\"https://github.com/openai/openai-node/issues/3059\">#3059</a>) (<a href=\"https://github.com/openai/openai-node/commit/d6c84252c9c55f1e047104d1dc3e0ac896bae38c\">d6c8425</a>)</li>\n</ul>\n<h3>Chores</h3>\n<ul>\n<li><strong>api:</strong> document upcoming model shutdowns (<a href=\"https://github.com/openai/openai-node/issues/3069\">#3069</a>) (<a href=\"https://github.com/openai/openai-node/commit/6b536952dc4e1a06f6fae964ffc2f2c346fcdc09\">6b53695</a>)</li>\n<li><strong>api:</strong> update image-model documentation (<a href=\"https://github.com/openai/openai-node/issues/3066\">#3066</a>) (<a href=\"https://github.com/openai/openai-node/commit/fc3ebfafbeba0539810b2514d93c062e9c9f8cb3\">fc3ebfa</a>)</li>\n<li>enforce generated-file ownership (<a href=\"https://github.com/openai/openai-node/issues/3061\">#3061</a>) (<a href=\"https://github.com/openai/openai-node/commit/e7afc1412b120487d4f6361f3bb72cdab91da10a\">e7afc14</a>)</li>\n</ul>\n<h3>Documentation</h3>\n<ul>\n<li>simplify the Responses WebSocket request example (<a href=\"https://github.com/openai/openai-node/issues/3082\">#3082</a>) (<a href=\"https://github.com/openai/openai-node/commit/1c716c325a9482e95483ea09665711981da49a6b\">1c716c3</a>)</li>\n</ul>",
+    "related_items": [],
+    "source": "OpenAI Node SDK Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "v7.46.0",
+    "url": "https://github.com/openai/openai-node/releases/tag/v7.46.0"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 3,
+      "importance": 3,
+      "reason": "来自知名播客 Latent Space 的一手访谈，主题契合用户偏好的 Agent 方向，涉及持久化记忆与自定义 harness 两个关键工程决策，对长时程 Agent 设计有启发；但属播客/博客转述、无原始技术文档，且为单一产品经验，故可信度与重要性均为中等，建议阅读后自行提炼要点。",
+      "summary_cn": "Latent Space 访谈 Arca AI 负责人，讨论面向长周期金融工作的 Agent 实践：持久化记忆如何支撑跨天任务，自研 harness（自定义运行时与工具编排）相对通用框架的优势，以及“Agent 主动提示人”的协作模式。内容偏工程经验分享，对构建长时程、记忆驱动的金融 Agent 工作流有参考价值。",
+      "tags": [
+        "Agent",
+        "长时程任务",
+        "持久化记忆",
+        "金融",
+        "工程实践"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-10-31T16:05:00Z",
+    "raw_summary": "Arca's head of AI discusses persistent memory, the benefits of a custom harness, and agentic workflows that span days.",
+    "related_items": [],
+    "source": "Latent Space",
+    "source_kind": "blog",
+    "source_priority": 4,
+    "source_tier": 2,
+    "title": "Agents Prompt People: Using Agents for Long-Horizon Financial Work",
+    "url": "https://latent.space/p/arca"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub Release 可信度高，但属于小型补丁版本，仅扩展沙箱文件操作 API，未涉及模型能力、Agent 架构或 Coding 范式的实质变化。与 Agent 工程有一定关联，可作背景知识留存，但无需专门跟进或深入分析。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 的 @ai-sdk/workflow 发布 2.0.90 补丁版本，为 Experimental_SandboxSession 新增 stat、listDirectory、deleteFile 三个文件操作接口，并统一相对路径解析规则：所有方法中的相对路径都以 run 和 spawn 启动所在目录为基准。just-bash 与 Vercel Sandbox 适配器已实现，just-bash 还修复了写入目录时被替换为文件的问题。",
+      "tags": [
+        "Agent",
+        "Vercel AI SDK",
+        "Sandbox",
+        "工具调用",
+        "GitHub Release"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-10-30T15:45:34Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>\n<p><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/5c247e9b854acfedd83e027304a9c4c31915c67e\"><tt>5c247e9</tt></a>: feat(sandbox): add <code>stat</code>, <code>listDirectory</code>, and <code>deleteFile</code> to <code>Experimental_SandboxSession</code>, and specify that relative paths in every method resolve against the directory <code>run</code> and <code>spawn</code> start in</p>\n<p>The just-bash and Vercel Sandbox adapters implement the new methods. Both now resolve a relative <code>workingDirectory</code> for <code>run</code> and <code>spawn</code> against the sandbox's working directory, and the just-bash adapter rejects writes to a directory instead of replacing it with a file.</p>\n</li>\n<li>\n<p>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/7716e189ee4d50b24661b2fe4cfe25130643529b\"><tt>7716e18</tt></a>]</p>\n</li>\n<li>\n<p>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/8ba3a5c254d1d3d0e756545ce04070f2d863a243\"><tt>8ba3a5c</tt></a>]</p>\n</li>\n<li>\n<p>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/5c247e9b854acfedd83e027304a9c4c31915c67e\"><tt>5c247e9</tt></a>]</p>\n</li>\n<li>\n<p>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/dcd2f8d844131ebae19f7f6ad4216e30934d3741\"><tt>dcd2f8d</tt></a>]</p>\n<ul>\n<li>@ai-sdk/provider-utils@5.0.72</li>\n<li>ai@7.0.158</li>\n<li>@ai-sdk/provider@4.0.35</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/workflow@2.0.90",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fworkflow%402.0.90"
+  },
+  {
+    "analysis": {
+      "action": "ignore",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "来源为 GitHub 官方 Release，可信度高，但仅为依赖库的小版本补丁与内部目录重构，无新模型或 Agent/RAG/Coding 能力突破，对行业研究价值有限。；常规版本/依赖更新降噪。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/xai 5.0.35 补丁版本，将 xAI 的语言、图像、语音、转写和实时能力统一集中到共享模型目录中，同时保留请求策略，并由同一份声明自动生成能力表。属于内部重构性质的补丁更新，对使用该 Provider 的开发者有助于理解能力覆盖范围。",
+      "tags": [
+        "AI SDK",
+        "xAI",
+        "Vercel",
+        "模型目录",
+        "补丁发布"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 0,
+    "published_at": "2026-10-30T22:21:59Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/89b76ce2a89a674c29794b20e4ae8f93e86e68a4\"><tt>89b76ce</tt></a>: Centralize xAI language, image, speech, transcription, and realtime capabilities in a shared model catalog, preserving request policies and generating capability tables from the same declarations.</li>\n</ul>",
+    "related_items": [],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/xai@5.0.35",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%405.0.35"
+  }
+]
