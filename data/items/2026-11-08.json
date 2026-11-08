@@ -1,0 +1,246 @@
+[
+  {
+    "analysis": {
+      "action": "立即收录并追踪官方文档与评测细节，评估其在安全 Eval 与 Agent 工作流中的可用性",
+      "confidence": 5,
+      "importance": 5,
+      "reason": "来自 OpenAI 官方博客的一手发布，可信度高；属重大模型能力扩展，涉及 Agent 与安全对齐，与用户对 Agent、Eval、Reasoning 的关注强相关，且安全类专用模型对行业影响面大，故给最高重要性。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI 发布 GPT‑6 Cyber，一款面向网络安全的专用模型，用于发现可利用漏洞并开发修复方案，训练目标强调在授权范围内行动、保持对齐与合规。官方称其推进了「对齐的网络安全智能体」前沿，可用于安全评估与自动化漏洞挖掘。",
+      "tags": [
+        "OpenAI",
+        "GPT-6",
+        "网络安全",
+        "对齐",
+        "漏洞挖掘",
+        "Agent"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-11-05T09:00:00Z",
+    "raw_summary": "Introducing GPT‑6 Cyber, OpenAI’s cybersecurity model for finding exploitable vulnerabilities and developing fixes, trained to stay within authorized scope.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "GPT‑6 Cyber: Advancing the frontier of aligned cybersecurity agents",
+    "url": "https://openai.com/index/introducing-gpt-6-cyber"
+  },
+  {
+    "analysis": {
+      "action": "关注并评估升级，重点核查 write_policy 与 reasoning_effort 默认值变更对现有 Agent 环境的影响",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub 发布，来源可信度高；涉及 Agent 框架关键能力与破坏性变更，与用户 Agent 偏好高度相关，对使用该 SDK 的工程升级有直接指导价值。",
+      "summary_cn": "OpenAI Agents SDK 发布 v0.24.0-alpha.7，新增通过 agents.classic 兼容 v0 经典工作流、基于 CustomStorage 的持久化根 Session、语音与托管工具（FileSearch/CodeInterpreter/ImageGeneration），以及上下文压缩、答案审核与用量限制控制。破坏性变更包括默认 write_policy 改为 strict、gpt-6 系列默认 reasoning_effort 升至 medium、MCP 审批模式重命名与子步骤回调签名调整。",
+      "tags": [
+        "OpenAI Agents SDK",
+        "Agent",
+        "release",
+        "API 变更",
+        "工具集成",
+        "持久化会话"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-11-08T07:07:12Z",
+    "raw_summary": "<h1>Agents SDK v0.24.0-alpha.7</h1>\n<h2>Highlights</h2>\n<ul>\n<li><strong>Use Classic workflows alongside native execution.</strong> Import the retained v0 runtime through <code>agents.classic</code>. This alpha also changes executor write defaults; review the upgrade actions before opening existing environments.</li>\n<li><strong>Keep conversations in your own storage.</strong> Add durable root Sessions with <code>CustomStorage</code>, and reconcile uncertain tool effects before resuming work.</li>\n<li><strong>Add voice and hosted tools to native agents.</strong> Connect speech workflows to a Session, or use <code>FileSearch</code>, <code>CodeInterpreter</code>, and <code>ImageGeneration</code> through compatible Responses providers.</li>\n<li><strong>Control context, completion, and usage.</strong> Transform model input, retain selected context during compaction, review proposed answers, and limit observed root usage.</li>\n</ul>\n<h2>Upgrading from 0.24.0-alpha.6</h2>\n<ul>\n<li><strong>Review Environment write policies.</strong> New Environments default to <code>write_policy=\"strict\"</code>, which requires a compatible Linux or macOS executor. The working directory remains writable; use <code>writable_roots</code> for additional directories. To retain the previous remote policy, including on Windows executors, set <code>write_policy=\"legacy\"</code> and leave <code>writable_roots=None</code>. Local execution requires strict mode. When restoring legacy remote checkpoints or profiles, select legacy explicitly; reopening does not upgrade their policy. See the <a href=\"https://github.com/openai/openai-agents-python/blob/4c1190046163c09e4f67ab7254f22bea60b14894/docs/sdk/state.md#restore-executor-policy\">executor policy and restore rules</a>.</li>\n<li><strong>Check implicit reasoning settings.</strong> The bundled model catalog changes the default reasoning effort from <code>low</code> to <code>medium</code> for <code>gpt-6-astra</code>, <code>gpt-6.1-sol</code>, and <code>gpt-5.6-sol</code>. Set <code>model_settings={\"reasoning_effort\": \"low\"}</code> explicitly if you need the previous effort. This describes bundled metadata; an explicit setting or provider model metadata can select another value. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5517\">#5517</a>)</li>\n<li><strong>Rename MCP approval modes.</strong> Replace <code>approval_mode=\"auto\"</code> with <code>\"native\"</code>, and <code>\"approve\"</code> with <code>\"preapproved\"</code>. The old values are rejected; the new names preserve their respective approval behavior.</li>\n<li><strong>Update child step callbacks.</strong> <code>NativeAgents.before_step</code> now receives one <code>ChildStepContext</code>, with <code>context</code>, <code>child</code>, and <code>step_index</code>, instead of separate child and step-index arguments. Root <code>before_step</code> callbacks keep their existing signature.</li>\n<li><strong>Handle MCP forms and URLs separately.</strong> <code>ElicitationRequest</code> is now the union <code>FormRequest | UrlRequest</code>. Use <code>FormRequest.reply()</code> or <code>respond()</code> for forms; use <code>UrlRequest.reply_url_accept()</code> or <code>accept_url()</code> for URL consent.</li>\n</ul>\n<h2>Added</h2>\n<ul>\n<li><strong>Application-owned conversation storage.</strong> <code>SessionStore</code>, <code>SQLiteSessionStore</code>, and <code>CustomStorage</code> persist root history and automatic Python tool results. This initial profile excludes native tools, Environments, children, planning tools, generated-code execution, manual tools, and portable checkpoints. <code>SQLiteSessionStore</code> requires one host and a local POSIX filesystem. Both local profiles and custom stores can report uncertain root calls for explicit reconciliation; neither automatically replays those effects. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5514\">#5514</a>, <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5502\">#5502</a>)</li>\n<li><strong>Provider-hosted tools and storage.</strong> Add <code>FileSearch</code>, <code>CodeInterpreter</code>, and <code>ImageGeneration</code>, Code Interpreter caller policies, and provider-managed storage. Hosted tools require an API-key provider and a compatible standard Responses model; they exclude Responses Lite and Codex login. Hosted web search adds domain and location controls and retains citations. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5576\">#5576</a>, <a href=\"https://github.com/openai/openai-agents-python/blob/4c1190046163c09e4f67ab7254f22bea60b14894/docs/sdk/tools.md#provider-hosted-tools\">hosted-tool guide</a>)</li>\n<li><strong>Context and completion hooks.</strong> <code>Agent.transform_context</code> changes sampled input without changing stored history. <code>before_compact</code> and selected-item retention control compaction. <code>before_complete</code> can accept, return <code>ContinueTurn</code>, or stop a proposed answer; rejected text may already have streamed and remains in history. Advanced <code>prepare_request</code> editing supports a restricted HTTP profile. See the <a href=\"https://github.com/openai/openai-agents-python/blob/4c1190046163c09e4f67ab7254f22bea60b14894/docs/sdk/configuration.md#choose-a-model-context-hook\">hook contracts and limits</a>.</li>\n<li><strong>Observed usage budgets.</strong> <code>RunBudget</code> limits root request admissions, reported tokens, or estimated cost before the next request. An admitted request can exceed a limit. Children are excluded; missing usage stops further admission by default. Active budgeted operations cannot use portable checkpoints. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5555\">#5555</a>)</li>\n<li><strong>MCP resources, prompts, and reconnection.</strong> Use <code>Session.list_mcp_resources()</code>, <code>list_mcp_resource_templates()</code>, <code>read_mcp_resource()</code>, <code>list_mcp_prompts()</code>, and <code>get_mcp_prompt()</code> with a selected HTTP or stdio server while the Session is idle. Retrieved data does not enter model context automatically. Scoped tool selection and explicit reconnection preserve control over admitted tools without replaying uncertain calls. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5597\">#5597</a>, <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5604\">#5604</a>, <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5556\">#5556</a>)</li>\n<li><strong>Local execution and project search.</strong> <code>Environment.local()</code> runs supported executor tools locally. On Linux, <code>LocalStorageMount(source=path)</code> grants read-only access to an existing canonical directory; source and destination must match. <code>project_glob</code> and <code>project_grep</code> search beneath the Environment's fixed working directory without granting command execution. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5501\">#5501</a>, <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5575\">#5575</a>, <a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5574\">#5574</a>)</li>\n<li><strong>Integration and supervision.</strong> Add native A2A client and server adapters through the <code>a2a</code> extra, explicit <code>TraceContext</code>, workflow tracing controls, API-key rate-limit snapshots, turn receipts, exact-turn steering, and attention waits. Classic integrations use the <code>classic</code> and <code>classic-*</code> extras; Classic and native objects and checkpoints remain separate.</li>\n<li><strong>Speech with native history and policies.</strong> <code>agents.voice.NativeSessionVoiceWorkflow</code> uses a caller-owned text-output Session with the speech pipeline. It speaks accepted final text after completion review and output validation. The application handles interactions and Session lifetime. Install the <code>voice</code> extra; Realtime agents remain under <code>agents.classic.realtime</code>. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5596\">#5596</a>)</li>\n</ul>\n<h2>Changed</h2>\n<ul>\n<li><strong>Choose function-tool timeout handling.</strong> <code>timeout_behavior=\"error_as_result\"</code> returns a timeout error to the model, with optional <code>timeout_error_function</code> formatting. Raising remains the default. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5605\">#5605</a>)</li>\n<li><strong>Optional buffered Responses.</strong> <code>NativeProvider(response_mode=\"buffered\")</code> reads each complete HTTP JSON response before emitting model output. Select a standard Responses model explicitly; the default model uses Responses Lite. Buffered mode requires API-key authentication and excludes WebSockets, native children, and Codex login. Streaming remains the default. (<a class=\"issue-link js-issue-link\" href=\"https://github.com/openai/openai-agents-python/pull/5589\">#5589</a>)</li>\n<li><strong>Experimental saved-login reuse.</strong> <code>NativeProvider(auth=CodexLogin())</code> can use a saved Codex login over HTTP. Omit <code>api_key</code> and <code>base_url</code>. This experimental feature may change or be removed; see the <a href=\"https://github.com/openai/openai-agents-python/blob/4c1190046163c09e4f67ab7254f22bea60b14894/docs/sdk/configuration.md#reuse-a-codex-login-experimental\">authentication guidance and limits</a>.</li>\n</ul>\n<h2>Fixed</h2>\n<ul>\n<li>Keep Classic mount credential files private during creation and replacement, and bound Classic sandbox archive extraction.</li>\n<li>Stop deferred work and automatic compaction after cancellation. Retain cleanup owners so callers can retry unfinished release of resources without repeating reconciliation or tool effects.</li>\n<li>Stop sampling retries after terminal provider authentication failures. Report typed output-failure reasons and captured context limits, and preserve cache-write token counts.</li>\n<li>Retain provider response observations and execution details under their configured policies. Reduce native startup and event-reading overhead.</li>\n</ul>\n<h2>Release verification</h2>\n<p>Source: <a href=\"https://github.com/openai/openai-agents-python/commit/c27b24cc6c4fa7e89ab54fa9f795ef4f2d4d5fb9\"><code>c27b24cc6c4fa7e89ab54fa9f795ef4f2d4d5fb9</code></a>.</p>\n<p>Built and tested by <a href=\"https://github.com/openai/openai-agents-python/actions/runs/42453125392\">Tests #42453125392</a>.</p>\n<p>Fresh-install checks passed on CPython 3.10 and 3.14 for Linux, macOS, and Windows: <a href=\"https://github.com/openai/openai-agents-python/actions/runs/42457339996\">installation verification</a>.</p>",
+    "related_items": [],
+    "source": "OpenAI Agents Python Releases",
+    "source_kind": "github",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "Agents SDK v0.24.0-alpha.7",
+    "url": "https://github.com/openai/openai-agents-python/releases/tag/v0.24.0-alpha.7"
+  },
+  {
+    "analysis": {
+      "action": "read",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方 GitHub Release，一手来源可信度高；涉及 Agent 工具调用、MCP 后台任务、权限与自动模式安全策略及延迟优化，直接契合用户对 Agent/Coding/Eval 的偏好，但属于版本迭代而非架构级突破，故重要性定为 4。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Claude Code v2.1.319 发布，重点调整 auto 模式在关闭遥测或 LLM 网关下的行为：无法由服务端校验的调用将询问或拒绝，不再回退内置分类器，并提供 CLAUDE_CODE_AUTO_MODE_SERVER 环境变量控制。新增终端 MCP 任务后台执行、permissions.denyInsteadOfPrompting、/claude-api latency-optimize 延迟优化、网关预算与日志 JSON 等企业级功能。",
+      "tags": [
+        "Claude Code",
+        "Agent",
+        "MCP",
+        "权限控制",
+        "LLM网关",
+        "发布更新"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-11-06T17:04:01Z",
+    "raw_summary": "<h2>What's changed</h2>\n<ul>\n<li>Changed auto mode with telemetry or feature flags off, including behind LLM gateways: calls the server can't check are asked about or denied, with no fallback to the built-in classifier; set <code>CLAUDE_CODE_AUTO_MODE_SERVER=0</code> to keep using it (Bedrock, Vertex and Foundry are unchanged)</li>\n<li>Changed auto mode behind an LLM gateway: <code>CLAUDE_CODE_AUTO_MODE_SERVER=1</code> turns on the server-side check even with <code>CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS</code> set; if managed settings set the latter, they must set the <code>1</code> too</li>\n<li>Added support for MCP tasks in the terminal: when an MCP server runs a tool call as a task, Claude Code moves it to the background right away and tells Claude the result when it finishes</li>\n<li>Added the <code>CLAUDE_CODE_DISABLE_MCP_TASK_BACKGROUND</code> environment variable to make Claude Code wait for an MCP task inside its tool call instead of moving it to the background right away</li>\n<li>Added <code>permissions.denyInsteadOfPrompting</code> setting: a tool call that would wait on a permission prompt is denied and the turn continues, in terminal sessions, subagents and teammates</li>\n<li>Added <code>/claude-api latency-optimize</code> to find where your Claude API code makes people wait and try faster settings against your eval</li>\n<li>Added the <code>CLAUDE_CODE_DISABLE_FEATURE_FLAGS</code> environment variable, which stops feature-flag fetching without turning off telemetry; every flag then uses its built-in default</li>\n<li>Added spend for today, this week and this month to <code>/usage</code> for developers behind a Claude apps gateway who have no spend limit, when the gateway runs this version or later</li>\n<li>Added <code>admin.pooled_conflict_rule</code> and <code>admin.pooled_priority_order</code> to the Claude apps gateway, to set which pooled group budget pays first for a developer in several groups</li>\n<li>Added an optional <code>login_notice</code> setting to the Claude apps gateway that shows an operator-defined message on the gateway's browser verification page and on Claude Code's sign-in screen</li>\n<li>Added <code>CLAUDE_GATEWAY_LOG_FORMAT=json</code> to the Claude apps gateway: operational log lines become JSON with <code>severity</code>, <code>time</code> and <code>message</code>, for log collectors that read the level from a field</li>\n<li>Added a Claude apps gateway boot warning for a case where another policy's <code>availableModels</code> also allows a custom model id that one policy lists by name</li>\n<li>Added start-up warnings to the Claude apps gateway for policies with no <code>desktopHome</code> that rely on <code>coworkTabEnabled: false</code> or <code>chatSessionRetentionDays</code>, ahead of Claude Desktop's November 10 change</li>\n<li>Added a warning when your claude.ai login ends and Claude Code continues on the sign-in from <code>ant auth login</code>, which bills usage to your Claude Console organization</li>\n<li>Added a line at startup naming the Claude Console organization that is billed in a case where Claude Code uses the sign-in from <code>ant auth login</code></li>\n<li>Added an \"Earlier in this session\" row to <code>/tasks</code> that lists finished subagents, so you can reopen one and message it even after it leaves the list or you restart</li>\n<li>Added a note to <code>/loop</code> confirmations in cloud sessions that a timer stops with its container, with an offer of a loop that survives</li>\n<li>Fixed MCP servers on the older handshake failing to connect, or returning empty results, because Claude Code declared an extension that it only uses with newer servers</li>\n<li>Fixed a long-running MCP tool call on a claude.ai connector sometimes never reporting its result after <code>--resume</code></li>\n<li>Fixed a session's diff failing to load on claude.ai and the mobile apps when the folder Claude Code runs in has a file or folder named <code>HEAD</code></li>\n<li>Fixed <code>/diff</code> showing \"Diff unavailable\" when a git repository has a file or folder named <code>HEAD</code> at its top level</li>\n<li>Fixed the <code>/diff</code> pane opening blank in sessions where 64 or more turns edited files</li>\n<li>Fixed slash commands typed after a leading space, tab or newline being sent to Claude as plain text instead of running</li>\n<li>Fixed a request that kept failing with a 401 refreshing your login on every retry and causing 401s in your other sessions</li>\n<li>Fixed <code>/context</code> sending its full visual grid to Claude on every later turn; Claude now reads only the table</li>\n<li>Fixed <code>claude -p</code> exiting 0 in auto mode when its actions were refused because no safety check was available: text and JSON output now exit 1</li>\n<li>Fixed a case where Claude Code listed every project file at start on Linux for projects on a network file system (NFS, SMB, Lustre and similar)</li>\n<li>Fixed a case where auto mode was wrongly refused when a client sent a model change and a request for auto mode back to back</li>\n<li>Fixed <code>/status</code> showing \"Auto mode server: Enabled\" when the server-side review isn't reaching the session, for example behind an LLM gateway that drops it</li>\n<li>Fixed Claude-drafted feedback, surveys and <code>/feedback</code> continuing to appear after the server refused feedback for your organization</li>\n<li>Fixed Claude drafting feedback on third-party gateways, where it can't be sent</li>\n<li>Fixed auto mode refusing actions without saying why when permission rules or <code>autoMode</code> settings are very large: it now explains and, unless <code>autoMode</code> deny rules are set, asks you in the terminal</li>\n<li>Fixed a case where Bash deny and ask rules missed commands written with quoted words</li>\n<li>Fixed subagent hand-back reports showing an internal marker and provenance note when expanded outside verbose mode</li>\n<li>Fixed <code>claude -p --resume</code> with a prompt losing a deferred tool call when its MCP server is missing: the run now exits 1, keeps the call and refuses later input</li>\n<li>Fixed a case where text was dropped from informational messages sent to SDK clients</li>\n<li>Fixed a case where Agent SDK hosts got a generic exit-code error instead of a failed run's own error message when the disk was full</li>\n<li>Fixed <code>CLAUDE_CODE_RESUME_INTERRUPTED_TURN</code> re-running a turn that was interrupted in plan mode when the session resumes in another permission mode</li>\n<li>Fixed edits to a settings file being ignored when made within a few seconds of Claude Code writing that file</li>\n<li>Fixed a config file left at the legacy name hiding your setup with no warning: Claude Code now says on stderr when a home holds two config files, and which is in use</li>\n<li>Fixed <code>~/.claude.json</code>, settings and edited files ending up empty or cut off when the disk fills during a save in a read-only folder or to a bind-mounted file (one session saving at a time)</li>\n<li>Fixed Write ending the turn as a refusal when it couldn't read the file to overwrite</li>\n<li>Fixed background Bash commands that finish almost instantly losing their output while being reported as completed</li>\n<li>Fixed the Bash tool's diff of changed files missing a file that the command wrote just before it ended</li>\n<li>Fixed a mistyped model name, such as <code>opus-5-5</code>, telling you to update Claude Code instead of suggesting the model you meant</li>\n<li>Fixed a case where <code>NotebookEdit</code> changed the wrong cell when the notebook changed while a permission prompt was open</li>\n<li>Fixed a ~0.5s hang after pressing Enter on the <code>/login</code> success screen: the dialog now dismisses immediately and the post-login refresh runs in the background</li>\n<li>Fixed Ctrl+G not opening the external editor while typing an \"Other\" answer to a question in screen reader mode</li>\n<li>Fixed Monitor's WebSocket watch failing with \"could not resolve\" behind a proxy when <code>CLAUDE_CODE_PROXY_RESOLVES_HOSTS</code> is set and the machine has no DNS of its own</li>\n<li>Fixed <code>claude plugin eval</code> warnings suggesting <code>max: 0</code> for a tool that must not be called, which could never pass</li>\n<li>Fixed background plugin auto-update not installing a dependency added by the updated plugin version</li>\n<li>Fixed Cmd+click not opening links in Ghostty over tmux in sessions opened from the agents view</li>\n<li>Fixed a mod's hot reload in <code>.claude/skills</code> missing a file that was deleted just after it appeared, and missing its return</li>\n<li>Fixed <code>/rewind</code> failing with \"No files were restored\" when restoring code to a checkpoint from before <code>/branch</code></li>\n<li>Fixed the <code>/claude-api</code> skill saying Console web settings don't apply to Managed Agents sessions, and tightened its credential and permission examples</li>\n<li>Fixed needless permission prompts for read-only commands wrapped in a plain <code>timeout DURATION</code>, such as <code>timeout 30 rg foo</code></li>\n<li>Fixed WebFetch describing claude.ai shared-chat links as empty pages; it now says shared chats can't be read and to paste the conversation instead</li>\n<li>Fixed Artifact database calls being re-sent to artifacts without a database; errors now say whether republishing helps</li>\n<li>Fixed a case where artifact database reads that save to a folder (<code>out_dir</code>) were refused</li>\n<li>Fixed detailed beta tracing not presenting <code>CLAUDE_CODE_CLIENT_CERT</code> to collectors that require a client certificate</li>\n<li>Fixed the OpenTelemetry <code>claude_code.session.count</code> metric counting Agent SDK <code>prewarm()</code> processes that were never claimed; a pre-started process now counts once, when it is claimed</li>\n<li>Fixed <code>/clear</code> killing running commands of background agents, teammates and workflows that keep running, and foreground subagents of background agents and teammates</li>\n<li>Fixed a terminal whose Claude apps gateway sign-in had expired sending telemetry and managed-settings requests that the gateway refused and logged as <code>invalid_token</code></li>\n<li>Fixed the agents view appearing to send a reply to a background session waiting on a permission prompt; the reply now stays in the box with a hint to open the session and answer</li>\n<li>Fixed agent view removing a draft saved by another agent view in the same directory when exiting</li>\n<li>Fixed a case where agent view came back with another agent view's input text after restarting itself for an update</li>\n<li>Fixed the agents view preview cutting off long commands, results and status lines without an ellipsis, and dropping <code>**</code>, backticks and tags from commands waiting for approval</li>\n<li>Fixed Claude in Chrome reporting the extension as not connected when the connection dropped mid-action; Claude now checks the page before repeating an action that may have run</li>\n<li>Fixed Remote Control sessions still showing \"Limit reached\" on other devices after a usage limit was lifted outside the session</li>\n<li>Fixed the file card sometimes missing in the Claude iOS app when Claude sent a single file</li>\n<li>Fixed self-hosted runner sessions failing with no explanation when the server keeps refusing to renew model access: the runner now retries sooner and posts a warning in the session</li>\n<li>Fixed <code>/permissions</code> in cloud sessions replying only that it isn't available; it now says where the session's rules live and how to change them</li>\n<li>Fixed cloud sessions losing session-scoped deny and ask permission rules, such as those a PermissionRequest hook adds, when the session moves to a new worker</li>\n<li>Fixed mod hot-reloading turning off for the session when you typed three messages instead of answering its question in a cloud session</li>\n<li>Fixed background tasks that keep running after <code>/clear</code> disappearing from the task list in Claude Code on the web until another task started or ended</li>\n<li>Fixed hidden commands appearing in the slash command menu of cloud sessions on mobile and web</li>\n<li>Fixed a case where <code>/rewind</code> could restore or delete a file through a directory symlink</li>\n<li>Fixed a case where a <code>sed</code> command could skip the permission check in accept-edits and auto mode</li>\n<li>Fixed a case where <code>CLAUDE_CODE_AUTO_MODE_SERVER=1</code> in managed settings was ignored behind an LLM gateway when the gateway's URL is set only there and server-managed settings can't be fetched</li>\n<li>Fixed a Bash permission bypass where a crafted environment prefix could hide part of a command from permission checks</li>\n<li>Fixed a case where deny and ask rules, hook matchers and <code>disallowedTools</code> entries written with a claude.ai connector's terminal name (<code>mcp__claude_ai_Slack</code>) were ignored in Claude Desktop (takes effect once Claude Desktop includes this version)</li>\n<li>Fixed a sandbox escape when creating a worktree</li>\n<li>Fixed self-hosted runners: <code>--trust-workspace false</code> now also stops hooks in the repository's settings files and skills from running</li>\n<li>Fixed a case where idle background sessions started through a shell-exported LLM gateway left the gateway after an update</li>\n<li>Fixed help links in <code>/status</code> and the auto mode billing notice opening only part of the address when they wrap</li>\n<li>Fixed a case where certificate errors behind a TLS-inspecting proxy persisted when <code>CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC</code> was set. With it set, Claude Code now makes a TLS handshake with the configured API host after a certificate failure, through your http:// proxy if one is set; it sends no API request</li>\n<li>Fixed <code>claude remote-control</code> exiting silently with status 0 when a first-run question gets no answer (scripts, services, batch jobs, Ctrl+C); it now says why and exits 1</li>\n<li>Fixed <code>claude remote-control</code> ignoring a piped <code>y</code> that has no newline after it at the first-run question; it now counts as a yes</li>\n<li>Fixed <code>/rename</code> reporting plain success when the new name could not be saved to the session transcript; it now warns that the new name may not last</li>\n<li>Fixed <code>${CLAUDE_PLUGIN_ROOT}</code> not being substituted in a plugin-provided <code>subagentStatusLine</code> command, which can now reference the plugin's own scripts</li>\n<li>Fixed <code>claude plugin update</code> and <code>/plugin</code> \"Update now\" not installing dependencies added by the new plugin version</li>\n<li>Fixed subagents being told after compaction to expect a completion notice for background agents they neither started nor took over</li>\n<li>Fixed a case where a background agent's later report was lost silently: the notification now says it was refused and how to ask for it</li>\n<li>Improved config saves on Windows: Claude Code waits longer for a file another program has open, so a kill during a save is less likely to leave <code>~/.claude.json</code> empty</li>\n<li>Improved Claude in Chrome after a brief disconnect: it waits up to 6 seconds for the session's own browser to return before picking another</li>\n<li>Improved Claude in Chrome: <code>javascript_tool</code> results of up to 60,000 characters now stay in the conversation instead of being saved to a file</li>\n<li>Improved <code>claude purge</code> and the clean-up of old sessions to retry a folder that could not be fully deleted, and to report it as an error if it remains</li>\n<li>Improved the refusal for a path outside the working directories on macOS and Windows: when only its letter case differs from a path inside them, the message names that spelling</li>\n<li>Improved the contrast of faint gray secondary text, such as hints, details in <code>/stats</code>, <code>/model</code> and <code>/sandbox</code>, and rejected-action messages</li>\n<li>Improved the artifact database error when an update targets a document that does not exist, and when the service pauses repeated refused writes</li>\n<li>Improved the Claude apps gateway's warnings about a failed upstream call: each now names the upstream, not only its provider</li>\n<li>Improved the Claude apps gateway's spend limit error: it reads \"spend limit reached · resets Dec 1\", then <code>admin.blocked_message</code> if one is set</li>\n<li>Improved the <code>/model</code> picker: older models are now grouped under a \"More models\" row instead of being listed after the current ones</li>\n<li>Improved <code>/context</code> at the terminal so the table Claude reads stays short: each list keeps its 10 largest rows, and MCP tools that load on demand share one row per server until they're called</li>\n<li>Improved <code>/usage</code> in cloud sessions: it now links to Settings → Usage on claude.ai in a case where plan limits can't be shown</li>\n<li>[VSCode] Improved the confirmation for removing a plugin marketplace: it now checks which of its plugins are installed at that moment</li>\n<li>Changed MCP tasks to work in the terminal without feature-flag fetching (Bedrock, Vertex, Foundry, LLM gateways, <code>DISABLE_TELEMETRY</code>); set <code>CLAUDE_CODE_DISABLE_MCP_TASKS=1</code> to turn them off</li>\n<li>Changed auto mode so that a project's settings files or a plugin can no longer switch its server-side check back on once you have switched it off outside the project</li>\n<li>Changed Monitor's WebSocket watch to follow a rule on every Bash command: a deny refuses it, and under an ask rule an allow on Monitor, bypass mode or auto mode no longer skips the prompt</li>\n<li>Changed <code>CLAUDE_CODE_PROXY_RESOLVES_HOSTS</code> so that settings files can no longer set it where the host manages the network; set it in the process environment</li>\n<li>Changed a session's exact Bash or PowerShell ask rule to be refused, not asked about, when a broader deny rule covers the command</li>\n<li>Changed the Bash tool to ask for permission before running <code>which</code> with flags outside a lookup/display set</li>\n<li>Changed <code>--add-dir</code> directories to register plugin marketplaces only once that directory's own trust dialog has been accepted</li>\n<li>Changed nested skill loading: with the Bash sandbox on, skills in <code>.claude/skills</code> folders below the starting folder load only if you start Claude Code there or <code>/cd</code> there</li>\n<li>Changed self-paced <code>/loop</code> to end when a turn finishes without rescheduling, instead of scheduling a fallback wakeup; set <code>CLAUDE_CODE_LOOP_KEEPALIVE=1</code> to keep the old behavior</li>\n<li>Changed PostToolUse hooks to run, with up to 10 seconds to finish, on tool calls that finish after a new message interrupts the turn</li>\n<li>Changed what Claude is told after safeguards stop a subagent: retry with a narrower prompt or tell you, instead of doing the work itself</li>\n<li>Changed cloud sessions to drop session-scoped allow rules at a move to a new worker when their deny and ask rules can't all be kept, so you may be asked again</li>\n<li>Changed the automatic certificate repair behind a TLS-inspecting proxy: it no longer runs when <code>ALL_PROXY</code> is the only proxy variable set. Set <code>HTTPS_PROXY</code> to the proxy's http:// URL instead</li>\n<li>Changed artifact database saves of rows others may have written: each file gets a hidden marker file, and existing files without one, earlier versions' exports among them, are left alone and reported</li>\n<li>Updated <code>/claude-api managed-agents-onboard</code> templates to match the Claude Console: removed Performance tuner, renamed two, and turned off web search and fetch in five whose prompts don't use them</li>\n<li>Removed <code>shortcuts_list</code> and <code>shortcuts_execute</code>, which listed and started shortcuts saved in the extension, from Claude Code's built-in Claude in Chrome tools</li>\n<li>Gateway: Added startup warnings for upstreams that mix AWS GovCloud with other upstreams, and for base URL variables in the gateway's environment</li>\n<li>Gateway: Added a start-up log warning when managed settings name an Amazon Bedrock guardrail in a header, which the gateway doesn't forward, and no <code>bedrock</code> upstream sets a <code>guardrail</code></li>\n<li>Gateway: Fixed Claude Desktop offering a web search tool that always failed when every upstream is Amazon Bedrock</li>\n<li>Self-hosted runner: Fixed a runner started with <code>--use-anthropic-git-proxy</code> or <code>--configure-git</code> registering before a failed startup check made it exit; it now exits first</li>\n<li>Self-hosted runner: Changed <code>CLAUDE_RUNNER_CHECKOUT_PATH</code> so that each repository in a session gets its own folder: a folder name already taken in the session gets <code>-2</code>, <code>-3</code>, … at the end</li>\n<li>Self-hosted runner: Removed the end-of-session upload of a session's debug log; a failed session's log stays on the runner host unless <code>--remove-session-state</code> is set</li>\n<li>[VSCode] Fixed prompts over 50,000 characters being cut off silently: the prompt now stays in the chat box with a notice, and a paste over the limit is refused with a notice</li>\n<li>[VSCode] Fixed a click on the survey or \"Report a problem\" buttons sending the unfinished prompt</li>\n<li>[VSCode] Fixed cloud sessions opened from the extension's Web tab bringing back turns that <code>/clear</code>, or Retry or Edit of a typed prompt, had removed</li>\n<li>[VSCode] Fixed a deleted session's file coming back when that session was renamed in the extension</li>\n<li>[VSCode] Fixed Claude carrying out an unapproved plan after a window reload: a step interrupted in plan mode now stops with a notice when the session comes back in another permission mode</li>\n<li>[VSCode] Improved the \"not signed in\" message behind a Claude apps gateway: it now looks like an error and has a Sign in link</li>\n<li>[VSCode] Changed links in Claude's replies that point at Claude sign-in, connector or API addresses to show as text with the address, instead of opening in the browser</li>\n<li>[VSCode] Fixed a possible chat panel freeze when a dropped item's path contains a very long run of \"/\" characters</li>\n<li>[VSCode] Fixed the <code>claude-vscode.toggleDictation</code> command starting dictation in every open Claude view at once; it now acts only in the view you are using, and a second press stops it</li>\n<li>[VSCode] Fixed the chat panel slowing down while a reply with many unclosed <code>$$</code> math fences, each shorter than the last, streams in</li>\n<li>[VSCode] Improved the chat panel's diagnostics tool for large workspaces: it leaves out files with no problems, returns compact JSON, and accepts an optional minimum severity</li>\n<li>[Cloud sessions] Fixed scheduled tasks silently dropping a connector named memory: runs now keep it, mounted under that name plus a short suffix</li>\n<li>[Cloud sessions] Fixed Send now on a waiting message in cloud sessions ending running background agents; they now keep running</li>\n<li>[Cloud sessions] Improved the stalled-setup warning on self-hosted environments: its link now prefers your organization's default or an environment with a live runner, and names it</li>\n<li>[Code Review] Changed unlinking a GitHub organization to also turn off its All repositories setting in Code Review; it stays off after you relink until you turn it back on</li>\n<li>[Claude Tag] Fixed Claude Tag setup blocking launch when the channel list couldn't fully load; admins can now launch without picking a channel</li>\n<li>[Claude Tag] Added a Claude Tag row to the Models admin page for Enterprise orgs with Claude Tag connected, linking to where its model defaults are managed</li>\n<li>[Claude Tag] Fixed saving auto mode allow rules in Claude Tag admin settings overwriting another admin's changes; the save is now refused with a message</li>\n</ul>",
+    "related_items": [],
+    "source": "Anthropic Claude Code Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "v2.1.319",
+    "url": "https://github.com/anthropics/claude-code/releases/tag/v2.1.319"
+  },
+  {
+    "analysis": {
+      "action": "阅读官方页面了解任务设计与评测指标，评估是否引入 BioBasicsBench 作为 Agent 评测补充",
+      "confidence": 5,
+      "importance": 4,
+      "reason": "官方一手来源可信度高，属 Agent/Eval 交叉方向且契合用户偏好，提供了新的领域级评测基准，但聚焦湿实验室垂直场景，通用影响有限，故重要性定为 4。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "OpenAI 发布 BioBasicsBench，一个包含 100 项任务的基准，用于评估 AI Agent 解析湿实验室原始实验数据、处理日常科研任务的能力。该基准聚焦真实实验场景中的多模态数据理解与推理，为评测 Agent 在生物实验领域的实用性与可靠性提供了标准化手段，对 Agent 与 Eval 方向有直接参考价值。",
+      "tags": [
+        "Agent",
+        "Eval",
+        "Benchmark",
+        "OpenAI",
+        "科学实验",
+        "多模态"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-11-06T00:00:00Z",
+    "raw_summary": "OpenAI introduces BioBasicsBench, a 100-task benchmark measuring how well AI agents interpret raw experimental data and handle everyday wet-lab science.",
+    "related_items": [],
+    "source": "OpenAI News",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "Measuring how AI agents handle everyday wet-lab science",
+    "url": "https://openai.com/index/measuring-how-ai-agents-handle-wet-lab-science"
+  },
+  {
+    "analysis": {
+      "action": "关注",
+      "confidence": 5,
+      "importance": 3,
+      "reason": "官方一手来源可信度高，语音与 Agent 交互对 Coding Agent 体验有潜在影响，符合用户对 Agent 的关注；但仅为产品功能发布，缺少技术细节与评测数据，暂不构成研究级重点，建议跟踪后续实测反馈。；今日新内容偏少，从近期缓存中补入供回看。",
+      "summary_cn": "Cursor 官方更新日志发布「Voice Chat with Agents」，支持在桌面端、Web 与 iOS 上以实时语音通话方式与 Agent 交互，标志编码 Agent 的输入形态从文本扩展到语音多模态。官方一手来源，信息确定性强，但功能细节与可用范围有限。",
+      "tags": [
+        "Agent",
+        "Cursor",
+        "语音交互",
+        "多模态",
+        "Coding"
+      ]
+    },
+    "backfilled_from_cache": true,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-11-06T00:00:00Z",
+    "raw_summary": "Talk with your agents in a realtime voice call on desktop, web, and iOS.",
+    "related_items": [],
+    "source": "Cursor Changelog",
+    "source_kind": "official",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "Voice Chat with Agents",
+    "url": "https://cursor.com/changelog/voice-chat"
+  },
+  {
+    "analysis": {
+      "action": "记录并评估接入",
+      "confidence": 4,
+      "importance": 3,
+      "reason": "官方 changelog 可信度高，千 token/秒与 1M 上下文对 Coding、Agent 场景有实际价值；但属模型上架分发消息，非模型本身发布，故重要性中等。",
+      "summary_cn": "Vercel AI Gateway 通过 Fireworks 上线 DeepSeek V4.1 Flash 1017 Ultrafast，生成速度可达每秒 1000+ tokens，支持 1M token 上下文，公开预览无排队与时长限制。适合交互式编码、推理与 Agent 工作流，可直接在 Claude Code、Codex、Cursor 中选用该模型。",
+      "tags": [
+        "DeepSeek",
+        "推理加速",
+        "Coding Agent",
+        "Vercel AI Gateway",
+        "长上下文"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "product",
+    "force_high": false,
+    "heuristic_score": 5,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 8,
+    "published_at": "2026-11-07T00:00:00Z",
+    "raw_summary": "<p><a href=\"https://vercel.com/ai-gateway/models/deepseek-v4.1-flash-1017-ultrafast\">DeepSeek V4.1 Flash 1017 Ultrafast</a> is now available on AI Gateway through Fireworks. This model can generate upwards of <b>1,000 tokens per second</b>.</p><p>Ultrafast serves the October 17 update of DeepSeek V4.1 Flash through Fireworks' accelerated serverless endpoint. It is suited to interactive coding, reasoning, and agentic workflows where applications need to generate output and move to the next step quickly.</p><p>The model has a 1M-token context window for working with large codebases and long inputs. It is available in public preview without a waitroom or session time limit.</p><p>Use it by setting <code>deepseek/deepseek-v4.1-flash-1017-ultrafast</code> as the model name:</p><div></div><p>To use it in Claude Code, Codex, Cursor, and more, install the latest Vercel CLI and run setup:</p><div></div><p>Then select <code>deepseek/deepseek-v4.1-flash-1017-ultrafast</code> in the agent. See the <a href=\"https://vercel.com/docs/ai-gateway/coding-agents\">coding agents guide</a> for details.</p><p>Try DeepSeek V4.1 Flash 1017 Ultrafast in the <a href=\"https://vercel.com/ai-gateway/models/deepseek-v4.1-flash-1017-ultrafast\">model playground</a>.</p><p>AI Gateway provides a unified API for calling models, tracking usage and cost, and configuring retries, failover, and performance optimizations for higher-than-provider uptime. It includes built-in <a href=\"https://vercel.com/changelog/custom-reporting-ai-gateway\">custom reporting</a>, <a href=\"https://vercel.com/blog/zdr-on-ai-gateway\">Zero Data Retention support</a>, <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/api-keys\">budgets for API keys</a>, <a href=\"https://vercel.com/docs/ai-gateway/models-and-providers/routing-rules\">routing rules</a>, and more.</p><p>AI Gateway reflects provider pricing with no markup and does not charge a platform fee on inference, including on <a href=\"https://vercel.com/docs/ai-gateway/authentication-and-byok/byok\">Bring Your Own Key</a> (BYOK) requests.</p><p>You can view <a href=\"https://vercel.com/ai-gateway/models?type=text\">all language models</a> available on AI Gateway.</p>\n          <p class=\"more\">\n            <a href=\"https://vercel.com/changelog/deepseek-v4-1-flash-1017-ultrafast-now-available-on-ai-gateway\">Read more</a>\n          </p>",
+    "related_items": [],
+    "source": "Vercel Changelog",
+    "source_kind": "official",
+    "source_priority": 4,
+    "source_tier": 1,
+    "title": "DeepSeek V4.1 Flash 1017 Ultrafast now available on AI Gateway",
+    "url": "https://vercel.com/changelog/deepseek-v4-1-flash-1017-ultrafast-now-available-on-ai-gateway"
+  },
+  {
+    "analysis": {
+      "action": "info",
+      "confidence": 5,
+      "importance": 2,
+      "reason": "官方 GitHub Release，来源可信度高，但属于小型补丁更新，仅新增一个 provider 选项，影响范围限于使用 xAI 的开发者，与 Agent/Coding/RAG/Eval/Reasoning 核心关注点关联较弱，故重要性偏低。；常规版本/依赖更新降噪。；已合并同事件来源：Vercel AI SDK Releases。",
+      "summary_cn": "Vercel AI SDK 发布 @ai-sdk/xai@3.0.151 补丁版本，为 xAI 的 Responses API 新增 safetyIdentifier provider 选项，请求时可携带 safety_identifier，便于 xAI 将策略违规归因到具体终端用户，并通过 providerMetadata.xai.safetyIdentifier 回显该值；同时升级 provider-utils 与 openai-compatible 依赖。",
+      "tags": [
+        "Vercel AI SDK",
+        "xAI",
+        "SDK 发布",
+        "Responses API",
+        "安全合规"
+      ]
+    },
+    "backfilled_from_cache": false,
+    "category": "repo",
+    "force_high": false,
+    "heuristic_score": 3,
+    "manual_input": false,
+    "manual_source": null,
+    "manual_tags": [],
+    "preference_score": 2,
+    "published_at": "2026-11-07T19:29:54Z",
+    "raw_summary": "<h3>Patch Changes</h3>\n<ul>\n<li>\n<p><a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/7957cfaf08f647faa6668b600f1b6f925aa87c12\"><tt>7957cfa</tt></a>: feat(xai): add <code>safetyIdentifier</code> Responses provider option</p>\n<p>Sends <code>safety_identifier</code> with Responses API requests so xAI can attribute a policy violation to one end user, and exposes the echoed value on <code>providerMetadata.xai.safetyIdentifier</code>.</p>\n</li>\n<li>\n<p>Updated dependencies [<a class=\"commit-link\" href=\"https://github.com/vercel/ai/commit/f0dee4b4df4b863541f3e166ca18faeb0045f405\"><tt>f0dee4b</tt></a>]</p>\n<ul>\n<li>@ai-sdk/provider-utils@4.0.65</li>\n<li>@ai-sdk/openai-compatible@2.0.92</li>\n</ul>\n</li>\n</ul>",
+    "related_items": [
+      {
+        "confidence": 5,
+        "importance": 2,
+        "source": "Vercel AI SDK Releases",
+        "source_tier": 1,
+        "title": "@ai-sdk/xai@2.0.103",
+        "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%402.0.103"
+      }
+    ],
+    "source": "Vercel AI SDK Releases",
+    "source_kind": "github",
+    "source_priority": 5,
+    "source_tier": 1,
+    "title": "@ai-sdk/xai@3.0.151",
+    "url": "https://github.com/vercel/ai/releases/tag/%40ai-sdk%2Fxai%403.0.151"
+  }
+]
