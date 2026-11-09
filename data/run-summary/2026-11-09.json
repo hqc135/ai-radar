@@ -1,0 +1,60 @@
+{
+  "archive_path": "data/items/2026-11-09.json",
+  "backfill_items": 0,
+  "candidates_new": 160,
+  "candidates_selected": 12,
+  "candidates_total": 161,
+  "content_health": "ok",
+  "estimated_llm_tokens": 12000,
+  "fallback_items": 1,
+  "fallback_lookback_used": false,
+  "health_reasons": [
+    "信息源抓取异常：失败 0 个，警告 2 个。"
+  ],
+  "llm_failed": 1,
+  "llm_planned": 12,
+  "llm_succeeded": 11,
+  "lookback_hours": 36,
+  "low_quality_release_items": 2,
+  "low_quality_release_ratio": 0.167,
+  "manual_items": 0,
+  "must_read_items": 2,
+  "output_items": 12,
+  "output_path": "notes/daily/2026-11-09.md",
+  "quality_needs_review": false,
+  "quality_score": 97,
+  "quality_signals": {
+    "backfill_items": 0,
+    "fallback_lookback_used": false,
+    "low_quality_release_items": 2,
+    "low_quality_release_ratio": 0.167,
+    "min_daily_items": 8,
+    "must_read_items": 2,
+    "output_items": 12,
+    "source_warnings": 2,
+    "sources_failed": 0
+  },
+  "rss_items": 161,
+  "source_adjustments": {
+    "Anthropic Python SDK Releases": 2,
+    "Google Cloud AI and Machine Learning Blog": 6,
+    "Hugging Face Blog": 6,
+    "LangChain Blog": 6,
+    "Latent Space": 5,
+    "OpenAI News": 9,
+    "OpenAI Node SDK Releases": 2,
+    "Vercel AI SDK Releases": 2,
+    "Vercel Changelog": 6,
+    "arXiv cs.AI": 6,
+    "arXiv cs.CL": 6
+  },
+  "source_failures": [],
+  "source_warning_names": [
+    "Google DeepMind Blog",
+    "LangChain Changelog"
+  ],
+  "source_warnings": 2,
+  "sources_failed": 0,
+  "sources_success": 26,
+  "sources_total": 26
+}
